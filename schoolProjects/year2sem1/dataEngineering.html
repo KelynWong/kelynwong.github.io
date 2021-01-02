@@ -215,6 +215,130 @@
                 <div class="h-10"></div>
             </div>
 
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng10.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-6">
+                <p>For this part of the project, we worked in a team of four to design a data warehouse. Firstly, we are given a ERD digram and we had to create the sql script on the OLTP database table creation.</p>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <p>We analysed the OLTP to figure out which schema for the OLAP to use. After careful considerations, we decided to use a star schema instead of the snowflake one.</p>
+            </div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng11.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng12.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-6">
+                <p>We then proceed to create the data warehouse according to the diagram. Next, we were give data from various to be put into the data warehouse for storage. One from the OLTP database itself, one from a json file and another from a csv file. However, before intregrating all those data into the data warehouse, we checked through the data to find any data inconsistencies. One example of the inconsistencies that we found were that some country name were spelled in full so we corrected that before it goes into the data warehouse.</p>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <p>After sufficent data is imported into the OLAP, we had to come up with insightful queries retreiving data that would be helpful in improving the business of the company. Our first sql statement relates to sales where we list the least profitable product and order by the office that contributed to the most loss.</p>
+            </div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng13.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng14.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-6">
+                <p>This second statement relates to staff/offices where we select the best performing offiec based on total sale during a certain period of time.</p>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <p>The third statement relates to seasons of sales where we select the percentage of the order statuses over total order over the quarters of each year.</p>
+            </div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng15.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng16.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-6">
+                <p>The last statement relates to orders/customers where we compute the the money spent by each customer based on their orders. We also show each customer's spending as a percentage of total spending by all customers.</p>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <p>Moving on, there is a individual component to this part of the project. Extending from the data warehouse, we had to transfer the data to databricks, a data analytics platform. Firstly, I exported each table's data in the data warehouse as a csv file.</p>
+            </div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng17.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng18.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-6">
+                <p>After having created an account in databricks, I imported the csv files into the filestore.</p>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-6">
+                <p>I then proceeded to create a workspace in databricks and created the database and tables using the cmd. I excluded the timeDIM table in databricks as it was not necessary.</p>
+            </div>
+
+            <div class="col-md-6">
+                <img src="/img/schoolProjects/year2sem1/deng19.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-md-4">
+                <img src="/img/schoolProjects/year2sem1/deng20.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-4">
+                <img src="/img/schoolProjects/year2sem1/deng21.png" alt="" class="img-responsive" />
+                <div class="h-30"></div>
+            </div>
+
+            <div class="col-md-4">
+                <p>When all tables are created and the data is correctly imported in the tables accordingly, I came up with one more insightful query for the business. This query enablea the owner to see an overview of all the offices and employees and is able to pinpoint where and whom their sales revenue is coming from.</p>
+            </div>
+
         </div>
         <!-- end main-container -->
 
