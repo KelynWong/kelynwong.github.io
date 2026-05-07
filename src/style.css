@@ -1,0 +1,225 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/assets/fonts/SourceCodePro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Background and text colors */
+  --bg-color: #1E1E1E;        /* Black background */
+  --text-color: #D4D4D4;      /* Light gray text */
+
+  /* Accent colors */
+  --accent-color-1: #61AFEF;  /* Light blue */
+  --accent-color-2: #528BCC;  /* Medium blue */
+  --accent-color-3: #98C379;  /* Soft green */
+
+  /* Code-related colors */
+  --code-color-1: #ABB2BF;    /* Light gray-blue */
+  --code-color-2: #6A9955;    /* Dark green */
+  --code-color-3: #CE9178;    /* Warm brown */
+  --code-color-4: #C586C0;    /* Soft purple */
+  --code-color-5: #DCDCAA;    /* Pale yellow */
+
+  /* Font Sizes */
+  --h0: 52px;  /* h0 -> 64px */
+  --h1: 40px;  /* h1 -> 36px */
+  --h2: 30px;  /* h2 -> 28px */
+  --h3: 24px;  /* h3 -> 24px */
+  --h4: 18px;  /* h4 -> 20px */
+  --h5: 16px;  /* h5 -> 18px */
+  --paragraph: 14px;  /* paragraph -> 16px */
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #1E1E1E;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+.mouse {
+  position: absolute;
+  width: 22px;
+  height: 42px;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -12px;
+  border-radius: 15px;
+  border: 2px solid #ABB2BF;
+  -webkit-animation: intro 1s;
+  animation: intro 1s;
+}
+
+.scroll {
+  display: block;
+  width: 3px;
+  height: 3px;
+  margin: 6px auto;
+  border-radius: 4px;
+  background: #ABB2BF;
+  -webkit-animation: finger 2s infinite;
+  animation: finger 2s infinite;
+}
+
+@-webkit-keyframes intro {
+  0% {
+      opacity: 0;
+      -webkit-transform: translateY(40px);
+      transform: translateY(40px);
+  }
+  100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+  }
+}
+
+@keyframes intro {
+  0% {
+      opacity: 0;
+      -webkit-transform: translateY(40px);
+      transform: translateY(40px);
+  }
+  100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes finger {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      transform: translateY(20px);
+  }
+}
+
+@keyframes finger {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      transform: translateY(20px);
+  }
+}
+
+/* Glow Effect for the image */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;  /* Slightly larger than the image */
+  height: 250px;
+  background: radial-gradient(
+    circle, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.cursor {
+  height: 14px;
+  width: 5px;
+  margin-left: 10px;
+  animation: curbl 1200ms linear infinite;
+}
+
+@keyframes curbl {
+
+  0% {
+    background: #ffffff;
+  }
+
+  49% {
+    background: #ffffff;
+  }
+
+  60% {
+    background: transparent;
+  }
+
+  99% {
+    background: transparent;
+  }
+
+  100% {
+    background: #ffffff;
+  }
+}
+
+#app {
+  @apply w-full;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

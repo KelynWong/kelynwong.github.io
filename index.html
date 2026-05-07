@@ -1,259 +1,2721 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Kelyn Wong</title>
-        <link rel="icon" href="img/kelynwongLogo.png" type="image/x-icon">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelyn Wong</title>
+  <link rel="icon" href="./src/assets/images/favicon.ico" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+    :root {
+      --bg:        #0d0d0d;
+      --bg2:       #141414;
+      --bg3:       #1a1a1a;
+      --bg4:       #222222;
+      --text:      #d4d4d4;
+      --text-dim:  #7a7a7a;
+      --text-faint:#3a3a3a;
+      --accent1:   #5BAADC;
+      --accent2:   #4A72B0;
+      --accent3:   #8BB87A;
+      --code1:     #8A94A6;
+      --code2:     #5E8A5E;
+      --code3:     #C4836A;
+      --code4:     #B87DB8;
+      --code5:     #C8C87A;
+      --border:    #2a2a2a;
+      --border2:   #333333;
+      --radius:    4px;
+      --mono:      'JetBrains Mono', monospace;
+      --sans:      'DM Sans', sans-serif;
+    }
 
-        <!-- main css -->
-        <link href="css/style.css" rel="stylesheet">
+    html { scroll-behavior: smooth; }
 
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-        <!-- modernizr -->
-        <script src="js/modernizr.js"></script>
+    ::selection { background: var(--accent2); color: #fff; }
 
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous">
-        </script>
-        <script> 
-            $(function(){
-            $("#header").load("./common/header.html"); 
-            $("#footer").load("./common/footer.html"); 
-            $("#preloader").load("./common/preloader.html"); 
-            });
-        </script> 
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 52px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 12px;
+      color: var(--accent1);
+      letter-spacing: 0.08em;
+    }
+    .nav-logo span { color: var(--text-dim); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent1); }
 
-    <body>
-        <div id="preloader"></div>
+    /* LAYOUT */
+    /* main { padding-top: 52px; } */
+    section { padding: 80px 0; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 40px; }
 
-        <div class="container-fluid">
-            <!-- box header -->
-            <div id="header"></div>
-            <!-- end box header -->
+    /* SECTION HEADER */
+    .sec-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .sec-prefix { color: var(--accent3); font-size: 11px; }
+    .sec-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .sec-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-            <!-- box-intro -->
-            <section class="box-intro">
-                <div class="table-cell">
-                    <h1 class="box-headline letters rotate-2">
-                        <span class="box-words-wrapper">
-                            <b class="is-visible">program.</b>
-                            <b>&nbsp;coding.</b>
-                            <b>graphic.</b>
-                        </span>
-                    </h1>
-                    <h5>Live. Laugh. Love.</h5>
-                </div>
+    /* ===== FLOATING SOCIAL PANEL (fixed top-left, always visible) ===== */
+    .social-float {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 10px 0;
+      background: rgba(13,13,13,0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+      transition: opacity 0.3s;
+    }
+    .social-float:hover { opacity: 1; }
+    .social-icon {
+      color: var(--text-faint);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 34px;
+      transition: color 0.2s, background 0.2s;
+      border-radius: 4px;
+    }
+    .social-icon:hover { color: var(--accent1); background: rgba(91,170,220,0.08); }
+    .social-icon svg { width: 14px; height: 14px; fill: currentColor; }
+    .social-float-line {
+      width: 20px; height: 1px;
+      background: var(--border2);
+      margin: 2px 0;
+    }
 
-                <div class="mouse">
-                    <div class="scroll"></div>
-                </div>
-            </section>
-            <!-- end box-intro -->
+    /* ===== HERO ===== */
+    #hero {
+      height: 100vh;
+      min-height: 600px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left text panel */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 40px 120px 120px;
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid var(--border);
+    }
+    .hero-hello {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .hero-name {
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .hero-iam {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+      font-weight: 300;
+    }
+    .hero-role {
+      font-size: clamp(20px, 2.8vw, 36px);
+      font-weight: 400;
+      color: var(--accent3);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .hero-i-prefix {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+    /* Verbs + avatar sit in a relative wrapper; avatar overlaps from below */
+    .hero-verbs-wrap {
+      position: relative;
+      flex: 1;
+      min-height: 180px;
+    }
+    .hero-verbs {
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 100%;
+    }
+    .hv-1 { color: var(--accent3); }
+    .hv-2 { color: var(--code4); }
+    .hv-3 { color: var(--accent3); }
+    .hv-4 { color: var(--code5); }
+    .hv-5 { color: var(--accent3); }
+    .hv-6 { color: var(--code4); }
+    .hv-7 { color: var(--code3); }
+
+    /* Avatar: sits absolute, bottom-right of verbs-wrap, overlapping the text from below */
+    .hero-avatar-wrap {
+      position: absolute;
+      bottom: 28px;
+      left: clamp(34px, 7vw, 90px);
+      right: auto;
+      width: clamp(240px, 25vw, 360px);
+      z-index: 6;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* White radial circle glow — big, soft, centred behind the avatar */
+    .hero-avatar-glow {
+      position: absolute;
+      width: 160%;
+      height: 160%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -38%);
+      background: radial-gradient(ellipse 60% 55% at 50% 52%,
+        rgba(255,255,255,0.18) 0%,
+        rgba(255,255,255,0.10) 30%,
+        rgba(255,255,255,0.04) 55%,
+        transparent 72%);
+      border-radius: 50%;
+      z-index: 1;
+      opacity: 0.7;
+    }
+    .hero-avatar-wrap img {
+      width: 100%;
+      display: block;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 18px rgba(255,255,255,0.08));
+    }
+
+    /* Scroll indicator — vertical, centered horizontally at bottom of left panel */
+    .hero-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 0;
+      color: var(--text-faint);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      z-index: 7;
+      pointer-events: none;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: var(--border2);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Animated drip travelling top → bottom */
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(to bottom, transparent, var(--accent1), transparent);
+      animation: scrollDrop 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollDrop {
+      0%   { top: -60%; opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { top: 120%; opacity: 1; }
+      100% { top: 120%; opacity: 0; }
+    }
+
+    /* Right 3D panel */
+    .hero-right {
+      position: relative;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Annotation: curved arrow + text in top-right like reference */
+    .hero-annotation {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .annotation-text {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: right;
+      line-height: 1.45;
+      max-width: 180px;
+    }
+    .annotation-arrow {
+      width: 60px;
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    #hero-3d-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    #hero-3d-canvas:active { cursor: grabbing; }
+
+    .hero-3d-hint {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      background: rgba(13,13,13,0.6);
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .hint-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent1);
+      animation: blink 1.8s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; width: 20px; }
+      50% { opacity: 1; width: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; height: auto; min-height: 100vh; }
+      .hero-right { display: none; }
+      .hero-left { padding: 40px 24px 140px; }
+      .social-float { display: none; }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent1);
+      color: #0d0d0d;
+      font-weight: 600;
+    }
+    .btn-primary:hover { background: #7bc0e8; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border2);
+    }
+    .btn-outline:hover { border-color: var(--accent1); color: var(--accent1); }
+
+    /* Hero fade-in animations */
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .hero-left > * {
+      opacity: 0;
+      animation: fadeInLeft 0.5s ease forwards;
+    }
+    .hero-hello  { animation-delay: 0.05s; }
+    .hero-name   { animation-delay: 0.15s; }
+    .hero-iam    { animation-delay: 0.25s; }
+    .hero-role   { animation-delay: 0.35s; }
+    .hero-i-prefix { animation-delay: 0.45s; }
+    .hero-verbs  { animation-delay: 0.55s; }
+
+    /* ===== ABOUT ===== */
+    #about { border-top: 1px solid var(--border); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-text p {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--accent1); font-family: var(--mono); }
+    .skills-block { margin-top: 0; }
+    .skills-label {
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .skill-group { margin-bottom: 20px; }
+    .skill-group-name {
+      font-size: 10px;
+      color: var(--accent3);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      font-size: 10px;
+      padding: 3px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.06em;
+    }
+    .chip-blue  { background: rgba(91,170,220,0.12); color: var(--accent1); border: 1px solid rgba(91,170,220,0.2); }
+    .chip-green { background: rgba(139,184,122,0.12); color: var(--accent3); border: 1px solid rgba(139,184,122,0.2); }
+    .chip-gray  { background: rgba(138,148,166,0.1);  color: var(--code1);  border: 1px solid rgba(138,148,166,0.2); }
+
+    /* ===== WORK EXPERIENCE ===== */
+    #work { border-top: 1px solid var(--border); }
+    .job-block {
+      margin-bottom: 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .job-block:last-child { margin-bottom: 0; }
+    .job-header {
+      padding: 16px 20px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      justify-content: space-between;
+    }
+    .job-header-left { display: flex; align-items: center; gap: 12px; }
+    .job-dots { display: flex; gap: 5px; }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .dot-red    { background: #C4836A; }
+    .dot-yellow { background: var(--code5); }
+    .dot-green  { background: var(--accent3); }
+    .job-filename { font-size: 11px; color: var(--text-dim); }
+    .job-date { font-size: 10px; color: var(--text-faint); }
+    .job-body { padding: 20px; background: var(--bg); }
+    .code-line { display: flex; gap: 16px; margin-bottom: 4px; }
+    .ln { color: var(--text-faint); font-size: 11px; width: 20px; text-align: right; user-select: none; }
+    .code-content { flex: 1; font-size: 12px; }
+    .kw  { color: var(--accent2); }
+    .fn  { color: var(--accent3); }
+    .str { color: var(--code5); }
+    .cmt { color: var(--text-faint); font-style: italic; }
+    .prop{ color: var(--code1); }
+    .val { color: var(--code3); }
+    .punc{ color: var(--text-dim); }
+    .num { color: var(--code4); }
+
+    /* ===== EDUCATION ===== */
+    #education { border-top: 1px solid var(--border); }
+    .edu-items { display: flex; flex-direction: column; gap: 24px; }
+    .edu-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .edu-card:hover { border-color: var(--border2); }
+    .edu-card-header {
+      padding: 14px 20px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .edu-tab-bar { display: flex; gap: 2px; }
+    .edu-tab {
+      padding: 4px 14px;
+      font-size: 10px;
+      border-radius: 3px 3px 0 0;
+      letter-spacing: 0.06em;
+    }
+    .edu-tab-active { background: var(--bg3); color: var(--accent1); border: 1px solid var(--border2); border-bottom: 1px solid var(--bg3); }
+    .edu-tab-inactive { background: transparent; color: var(--text-faint); }
+    .edu-status {
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 10px;
+    }
+    .status-done { background: rgba(139,184,122,0.15); color: var(--accent3); border: 1px solid rgba(139,184,122,0.25); }
+    .status-ongoing { background: rgba(91,170,220,0.15); color: var(--accent1); border: 1px solid rgba(91,170,220,0.25); }
+    .edu-card-body { padding: 20px; }
+    .edu-code-block { font-size: 12px; }
+    .edu-school { color: var(--accent1); font-weight: 500; font-size: 13px; }
+    .edu-degree { color: var(--accent3); }
+    .edu-period { color: var(--code4); }
+    .edu-desc { color: var(--text-dim); font-family: var(--sans); font-size: 13px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); line-height: 1.7; }
+    .edu-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+    /* ===== PROJECTS ===== */
+    #projects { border-top: 1px solid var(--border); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: var(--bg2);
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+    .proj-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+    .proj-icon { font-size: 18px; }
+    .proj-links { display: flex; gap: 8px; }
+    .proj-link {
+      color: var(--text-faint);
+      text-decoration: none;
+      font-size: 10px;
+      transition: color 0.2s;
+    }
+    .proj-link:hover { color: var(--accent1); }
+    .proj-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .proj-desc { font-family: var(--sans); font-size: 12px; color: var(--text-dim); line-height: 1.65; flex: 1; margin-bottom: 14px; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 5px; }
+    .proj-tag { font-size: 10px; padding: 2px 8px; background: rgba(74,114,176,0.12); color: var(--accent2); border: 1px solid rgba(74,114,176,0.2); border-radius: 2px; }
+
+    /* ===== GALLERY (CLAY / DRAWINGS) ===== */
+    #creative { border-top: 1px solid var(--border); }
+    .creative-tabs { display: flex; gap: 2px; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .ctab {
+      padding: 8px 20px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      color: var(--text-faint);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: var(--mono);
+    }
+    .ctab.active { color: var(--accent1); border-bottom-color: var(--accent1); }
+    .ctab:hover:not(.active) { color: var(--text); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .gallery-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg2);
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .gallery-item:hover { border-color: var(--accent3); transform: scale(1.02); }
+    .gallery-img-wrap {
+      aspect-ratio: 1;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .gallery-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-faint);
+      font-size: 24px;
+      gap: 8px;
+    }
+    .gallery-placeholder span { font-size: 10px; letter-spacing: 0.08em; }
+    .gallery-caption {
+      padding: 10px 12px;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .gallery-caption-title { color: var(--text); margin-bottom: 2px; }
+    .gallery-caption-sub { color: var(--text-faint); font-size: 10px; }
+    .add-more-card {
+      border: 1px dashed var(--border2);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1;
+      color: var(--text-faint);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      gap: 8px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .add-more-card:hover { border-color: var(--accent3); color: var(--accent3); }
+
+    .photo-place-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .photo-place-tab {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .photo-place-tab:hover {
+      border-color: var(--border2);
+      color: var(--text);
+    }
+    .photo-place-tab.active {
+      border-color: var(--accent1);
+      color: var(--accent1);
+      background: rgba(91,170,220,0.12);
+    }
+
+    /* ===== MUSIC PLAYER ===== */
+    .music-player { margin-bottom: 8px; }
+    .player-bar {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+    }
+    .player-track-name { font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .player-track-sub { font-size: 10px; color: var(--text-faint); margin-top: 2px; }
+    .player-controls { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+    .pctrl {
+      background: none; border: none; color: var(--text-dim);
+      font-size: 14px; cursor: pointer; padding: 4px 6px;
+      border-radius: 3px; transition: color 0.2s, background 0.2s;
+      font-family: var(--mono);
+    }
+    .pctrl:hover { color: var(--accent1); background: rgba(91,170,220,0.1); }
+    .pplay {
+      font-size: 16px; color: var(--accent1);
+      background: rgba(91,170,220,0.12);
+      border: 1px solid rgba(91,170,220,0.25);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pplay:hover { background: rgba(91,170,220,0.25); }
+    .player-time {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 10px; color: var(--text-faint);
+      flex-shrink: 0; min-width: 160px;
+    }
+    .player-progress-wrap {
+      flex: 1; height: 3px;
+      background: var(--bg4);
+      border-radius: 2px;
+      position: relative; cursor: pointer;
+      min-width: 80px;
+    }
+    .player-progress-bg { position: absolute; inset: 0; border-radius: 2px; }
+    .player-progress-fill {
+      position: absolute; top: 0; left: 0; height: 100%;
+      background: var(--accent1); border-radius: 2px;
+      transition: width 0.1s linear;
+    }
+    .player-vol { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .vol-slider {
+      -webkit-appearance: none; appearance: none;
+      width: 60px; height: 3px;
+      background: var(--border2); border-radius: 2px; cursor: pointer; outline: none;
+    }
+    .vol-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--accent1); cursor: pointer;
+    }
+    .music-grid { display: flex; flex-direction: column; gap: 6px; }
+    .track {
+      display: grid;
+      grid-template-columns: 40px 1fr auto auto;
+      align-items: center;
+      gap: 14px;
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg2);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+    .track:hover { border-color: var(--border2); background: var(--bg3); }
+    .track.active { border-color: var(--accent2); background: rgba(74,114,176,0.08); }
+    .track-num { color: var(--text-faint); font-size: 11px; text-align: center; }
+    .track-name { font-size: 12px; color: var(--text); }
+    .track-detail { font-size: 10px; color: var(--text-faint); margin-top: 2px; }
+    .track-tag { font-size: 10px; padding: 2px 8px; background: rgba(184,125,184,0.12); color: var(--code4); border: 1px solid rgba(184,125,184,0.2); border-radius: 2px; white-space: nowrap; }
+    .track-dur { font-size: 11px; color: var(--text-faint); white-space: nowrap; }
+    /* Animated playing bars */
+    .playing-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+    .playing-bars span {
+      display: block; width: 2px; background: var(--accent1); border-radius: 1px;
+      animation: barBounce 0.8s ease-in-out infinite;
+    }
+    .playing-bars span:nth-child(1) { height: 6px; animation-delay: 0s; }
+    .playing-bars span:nth-child(2) { height: 10px; animation-delay: 0.15s; }
+    .playing-bars span:nth-child(3) { height: 7px; animation-delay: 0.3s; }
+    @keyframes barBounce {
+      0%,100% { transform: scaleY(0.4); }
+      50%      { transform: scaleY(1); }
+    }
+
+    /* ===== VIDEO SECTION ===== */
+
+    /* Category pill bar */
+    .vid-cat-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .vid-cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      background: var(--bg2);
+      color: var(--text-dim);
+      font-family: var(--mono);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .vid-cat-pill:hover { border-color: var(--accent1); color: var(--text); }
+    .vid-cat-pill.active { border-color: var(--accent1); color: var(--accent1); background: rgba(91,170,220,0.08); }
+    .vid-cat-icon { font-size: 13px; }
+    .vid-cat-count {
+      font-size: 9px;
+      padding: 1px 5px;
+      border-radius: 8px;
+      background: var(--bg4);
+      color: var(--text-faint);
+    }
+    .vid-cat-pill.active .vid-cat-count { background: rgba(91,170,220,0.15); color: var(--accent1); }
+
+    /* Trip / year group */
+    .vid-group { margin-bottom: 40px; }
+    .vid-group:last-child { margin-bottom: 0; }
+    .vid-group-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .vid-group-title { font-size: 13px; font-weight: 500; color: var(--text); }
+    .vid-group-meta { font-size: 10px; color: var(--text-faint); letter-spacing: 0.06em; }
+
+    /* Shorts grid — portrait 9:16 */
+    .vid-grid-shorts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .vid-card-short {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg2);
+      transition: border-color 0.2s;
+    }
+    .vid-card-short:hover { border-color: var(--accent3); }
+    .vid-thumb-short {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      background: var(--bg3);
+      overflow: hidden;
+    }
+    .vid-thumb-short iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Wide grid — landscape 16:9 */
+    .vid-grid-wide {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .vid-card-wide {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg2);
+      transition: border-color 0.2s;
+    }
+    .vid-card-wide:hover { border-color: var(--accent1); }
+    .vid-thumb-wide {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--bg3);
+      overflow: hidden;
+    }
+    .vid-thumb-wide iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Shared caption */
+    .vid-card-caption {
+      padding: 8px 12px;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+    .vid-card-label { display: block; }
+
+    /* Beat Saber — compact thumbnail grid, links out */
+    .vid-bs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .vid-bs-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg2);
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+      display: block;
+    }
+    .vid-bs-card:hover { border-color: var(--code4); transform: translateY(-2px); }
+    .vid-bs-thumb {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--bg3);
+    }
+    .vid-bs-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vid-bs-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .vid-bs-card:hover .vid-bs-play { opacity: 1; }
+    .vid-bs-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      font-size: 9px;
+      padding: 2px 6px;
+      background: rgba(184,125,184,0.85);
+      color: #fff;
+      border-radius: 3px;
+      letter-spacing: 0.06em;
+      font-family: var(--mono);
+    }
+    .vid-bs-info { padding: 8px 10px; }
+    .vid-bs-title { font-size: 11px; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+    .vid-bs-artist { font-size: 10px; color: var(--text-faint); }
+
+    /* ===== INTERESTS ===== */
+    #interests { border-top: 1px solid var(--border); }
+    .interests-text {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.85;
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+    .interests-text + .interests-text { margin-top: -12px; }
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .interest-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: var(--bg2);
+      transition: border-color 0.2s;
+    }
+    .interest-card:hover { border-color: var(--border2); }
+    .interest-icon { font-size: 20px; margin-bottom: 8px; }
+    .interest-name { font-size: 11px; color: var(--text); margin-bottom: 4px; }
+    .interest-sub { font-size: 10px; color: var(--text-faint); font-family: var(--sans); line-height: 1.5; }
+
+    /* ===== CONTACT ===== */
+    #contact { border-top: 1px solid var(--border); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-heading {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .contact-heading .hl { color: var(--accent1); }
+    .contact-sub {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 12px;
+      background: var(--bg2);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent1); color: var(--accent1); }
+    .contact-icon { color: var(--text-faint); width: 16px; text-align: center; }
+    .contact-label { color: var(--text-dim); font-size: 10px; margin-left: auto; }
+    .contact-form-block {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg2);
+    }
+    .form-title { font-size: 11px; color: var(--text-faint); margin-bottom: 16px; letter-spacing: 0.08em; }
+    .form-field { margin-bottom: 14px; }
+    .form-field label { display: block; font-size: 10px; color: var(--text-faint); letter-spacing: 0.08em; margin-bottom: 6px; }
+    .form-field input, .form-field textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 9px 12px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--accent2); }
+    .form-submit { width: 100%; justify-content: center; }
+
+    /* ===== BACKSTORY BLOCK ===== */
+    .cat-backstory {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 28px;
+    }
+    .cat-backstory-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .cat-backstory-text { flex: 1; }
+    .cat-backstory-title {
+      font-size: 11px;
+      color: var(--accent3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cat-backstory-text p {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.75;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.08em;
+    }
+    footer a { color: var(--text-faint); text-decoration: none; }
+    footer a:hover { color: var(--accent1); }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .container { padding: 0 20px; }
+      section { padding: 60px 0; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-name { font-size: 32px; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.5s ease forwards; }
+    .fade-up-1 { animation-delay: 0.1s; opacity: 0; }
+    .fade-up-2 { animation-delay: 0.25s; opacity: 0; }
+    .fade-up-3 { animation-delay: 0.4s; opacity: 0; }
+    .fade-up-4 { animation-delay: 0.55s; opacity: 0; }
+    .fade-up-5 { animation-delay: 0.7s; opacity: 0; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo"><img src="./src/assets/images/logo.png" alt="logo" style="max-height: 32px;"></div>
+    <div class="nav-links">
+      <a href="#about">_about</a>
+      <a href="#work">_work</a>
+      <a href="#education">_education</a>
+      <a href="#projects">_projects</a>
+      <a href="#interests">_interests</a>
+      <a href="#contact">_contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- FLOATING SOCIAL PANEL (fixed, always visible) -->
+    <div class="social-float">
+      <a href="https://github.com/kelynwong" class="social-icon" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/kelynwong" class="social-icon" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- <div class="social-float-line"></div> -->
+      <a href="https://instagram.com/kelynwong" class="social-icon" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://facebook.com/kelynwong" class="social-icon" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://twitter.com/kelynwong" class="social-icon" target="_blank" title="Twitter / X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+
+      <!-- Left text panel -->
+      <div class="hero-left">
+        <p class="hero-hello">Hello there! My name is</p>
+        <h1 class="hero-name">Kelyn Wong</h1>
+        <p class="hero-iam">I am a</p>
+        <p class="hero-role">Software Engineer</p>
+        <p class="hero-i-prefix">I...</p>
+
+        <!-- Verbs + avatar overlap wrapper -->
+        <div class="hero-verbs-wrap">
+          <p class="hero-verbs">
+            <span class="hv-1">Analyze.</span><span class="hv-2">Design.</span><span class="hv-3">De<br>velop.</span><span class="hv-4">Code.</span><span class="hv-5">Test.</span><span class="hv-6">M<br>aintain.</span><span class="hv-7">Optimize.</span>
+          </p>
+          <!-- Memoji with radial white glow, overlapping bottom of verbs -->
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-glow"></div>
+            <img src="src/assets/images/computer.png" alt="Kelyn memoji at laptop" />
+          </div>
         </div>
 
-        <!-- portfolio div -->
-        <div class="portfolio-div">
-            <div class="portfolio">
-                <div class="no-padding portfolio_container">
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6  fashion logo">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Mockups in seconds</span>
-                                        <em>Fashion / Logo</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
+      </div>
 
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6 ads graphics">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Floating mockups</span>
-                                        <em>Ads / Graphics</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
+      <!-- Right 3D panel -->
+      <div class="hero-right">
+        <!-- Annotation with curved SVG arrow -->
+        <div class="hero-annotation">
+          <p class="annotation-text">This is a 3D model of my<br>personal workspace at home!</p>
+          <svg class="annotation-arrow" viewBox="0 0 60 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M52 4 C40 4, 10 8, 6 38" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <path d="M2 34 L6 38 L10 32" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
 
-                    <!-- single work -->
-                    <div class="col-md-6 col-sm-12 photography">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Photorealistic smartwatch</span>
-                                        <em>Photography</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
+        <canvas id="hero-3d-canvas"></canvas>
 
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6 fashion ads">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Held by hands</span>
-                                        <em>Fashion / Ads</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
+        <div class="hero-3d-hint">
+          <div class="hint-dot"></div>
+          drag to rotate · scroll to zoom
+        </div>
+      </div>
 
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6 graphics ads">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Mobile devices</span>
-                                        <em>Graphics / Ads</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
+      <!-- Scroll cue — centered under the full hero -->
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+      </div>
 
-                    <!-- single work -->
-                    <div class="col-md-6 col-sm-12 photography">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Photorealistic smartwatch</span>
-                                        <em>Photography</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
+    </section>
 
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6 graphics ads">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Mobile devices</span>
-                                        <em>Graphics / Ads</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6 graphics ads">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Mobile devices</span>
-                                        <em>Graphics / Ads</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6 graphics ads">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Mobile devices</span>
-                                        <em>Graphics / Ads</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-3 col-sm-6 graphics ads">
-                        <a href="single-project.html" class="portfolio_item">
-                            <img src="http://placehold.it/1000x1000" alt="image" class="img-responsive" />
-                            <div class="portfolio_item_hover">
-                                <div class="portfolio-border clearfix">
-                                    <div class="item_info">
-                                        <span>Mobile devices</span>
-                                        <em>Graphics / Ads</em>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-                </div>
-                <!-- end portfolio_container -->
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-prefix">01.</span>
+          <span class="sec-title">_About me</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Hi, I'm <strong>Kelyn</strong> — a software engineer who builds across <strong>cloud, backend, and frontend</strong>. My recent work has centered on Azure infrastructure, CI/CD pipelines, and full-stack development.</p>
+            <p>I enjoy turning messy requirements into reliable systems, whether that means Python services, PostgreSQL-backed apps, or UI work in Vue and Angular. When I'm not at my desk, I'm probably making something with my hands — clay models, drawings, music.</p>
+            <p>I'm currently open to <strong>fresh graduate</strong> opportunities. Let's build something together.</p>
+          </div>
+          <div class="skills-block">
+            <div class="skills-label">// tech stack</div>
+            <div v-for="group in skillGroups" :key="group.name" class="skill-group">
+              <div class="skill-group-name">{{ group.name }}</div>
+              <div class="skill-chips">
+                <span v-for="s in group.skills" :key="s.name" class="chip" :class="s.color">{{ s.name }}</span>
+              </div>
             </div>
-            <!-- portfolio -->
+          </div>
         </div>
-        <!-- end portfolio div -->
+      </div>
+    </section>
 
-        <div id="footer"></div>
+    <!-- WORK EXPERIENCE -->
+    <section id="work">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-prefix">02.</span>
+          <span class="sec-title">_Work Experience</span>
+          <div class="sec-line"></div>
+        </div>
+        <div v-for="job in jobs" :key="job.filename" class="job-block">
+          <div class="job-header">
+            <div class="job-header-left">
+              <div class="job-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <span class="job-filename">{{ job.filename }}</span>
+            </div>
+            <span class="job-date">{{ job.period }}</span>
+          </div>
+          <div class="job-body">
+            <div v-for="(line, i) in job.codeLines" :key="i" class="code-line">
+              <span class="ln">{{ i + 1 }}</span>
+              <span class="code-content" v-html="line"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- back to top -->
-        <a href="#0" class="cd-top"><i class="ion-android-arrow-up"></i></a>
-        <!-- end back to top -->
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-prefix">03.</span>
+          <span class="sec-title">_My Education</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="edu-items">
+          <div v-for="edu in education" :key="edu.school" class="edu-card">
+            <div class="edu-card-header">
+              <div class="edu-tab-bar">
+                <div class="edu-tab edu-tab-active">{{ edu.tabName }}</div>
+                <div class="edu-tab edu-tab-inactive">notes.md</div>
+              </div>
+              <span class="edu-status" :class="edu.ongoing ? 'status-ongoing' : 'status-done'">
+                {{ edu.ongoing ? '● active' : '✓ completed' }}
+              </span>
+            </div>
+            <div class="edu-card-body">
+              <div class="edu-code-block">
+                <div class="code-line">
+                  <span class="ln">1</span>
+                  <span class="code-content"><span class="kw">class</span> <span class="fn">{{ edu.className }}</span> <span class="punc">{</span></span>
+                </div>
+                <div class="code-line">
+                  <span class="ln">2</span>
+                  <span class="code-content">&nbsp;&nbsp;<span class="prop">school</span><span class="punc">:</span> <span class="str edu-school">"{{ edu.school }}"</span><span class="punc">;</span></span>
+                </div>
+                <div class="code-line">
+                  <span class="ln">3</span>
+                  <span class="code-content">&nbsp;&nbsp;<span class="prop">degree</span><span class="punc">:</span> <span class="edu-degree">"{{ edu.degree }}"</span><span class="punc">;</span></span>
+                </div>
+                <div class="code-line">
+                  <span class="ln">4</span>
+                  <span class="code-content">&nbsp;&nbsp;<span class="prop">period</span><span class="punc">:</span> <span class="edu-period">{{ edu.period }}</span><span class="punc">;</span></span>
+                </div>
+                <div v-if="edu.gpa" class="code-line">
+                  <span class="ln">5</span>
+                  <span class="code-content">&nbsp;&nbsp;<span class="prop">gpa</span><span class="punc">:</span> <span class="num">{{ edu.gpa }}</span><span class="punc">;</span></span>
+                </div>
+                <div class="code-line">
+                  <span class="ln" style="padding-top:4px">{{ edu.gpa ? 6 : 5 }}</span>
+                  <span class="code-content"><span class="punc">}</span></span>
+                </div>
+              </div>
+              <div class="edu-desc">{{ edu.desc }}</div>
+              <div class="edu-tags">
+                <span v-for="tag in edu.tags" :key="tag" class="chip chip-gray">{{ tag }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- jQuery -->
-        <script src="js/jquery-2.1.1.js"></script>
-        <!--  plugins -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/menu.js"></script>
-        <script src="js/animated-headline.js"></script>
-        <script src="js/isotope.pkgd.min.js"></script>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-prefix">04.</span>
+          <span class="sec-title">_Projects</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="projects-grid">
+          <div v-for="proj in projects" :key="proj.name" class="project-card">
+            <div class="proj-header">
+              <span class="proj-icon">{{ proj.icon }}</span>
+              <div class="proj-links">
+                <a v-if="proj.github" :href="proj.github" class="proj-link" target="_blank">github ↗</a>
+                <a v-if="proj.demo" :href="proj.demo" class="proj-link" target="_blank">demo ↗</a>
+              </div>
+            </div>
+            <div class="proj-name">{{ proj.name }}</div>
+            <div class="proj-desc">{{ proj.desc }}</div>
+            <div class="proj-stack">
+              <span v-for="t in proj.stack" :key="t" class="proj-tag">{{ t }}</span>
+            </div>
+          </div>
+          <!-- Add more placeholder -->
+          <div class="project-card add-more-card" style="aspect-ratio:unset;min-height:140px;gap:6px;">
+            <span style="font-size:10px;letter-spacing:0.1em;color:var(--text-faint)">more projects coming soon...</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- OTHER INTERESTS -->
+    <section id="interests">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-prefix">05.</span>
+          <span class="sec-title">_Other Interests</span>
+          <div class="sec-line"></div>
+        </div>
 
-        <!--  custom script -->
-        <script src="js/custom.js"></script>
-    </body>
+        <p class="interests-text">
+          I'm drawn to the overlap between technical precision and creative expression. Whether I'm sculpting clay, framing a photograph, sketching a character, or writing a guitar riff — I approach all of it with the same curiosity I bring to code: iterate, refine, make it feel right.
+        </p>
+        <p class="interests-text">
+          I'm also deeply interested in how technology can augment creativity — tools that let artists do more, workflows that remove friction, and software that feels invisible so the work can breathe. If it involves making something from scratch, I'm probably interested.
+        </p>
+
+        <!-- Category nav -->
+        <div class="creative-tabs">
+          <button
+            v-for="cat in interestCats"
+            :key="cat.id"
+            class="ctab"
+            :class="{active: activeCat === cat.id}"
+            @click="activeCat = cat.id"
+          >{{ cat.label }}</button>
+        </div>
+
+        <!-- Each category: backstory + gallery/tracklist -->
+        <div v-for="cat in interestCats" :key="cat.id" v-show="activeCat === cat.id">
+
+          <!-- Backstory block -->
+          <div class="cat-backstory">
+            <div class="cat-backstory-icon">{{ cat.icon }}</div>
+            <div class="cat-backstory-text">
+              <div class="cat-backstory-title">{{ cat.name }}</div>
+              <p>{{ cat.story }}</p>
+            </div>
+          </div>
+
+          <!-- Clay -->
+          <div v-if="cat.id === 'clay'" class="gallery-grid">
+            <div v-for="item in clayItems" :key="item.id" class="gallery-item">
+              <div class="gallery-img-wrap">
+                <div v-if="!item.img" class="gallery-placeholder"><span>🏺</span><span>clay model</span></div>
+                <img v-else :src="item.img" :alt="item.title" />
+              </div>
+              <div class="gallery-caption">
+                <div class="gallery-caption-title">{{ item.title }}</div>
+                <div class="gallery-caption-sub">{{ item.year }}</div>
+              </div>
+            </div>
+            <div class="gallery-item add-more-card"><span>more clay models coming soon...</span></div>
+          </div>
+
+          <!-- Photography -->
+          <div v-if="cat.id === 'photo'">
+            <div class="photo-place-tabs">
+              <button
+                v-for="place in photoPlaces"
+                :key="place.id"
+                class="photo-place-tab"
+                :class="{ active: activePhotoPlace === place.id }"
+                @click="activePhotoPlace = place.id"
+              >
+                {{ place.label }}
+              </button>
+            </div>
+
+            <div class="gallery-grid">
+              <div v-for="item in activePhotoItems" :key="`${activePhotoPlace}-${item.id}`" class="gallery-item">
+                <div class="gallery-img-wrap">
+                  <div v-if="!item.img" class="gallery-placeholder"><span>📷</span><span>photograph</span></div>
+                  <img v-else :src="item.img" :alt="item.title" />
+                </div>
+                <div class="gallery-caption">
+                  <div class="gallery-caption-title">{{ item.title }}</div>
+                  <div class="gallery-caption-sub">{{ item.location }} · {{ item.year }}</div>
+                </div>
+              </div>
+              <!-- <div class="gallery-item add-more-card"><span style="font-size:20px">+</span><span>add photo</span></div> -->
+            </div>
+          </div>
+
+          <!-- Content Creation -->
+          <div v-if="cat.id === 'video'">
+
+            <!-- Second-level category pills -->
+            <div class="vid-cat-bar">
+              <button
+                v-for="vc in videoCats"
+                :key="vc.id"
+                class="vid-cat-pill"
+                :class="{ active: activeVideoCat === vc.id }"
+                @click="activeVideoCat = vc.id"
+              >
+                <span class="vid-cat-icon">{{ vc.icon }}</span>
+                {{ vc.label }}
+                <span class="vid-cat-count">{{ vc.count }}</span>
+              </button>
+            </div>
+
+            <!-- TRAVEL -->
+            <div v-if="activeVideoCat === 'travel'">
+              <div v-for="trip in videoTravel" :key="trip.title" class="vid-group">
+                <div class="vid-group-header">
+                  <span class="vid-group-title">{{ trip.title }}</span>
+                  <span class="vid-group-meta">{{ trip.dates }}</span>
+                </div>
+                <div :class="trip.shorts ? 'vid-grid-shorts' : 'vid-grid-wide'">
+                  <div v-for="v in trip.parts" :key="v.id" :class="trip.shorts ? 'vid-card-short' : 'vid-card-wide'">
+                    <div :class="trip.shorts ? 'vid-thumb-short' : 'vid-thumb-wide'">
+                      <iframe
+                        :src="ytEmbed(v.id, trip.shorts)"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    <div class="vid-card-caption">
+                      <span class="vid-card-label">{{ v.label }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- YEAR RECAPS -->
+            <div v-if="activeVideoCat === 'recaps'">
+              <div v-for="yr in videoRecaps" :key="yr.year" class="vid-group">
+                <div class="vid-group-header">
+                  <span class="vid-group-title">{{ yr.year }}</span>
+                  <span class="vid-group-meta">{{ yr.parts.length }} part{{ yr.parts.length > 1 ? 's' : '' }}</span>
+                </div>
+                <div class="vid-grid-shorts">
+                  <div v-for="v in yr.parts" :key="v.id" class="vid-card-short">
+                    <div class="vid-thumb-short">
+                      <iframe
+                        :src="ytEmbed(v.id, true)"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    <div class="vid-card-caption">
+                      <span class="vid-card-label">{{ v.label }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BEAT SABER -->
+            <div v-if="activeVideoCat === 'beatsaber'">
+              <div class="vid-bs-grid">
+                <a
+                  v-for="v in videoBeatSaber"
+                  :key="v.id"
+                  :href="'https://youtube.com/shorts/' + v.id"
+                  target="_blank"
+                  class="vid-bs-card"
+                >
+                  <div class="vid-bs-thumb">
+                    <img :src="'https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg'" :alt="v.title" loading="lazy" />
+                    <div class="vid-bs-play">▶</div>
+                    <div v-if="v.multi" class="vid-bs-badge">multi</div>
+                  </div>
+                  <div class="vid-bs-info">
+                    <div class="vid-bs-title">{{ v.title }}</div>
+                    <div class="vid-bs-artist">{{ v.artist }}</div>
+                  </div>
+                </a>
+              </div>
+              <div class="creative-note">// opens on YouTube — 39 clips and counting 🎮</div>
+            </div>
+
+            <!-- TIKTOKS / VLOGS -->
+            <div v-if="activeVideoCat === 'tiktoks'">
+              <div v-for="tg in videoTiktoks" :key="tg.group" class="vid-group">
+                <div class="vid-group-header">
+                  <span class="vid-group-title">{{ tg.icon }} {{ tg.group }}</span>
+                </div>
+                <div class="vid-grid-shorts">
+                  <div v-for="v in tg.items" :key="v.id" class="vid-card-short">
+                    <div class="vid-thumb-short">
+                      <iframe
+                        :src="ytEmbed(v.id, true)"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    <div class="vid-card-caption">
+                      <span class="vid-card-label">{{ v.label }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Music -->
+          <div v-if="cat.id === 'music'">
+            <div class="music-player">
+              <!-- Now playing bar -->
+              <div class="player-bar">
+                <div class="player-info">
+                  <div class="player-track-name">{{ currentTrack ? currentTrack.displayTitle : 'Select a track' }}</div>
+                  <div class="player-track-sub">{{ currentTrack ? currentTrack.detail : '— —' }}</div>
+                </div>
+                <div class="player-controls">
+                  <button class="pctrl" @click="prevTrack" title="Previous">⏮</button>
+                  <button class="pctrl pplay" @click="togglePlay">{{ isPlaying ? '⏸' : '▶' }}</button>
+                  <button class="pctrl" @click="nextTrack" title="Next">⏭</button>
+                </div>
+                <div class="player-time">
+                  <span>{{ formatTime(currentTime) }}</span>
+                  <div class="player-progress-wrap" @click="seekTo($event)">
+                    <div class="player-progress-bg"></div>
+                    <div class="player-progress-fill" :style="{width: progressPct + '%'}"></div>
+                  </div>
+                  <span>{{ formatTime(duration) }}</span>
+                </div>
+                <div class="player-vol">
+                  <span style="font-size:11px;color:var(--text-faint)">🔈</span>
+                  <input type="range" min="0" max="1" step="0.01" v-model="volume" @input="setVolume" class="vol-slider" />
+                </div>
+              </div>
+              <!-- Track list -->
+              <div class="music-grid">
+                <div
+                  v-for="(track, i) in tracks"
+                  :key="track.src"
+                  class="track"
+                  :class="{active: currentTrackIdx === i}"
+                  @click="selectTrack(i)"
+                >
+                  <span class="track-num">
+                    <span v-if="currentTrackIdx === i && isPlaying" class="playing-bars"><span></span><span></span><span></span></span>
+                    <span v-else>{{ String(i+1).padStart(2,'0') }}</span>
+                  </span>
+                  <div>
+                    <div class="track-name">{{ track.displayTitle }}</div>
+                    <div class="track-detail">{{ track.detail }}</div>
+                  </div>
+                  <span class="track-tag">{{ track.genre }}</span>
+                  <span class="track-dur">{{ track.duration }}</span>
+                </div>
+              </div>
+              <audio ref="audioEl" @timeupdate="onTimeUpdate" @ended="nextTrack" @loadedmetadata="onMeta" style="display:none"></audio>
+            </div>
+            <div class="creative-note">// stay tuned for more music</div>
+          </div>
+
+          <!-- Drawings -->
+          <div v-if="cat.id === 'drawing'" class="gallery-grid">
+            <div v-for="item in drawingItems" :key="item.id" class="gallery-item">
+              <div class="gallery-img-wrap">
+                <div v-if="!item.img" class="gallery-placeholder"><span>✏️</span><span>drawing</span></div>
+                <img v-else :src="item.img" :alt="item.title" />
+              </div>
+              <div class="gallery-caption">
+                <div class="gallery-caption-title">{{ item.title }}</div>
+                <div class="gallery-caption-sub">{{ item.medium }}</div>
+              </div>
+            </div>
+            <div class="gallery-item add-more-card"><span>more drawings coming soon...</span></div>
+          </div>
+
+        </div><!-- end v-for cat -->
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-prefix">06.</span>
+          <span class="sec-title">_Contact Me</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="contact-grid">
+          <div>
+            <h2 class="contact-heading">Let's <span class="hl">connect</span></h2>
+            <p class="contact-sub">Whether it's a job opportunity, a collaboration, or just saying hello — my inbox is always open.</p>
+            <div class="contact-links">
+              <a href="mailto:kelyn@example.com" class="contact-link">
+                <span class="contact-icon">✉</span>
+                kelyn@example.com
+                <span class="contact-label">email</span>
+              </a>
+              <a href="https://github.com/kelynwong" class="contact-link" target="_blank">
+                <span class="contact-icon">⌥</span>
+                github.com/kelynwong
+                <span class="contact-label">github</span>
+              </a>
+              <a href="https://linkedin.com/in/kelynwong" class="contact-link" target="_blank">
+                <span class="contact-icon">◈</span>
+                linkedin.com/in/kelynwong
+                <span class="contact-label">linkedin</span>
+              </a>
+            </div>
+          </div>
+          <div class="contact-form-block">
+            <div class="form-title">// send a message</div>
+            <div class="form-field">
+              <label>NAME</label>
+              <input type="text" v-model="form.name" placeholder="your name" />
+            </div>
+            <div class="form-field">
+              <label>EMAIL</label>
+              <input type="email" v-model="form.email" placeholder="your@email.com" />
+            </div>
+            <div class="form-field">
+              <label>MESSAGE</label>
+              <textarea rows="4" v-model="form.message" placeholder="what's on your mind?"></textarea>
+            </div>
+            <button class="btn btn-primary form-submit" @click="submitForm">./send_message</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>© 2024 Kelyn Wong — built with Vue 3</span>
+    <span>kw@portfolio:~$&nbsp;<span style="color:var(--accent3)">_</span></span>
+  </footer>
+
+</div>
+
+<script>
+const { createApp } = Vue;
+
+function buildPhotoGroup(folder, label, year, count, extOverrides = {}) {
+  return {
+    id: folder,
+    label,
+    items: Array.from({ length: count }, (_, i) => {
+      const num = i + 1;
+      const ext = extOverrides[num] || 'JPG';
+      return {
+        id: num,
+        title: `${label} #${String(num).padStart(2, '0')}`,
+        location: label,
+        year: String(year),
+        img: `./src/assets/images/photography/${folder}/${num}.${ext}`,
+      };
+    }),
+  };
+}
+
+createApp({
+  data() {
+    return {
+      activeCat: 'clay',
+      activePhotoPlace: 'balloonMuseum2025',
+
+      form: { name: '', email: '', message: '' },
+
+      
+
+      skillGroups: [
+        {
+          name: '// languages',
+          skills: [
+            { name: 'Python', color: 'chip-blue' },
+            { name: 'Go', color: 'chip-blue' },
+            { name: 'JavaScript', color: 'chip-blue' },
+            { name: 'TypeScript', color: 'chip-blue' },
+            { name: 'SQL', color: 'chip-blue' },
+          ]
+        },
+        {
+          name: '// cloud & devops',
+          skills: [
+            { name: 'Azure', color: 'chip-green' },
+            { name: 'Terraform', color: 'chip-green' },
+            { name: 'YAML', color: 'chip-green' },
+            { name: 'ArgoCD', color: 'chip-green' },
+            { name: 'Docker', color: 'chip-green' },
+            { name: 'Git', color: 'chip-green' },
+            { name: 'Linux', color: 'chip-green' },
+          ]
+        },
+        {
+          name: '// frameworks & tools',
+          skills: [
+            { name: 'Vue', color: 'chip-green' },
+            { name: 'React', color: 'chip-green' },
+            { name: 'Node.js', color: 'chip-green' },
+            { name: 'Angular', color: 'chip-green' },
+            { name: 'PostgreSQL', color: 'chip-green' },
+          ]
+        },
+        {
+          name: '// other',
+          skills: [
+            { name: 'Figma', color: 'chip-gray' },
+            { name: 'Azure DevOps', color: 'chip-gray' },
+          ]
+        }
+      ],
+
+      jobs: [
+        {
+          filename: 'devops_cloud_software_engineer.ts',
+          period: 'May 2025 - May 2026',
+          codeLines: [
+            `<span class="kw">const</span> <span class="fn">role</span> <span class="punc">=</span> <span class="punc">{</span>`,
+            `&nbsp;&nbsp;<span class="prop">company</span><span class="punc">:</span> <span class="str">"GoNetZero Pte Ltd"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="prop">title</span><span class="punc">:</span> <span class="str">"Devops/Cloud/Software Engineer Intern"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Azure"</span><span class="punc">,</span> <span class="str">"Python"</span><span class="punc">,</span> <span class="str">"PostgreSQL"</span><span class="punc">,</span> <span class="str">"Go"</span><span class="punc">,</span> <span class="str">"Angular"</span><span class="punc">],</span>`,
+            `<span class="punc">};</span>`,
+            ``,
+            `<span class="cmt">// responsibilities</span>`,
+            `<span class="fn">role</span><span class="punc">.</span><span class="fn">responsibilities</span> <span class="punc">=</span> <span class="punc">[</span>`,
+            `&nbsp;&nbsp;<span class="str">"Engineered secure, scalable Azure infrastructure (firewalls, VNets, RBAC) with Terraform, supporting 10+ applications across 3 environments, ensuring 99.9% uptime"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Standardized and rolled out a Git branching strategy across multiple teams, cutting integration conflicts by 40% and improving release coordination"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Built CI/CD pipelines with YAML + ArgoCD, integrating unit and integration testing, which reduced deployment errors by 30%"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Deployed centralized secrets management with Azure Key Vault and AKS CSI driver, eliminating manual secret handling and improving compliance"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Implemented centralized monitoring (Azure Monitor + Log Analytics), reducing mean-time-to-debug by ~35% across applications"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Provisioned and maintained VM-based jump hosts and CI/CD build agents, enabling secure access and reliable pipeline execution"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Reduced infrastructure costs by ~10% by automating start/stop schedules for non-production resources and identifying/decommissioning underutilized assets"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Designed an automated maintenance page with Azure Front Door, improving user communication during downtime and reducing support tickets"</span><span class="punc">,</span>`,
+            `<span class="punc">];</span>`,
+          ]
+        },
+        {
+          filename: 'freelance_dev.py',
+          period: 'May - Aug 2022, 2023, 2024',
+          codeLines: [
+            `<span class="kw">class</span> <span class="fn">FreelanceDeveloper</span><span class="punc">:</span>`,
+            `&nbsp;&nbsp;<span class="prop">clients</span> <span class="punc">=</span> <span class="punc">[</span><span class="str">"ISDN Holdings"</span><span class="punc">,</span> <span class="str">"Hankyu Hanshin Express Pte Ltd"</span><span class="punc">,</span> <span class="str">"Indoor Farm Factory Innovation"</span><span class="punc">]</span>`,
+            `&nbsp;&nbsp;<span class="prop">focus</span> <span class="punc">=</span> <span class="str">"low code mobile app + web development + database modeling"</span>`,
+            ``,
+            `&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">deliver</span><span class="punc">(</span>self<span class="punc">):</span>`,
+            `&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt"># custom warehousing system, mobile app, web app</span>`,
+            `&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">"clean code + good design"</span>`,
+          ]
+        },
+        {
+          filename: 'software_engineer.ts',
+          period: 'Mar - Aug 2021',
+          codeLines: [
+            `<span class="kw">const</span> <span class="fn">role</span> <span class="punc">=</span> <span class="punc">{</span>`,
+            `&nbsp;&nbsp;<span class="prop">company</span><span class="punc">:</span> <span class="str">"IoTeq Systems Pte Ltd"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="prop">title</span><span class="punc">:</span> <span class="str">"Software Engineer Intern"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Azure"</span><span class="punc">,</span> <span class="str">"Python"</span><span class="punc">,</span> <span class="str">"PostgreSQL"</span><span class="punc">,</span> <span class="str">"Go"</span><span class="punc">,</span> <span class="str">"Angular"</span><span class="punc">],</span>`,
+            `<span class="punc">};</span>`,
+            ``,
+            `<span class="cmt">// responsibilities</span>`,
+            `<span class="fn">role</span><span class="punc">.</span><span class="fn">responsibilities</span> <span class="punc">=</span> <span class="punc">[</span>`,
+            `&nbsp;&nbsp;<span class="str">"Designed optimized database schemas tailored to client business models, improving query performance by 25%"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Developed RESTful APIs serving data to 50+ concurrent users, enabling real-time operational visibility"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Conducted thorough testing and debugging, resolving critical issues that improved system stability and load times"</span><span class="punc">,</span>`,
+            `&nbsp;&nbsp;<span class="str">"Provided 2 months of post-deployment support, ensuring smooth system adoption"</span><span class="punc">,</span>`,
+            `<span class="punc">];</span>`,
+          ]
+        },
+      ],
+
+      education: [
+        {
+          tabName: 'degree.ts',
+          className: 'UniversityDegree',
+          school: 'Singapore Management University',
+          degree: 'Bachelor of Science (Software Engineering), 2nd major in Internet of Things',
+          period: '2022 — 2026',
+          gpa: null,
+          ongoing: false,
+          desc: 'A work-study degree focused on learning how to design and build enterprise systems at scale. Completed one year of internship applying academic knowledge to real-world cloud infrastructure and DevOps projects. Also pursuing a second major in Internet of Things to expand into IoT systems.',
+          tags: ['algorithms and programming', 'web application development', 'collaborative software development', 'operating systems and networking', 'solution architecture', 'enterprise solution development', 'enterprise solution management', 'software and system security', 'internet of things', 'mobile application development', 'data structures and databases', 'design for user interaction'],
+        },
+        {
+          tabName: 'diploma.ts',
+          className: 'PolytechnicDiploma',
+          school: 'Singapore Polytechnic',
+          degree: 'Diploma in Information Technology',
+          period: '2019 — 2022',
+          gpa: '3.89 / 4.0',
+          ongoing: false,
+          desc: 'Achieved consistently strong results across all subjects, earning a GPA of 3.89/4.0. Received Certificate of Commendation for being placed on the Director\'s Honour Roll during the academic year 2019/2020. Also attained a Certificate in Internet of Things (IoT), combining practical skills in IoT systems design with core software engineering fundamentals.',
+          tags: ['back-end web development', 'front-end web development', 'mobile/android application development', 'data engineering', 'data structures and algorithms', 'design for user interaction', 'internet of things'],
+        },
+        {
+          tabName: 'olevels.ts',
+          className: 'oLevels',
+          school: 'Teck Whye Secondary School (merged with Chua Chu Kang Secondary in 2023)',
+          degree: 'GCE O-Level certificate',
+          period: '2015 — 2018',
+          gpa: null,
+          ongoing: false,
+          desc: 'Performed well in Additional Mathematics and Science, developing strong analytical and problem-solving skills. Active in the Robotics CCA where I took on leadership roles being a quartermaster supervisoring the logistics of the club. I worked with EV3 robots, designing control systems and participating in robotics competitions. These hands-on experiences sparked a genuine interest in engineering and software.',
+          tags: ['additional mathematics', 'mathematics', 'science (physics, chemistry)', 'english', 'chinese', 'humanities (social studies, geography)', 'principle of accounts', 'robotics'],
+        },
+        {
+          tabName: 'psle.ts',
+          className: 'psle',
+          school: 'Beacon Primary School',
+          degree: 'PSLE certificate',
+          period: '2009 — 2015',
+          gpa: null,
+          ongoing: false,
+          desc: 'Excelled in Science, which was my strongest subject. Active participant in the Robotics CCA where I built and programmed NXT robots, competing in robotics competitions. These early experiences with building systems and solving problems through technology ignited my passion for engineering.',
+          tags: ['science', 'mathematics', 'chinese', 'english', 'robotics'],
+        },
+      ],
+
+      projects: [
+        {
+          icon: '⚙',
+          name: 'Fingerprint Door Access System',
+          desc: 'A fingerprint-based door access system built with an Arduino Uno, fingerprint sensor, LCD screen, buzzer, servo motor, ultrasonic sensor, and Bluetooth module. ThingSpeak handles data logging and monitoring, while the Android app provides access-log viewing, remote door lock and unlock control, and LCD message display. Twitter is used to send intruder alerts when suspicious activity is detected.',
+          stack: ['C++', 'Arduino', 'ThinkSpeak', 'Android', 'Twitter API'],
+          github: 'https://github.com/KelynWong/FingerprintDoorAccess',
+          demo: 'https://www.youtube.com/watch?v=-_Hpm2QKk54',
+        },
+        {
+          icon: '◉',
+          name: 'Keypad Door Access System V2',
+          desc: 'A keypad-based door access system built with a Raspberry Pi, ultrasonic sensor to detect someone near the entrance, a keypad for passcode entry, a servo motor to lock or unlock the door, a buzzer for local alerts, an LCD screen for status messages and a camera to show live feed. Integrates with ThingSpeak to log events and send notifications when incorrect passwords are entered or when movement is detected without a valid code. A companion Streamlit dashboard provides a live video view, access analytics, and remote controls for the door and buzzer, making it possible to monitor and manage the system from a web interface. Twitter is used to send intruder alerts when suspicious activity is detected.',
+          stack: ['Python', 'Raspberry Pi', 'D3.js', 'FastAPI'],
+          github: 'https://github.com/KelynWong/IntruderAlertDoorSystem',
+          demo: null,
+        },
+        {
+          icon: '◈',
+          name: 'Face recognition Attendance System',
+          desc: 'A face recognition-based attendance system built with Raspberry Pi 3 B+, camera, LCD screen, ultrasonic sensor, green LED, buzzer, OpenCV, and MySQL. The system captures student faces from a camera feed, matches them against a stored encoding database, and records attendance automatically for each class. A Streamlit dashboard lets lecturers log in, review attendance records, and view class analytics and reports.',
+          stack: ['Python', 'OpenCV', 'Node-RED', 'Streamlit', 'MySQL'],
+          github: 'https://github.com/KelynWong/FaceRecognitionAttendanceSys',
+          demo: null,
+        },
+        {
+          icon: '◈',
+          name: 'Smart Fitness Trainer',
+          desc: 'A smart fitness trainer system built with Raspberry Pi, USB camera, speakers, fitness band, monitor and supabase. The system uses pose estimation to analyze user form during exercises, providing real-time feedback and counting repetitions. A Streamlit dashboard allows users to log in, start/stop workouts, track their workout history & analytics, goals and manage their profiles.',
+          stack: ['Python', 'Streamlit', 'Supabase'],
+          github: 'https://github.com/KelynWong/CPS-SmartFitnessTrainer',
+          demo: 'https://youtu.be/lYzs-p9fdCA',
+        },
+        {
+          icon: '◈',
+          name: 'An Informative Covid Mobile App',
+          desc: 'An Android COVID-19 information app with Home, Search, World, Information, and Settings screens. It displays country and global case statistics, trending news, symptoms and prevention guidance, and includes UI preferences such as dark mode, language selection, and font settings.',
+          stack: ['Java', 'Android SDK', 'AndroidX', 'Material Components', 'SQLite', 'AsyncHttp', 'Picasso'],
+          github: 'https://github.com/KelynWong/VirusNow',
+          demo: 'https://www.figma.com/design/YwuKASh95itWhuyks9SufW/ANDE---CoD-Assignment-Wireframes?node-id=0-1&t=AdDF6838MXWSJ55J-1',
+        },
+        {
+          icon: '◈',
+          name: 'JiBaBoom',
+          desc: 'A full-stack application development project with a PostgreSQL-backed API, a browser-based data and results viewer, and a mobile companion app for viewing results and caching responses offline.',
+          stack: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'Express', 'PostgreSQL'],
+          github: 'https://github.com/KelynWong/applicationDevelopment',
+          demo: null,
+        },
+        {
+          icon: '◈',
+          name: 'Nomsters',
+          desc: 'A web application for recipe discovery, sharing and meal planning that combines user accounts, favourite/submitable recipes, nutrition analysis (Spoonacular integration), ingredient cost estimation and a grocery feature. The backend exposes authenticated REST endpoints (signup/login, user profiles, recipes, diets, cuisines, favourites) and the frontend is a Vue 3 + Vite single-page interface with pages for browsing, recipe details, profile and grocery/meal-prep flows.',
+          stack: ['Vue 3', 'Vite', 'CSS', 'JavaScript', 'HTML', 'Node.js', 'Express', 'MySQL', 'Spoonacular API'],
+          github: 'https://github.com/KelynWong/Nomsters',
+          demo: 'https://youtu.be/_zvcPr-Z5L8',
+        },
+        {
+          icon: '◈',
+          name: 'Tournament Management System',
+          desc: 'A web-based tournament management system for organizing competitions, tracking fixtures and results, and keeping tournament data in one place.',
+          stack: [],
+          github: 'https://github.com/KelynWong/CSD_G1T4',
+          demo: null,
+        },
+        {
+          icon: '◈',
+          name: 'Task Master',
+          desc: 'A comprehensive task and project management platform designed to streamline workflows. Users can generate ideas, create groups, enroll members, and assign tasks all in one place. Built with a microservices architecture featuring separate services for idea generation, group creation, enrollment, and task assignment, each with dedicated REST APIs.',
+          stack: ['Vue', 'JavaScript', 'Python', 'Flask', 'Docker', 'Docker Compose', 'Node.js', 'SCSS'],
+          github: 'https://github.com/kaixuantan/task_management_microservices',
+          demo: 'https://youtu.be/GXQHg51Abq8',
+        },
+      ],
+
+      interestCats: [
+        {
+          id: 'clay',
+          icon: '🏺',
+          name: 'Clay Models',
+          label: '🏺 Clay Models',
+          story: `I got into clay modelling almost by accident as I was looking for something to do with my hands that wasn't a screen. I started with basic shapes like pyramid (triangles), dice (squares) and coins (circles), and slowly got hooked on the tactile nature of the medium. It doesn't let you fake anything. If the form is off, it's off. I enjoy the problem-solving side of it as much as the making: figuring out armatures, managing drying times, getting textures to read the way I want. It's become the thing I do when I need to think without thinking. There's something grounding about working with your hands on a physical material that pushes back. Unlike code, clay doesn't compile; it just is. I've since made more complex small figures and even merchandise of famous song artists (I'm too broke to buy actual merchandise LOL). Each piece is a bit of an experiment and I'm still very much learning, but that's the part I enjoy most.`,
+        },
+        {
+          id: 'photo',
+          icon: '📷',
+          name: 'Photography',
+          label: '📷 Photography',
+          story: `I picked up photography because I wanted to remember things properly... Not just snapshots, but the actual feeling of a place or a moment. I started out shooting mostly on my phone but picked up Fujifilm X-T5 along the way, though I would say that it's less about gear and more about training the eye to see composition everywhere. Carrying a camera forced me to slow down and actually look at places instead of just moving through them. My style is pretty casual: candid street moments, architecture, art exhibitions and the kind of quiet detail most people walk past.`,
+        },
+        {
+          id: 'video',
+          icon: '🎬',
+          name: 'Content Creation',
+          label: '🎬 Content Creation',
+          story: `Content creation came naturally after photography — same eye, just adding time as a dimension. I make short clips mostly for tiktok, consisting of a little bit of everything from travel, gaming, vlogs to my yearly recap videos. Something about looking back at the moments I've captured brings a sense of fulfillment.`,
+        },
+        {
+          id: 'music',
+          icon: '🎵',
+          name: 'Music',
+          label: '🎵 Music',
+          story: `Music has been one of the biggest constants in my life. It started with my guitar and a phone balanced on my bed, using my AirPods microphone to record myself singing just for fun. Over time, I discovered BandLab and got a proper microphone, which made it easier to experiment with layering vocals and recording covers more intentionally. It has become one of my ways of expressing myself. The tracks here are raw, at-home vocal covers, unpolished but honest. Singing in public is still terrifying, but sharing something I made anyway is part of the point.`,
+        },
+        {
+          id: 'drawing',
+          icon: '✏️',
+          name: 'Drawings',
+          label: '✏️ Drawings',
+          story: `Drawing is the oldest thing on this list (started a decade ago :0) and something that I don't focus on it much anymore, but it's still a part of me that I think is worth sharing. I work mainly in pencil and a spice of colored pencil, sketching things that interest me: space, characters and small cute objects. I like how sketchbooks feel private in a way other creative work often isn't. I don't have any formal art training, so my drawings are rough and unpolished but to me that's what makes them stress-free and freeing.`,
+        },
+      ],
+
+      activeCat: 'clay',
+
+      clayItems: [
+        { id: 1, title: 'Billie Albums', year: '', img: './src/assets/images/clay/billiealbums.jpeg' },
+        { id: 2, title: 'Billie Eillih', year: '', img: './src/assets/images/clay/billieeillih.jpg' },
+        { id: 3, title: 'Billie Keychain', year: '', img: './src/assets/images/clay/billiekeychain.jpg' },
+        { id: 4, title: 'BTS', year: '', img: './src/assets/images/clay/bts.JPG' },
+        { id: 5, title: 'Bullets', year: '', img: './src/assets/images/clay/bullets.JPG' },
+        { id: 6, title: 'Calcifer', year: '', img: './src/assets/images/clay/calcifer.JPG' },
+        { id: 7, title: 'Chain', year: '', img: './src/assets/images/clay/chain.jpg' },
+        { id: 8, title: 'Coffin', year: '', img: './src/assets/images/clay/coffin.JPG' },
+        { id: 9, title: 'Coins', year: '', img: './src/assets/images/clay/coins.JPG' },
+        { id: 10, title: 'Dice', year: '', img: './src/assets/images/clay/dice.JPG' },
+        { id: 11, title: 'Cute Dinosaur Couple', year: '', img: './src/assets/images/clay/dino.jpg' },
+        { id: 12, title: 'Duck', year: '', img: './src/assets/images/clay/duck.jpg' },
+        { id: 13, title: 'Dynamite', year: '', img: './src/assets/images/clay/dynamite.jpg' },
+        { id: 14, title: 'Gravestone', year: '', img: './src/assets/images/clay/gravestone.JPG' },
+        { id: 15, title: 'Gun V1', year: '', img: './src/assets/images/clay/gunV1.jpg' },
+        { id: 16, title: 'Gun V2', year: '', img: './src/assets/images/clay/gunV2.jpg' },
+        { id: 17, title: 'Ilomilo', year: '', img: './src/assets/images/clay/ilomilo.JPG' },
+        { id: 18, title: 'Mouse', year: '', img: './src/assets/images/clay/mouse.jpg' },
+        { id: 19, title: 'No-Face', year: '', img: './src/assets/images/clay/noface.JPG' },
+        { id: 20, title: 'Smiski', year: '', img: './src/assets/images/clay/smiski.jpg' },
+        { id: 21, title: 'Tate', year: '', img: './src/assets/images/clay/tate.JPG' },
+      ],
+
+      drawingItems: [
+        { id: 1, title: 'Our universe', medium: 'pencil on paper', img: './src/assets/images/drawings/planets.jpg' },
+        { id: 2, title: 'Phases of the moon', medium: 'pencil on paper', img: './src/assets/images/drawings/moon.jpg' },
+        { id: 3, title: 'Floating in space', medium: 'pencil on paper', img: './src/assets/images/drawings/astronaut.jpg' },
+        { id: 4, title: 'Blast off', medium: 'pencil on paper', img: './src/assets/images/drawings/spaceship.jpg' },
+        { id: 5, title: 'Jackforsty', medium: 'pencil on paper', img: './src/assets/images/drawings/jackfrost.jpg' },
+        { id: 6, title: 'Shy tracer', medium: 'pencil on paper', img: './src/assets/images/drawings/tracer.jpg' },
+        { id: 7, title: 'Ahoy matey', medium: 'pencil on paper', img: './src/assets/images/drawings/ship.jpg' },
+        { id: 8, title: 'i love you.', medium: 'pencil on paper', img: './src/assets/images/drawings/doll.jpg' },
+        { id: 9, title: 'Heart bleeding', medium: 'pencil on paper', img: './src/assets/images/drawings/heartwings.jpg' },
+        { id: 10, title: 'Under the sea', medium: 'pencil on paper', img: './src/assets/images/drawings/underthesea.jpg' },
+        { id: 11, title: 'In the jungle', medium: 'pencil and color on paper', img: './src/assets/images/drawings/inthejungle.jpg' },
+        { id: 12, title: 'Wolf howling', medium: 'pencil and color on paper', img: './src/assets/images/drawings/wolf.jpg' },
+        { id: 13, title: 'Weather icons', medium: 'pencil on paper', img: './src/assets/images/drawings/weather.jpg' },
+        { id: 14, title: 'Loch Ness Monster', medium: 'pencil on paper', img: './src/assets/images/drawings/lochness.jpg' },
+      ],
+
+      photoGroups: [
+        buildPhotoGroup('balloonMuseum2025', 'Balloon Museum', 2025, 14),
+        buildPhotoGroup('christmasWonderland2025', 'Christmas Wonderland', 2025, 45),
+        buildPhotoGroup('dopamineLand2026', 'Dopamine Land', 2026, 5),
+        buildPhotoGroup('ilight2025', 'i Light Singapore', 2025, 16),
+        buildPhotoGroup('illumi2024', 'Illumi', 2024, 19, { 4: 'jpg', 6: 'jpg' }),
+        buildPhotoGroup('nationalOrchidGarden2024', 'National Orchid Garden', 2024, 19),
+        buildPhotoGroup('sgDesignWeek2025', 'SG Design Week', 2025, 51),
+        buildPhotoGroup('sgNightFest2025', 'SG Night Fest', 2025, 38),
+        buildPhotoGroup('studioGhibli2025', 'Studio Ghibli', 2025, 19),
+      ],
+
+      activeVideoCat: 'travel',
+
+      videoCats: [
+        { id: 'travel',    icon: '✈️', label: 'Travel',      count: 16 },
+        { id: 'recaps',    icon: '📅', label: 'Year Recaps', count: 14 },
+        { id: 'beatsaber', icon: '🎮', label: 'Beat Saber',  count: 39 },
+        { id: 'tiktoks',   icon: '📱', label: 'Vlogs & More',count: 17 },
+      ],
+
+      videoTravel: [
+        {
+          title: 'Vietnam',
+          dates: '10–18 Dec 2022',
+          shorts: true,
+          parts: [{ id: '0KtoyyrTymA', label: 'Full trip' }],
+        },
+        {
+          title: 'Genting Highlands',
+          dates: '28 Jun – 2 Jul 2023',
+          shorts: true,
+          parts: [{ id: 'lYK25Lm0ER8', label: 'Full trip' }],
+        },
+        {
+          title: 'Sydney × Gold Coast × Brisbane',
+          dates: '9–23 Jul 2023',
+          shorts: false,
+          parts: [{ id: 'i08Ac0rcnOE', label: 'Full trip' }],
+        },
+        {
+          title: 'Zhangjiajie × Chongqing',
+          dates: '22 Dec 2023 – 1 Jan 2024',
+          shorts: false,
+          parts: [{ id: '9EqgmWCaB4Q', label: 'Full trip' }],
+        },
+        {
+          title: 'Chengdu × Jiuzhaigou',
+          dates: '15–27 May 2024',
+          shorts: false,
+          parts: [
+            { id: '5rS85oeqhe0', label: 'Highlights' },
+            { id: 'EpnQnIKosFw', label: 'Cinematic version' },
+          ],
+        },
+        {
+          title: 'SMU SSP Vietnam — Da Nang',
+          dates: '8–20 Dec 2024',
+          shorts: true,
+          parts: [{ id: 'Vn86GQnMiL8', label: 'Full trip' }],
+        },
+        {
+          title: 'Batam Church Camp',
+          dates: '6–9 Jun 2025',
+          shorts: true,
+          parts: [{ id: 'wpWJb0Up-Kk', label: 'Full trip' }],
+        },
+        {
+          title: 'Xiamen × Zhangzhou',
+          dates: '29 Jan – 8 Feb 2026',
+          shorts: true,
+          parts: [
+            { id: 'tdHmH8gdv6w', label: 'Part 1' },
+            { id: 'aBweNmHRWpA', label: 'Part 2' },
+            { id: 'WNUI8MjN95s', label: 'Part 3' },
+            { id: 'f_d2xmaI56Y', label: 'Part 4' },
+          ],
+        },
+        {
+          title: 'Wuxi × Suzhou × Hangzhou × Shanghai',
+          dates: '22 Mar – 4 Apr 2026',
+          shorts: true,
+          parts: [
+            { id: 'avjYH3DSk3U', label: 'Part 1' },
+            { id: '5zXEmKTR5Xo', label: 'Part 2' },
+            { id: 'IynIUAvQi9w', label: 'Part 3' },
+            { id: 'SSO5IUD0atI', label: 'Part 4' },
+          ],
+        },
+      ],
+
+      videoRecaps: [
+        {
+          year: '2022',
+          parts: [
+            { id: 'oVlixrzyb_s', label: 'Part 1' },
+            { id: 'qr1lsHexSOU', label: 'Part 2' },
+            { id: 'MpTsQZJ9Hck', label: 'Part 3' },
+          ],
+        },
+        {
+          year: '2023',
+          parts: [
+            { id: 'lrYWax1Nsjo', label: 'Part 1' },
+            { id: 'Fn5Ze1zn1Dc', label: 'Part 2' },
+            { id: 'Jy-zEjKaIi4', label: 'Part 3' },
+          ],
+        },
+        {
+          year: '2024',
+          parts: [
+            { id: '-ICLQat1nQ8', label: 'Part 1' },
+            { id: 'zFiyG1hY_HM', label: 'Part 2' },
+            { id: 'FOcrcfvF3I4', label: 'Part 3' },
+            { id: 'GXeRFIIpG_U', label: 'Part 4' },
+          ],
+        },
+        {
+          year: '2025',
+          parts: [
+            { id: 'ETNmRvcLQX0', label: 'Part 1' },
+            { id: 'Lxd-k_CKFMI', label: 'Part 2' },
+            { id: '56Pd3zeLZss', label: 'Part 3' },
+            { id: 'pxVFP5bZgWs', label: 'Part 4' },
+          ],
+        },
+      ],
+
+      videoBeatSaber: [
+        { id: 'MJtXHcLoHpg', title: 'New Rules',               artist: 'Dua Lipa' },
+        { id: '4ezr_615LS0', title: 'Dear Future Husband',      artist: 'Meghan Trainor' },
+        { id: 'LCoslfqmwnY', title: 'Happier Than Ever',        artist: 'Billie Eilish' },
+        { id: 'YNubzXWcriY', title: 'NDA',                      artist: 'Billie Eilish' },
+        { id: '0GO94pnN_pQ', title: 'I Wanna Be a Machine',     artist: 'The Living Tombstone' },
+        { id: '6PAZ5uHF0gg', title: 'Bad Guy',                  artist: 'Billie Eilish' },
+        { id: 'hZXBba2hYXI', title: 'Bellyache',                artist: 'Billie Eilish' },
+        { id: 'NQXCqrl6zoM', title: 'Levitating',               artist: 'Dua Lipa' },
+        { id: 'ldFCYm0BxSc', title: 'Stressed Out',             artist: 'Twenty One Pilots' },
+        { id: 'U3AcUERRobs', title: "It's Been So Long",        artist: 'The Living Tombstone' },
+        { id: 'ihB5Ibtn6tc', title: 'Into You (Bloopers)',      artist: 'Ariana Grande' },
+        { id: 'hjdcDl5uQA4', title: 'Into You',                 artist: 'Ariana Grande' },
+        { id: 'wLIPIZFmHJs', title: 'Enemy',                    artist: 'Imagine Dragons' },
+        { id: 'EzB-94Vrj6U', title: 'Legends Never Die',        artist: 'Against the Current' },
+        { id: 'nyVusLJaLOg', title: 'Oxytocin',                 artist: 'Billie Eilish' },
+        { id: 'V-wo6Iik1nM', title: 'Therefore I Am',           artist: 'Billie Eilish' },
+        { id: 'AbUHCztiyao', title: 'You Should See Me in a Crown', artist: 'Billie Eilish' },
+        { id: 'F5yMdWf_T60', title: 'All the Good Girls Go to Hell', artist: 'Billie Eilish' },
+        { id: 'NPqAY-g5pI4', title: 'Bury a Friend',            artist: 'Billie Eilish' },
+        { id: 'kE4-gCq1YLE', title: 'POP/STARS',               artist: 'K/DA' },
+        { id: 'vNLxcxufoDQ', title: 'Crab Rave',                artist: 'Noisestorm' },
+        { id: 'I-3sr3oMJeM', title: 'Reason for Living',        artist: 'Morgan Page' },
+        { id: '2Wa7Jd28owU', title: "I Didn't Change My Number", artist: 'Billie Eilish' },
+        { id: '-HDCo4fwqAU', title: 'POP/STARS (Multiplayer)',  artist: 'K/DA',            multi: true },
+        { id: '2aVNdXijPbA', title: 'Kill This Love',           artist: 'BLACKPINK' },
+        { id: '31Z7mJO6ss8', title: 'Feliz Navidad',            artist: 'Jose Feliciano' },
+        { id: '9OWG6I8qHwI', title: '$100 Bills (Multiplayer)', artist: 'Jaroslav Beck',   multi: true },
+        { id: 'ByX9WTVehbw', title: 'Country Rounds (Multiplayer)', artist: 'Jaroslav Beck', multi: true },
+        { id: 'CG6BQc9-lpw', title: 'Diamonds',                 artist: 'Sam Smith' },
+        { id: 'MTBRLzXD0zk', title: 'Lily',                     artist: 'Alan Walker' },
+        { id: 'Ogb4N4xIZtM', title: 'Blank Space',              artist: 'Taylor Swift' },
+        { id: 'QMmKQ4bAMAU', title: 'Rum n Bass (Multiplayer)', artist: 'Boom Kitty',      multi: true },
+        { id: 'QsotUN1xioE', title: 'Freaks',                   artist: 'Timmy Trumpet' },
+        { id: 'ncT0xrDjZic', title: "Exit Earth's Atmosphere (Multi)", artist: 'Camellia', multi: true },
+        { id: 'yvhZgFmgVjM', title: 'Excuse My Rudeness…',      artist: 'Mori Calliope' },
+        { id: '0jFZRq_A5FE', title: 'Gangnam Style',            artist: 'PSY' },
+        { id: '3ZiCwMxIjBI', title: 'Here with Me',             artist: 'CHVRCHES & Marshmello' },
+        { id: 'MELhToWptcI', title: 'How You Like That',        artist: 'BLACKPINK' },
+        { id: 'bANHUjfeRAU', title: 'IDOL',                     artist: 'BTS' },
+      ],
+
+      videoTiktoks: [
+        {
+          group: 'Vlogs',
+          icon: '🎥',
+          items: [
+            { id: 'ZSONcxOec5E', label: 'SG Night Festival 2025' },
+            { id: 'i9S0xR9e-MI', label: 'SG Design Week 2025' },
+            { id: 'qd8BE3Tkk64', label: 'Christmas Wonderland 2025' },
+          ],
+        },
+        {
+          group: 'Billie Eilish',
+          icon: '🎤',
+          items: [
+            { id: '0mlSCAp0Uvg', label: 'Fall in Love Again and Again' },
+            { id: '6GKMaE0-n9s', label: 'HMHAS Visualised – Part 1' },
+            { id: '6GKMaE0-n9s', label: 'HMHAS Visualised – Part 2' },
+            { id: 'QfsLqKL-UVg', label: 'HMHAS Visualised – Part 3' },
+            { id: 'LdKmWU92DSI', label: 'Billie Eilish Is…' },
+          ],
+        },
+        {
+          group: 'Cats 🐱',
+          icon: '🐾',
+          items: [
+            { id: 'JGZodsHF2hA', label: 'Mimi Appreciation' },
+            { id: '1QlxtOx28Kk', label: 'Ding Ding Appreciation' },
+            { id: 'phs0glhrus0', label: 'Nala Appreciation' },
+            { id: 'Peo8I2Bz_0U', label: 'Mimi Pictures' },
+            { id: 'EoTepXbBaBo', label: 'Ding Ding Pictures' },
+            { id: 'MHFUjSWCraw', label: 'Nala Pictures' },
+            { id: 'rMRtb53CfNo', label: 'Obsessed Mochi' },
+          ],
+        },
+      ],
+
+      tracks: [
+        {
+          src: 'src/assets/audio/Benson_Boone__What_Was_a_nylek_cover.mp3',
+          displayTitle: 'What Was',
+          detail: 'Benson Boone — Nylek cover',
+          genre: 'cover',
+          duration: '--:--',
+        },
+        {
+          src: 'src/assets/audio/cry__cigarettes_after_sex_the_other_persons_pov_inspired_by_sally_kim.mp3',
+          displayTitle: 'Cry',
+          detail: 'Cigarettes After Sex — Nylek cover',
+          genre: 'cover',
+          duration: '--:--',
+        },
+        {
+          src: 'src/assets/audio/for_crying_out_loud__finneas_a_nylek_cover.mp3',
+          displayTitle: 'For Crying Out Loud',
+          detail: 'Finneas — Nylek cover',
+          genre: 'cover',
+          duration: '--:--',
+        },
+        {
+          src: 'src/assets/audio/golden_years__christian_french_nylek_cover.mp3',
+          displayTitle: 'Golden Years',
+          detail: 'Christian French — Nylek cover',
+          genre: 'cover',
+          duration: '--:--',
+        },
+        {
+          src: 'src/assets/audio/it_is_what_it_is__abe_parker_a_nylek_cover.mp3',
+          displayTitle: 'It Is What It Is',
+          detail: 'Abe Parker — Nylek cover',
+          genre: 'cover',
+          duration: '--:--',
+        },
+        {
+          src: 'src/assets/audio/scared_to_start__michael_marcagi_a_nylek_cover.mp3',
+          displayTitle: 'Scared to Start',
+          detail: 'Michael Marcagi — Nylek cover',
+          genre: 'cover',
+          duration: '--:--',
+        },
+        {
+          src: 'src/assets/audio/the_race__chris_james_nylek_cover.mp3',
+          displayTitle: 'The Race',
+          detail: 'Chris James — Nylek cover',
+          genre: 'cover',
+          duration: '--:--',
+        },
+        {
+          src: 'src/assets/audio/your_idol__saja_boys_intro_only.mp3',
+          displayTitle: 'Your Idol',
+          detail: 'Saja Boys — Nylek cover (intro only)',
+          genre: 'cover',
+          duration: '--:--',
+        },
+      ],
+
+      // Music player state
+      currentTrackIdx: null,
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0,
+      volume: 0.8,
+      progressPct: 0,
+    };
+  },
+  computed: {
+    currentTrack() {
+      return this.currentTrackIdx !== null ? this.tracks[this.currentTrackIdx] : null;
+    },
+    photoPlaces() {
+      return this.photoGroups.map((group) => ({ id: group.id, label: group.label }));
+    },
+    activePhotoItems() {
+      const group = this.photoGroups.find((g) => g.id === this.activePhotoPlace);
+      return group ? group.items : [];
+    },
+  },
+  mounted() {
+    this.fitHeroVerbs();
+    this._heroResizeHandler = () => this.fitHeroVerbs();
+    window.addEventListener('resize', this._heroResizeHandler);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => this.fitHeroVerbs());
+    }
+  },
+  beforeUnmount() {
+    if (this._heroResizeHandler) {
+      window.removeEventListener('resize', this._heroResizeHandler);
+    }
+  },
+  methods: {
+    fitHeroVerbs() {
+      const heroLeft = document.querySelector('.hero-left');
+      const heroVerbs = document.querySelector('.hero-verbs');
+      if (!heroLeft || !heroVerbs) return;
+
+      const availableWidth = heroLeft.clientWidth - 64;
+      let low = 20;
+      let high = 56;
+
+      for (let i = 0; i < 12; i += 1) {
+        const mid = (low + high) / 2;
+        heroVerbs.style.fontSize = `${mid}px`;
+        if (heroVerbs.scrollWidth <= availableWidth) {
+          low = mid;
+        } else {
+          high = mid;
+        }
+      }
+
+      heroVerbs.style.fontSize = `${Math.floor(low)}px`;
+    },
+
+    submitForm() {
+      alert(`Thanks ${this.form.name || 'there'}! Message sent (placeholder — wire up your backend here).`);
+      this.form = { name: '', email: '', message: '' };
+    },
+
+    // ── Video embed helper ────────────────────────────────
+    ytEmbed(id, isShort = false) {
+      const base = isShort
+        ? `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`
+        : `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+      return base;
+    },
+
+    // ── Music player ──────────────────────────────────────
+    getAudio() { return this.$refs.audioEl; },
+
+    selectTrack(i) {
+      const audio = this.getAudio();
+      if (!audio) return;
+      if (this.currentTrackIdx === i) {
+        this.togglePlay();
+        return;
+      }
+      this.currentTrackIdx = i;
+      audio.src = this.tracks[i].src;
+      audio.volume = this.volume;
+      audio.load();
+      audio.play().then(() => { this.isPlaying = true; }).catch(() => {});
+    },
+
+    togglePlay() {
+      const audio = this.getAudio();
+      if (!audio) return;
+      if (this.currentTrackIdx === null) { this.selectTrack(0); return; }
+      if (this.isPlaying) { audio.pause(); this.isPlaying = false; }
+      else { audio.play().then(() => { this.isPlaying = true; }).catch(() => {}); }
+    },
+
+    nextTrack() {
+      const next = this.currentTrackIdx === null ? 0 : (this.currentTrackIdx + 1) % this.tracks.length;
+      this.selectTrack(next);
+    },
+
+    prevTrack() {
+      const audio = this.getAudio();
+      if (audio && audio.currentTime > 3) { audio.currentTime = 0; return; }
+      const prev = this.currentTrackIdx === null ? 0 : (this.currentTrackIdx - 1 + this.tracks.length) % this.tracks.length;
+      this.selectTrack(prev);
+    },
+
+    onTimeUpdate() {
+      const audio = this.getAudio();
+      if (!audio) return;
+      this.currentTime = audio.currentTime;
+      this.progressPct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    },
+
+    onMeta() {
+      const audio = this.getAudio();
+      if (!audio) return;
+      this.duration = audio.duration;
+      // Update duration display on the track
+      if (this.currentTrackIdx !== null) {
+        this.tracks[this.currentTrackIdx].duration = this.formatTime(audio.duration);
+      }
+    },
+
+    seekTo(e) {
+      const audio = this.getAudio();
+      if (!audio || !audio.duration) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const pct = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pct * audio.duration;
+    },
+
+    setVolume() {
+      const audio = this.getAudio();
+      if (audio) audio.volume = this.volume;
+    },
+
+    formatTime(s) {
+      if (!s || isNaN(s)) return '--:--';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return `${m}:${sec.toString().padStart(2, '0')}`;
+    },
+  },
+}).mount('#app');
+</script>
+<!-- Three.js for 3D model -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function() {
+  const canvas = document.getElementById('hero-3d-canvas');
+  if (!canvas) return;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x141414);
+
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(3.5, 2.8, 4.5);
+  camera.lookAt(0, 0.3, 0);
+
+  // Resize handler
+  function resize() {
+    const w = canvas.parentElement.clientWidth;
+    const h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // ── MATERIALS ──────────────────────────────────────────
+  const matDesk    = new THREE.MeshStandardMaterial({ color: 0x2a1f14, roughness: 0.8 });
+  const matLeg     = new THREE.MeshStandardMaterial({ color: 0x1a1208, roughness: 0.9 });
+  const matMonBody = new THREE.MeshStandardMaterial({ color: 0x1c1c1c, roughness: 0.3, metalness: 0.6 });
+  const matScreen  = new THREE.MeshStandardMaterial({ color: 0x0d1117, roughness: 0.0, metalness: 0.1, emissive: 0x1a3a5c, emissiveIntensity: 0.6 });
+  const matKeyb    = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.4, metalness: 0.5 });
+  const matMouse   = new THREE.MeshStandardMaterial({ color: 0x1c1c1c, roughness: 0.3, metalness: 0.5 });
+  const matLamp    = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.5, metalness: 0.7 });
+  const matLampShd = new THREE.MeshStandardMaterial({ color: 0x888866, roughness: 0.6, metalness: 0.2, side: THREE.DoubleSide });
+  const matMug     = new THREE.MeshStandardMaterial({ color: 0x5BAADC, roughness: 0.5, metalness: 0.1 });
+  const matBook1   = new THREE.MeshStandardMaterial({ color: 0x8BB87A, roughness: 0.9 });
+  const matBook2   = new THREE.MeshStandardMaterial({ color: 0xB87DB8, roughness: 0.9 });
+  const matBook3   = new THREE.MeshStandardMaterial({ color: 0xC4836A, roughness: 0.9 });
+  const matPlant   = new THREE.MeshStandardMaterial({ color: 0x4a7a3a, roughness: 0.9 });
+  const matPot     = new THREE.MeshStandardMaterial({ color: 0x8a5a3a, roughness: 0.8 });
+  const matWall    = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 1.0 });
+  const matFloor   = new THREE.MeshStandardMaterial({ color: 0x0e0e0e, roughness: 0.9 });
+  const matCable   = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.8 });
+
+  // ── HELPERS ────────────────────────────────────────────
+  function box(w, h, d, mat, x, y, z, rx=0, ry=0) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    m.position.set(x, y, z);
+    m.rotation.x = rx; m.rotation.y = ry;
+    m.castShadow = true; m.receiveShadow = true;
+    scene.add(m); return m;
+  }
+  function cyl(rt, rb, h, seg, mat, x, y, z, rx=0) {
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, seg), mat);
+    m.position.set(x, y, z); m.rotation.x = rx;
+    m.castShadow = true; m.receiveShadow = true;
+    scene.add(m); return m;
+  }
+  function sph(r, mat, x, y, z) {
+    const m = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 12), mat);
+    m.position.set(x, y, z);
+    m.castShadow = true;
+    scene.add(m); return m;
+  }
+
+  // ── ROOM ───────────────────────────────────────────────
+  // Floor
+  box(12, 0.05, 10, matFloor, 0, -0.025, 0);
+  // Back wall
+  box(12, 6, 0.05, matWall, 0, 3, -3);
+  // Left wall
+  box(0.05, 6, 10, matWall, -4.5, 3, 0);
+
+  // ── DESK ───────────────────────────────────────────────
+  const deskY = 0.75;
+  box(2.6, 0.06, 1.1, matDesk, 0, deskY, 0);               // tabletop
+  box(0.06, deskY, 0.06, matLeg, -1.2, deskY/2, 0.45);     // leg FL
+  box(0.06, deskY, 0.06, matLeg,  1.2, deskY/2, 0.45);     // leg FR
+  box(0.06, deskY, 0.06, matLeg, -1.2, deskY/2, -0.45);    // leg BL
+  box(0.06, deskY, 0.06, matLeg,  1.2, deskY/2, -0.45);    // leg BR
+
+  // ── MONITOR ────────────────────────────────────────────
+  const mBase = deskY + 0.03;
+  // Stand base
+  box(0.22, 0.02, 0.16, matMonBody, 0, mBase+0.01, -0.2);
+  // Stand neck
+  box(0.04, 0.28, 0.04, matMonBody, 0, mBase+0.15, -0.2);
+  // Screen bezel
+  box(1.02, 0.62, 0.04, matMonBody, 0, mBase+0.58, -0.2);
+  // Screen surface
+  box(0.94, 0.54, 0.01, matScreen, 0, mBase+0.58, -0.18);
+
+  // Code lines on screen (thin emissive strips)
+  const lineColors = [0x5BAADC, 0x8BB87A, 0xB87DB8, 0xC8C87A, 0xC4836A];
+  for (let i = 0; i < 8; i++) {
+    const lMat = new THREE.MeshStandardMaterial({
+      color: lineColors[i % lineColors.length],
+      emissive: lineColors[i % lineColors.length],
+      emissiveIntensity: 0.9
+    });
+    const len = 0.2 + Math.random() * 0.45;
+    const lx = -0.37 + len / 2;
+    const m = new THREE.Mesh(new THREE.BoxGeometry(len, 0.014, 0.005), lMat);
+    m.position.set(lx, mBase + 0.72 - i * 0.065, -0.175);
+    scene.add(m);
+  }
+
+  // ── KEYBOARD ───────────────────────────────────────────
+  box(0.62, 0.018, 0.22, matKeyb, -0.1, mBase+0.03, 0.22);
+  // Key rows (small bumps)
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 12; c++) {
+      const km = new THREE.Mesh(new THREE.BoxGeometry(0.038, 0.01, 0.038),
+        new THREE.MeshStandardMaterial({ color: 0x2d2d2d, roughness: 0.4, metalness: 0.5 }));
+      km.position.set(-0.38 + c * 0.048, mBase + 0.045, 0.12 + r * 0.047);
+      scene.add(km);
+    }
+  }
+
+  // ── MOUSE ──────────────────────────────────────────────
+  const mouseMesh = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.038, 0.044, 0.022, 20),
+    matMouse
+  );
+  mouseMesh.position.set(0.55, mBase + 0.025, 0.22);
+  mouseMesh.scale.x = 0.7;
+  scene.add(mouseMesh);
+
+  // ── DESK LAMP ──────────────────────────────────────────
+  // Base
+  cyl(0.06, 0.07, 0.018, 16, matLamp, -1.05, mBase+0.009, -0.3);
+  // Arm 1 (vertical)
+  box(0.018, 0.32, 0.018, matLamp, -1.05, mBase+0.17, -0.3);
+  // Arm 2 (angled over desk)
+  const arm2 = new THREE.Mesh(new THREE.BoxGeometry(0.018, 0.28, 0.018), matLamp);
+  arm2.position.set(-0.92, mBase+0.42, -0.3);
+  arm2.rotation.z = 0.5;
+  scene.add(arm2);
+  // Shade (cone)
+  cyl(0.001, 0.1, 0.12, 20, matLampShd, -0.75, mBase+0.52, -0.3, Math.PI);
+  // Lamp point light
+  const lampLight = new THREE.PointLight(0xffe8b0, 1.2, 1.8);
+  lampLight.position.set(-0.75, mBase+0.56, -0.3);
+  lampLight.castShadow = true;
+  scene.add(lampLight);
+
+  // ── MUG ────────────────────────────────────────────────
+  cyl(0.055, 0.048, 0.1, 20, matMug,  0.95, mBase+0.083, -0.28);
+  // Handle
+  const handleMat = matMug;
+  const handleG = new THREE.TorusGeometry(0.032, 0.008, 8, 16, Math.PI);
+  const handle = new THREE.Mesh(handleG, handleMat);
+  handle.position.set(1.008, mBase+0.083, -0.28);
+  handle.rotation.y = Math.PI/2;
+  scene.add(handle);
+  // Coffee surface
+  const coffee = new THREE.Mesh(new THREE.CircleGeometry(0.046, 20),
+    new THREE.MeshStandardMaterial({ color: 0x2a1200, roughness: 0.3 }));
+  coffee.position.set(0.95, mBase + 0.135, -0.28);
+  coffee.rotation.x = -Math.PI/2;
+  scene.add(coffee);
+
+  // ── BOOKS (stacked on left of desk) ────────────────────
+  box(0.18, 0.03, 0.13, matBook1, -0.88, mBase+0.045, -0.3);
+  box(0.16, 0.025, 0.12, matBook2, -0.88, mBase+0.072, -0.3);
+  box(0.19, 0.022, 0.13, matBook3, -0.88, mBase+0.096, -0.3);
+
+  // ── SMALL PLANT ────────────────────────────────────────
+  cyl(0.05, 0.06, 0.07, 14, matPot, 0.9, mBase+0.065, -0.12);
+  sph(0.07, matPlant, 0.9, mBase+0.15, -0.12);
+  sph(0.05, matPlant, 0.86, mBase+0.13, -0.08);
+  sph(0.05, matPlant, 0.94, mBase+0.14, -0.16);
+
+  // ── CABLE ──────────────────────────────────────────────
+  // Simple curved tube suggestion
+  const cablePts = [];
+  for (let t = 0; t <= 1; t += 0.1) {
+    cablePts.push(new THREE.Vector3(
+      0 + t * 0.05,
+      mBase - t * 0.25,
+      -0.17 - t * 0.1
+    ));
+  }
+  const cableCurve = new THREE.CatmullRomCurve3(cablePts);
+  const cableTube  = new THREE.TubeGeometry(cableCurve, 12, 0.006, 6, false);
+  scene.add(new THREE.Mesh(cableTube, matCable));
+
+  // ── CHAIR (behind desk, peeking) ───────────────────────
+  const chairMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.8 });
+  box(0.56, 0.04, 0.5, chairMat, 0, 0.52, 0.9);   // seat
+  box(0.56, 0.6,  0.04, chairMat, 0, 0.82, 1.15);  // backrest
+  for (const [cx, cz] of [[-0.24,0.65],[0.24,0.65],[-0.24,1.15],[0.24,1.15]]) {
+    cyl(0.018, 0.018, 0.52, 8, chairMat, cx, 0.26, cz);
+  }
+
+  // ── LIGHTING ───────────────────────────────────────────
+  scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+  const sun = new THREE.DirectionalLight(0xffffff, 0.9);
+  sun.position.set(3, 5, 4);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(1024, 1024);
+  scene.add(sun);
+  const fill = new THREE.DirectionalLight(0x6090c0, 0.3);
+  fill.position.set(-3, 2, -2);
+  scene.add(fill);
+  // Screen glow
+  const screenGlow = new THREE.PointLight(0x1a6aaa, 0.7, 1.5);
+  screenGlow.position.set(0, mBase+0.58, -0.14);
+  scene.add(screenGlow);
+
+  // ── ORBIT CONTROLS (manual) ────────────────────────────
+  let isDragging = false;
+  let prevMouse = { x: 0, y: 0 };
+  let spherical = { theta: 0.6, phi: 0.55, radius: 6.5 };
+
+  function updateCamera() {
+    const st = Math.sin(spherical.theta);
+    const ct = Math.cos(spherical.theta);
+    const sp = Math.sin(spherical.phi);
+    const cp = Math.cos(spherical.phi);
+    camera.position.set(
+      spherical.radius * sp * st,
+      spherical.radius * cp,
+      spherical.radius * sp * ct
+    );
+    camera.lookAt(0, 0.6, 0);
+  }
+  updateCamera();
+
+  canvas.addEventListener('mousedown', e => { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; });
+  window.addEventListener('mouseup', () => { isDragging = false; });
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const dx = (e.clientX - prevMouse.x) * 0.008;
+    const dy = (e.clientY - prevMouse.y) * 0.006;
+    spherical.theta -= dx;
+    spherical.phi = Math.max(0.15, Math.min(1.4, spherical.phi + dy));
+    prevMouse = { x: e.clientX, y: e.clientY };
+    updateCamera();
+  });
+  canvas.addEventListener('wheel', e => {
+    spherical.radius = Math.max(3, Math.min(12, spherical.radius + e.deltaY * 0.01));
+    updateCamera();
+    e.preventDefault();
+  }, { passive: false });
+
+  // Touch support
+  let lastTouchDist = 0;
+  canvas.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) { isDragging = true; prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }
+    if (e.touches.length === 2) { lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); }
+  });
+  canvas.addEventListener('touchend', () => { isDragging = false; });
+  canvas.addEventListener('touchmove', e => {
+    if (e.touches.length === 1 && isDragging) {
+      const dx = (e.touches[0].clientX - prevMouse.x) * 0.008;
+      const dy = (e.touches[0].clientY - prevMouse.y) * 0.006;
+      spherical.theta -= dx; spherical.phi = Math.max(0.15, Math.min(1.4, spherical.phi + dy));
+      prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      updateCamera();
+    }
+    if (e.touches.length === 2) {
+      const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+      spherical.radius = Math.max(3, Math.min(12, spherical.radius - (d - lastTouchDist) * 0.02));
+      lastTouchDist = d; updateCamera();
+    }
+    e.preventDefault();
+  }, { passive: false });
+
+  // Auto-rotate when idle
+  let idleTimer = null;
+  let autoRotate = true;
+  function resetIdle() { autoRotate = false; clearTimeout(idleTimer); idleTimer = setTimeout(() => { autoRotate = true; }, 3000); }
+  canvas.addEventListener('mousedown', resetIdle);
+  canvas.addEventListener('touchstart', resetIdle);
+
+  // ── RENDER LOOP ────────────────────────────────────────
+  function animate() {
+    requestAnimationFrame(animate);
+    if (autoRotate) {
+      spherical.theta += 0.003;
+      updateCamera();
+    }
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+</body>
 </html>
