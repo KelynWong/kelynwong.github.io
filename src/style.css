@@ -11,49 +11,46 @@
 }
 
 :root {
-  /* Background and text colors */
-  --bg-color: #1E1E1E;        /* Black background */
-  --text-color: #D4D4D4;      /* Light gray text */
-
-  /* Accent colors */
-  --accent-color-1: #61AFEF;  /* Light blue */
-  --accent-color-2: #528BCC;  /* Medium blue */
-  --accent-color-3: #98C379;  /* Soft green */
-
-  /* Code-related colors */
-  --code-color-1: #ABB2BF;    /* Light gray-blue */
-  --code-color-2: #6A9955;    /* Dark green */
-  --code-color-3: #CE9178;    /* Warm brown */
-  --code-color-4: #C586C0;    /* Soft purple */
-  --code-color-5: #DCDCAA;    /* Pale yellow */
-
-  /* Font Sizes */
-  --h0: 52px;  /* h0 -> 64px */
-  --h1: 40px;  /* h1 -> 36px */
-  --h2: 30px;  /* h2 -> 28px */
-  --h3: 24px;  /* h3 -> 24px */
-  --h4: 18px;  /* h4 -> 20px */
-  --h5: 16px;  /* h5 -> 18px */
-  --paragraph: 14px;  /* paragraph -> 16px */
+  --bg:        #0d0d0d;
+  --bg2:       #141414;
+  --bg3:       #1a1a1a;
+  --bg4:       #222222;
+  --text:      #d4d4d4;
+  --text-dim:  #7a7a7a;
+  --text-faint:#3a3a3a;
+  --accent1:   #5BAADC;
+  --accent2:   #4A72B0;
+  --accent3:   #8BB87A;
+  --code1:     #8A94A6;
+  --code2:     #5E8A5E;
+  --code3:     #C4836A;
+  --code4:     #B87DB8;
+  --code5:     #C8C87A;
+  --border:    #2a2a2a;
+  --border2:   #333333;
+  --radius:    4px;
+  --mono:      'JetBrains Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #1E1E1E;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
+
+::selection { background: var(--accent2); color: #fff; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
 
 h1 {
   font-size: 3.2em;
