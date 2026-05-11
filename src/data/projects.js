@@ -22,7 +22,7 @@ export default [
   {
     id: 'fingerprint-access',
     title: 'Fingerprint Door Access System',
-    coverImage: '/src/assets/images/projects/fingerprint-cover.jpg', // replace with actual project image
+    coverImage: '/src/assets/images/projects/fingerprint-cover.svg', // replace with actual project image
     coverAlt: 'Fingerprint Door Access System',
     short: 'Biometric door access with Arduino, ThingSpeak, Android app & Twitter alerts',
     description: 'A fingerprint-based door access system built with an Arduino Uno, fingerprint sensor, LCD screen, buzzer, servo motor, ultrasonic sensor, and Bluetooth module. ThingSpeak handles data logging and monitoring, while the Android app provides access-log viewing, remote door lock and unlock control, and LCD message display. Twitter is used to send intruder alerts when suspicious activity is detected.',
@@ -34,7 +34,7 @@ export default [
       live: null,
     },
     tags: ['C++', 'Arduino', 'ThingSpeak', 'Android', 'Twitter API'],
-    year: 2023,
+    year: 2020,
     featured: true,
   },
   {
@@ -51,7 +51,7 @@ export default [
       live: null,
     },
     tags: ['Python', 'Raspberry Pi', 'ThingSpeak', 'Streamlit', 'Twitter API'],
-    year: 2023,
+    year: 2020,
   },
   {
     id: 'face-recognition-attendance',
@@ -63,11 +63,11 @@ export default [
     screenshots: [],
     demo: null,
     links: {
-      github: 'https://github.com/KelynWong/FaceRecognitionAttendanceSys',
+      github: 'https://github.com/KelynWong/FaceRecoAttendanceSys',
       live: null,
     },
     tags: ['Python', 'OpenCV', 'Node-RED', 'Streamlit', 'MySQL'],
-    year: 2023,
+    year: 2021,
   },
   {
     id: 'smart-fitness-trainer',
@@ -83,7 +83,7 @@ export default [
       live: null,
     },
     tags: ['Python', 'Streamlit', 'Supabase'],
-    year: 2023,
+    year: 2024,
   },
   {
     id: 'covid-mobile-app',
@@ -93,14 +93,14 @@ export default [
     short: 'Android COVID info app with stats, news, symptoms, prevention & dark mode',
     description: 'An Android COVID-19 information app with Home, Search, World, Information, and Settings screens. It displays country and global case statistics, trending news, symptoms and prevention guidance, and includes UI preferences such as dark mode, language selection, and font settings.',
     screenshots: [],
-    demo: { type: 'link', id: 'https://www.figma.com/design/YwuKASh95itWhuyks9SufW/ANDE---CoD-Assignment-Wireframes?node-id=0-1&t=AdDF6838MXWSJ55J-1' },
+    demo: null,
     demoThumb: null,
     links: {
       github: 'https://github.com/KelynWong/VirusNow',
-      live: null,
+      figma: 'https://www.figma.com/design/YwuKASh95itWhuyks9SufW/ANDE---CoD-Assignment-Wireframes?node-id=0-1&t=AdDF6838MXWSJ55J-1',
     },
     tags: ['Java', 'Android SDK', 'AndroidX', 'Material Components', 'SQLite', 'AsyncHttp', 'Picasso'],
-    year: 2022,
+    year: '2020 - 2021',
   },
   {
     id: 'jibaboom',
@@ -116,7 +116,7 @@ export default [
       live: null,
     },
     tags: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'Express', 'PostgreSQL'],
-    year: 2022,
+    year: 2020,
   },
   {
     id: 'nomsters',
@@ -132,7 +132,7 @@ export default [
       live: null,
     },
     tags: ['Vue 3', 'Vite', 'CSS', 'JavaScript', 'HTML', 'Node.js', 'Express', 'MySQL', 'Spoonacular API'],
-    year: 2022,
+    year: 2023,
   },
   {
     id: 'tournament-management',
@@ -144,11 +144,11 @@ export default [
     screenshots: [],
     demo: null,
     links: {
-      github: 'https://github.com/KelynWong/CSD_G1T4',
+      github: 'https://github.com/KelynWong/CSD-TMS',
       live: null,
     },
     tags: [],
-    year: 2021,
+    year: 2024,
   },
   {
     id: 'task-master',
@@ -164,6 +164,38 @@ export default [
       live: null,
     },
     tags: ['Vue', 'JavaScript', 'Python', 'Flask', 'Docker', 'Docker Compose', 'Node.js', 'SCSS'],
-    year: 2023,
+    year: '2023 - 2024',
+  },
+  {
+    id: 'utilisense',
+    title: 'Utilisense',
+    coverImage: '/src/assets/images/projects/utilisense-cover.jpg',
+    coverAlt: 'Utilisense',
+    short: '',
+    description: '',
+    screenshots: [],
+    demo: { type: 'youtube', id: 'gUGHk7eD5iU' },
+    links: {
+      github: 'https://github.com/kelynwong/utilisense',
+      live: null,
+    },
+    tags: ['Vue', 'JavaScript', 'Python', 'Flask', 'Docker', 'Docker Compose', 'Node.js', 'SCSS'],
+    year: '2024 - 2025',
+  },
+  {
+    id: 'medimate',
+    title: 'Medimate',
+    coverImage: '/src/assets/images/projects/medimate-cover.jpg',
+    coverAlt: 'Medimate',
+    short: '',
+    description: '',
+    screenshots: [],
+    demo: { type: 'youtube', id: '4jJJxwHomcA' },
+    links: {
+      github: 'https://github.com/kelynwong/medimate',
+      live: null,
+    },
+    tags: ['Vue', 'JavaScript', 'Python', 'Flask', 'Docker', 'Docker Compose', 'Node.js', 'SCSS'],
+    year: '2024 - 2025',
   },
 ];

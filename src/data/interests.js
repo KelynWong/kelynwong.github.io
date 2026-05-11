@@ -18,7 +18,7 @@ export const interestCategories = [
     icon: '🎬',
     name: 'Content Creation',
     label: '🎬 Content Creation',
-    story: `Content creation came naturally after photography — same eye, just adding time as a dimension. I make short clips mostly for tiktok, consisting of a little bit of everything from travel, gaming, vlogs to my yearly recap videos. Something about looking back at the moments I've captured brings a sense of fulfillment.`,
+    story: `Content creation came naturally after photography — same eye, just adding time as a dimension. I make short clips mostly for tiktok (we live in a short attention span world after all), consisting of a little bit of everything from travel, gaming, vlogs to my yearly recap videos. Something about looking back at the moments I've captured brings a sense of fulfillment. It's like creating a little time capsule that I can revisit whenever I want. I enjoy the whole process of filming, editing and sharing, but the real joy comes from the end result: having a collection of memories that I can look back on and relive. It's also fun to share these moments with others and see how they connect with them. Whether it's a beautiful sunset, a funny moment in a game or just a slice of everyday life, I love being able to capture and share those experiences through video.`,
   },
   {
     id: 'music',
@@ -270,8 +270,8 @@ export const videoTiktoks = [
 ];
 
 export const interestsIntro = {
-  para1: `By day, I'm a software engineer building systems and solving problems with code. By night (and weekends), I'm usually making something with my hands like sculpting clay, framing photographs, making music covers, sketching characters. It's not a career pivot; it's how I keep my hands busy and my mind fresh. Check out some of my creative works below :)`,
-  para2: `Technical precision and creative expression aren't contradictory for me, rather i believe they complement each other. The problem-solving mindset I bring to engineering helps me approach art with intention. Working with physical mediums keeps me grounded and reminds me that not everything needs optimization. Whether I'm building a system or sculpting a figure, I iterate, refine, and make it feel right.`,
+  para1: `By day, I'm a software engineer building systems and solving problems with code. By night (and weekends), I'm usually making something with my hands like sculpting clay, framing photographs, making music covers, sketching characters. These creative outlets are more than just hobbies to me! They're a way to express parts of myself that don't fit into the logical, structured world of engineering. They allow me to explore ideas and emotions in a different way, and I find that they actually inform and inspire my work as an engineer.`,
+  para2: `The technical precision of engineering and creative expression aren't contradictory for me, rather I believe they complement each other. I approach both with the same mindset of iteration and improvement, whether it's refining a piece of code or getting the proportions right on a clay figure. It's all about the process of creating something that feels right to me. Indulge yourself in some of my creative works below :)`,
 };
 
 

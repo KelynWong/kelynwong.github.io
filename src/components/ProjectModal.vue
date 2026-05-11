@@ -220,7 +220,7 @@ export default {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.82);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,14 +230,14 @@ export default {
 
 .modal-container {
   position: relative;
-  background: var(--bg1);
+  background: var(--bg3);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   max-width: 900px;
   max-height: 90vh;
   overflow-y: auto;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
 
 .modal-close {

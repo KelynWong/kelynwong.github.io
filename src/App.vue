@@ -15,23 +15,41 @@
     <section id="hero" class="hero">
       <div class="hero-left">
         <div class="hero-hello">Hello there! My name is</div>
-        <h1 class="hero-name">Kelyn Wong</h1>
+        <h1 class="hero-name">{{ typedHeroName }}<span class="typing-caret" aria-hidden="true"></span></h1>
         <div class="hero-iam">I am a</div>
-        <h2 class="hero-role">Software Engineer</h2>
+        <h2 class="hero-role">{{ typedHeroRole }}<span class="typing-caret" aria-hidden="true"></span></h2>
         <div class="hero-i-prefix">I...</div>
         <div class="hero-verbs-wrap">
           <div class="hero-verbs">
-            <div class="hv-1">Collaborate.</div>
-            <div class="hv-2">Analyze.</div>
-            <div class="hv-3">Research.</div>
-            <div class="hv-1">Design.</div>
-            <div class="hv-2">Prototype.</div>
-            <div class="hv-3">Develop.</div>
+            <span
+              v-for="(token, idx) in typedHeroVerbTokens"
+              :key="`verb-${idx}`"
+              :class="`hero-verb-tone-${(idx % 4) + 1}`"
+            >{{ token }}</span><span class="typing-caret" aria-hidden="true"></span>
+          </div>
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-glow"></div>
+            <img src="./assets/images/computer.png" alt="Kelyn bitmoji at laptop" />
           </div>
         </div>
       </div>
       <div class="hero-right">
-        <ThreeJSModel />
+        <div class="hero-annotation">
+          <svg class="annotation-arrow" viewBox="0 0 60 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M52 4 C40 4, 10 8, 6 38" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round" fill="none" />
+            <path d="M2 34 L6 38 L10 32" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </svg>
+          <p class="annotation-text">This is a 3D model of my<br>personal workspace at home!</p>
+        </div>
+
+        <div class="hero-model-wrap">
+          <ThreeJSModel />
+        </div>
+
+        <div class="hero-3d-hint">
+          <div class="hint-dot"></div>
+          drag to rotate · scroll to zoom
+        </div>
       </div>
       <div class="hero-scroll">
         <div class="scroll-line"></div>
@@ -223,11 +241,11 @@
           </div>
 
           <div v-if="cat.id === 'clay'" class="gallery-grid">
-            <div v-for="item in clayItems" :key="item.id" class="gallery-item">
-              <div class="gallery-img-wrap">
-                <img v-if="item.img" :src="item.img" :alt="item.title" />
+            <div v-for="(item, idx) in clayItems" :key="item.id" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('clay', item.id) }">
+              <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('clay', item.id)" @click="openGalleryLightbox('clay', clayItems, idx)">
+                <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('clay', item.id, $event)" />
                 <div v-else class="gallery-placeholder"><span>🏺</span><span>clay model</span></div>
-              </div>
+              </button>
               <div class="gallery-caption">
                 <div class="gallery-caption-title">{{ item.title }}</div>
                 <div class="gallery-caption-sub">{{ item.year }}</div>
@@ -241,20 +259,21 @@
               <button
                 v-for="place in photoPlaces"
                 :key="place.id"
-                class="photo-place-tab"
+                class="photo-place-pill"
                 :class="{ active: activePhotoPlace === place.id }"
                 @click="activePhotoPlace = place.id"
               >
                 {{ place.label }}
+                <span class="photo-place-count">{{ place.count }}</span>
               </button>
             </div>
 
             <div class="gallery-grid">
-              <div v-for="item in activePhotoItems" :key="`${activePhotoPlace}-${item.id}`" class="gallery-item">
-                <div class="gallery-img-wrap">
-                  <img v-if="item.img" :src="item.img" :alt="item.title" />
+              <div v-for="(item, idx) in activePhotoItems" :key="`${activePhotoPlace}-${item.id}`" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('photo', activePhotoPlace + '-' + item.id) }">
+                <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('photo', activePhotoPlace + '-' + item.id)" @click="openGalleryLightbox('photo', activePhotoItems, idx)">
+                  <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('photo', activePhotoPlace + '-' + item.id, $event)" />
                   <div v-else class="gallery-placeholder"><span>📷</span><span>photograph</span></div>
-                </div>
+                </button>
                 <div class="gallery-caption">
                   <div class="gallery-caption-title">{{ item.title }}</div>
                   <div class="gallery-caption-sub">{{ item.location }} · {{ item.year }}</div>
@@ -385,14 +404,14 @@
                   <button class="pctrl pplay" @click="togglePlay">{{ isPlaying ? '⏸' : '▶' }}</button>
                   <button class="pctrl" @click="nextTrack" title="Next">⏭</button>
                 </div>
-              </div>
-              <div class="player-time">
-                <span>{{ formatTime(currentTime) }}</span>
-                <div class="player-progress-wrap" @click="seekTo($event)">
-                  <div class="player-progress-bg"></div>
-                  <div class="player-progress-fill" :style="{width: progressPct + '%'}"></div>
+                <div class="player-time">
+                  <span>{{ formatTime(currentTime) }}</span>
+                  <div class="player-progress-wrap" @click="seekTo($event)">
+                    <div class="player-progress-bg"></div>
+                    <div class="player-progress-fill" :style="{width: progressPct + '%'}"></div>
+                  </div>
+                  <span>{{ formatTime(duration) }}</span>
                 </div>
-                <span>{{ formatTime(duration) }}</span>
               </div>
               <div class="music-grid">
                 <div
@@ -417,11 +436,11 @@
           </div>
 
           <div v-if="cat.id === 'drawing'" class="gallery-grid">
-            <div v-for="item in drawingItems" :key="item.id" class="gallery-item">
-              <div class="gallery-img-wrap">
-                <img v-if="item.img" :src="item.img" :alt="item.title" />
+            <div v-for="(item, idx) in drawingItems" :key="item.id" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('drawing', item.id) }">
+              <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('drawing', item.id)" @click="openGalleryLightbox('drawing', drawingItems, idx)">
+                <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('drawing', item.id, $event)" />
                 <div v-else class="gallery-placeholder"><span>✏️</span><span>drawing</span></div>
-              </div>
+              </button>
               <div class="gallery-caption">
                 <div class="gallery-caption-title">{{ item.title }}</div>
                 <div class="gallery-caption-sub">{{ item.medium }}</div>
@@ -464,7 +483,7 @@
             </div>
           </div>
           <form class="contact-form-block" @submit.prevent="submitForm">
-            <div class="form-title">// send a message</div>
+            <div class="form-title">// send a quick message to my telegram inbox</div>
             <div class="form-field">
               <label>NAME</label>
               <input v-model="form.name" type="text" placeholder="your name" />
@@ -486,6 +505,37 @@
     </section>
 
     <!-- Project Modal -->
+    <transition name="gallery-lightbox-fade">
+      <div v-if="galleryLightboxOpen" class="gallery-lightbox-overlay" @click.self="closeGalleryLightbox">
+        <div class="gallery-lightbox" role="dialog" aria-modal="true" :aria-label="`${gallerySectionLabel(galleryLightboxSection)} slideshow`">
+          <button class="gallery-lightbox-close" @click="closeGalleryLightbox" aria-label="Close gallery slideshow">✕</button>
+
+          <div class="gallery-lightbox-stage">
+            <button class="gallery-lightbox-nav" @click="prevGalleryImage" :disabled="galleryLightboxItems.length < 2" aria-label="Previous image">←</button>
+
+            <div class="gallery-lightbox-media">
+              <img
+                v-if="currentGalleryLightboxItem?.img"
+                :src="currentGalleryLightboxItem.img"
+                :alt="currentGalleryLightboxItem.title"
+                class="gallery-lightbox-image"
+              />
+            </div>
+
+            <button class="gallery-lightbox-nav" @click="nextGalleryImage" :disabled="galleryLightboxItems.length < 2" aria-label="Next image">→</button>
+          </div>
+
+          <div class="gallery-lightbox-meta">
+            <div>
+              <div class="gallery-lightbox-title">{{ currentGalleryLightboxItem?.title }}</div>
+              <div class="gallery-lightbox-subtitle">{{ gallerySectionLabel(galleryLightboxSection) }}</div>
+            </div>
+            <div class="gallery-lightbox-counter">{{ galleryLightboxIndex + 1 }} / {{ galleryLightboxItems.length }}</div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
     <ProjectModal
       v-if="showProjectModal && activeProject"
       :is-open="showProjectModal"
@@ -602,6 +652,15 @@ export default {
       showProjectModal: false,
       currentImageIndex: 0,
       videoVisible: false,
+      galleryAspects: {
+        clay: {},
+        drawing: {},
+        photo: {},
+      },
+      galleryLightboxOpen: false,
+      galleryLightboxSection: '',
+      galleryLightboxItems: [],
+      galleryLightboxIndex: 0,
 
       // Music player state
       currentTrackIdx: null,
@@ -610,6 +669,14 @@ export default {
       duration: 0,
       volume: 0.8,
       progressPct: 0,
+      heroNameText: 'Kelyn Wong',
+      heroRoleTexts: ['Software Engineer', 'DevOps Engineer', 'Cloud Engineer'],
+      heroVerbsText: 'Analyze. Design. Prototype. Develop. Implement. Integrate. Refactor. Optimize. Test. Debug. Configure. Deploy. Automate. Monitor. Maintain.',
+      typedHeroName: '',
+      typedHeroRole: '',
+      typedHeroVerbs: '',
+      heroTypingActive: false,
+      heroTypingTimeouts: [],
       tracks: [
         {
           src: '/src/assets/audio/Benson_Boone__What_Was_a_nylek_cover.mp3',
@@ -675,8 +742,14 @@ export default {
     currentTrack() {
       return this.currentTrackIdx !== null ? this.tracks[this.currentTrackIdx] : null
     },
+    currentGalleryLightboxItem() {
+      return this.galleryLightboxItems[this.galleryLightboxIndex] || null
+    },
+    typedHeroVerbTokens() {
+      return this.typedHeroVerbs.match(/\S+\s*/g) || []
+    },
     photoPlaces() {
-      return this.photoGroups.map((group) => ({ id: group.id, label: group.label }))
+      return this.photoGroups.map((group) => ({ id: group.id, label: group.label, count: group.items.length }))
     },
     activePhotoItems() {
       const group = this.photoGroups.find((g) => g.id === this.activePhotoPlace)
@@ -687,16 +760,28 @@ export default {
   mounted() {
     this.fitHeroVerbs()
     this._heroResizeHandler = () => this.fitHeroVerbs()
+    this._socialScrollHandler = () => this.triggerSocialBounce()
+    this._galleryKeyHandler = (event) => this.handleGalleryKeydown(event)
     window.addEventListener('resize', this._heroResizeHandler)
+    window.addEventListener('scroll', this._socialScrollHandler, { passive: true })
+    window.addEventListener('keydown', this._galleryKeyHandler)
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => this.fitHeroVerbs())
     }
+    this.startHeroTypingSequence()
   },
 
   beforeUnmount() {
     if (this._heroResizeHandler) {
       window.removeEventListener('resize', this._heroResizeHandler)
     }
+    if (this._socialScrollHandler) {
+      window.removeEventListener('scroll', this._socialScrollHandler)
+    }
+    if (this._galleryKeyHandler) {
+      window.removeEventListener('keydown', this._galleryKeyHandler)
+    }
+    this.stopHeroTypingSequence()
   },
 
   methods: {
@@ -705,21 +790,182 @@ export default {
       const heroVerbs = document.querySelector('.hero-verbs')
       if (!heroLeft || !heroVerbs) return
 
-      const availableWidth = heroLeft.clientWidth - 64
-      let low = 20
-      let high = 56
+      heroVerbs.style.fontSize = ''
+    },
 
-      for (let i = 0; i < 12; i += 1) {
-        const mid = (low + high) / 2
-        heroVerbs.style.fontSize = `${mid}px`
-        if (heroVerbs.scrollWidth <= availableWidth) {
-          low = mid
-        } else {
-          high = mid
-        }
+    galleryImageStyle(section, itemId) {
+      const ratio = this.galleryAspects?.[section]?.[itemId]
+      return ratio ? { '--gallery-aspect': ratio } : null
+    },
+
+    isGalleryLandscape(section, itemId) {
+      const ratio = this.galleryAspects?.[section]?.[itemId]
+      return typeof ratio === 'number' && ratio > 1.15
+    },
+
+    recordGalleryAspect(section, itemId, event) {
+      const image = event?.target
+      if (!image || !image.naturalWidth || !image.naturalHeight) return
+
+      const ratio = image.naturalWidth / image.naturalHeight
+      if (!this.galleryAspects[section]) {
+        this.galleryAspects[section] = {}
       }
+      this.galleryAspects[section][itemId] = ratio
+    },
 
-      heroVerbs.style.fontSize = `${Math.floor(low)}px`
+    getGalleryItems(section) {
+      if (section === 'clay') return this.clayItems
+      if (section === 'drawing') return this.drawingItems
+      if (section === 'photo') return this.activePhotoItems
+      return []
+    },
+
+    gallerySectionLabel(section) {
+      if (section === 'clay') return 'Clay Models'
+      if (section === 'drawing') return 'Drawings'
+      if (section === 'photo') return 'Photography'
+      return 'Gallery'
+    },
+
+    openGalleryLightbox(section, items, startIndex = 0) {
+      this.galleryLightboxSection = section
+      this.galleryLightboxItems = Array.isArray(items) ? items : []
+      this.galleryLightboxIndex = startIndex
+      this.galleryLightboxOpen = true
+      document.body.style.overflow = 'hidden'
+    },
+
+    closeGalleryLightbox() {
+      this.galleryLightboxOpen = false
+      this.galleryLightboxSection = ''
+      this.galleryLightboxItems = []
+      this.galleryLightboxIndex = 0
+      document.body.style.overflow = ''
+    },
+
+    nextGalleryImage() {
+      if (!this.galleryLightboxItems.length) return
+      this.galleryLightboxIndex = (this.galleryLightboxIndex + 1) % this.galleryLightboxItems.length
+    },
+
+    prevGalleryImage() {
+      if (!this.galleryLightboxItems.length) return
+      this.galleryLightboxIndex =
+        (this.galleryLightboxIndex - 1 + this.galleryLightboxItems.length) % this.galleryLightboxItems.length
+    },
+
+    handleGalleryKeydown(event) {
+      if (!this.galleryLightboxOpen) return
+      if (event.key === 'Escape') {
+        this.closeGalleryLightbox()
+      } else if (event.key === 'ArrowRight') {
+        this.nextGalleryImage()
+      } else if (event.key === 'ArrowLeft') {
+        this.prevGalleryImage()
+      }
+    },
+
+    triggerSocialBounce() {
+      const socialFloat = document.querySelector('.social-float')
+      if (!socialFloat) return
+
+      socialFloat.classList.remove('is-bouncing')
+      void socialFloat.offsetWidth
+      socialFloat.classList.add('is-bouncing')
+
+      if (this._socialBounceTimer) {
+        clearTimeout(this._socialBounceTimer)
+      }
+      this._socialBounceTimer = setTimeout(() => {
+        socialFloat.classList.remove('is-bouncing')
+      }, 650)
+    },
+
+    stopHeroTypingSequence() {
+      this.heroTypingActive = false
+      for (const timeoutId of this.heroTypingTimeouts) {
+        clearTimeout(timeoutId)
+      }
+      this.heroTypingTimeouts = []
+    },
+
+    heroTypingWait(ms) {
+      return new Promise((resolve) => {
+        if (!this.heroTypingActive) {
+          resolve(false)
+          return
+        }
+
+        const timeoutId = setTimeout(() => {
+          this.heroTypingTimeouts = this.heroTypingTimeouts.filter((id) => id !== timeoutId)
+          resolve(this.heroTypingActive)
+        }, ms)
+
+        this.heroTypingTimeouts.push(timeoutId)
+      })
+    },
+
+    async typeIntoField(fieldName, text, speed = 70) {
+      for (let i = 1; i <= text.length; i += 1) {
+        if (!this.heroTypingActive) return false
+        this[fieldName] = text.slice(0, i)
+        const stillActive = await this.heroTypingWait(speed)
+        if (!stillActive) return false
+      }
+      return true
+    },
+
+    async deleteField(fieldName, speed = 45) {
+      const current = this[fieldName] || ''
+      for (let i = current.length - 1; i >= 0; i -= 1) {
+        if (!this.heroTypingActive) return false
+        this[fieldName] = current.slice(0, i)
+        const stillActive = await this.heroTypingWait(speed)
+        if (!stillActive) return false
+      }
+      return true
+    },
+
+    async startHeroRoleLoop(startIndex = 0) {
+      if (!this.heroRoleTexts.length) return
+      let roleIndex = startIndex % this.heroRoleTexts.length
+
+      while (this.heroTypingActive) {
+        const paused = await this.heroTypingWait(1300)
+        if (!paused) return
+
+        const deleted = await this.deleteField('typedHeroRole', 45)
+        if (!deleted) return
+
+        const typed = await this.typeIntoField('typedHeroRole', this.heroRoleTexts[roleIndex], 70)
+        if (!typed) return
+
+        roleIndex = (roleIndex + 1) % this.heroRoleTexts.length
+      }
+    },
+
+    async startHeroTypingSequence() {
+      this.stopHeroTypingSequence()
+      this.heroTypingActive = true
+
+      this.typedHeroName = ''
+      this.typedHeroRole = ''
+      this.typedHeroVerbs = ''
+
+      const nameTyped = await this.typeIntoField('typedHeroName', this.heroNameText, 85)
+      if (!nameTyped) return
+
+      const roleTyped = await this.typeIntoField('typedHeroRole', this.heroRoleTexts[0], 70)
+      if (!roleTyped) return
+
+      const verbsTyped = await this.typeIntoField('typedHeroVerbs', this.heroVerbsText, 14)
+      if (!verbsTyped) return
+
+      const transitioned = await this.heroTypingWait(400)
+      if (!transitioned) return
+
+      this.startHeroRoleLoop(1)
     },
 
     escapeHtml(value) {
@@ -1027,7 +1273,9 @@ section {
 .hero {
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  min-height: 100vh;
   padding-top: 52px;
   position: relative;
   overflow: hidden;
@@ -1037,8 +1285,9 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 100px 40px 120px 120px;
+  padding: 100px 40px 140px 120px;
   border-right: 1px solid var(--border);
+  min-width: 0;
 }
 
 .hero-hello {
@@ -1056,13 +1305,15 @@ section {
 }
 
 .hero-iam { font-size: 13px; color: var(--text-dim); }
-.hero-role { font-size: clamp(20px, 2.8vw, 36px); color: var(--accent3); margin-bottom: 28px; }
+.hero-role { font-size: clamp(20px, 2.8vw, 36px); color: var(--accent1); margin-bottom: 28px; }
 .hero-i-prefix { font-size: 13px; color: var(--text-dim); }
 
 .hero-verbs-wrap {
   position: relative;
   flex: 1;
   min-height: 180px;
+  width: 100%;
+  align-self: flex-start;
 }
 
 .hero-verbs {
@@ -1071,14 +1322,142 @@ section {
   position: relative;
   z-index: 1;
   width: 100%;
+  white-space: normal;
+  max-width: 100%;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.hero-verb-tone-1 { color: var(--accent3); }
+.hero-verb-tone-2 { color: var(--code3); }
+.hero-verb-tone-3 { color: var(--code4); }
+.hero-verb-tone-4 { color: var(--code5); }
+
+.typing-caret {
+  display: inline-block;
+  width: 0.06em;
+  height: 0.95em;
+  margin-left: 0.08em;
+  vertical-align: -0.08em;
+  background: currentColor;
+  animation: heroCaretBlink 1s steps(1, end) infinite;
+}
+
+@keyframes heroCaretBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 .hv-1 { color: var(--accent3); }
 .hv-2 { color: var(--code4); }
 .hv-3 { color: var(--accent3); }
 
+.hero-avatar-wrap {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  width: clamp(220px, 22vw, 320px);
+  z-index: 6;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-avatar-glow {
+  position: absolute;
+  width: 160%;
+  height: 160%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -38%);
+  background: radial-gradient(ellipse 60% 55% at 50% 52%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.04) 55%, transparent 72%);
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.hero-avatar-wrap img {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.08));
+}
+
 .hero-right {
   position: relative;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.hero-model-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-annotation {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.annotation-text {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: left;
+  line-height: 1.45;
+  max-width: 180px;
+}
+
+.annotation-arrow {
+  width: 60px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.hero-3d-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  background: rgba(13, 13, 13, 0.6);
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  z-index: 5;
+}
+
+.hint-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent1);
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
 .hero-scroll {
@@ -1293,14 +1672,14 @@ section {
   font-size: 12px;
 }
 
-.kw { color: var(--accent2); }
-.fn { color: var(--accent3); }
-.punc { color: var(--text-dim); }
-.str { color: var(--code5); }
-.val { color: var(--code3); }
-.num { color: var(--code4); }
-.prop { color: var(--code1); }
-.cmt { color: var(--text-faint); }
+.code-content :deep(.kw) { color: var(--accent2); }
+.code-content :deep(.fn) { color: var(--accent3); }
+.code-content :deep(.punc) { color: var(--text-dim); }
+.code-content :deep(.str) { color: var(--code5); }
+.code-content :deep(.val) { color: var(--code3); }
+.code-content :deep(.num) { color: var(--code4); }
+.code-content :deep(.prop) { color: var(--code1); }
+.code-content :deep(.cmt) { color: var(--text-faint); }
 
 /* Education */
 .edu-items { display: flex; flex-direction: column; gap: 24px; }
@@ -1458,8 +1837,9 @@ section {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
+  grid-auto-flow: dense;
 }
 
 .gallery-item {
@@ -1467,24 +1847,44 @@ section {
   border-radius: 4px;
   overflow: hidden;
   background: var(--bg2);
+  grid-column: span 1;
+}
+
+.gallery-item.gallery-item-landscape {
+  grid-column: span 2;
 }
 
 .gallery-img-wrap {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: var(--gallery-aspect, auto);
   background: var(--bg3);
+}
+
+.gallery-img-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+  text-align: inherit;
+}
+
+.gallery-img-button:hover img {
+  transform: scale(1.02);
 }
 
 .gallery-img-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+  transition: transform 0.25s ease;
 }
 
 .gallery-placeholder {
   width: 100%;
-  height: 100%;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1514,27 +1914,205 @@ section {
   color: var(--text-faint);
   min-height: 190px;
   text-align: center;
+  grid-column: 1 / -1;
+  order: 999;
+}
+
+@media (max-width: 1100px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-item.gallery-item-landscape {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item.gallery-item-landscape {
+    grid-column: span 1;
+  }
+}
+
+.gallery-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1002;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.gallery-lightbox {
+  position: relative;
+  width: min(1100px, 100%);
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  padding: 16px;
+}
+
+.gallery-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(20, 20, 20, 0.92);
+  color: var(--text);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.gallery-lightbox-stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.gallery-lightbox-media {
+  min-width: 0;
+  max-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--bg2);
+}
+
+.gallery-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.gallery-lightbox-nav {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(20, 20, 20, 0.92);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.gallery-lightbox-nav:hover:not(:disabled) {
+  color: var(--accent1);
+  border-color: var(--accent1);
+  background: rgba(91, 170, 220, 0.12);
+}
+
+.gallery-lightbox-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.gallery-lightbox-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.gallery-lightbox-title {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.gallery-lightbox-fade-enter-active,
+.gallery-lightbox-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.gallery-lightbox-fade-enter-from,
+.gallery-lightbox-fade-leave-to {
+  opacity: 0;
+}
+
+.gallery-lightbox-subtitle,
+.gallery-lightbox-counter {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .photo-place-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 32px;
 }
 
-.photo-place-tab {
-  border: 1px solid var(--border);
-  background: transparent;
+.photo-place-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  background: var(--bg2);
   color: var(--text-dim);
+  font-family: var(--mono);
   font-size: 11px;
-  padding: 6px 10px;
-  border-radius: 3px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
-.photo-place-tab.active {
+.photo-place-pill:hover { border-color: var(--accent1); color: var(--text); }
+
+.photo-place-pill.active {
   border-color: var(--accent1);
+  color: var(--accent1);
+  background: rgba(91,170,220,0.08);
+}
+
+.photo-place-count {
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 8px;
+  background: var(--bg4);
+  color: var(--text-faint);
+}
+
+.photo-place-pill.active .photo-place-count {
+  background: rgba(91,170,220,0.15);
   color: var(--accent1);
 }
 
@@ -1876,6 +2454,10 @@ section {
   border-radius: 0 8px 8px 0;
 }
 
+.social-float.is-bouncing {
+  animation: socialBounce 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 .social-icon {
   color: var(--text-faint);
   text-decoration: none;
@@ -1889,6 +2471,14 @@ section {
 
 .social-icon:hover { color: var(--accent1); background: rgba(91,170,220,0.08); }
 .social-icon svg { width: 14px; height: 14px; fill: currentColor; }
+
+@keyframes socialBounce {
+  0% { transform: translateX(0) translateY(0) scale(1); }
+  25% { transform: translateX(3px) translateY(-3px) scale(1.03); }
+  50% { transform: translateX(0) translateY(0) scale(0.99); }
+  75% { transform: translateX(2px) translateY(-2px) scale(1.02); }
+  100% { transform: translateX(0) translateY(0) scale(1); }
+}
 
 .social-float-line {
   width: 20px; height: 1px;
@@ -2083,6 +2673,18 @@ section {
   .hero-left {
     padding: 40px 24px 60px;
     border-right: none;
+  }
+
+  .hero-avatar-wrap {
+    width: clamp(220px, 42vw, 320px);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -6px;
+  }
+
+  .hero-annotation {
+    top: 18px;
+    right: 18px;
   }
 
   .about-grid,
