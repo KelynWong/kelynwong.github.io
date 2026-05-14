@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs><pattern id="g5" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#g5)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">VirusNow.java</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">Virusnow</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#C4836A">COVID-19 Tracker</text>
+  <!-- phone mockup -->
+  <rect x="120" y="140" width="100" height="180" rx="12" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="126" y="152" width="88" height="156" rx="4" fill="#0d0d0d"/>
+  <!-- status bar -->
+  <rect x="126" y="152" width="88" height="14" rx="0" fill="#141414"/>
+  <text x="170" y="162" class="m" font-size="7" fill="#555" text-anchor="middle">VirusNow</text>
+  <!-- stats rows -->
+  <rect x="130" y="172" width="80" height="22" rx="2" fill="#1a0a0a"/>
+  <text x="170" y="181" class="m" font-size="7" fill="#C4836A" text-anchor="middle">CONFIRMED</text>
+  <text x="170" y="190" class="m" font-size="8" fill="#fff" text-anchor="middle">648,294,381</text>
+  <rect x="130" y="198" width="36" height="18" rx="2" fill="#0a0a1a"/>
+  <text x="148" y="207" class="m" font-size="7" fill="#5BAADC" text-anchor="middle">ACTIVE</text>
+  <rect x="170" y="198" width="40" height="18" rx="2" fill="#0a1a0a"/>
+  <text x="190" y="207" class="m" font-size="7" fill="#8BB87A" text-anchor="middle">RECOVERED</text>
+  <!-- mini chart bars -->
+  <rect x="132" y="232" width="6" height="20" rx="1" fill="#C4836A" opacity="0.6"/>
+  <rect x="141" y="226" width="6" height="26" rx="1" fill="#C4836A" opacity="0.7"/>
+  <rect x="150" y="222" width="6" height="30" rx="1" fill="#C4836A" opacity="0.8"/>
+  <rect x="159" y="218" width="6" height="34" rx="1" fill="#C4836A"/>
+  <rect x="168" y="224" width="6" height="28" rx="1" fill="#C4836A" opacity="0.7"/>
+  <rect x="177" y="228" width="6" height="24" rx="1" fill="#C4836A" opacity="0.6"/>
+  <rect x="186" y="225" width="6" height="27" rx="1" fill="#C4836A" opacity="0.7"/>
+  <!-- bottom tabs -->
+  <rect x="126" y="288" width="88" height="18" rx="0" fill="#141414"/>
+  <line x1="148" y1="288" x2="148" y2="306" stroke="#222" stroke-width="0.5"/>
+  <line x1="170" y1="288" x2="170" y2="306" stroke="#222" stroke-width="0.5"/>
+  <line x1="192" y1="288" x2="192" y2="306" stroke="#222" stroke-width="0.5"/>
+  <text x="137" y="300" class="m" font-size="6" fill="#5BAADC" text-anchor="middle">HOME</text>
+  <text x="159" y="300" class="m" font-size="6" fill="#555" text-anchor="middle">SEARCH</text>
+  <text x="181" y="300" class="m" font-size="6" fill="#555" text-anchor="middle">WORLD</text>
+  <text x="203" y="300" class="m" font-size="6" fill="#555" text-anchor="middle">INFO</text>
+  <!-- home button -->
+  <rect x="155" y="310" width="30" height="6" rx="3" fill="#333"/>
+  <!-- feature boxes right -->
+  <rect x="260" y="140" width="110" height="38" rx="4" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+  <text x="315" y="157" class="m" font-size="10" fill="#C4836A" text-anchor="middle">Live Stats API</text>
+  <text x="315" y="170" class="m" font-size="9" fill="#5a3a2a" text-anchor="middle">global + by country</text>
+  <rect x="260" y="190" width="110" height="38" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="315" y="207" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">News Feed</text>
+  <text x="315" y="220" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">trending stories</text>
+  <rect x="260" y="240" width="110" height="38" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="315" y="257" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Symptom Guide</text>
+  <text x="315" y="270" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">prevention info</text>
+  <rect x="260" y="290" width="110" height="38" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="315" y="307" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">SQLite + Settings</text>
+  <text x="315" y="320" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">dark mode, language</text>
+  <!-- tech stack row -->
+  <rect x="400" y="168" width="58" height="24" rx="3" fill="#141414" stroke="#4A72B0" stroke-width="0.7"/>
+  <text x="429" y="184" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Java / SDK</text>
+  <rect x="464" y="168" width="68" height="24" rx="3" fill="#141414" stroke="#8BB87A" stroke-width="0.7"/>
+  <text x="498" y="184" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">Material UI</text>
+  <rect x="400" y="198" width="58" height="24" rx="3" fill="#141414" stroke="#C4836A" stroke-width="0.7"/>
+  <text x="429" y="214" class="m" font-size="9" fill="#C4836A" text-anchor="middle">AsyncHttp</text>
+  <rect x="464" y="198" width="68" height="24" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.7"/>
+  <text x="498" y="214" class="m" font-size="9" fill="#B87DB8" text-anchor="middle">Picasso imgs</text>
+  <!-- code -->
+  <text x="64" y="318" class="m" font-size="10" fill="#2a3a2a">AsyncHttpClient.get(covidAPI,</text>
+  <text x="64" y="334" class="m" font-size="10" fill="#d4d4d4">    new </text>
+  <text x="101" y="334" class="m" font-size="10" fill="#4A72B0">JsonHttpResponseHandler</text>
+  <text x="255" y="334" class="m" font-size="10" fill="#d4d4d4">() {</text>
+  <text x="64" y="350" class="m" font-size="10" fill="#4A72B0">    onSuccess</text>
+  <text x="133" y="350" class="m" font-size="10" fill="#d4d4d4">: updateUI(stats)</text>
+  <text x="64" y="366" class="m" font-size="10" fill="#d4d4d4">})</text>
+</svg>

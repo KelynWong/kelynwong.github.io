@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs><pattern id="g7" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#g7)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">Nomsters.vue</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">Nomsters</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#C4836A">Recipe Discovery App</text>
+  <!-- recipe card mockup -->
+  <rect x="90" y="148" width="130" height="175" rx="6" fill="#141414" stroke="#C4836A" stroke-width="1"/>
+  <!-- card image area -->
+  <rect x="96" y="154" width="118" height="70" rx="3" fill="#1a1008"/>
+  <!-- stylised food icon: bowl -->
+  <ellipse cx="155" cy="210" rx="34" ry="10" fill="#2a1a0a" stroke="#C4836A" stroke-width="0.8"/>
+  <path d="M121 202 Q155 185 189 202" fill="#2a1a0a" stroke="#C4836A" stroke-width="0.8"/>
+  <!-- steam lines -->
+  <path d="M142 188 Q138 182 142 176" fill="none" stroke="#C4836A" stroke-width="0.8" opacity="0.5"/>
+  <path d="M155 185 Q151 179 155 173" fill="none" stroke="#C4836A" stroke-width="0.8" opacity="0.5"/>
+  <path d="M168 188 Q164 182 168 176" fill="none" stroke="#C4836A" stroke-width="0.8" opacity="0.5"/>
+  <!-- card text -->
+  <rect x="96" y="228" width="118" height="12" rx="2" fill="#2a1a0a"/>
+  <text x="155" y="238" class="m" font-size="9" fill="#C4836A" text-anchor="middle">Pasta Carbonara</text>
+  <rect x="96" y="244" width="80" height="8" rx="1" fill="#1a1a1a"/>
+  <rect x="96" y="256" width="60" height="8" rx="1" fill="#1a1a1a"/>
+  <!-- nutrition badge -->
+  <rect x="96" y="270" width="48" height="18" rx="3" fill="#0f2a18" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="120" y="282" class="m" font-size="8" fill="#8BB87A" text-anchor="middle">520 kcal</text>
+  <rect x="150" y="270" width="36" height="18" rx="3" fill="#1a1a0a" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="168" y="282" class="m" font-size="8" fill="#C8C87A" text-anchor="middle">$4.20</text>
+  <!-- feature boxes -->
+  <rect x="250" y="148" width="116" height="36" rx="4" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+  <text x="308" y="163" class="m" font-size="10" fill="#C4836A" text-anchor="middle">Spoonacular API</text>
+  <text x="308" y="176" class="m" font-size="9" fill="#5a3a2a" text-anchor="middle">nutrition data</text>
+  <rect x="250" y="196" width="116" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="308" y="211" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Meal Planning</text>
+  <text x="308" y="224" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">grocery lists</text>
+  <rect x="250" y="244" width="116" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="308" y="259" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">Vue 3 + Vite</text>
+  <text x="308" y="272" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">SPA frontend</text>
+  <rect x="250" y="292" width="116" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="308" y="307" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Express + MySQL</text>
+  <text x="308" y="320" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">REST API backend</text>
+  <!-- code -->
+  <text x="64" y="342" class="m" font-size="10" fill="#2a3a2a">const recipe = await</text>
+  <text x="64" y="358" class="m" font-size="10" fill="#5BAADC">  spoonacular</text>
+  <text x="145" y="358" class="m" font-size="10" fill="#d4d4d4">.analyze(ingredients)</text>
+  <text x="64" y="374" class="m" font-size="10" fill="#d4d4d4">// nutrition + cost + grocery list</text>
+</svg>

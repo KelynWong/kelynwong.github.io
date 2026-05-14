@@ -3,7 +3,7 @@ export default [
     tabName: 'degree.ts',
     className: 'UniversityDegree',
     school: 'Singapore Management University',
-    degree: 'Bachelor of Science (Software Engineering), 2nd major in Internet of Things',
+    degree: 'Bachelor of Science (Software Engineering), 2nd major in Physical-Cyber Systems',
     period: '2022 — 2026',
     gpa: null,
     ongoing: false,

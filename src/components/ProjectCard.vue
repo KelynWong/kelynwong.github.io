@@ -59,13 +59,33 @@
       >
         Live ↗
       </a>
+      <a
+        v-if="project.links?.figma"
+        :href="project.links.figma"
+        class="proj-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        :aria-label="`Figma for ${project.title}`"
+      >
+        Figma ↗
+      </a>
+      <a
+        v-if="project.links?.prototype"
+        :href="project.links.prototype"
+        class="proj-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        :aria-label="`Prototype for ${project.title}`"
+      >
+        Prototype ↗
+      </a>
       <button
-        v-if="project.demo || project.screenshots?.length"
+        v-if="hasDemos(project)"
         @click="$emit('open-project', project)"
         class="proj-link proj-view-btn"
-        :aria-label="`View ${project.title} details and media`"
+        :aria-label="`Open demo${getDemoCount(project) > 1 ? 's' : ''} for ${project.title}`"
       >
-        View ↗
+        {{ getDemoCount(project) > 1 ? `Demos (${getDemoCount(project)})` : 'Demo' }} ↗
       </button>
     </div>
   </article>
@@ -88,6 +108,15 @@ export default {
     truncate(text, length) {
       if (!text) return '';
       return text.length > length ? text.slice(0, length) + '…' : text;
+    },
+    getDemoCount(project) {
+      if (!project) return 0;
+      if (Array.isArray(project.demos)) return project.demos.length;
+      if (Array.isArray(project.demo)) return project.demo.length;
+      return project.demo ? 1 : 0;
+    },
+    hasDemos(project) {
+      return this.getDemoCount(project) > 0;
     },
   },
 };

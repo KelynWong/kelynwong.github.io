@@ -21,7 +21,7 @@
                 <div class="gallery-main">
                   <img
                     :src="displayImages[currentImageIndex]"
-                    :alt="`${project.title} - image ${currentImageIndex + 1}`"
+                    :alt="displayImageAlt(currentImageIndex)"
                     class="gallery-image"
                   />
                 </div>
@@ -44,53 +44,52 @@
                     →
                   </button>
                 </div>
+                <div class="gallery-progress-bar">
+                  <div class="progress-fill" :style="{ width: imageAutoPlayProgress + '%' }"></div>
+                </div>
               </div>
 
               <!-- Video Embed -->
-              <div v-if="project.demo" class="video-embed">
-                <button
-                  v-if="!videoVisible"
-                  @click="videoVisible = true"
-                  class="play-btn"
-                  :aria-label="`Play demo video for ${project.title}`"
-                >
-                  ▶ Play Demo
-                </button>
-                <div v-else class="video-player">
+              <div v-if="demoCount > 0" class="video-embed">
+                <div class="video-player">
                   <iframe
-                    v-if="project.demo.type === 'youtube'"
-                    :src="`https://www.youtube.com/embed/${project.demo.id}?autoplay=1`"
+                    v-if="currentDemo() && currentDemo().type === 'youtube'"
+                    :src="`https://www.youtube.com/embed/${currentDemo().id}?rel=0&modestbranding=1&autoplay=0`"
                     title="Project Demo"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
                     class="video-iframe"
                   ></iframe>
                   <iframe
-                    v-else-if="project.demo.type === 'vimeo'"
-                    :src="`https://player.vimeo.com/video/${project.demo.id}?autoplay=1`"
+                    v-else-if="currentDemo() && currentDemo().type === 'vimeo'"
+                    :src="`https://player.vimeo.com/video/${currentDemo().id}`"
                     title="Project Demo"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen
                     class="video-iframe"
                   ></iframe>
                 </div>
+                <div v-if="demoCount > 1" class="gallery-controls">
+                  <button @click="prevDemo" class="gallery-btn" :aria-label="'Previous demo'">←</button>
+                  <div class="gallery-indicator">{{ currentDemoIndex + 1 }} / {{ demoCount }}</div>
+                  <button @click="nextDemo" class="gallery-btn" :aria-label="'Next demo'">→</button>
+                </div>
               </div>
             </div>
 
             <!-- Text Content -->
             <div class="text-section">
-              <h2 :id="`modal-title-${project.id}`" class="modal-title">{{ project.title }}</h2>
+              <div class="modal-title-row">
+                <h2 :id="`modal-title-${project.id}`" class="modal-title">{{ project.title }}</h2>
+                <span v-if="project.year" class="modal-year">{{ project.year }}</span>
+              </div>
 
               <p v-if="project.short" class="modal-short">{{ project.short }}</p>
 
               <div class="modal-description">{{ project.description }}</div>
 
               <!-- Meta Info -->
-              <div v-if="project.year || project.role" class="modal-meta">
-                <div v-if="project.year" class="meta-item">
-                  <span class="meta-label">Year:</span>
-                  <span class="meta-value">{{ project.year }}</span>
-                </div>
+              <div v-if="project.role" class="modal-meta">
                 <div v-if="project.role" class="meta-item">
                   <span class="meta-label">Role:</span>
                   <span class="meta-value">{{ project.role }}</span>
@@ -162,7 +161,11 @@ export default {
   data() {
     return {
       currentImageIndex: 0,
-      videoVisible: false,
+      currentDemoIndex: 0,
+      imageAutoPlayInterval: null,
+      demoAutoPlayInterval: null,
+      imageAutoPlayProgressInterval: null,
+      imageAutoPlayProgress: 0,
     };
   },
   computed: {
@@ -176,8 +179,17 @@ export default {
       }
       return imgs;
     },
+    demoList() {
+      if (!this.project) return [];
+      if (Array.isArray(this.project.demos)) return this.project.demos;
+      if (Array.isArray(this.project.demo)) return this.project.demo;
+      return this.project.demo ? [this.project.demo] : [];
+    },
+    demoCount() {
+      return this.demoList.length;
+    },
     hasMedia() {
-      return this.displayImages.length > 0 || this.project.demo;
+      return this.displayImages.length > 0 || this.demoCount > 0;
     },
     hasLinks() {
       return this.project.links?.github || this.project.links?.live || this.project.links?.figma;
@@ -192,26 +204,136 @@ export default {
           this.$el?.querySelector('.modal-close')?.focus();
         });
         this.currentImageIndex = 0;
-        this.videoVisible = false;
+        this.currentDemoIndex = 0;
+        // Delay auto-play slightly to ensure displayImages is computed
+        this.$nextTick(() => {
+          this.maybeStartAutoPlay();
+        });
       } else {
         document.body.style.overflow = '';
+        this.stopImageAutoPlay();
+        this.stopDemoAutoPlay();
       }
+    },
+    displayImages(newImages) {
+      if (!this.isOpen || !newImages?.length) return;
+
+      if (this.currentImageIndex >= newImages.length) {
+        this.currentImageIndex = 0;
+      }
+
+      this.maybeStartAutoPlay();
+    },
+    demoList(newDemos) {
+      if (!this.isOpen || !newDemos?.length) return;
+
+      if (this.currentDemoIndex >= newDemos.length) {
+        this.currentDemoIndex = 0;
+      }
+
+      this.maybeStartAutoPlay();
     },
   },
   methods: {
     closeModal() {
       this.$emit('close');
     },
+    displayImageAlt(index) {
+      if (!this.project.screenshots?.length) {
+        return this.project.coverAlt || this.project.title;
+      }
+
+      return `${this.project.title} image ${index + 1}`;
+    },
     nextImage() {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.displayImages.length;
+      this.restartImageAutoPlay();
     },
     prevImage() {
       this.currentImageIndex =
         (this.currentImageIndex - 1 + this.displayImages.length) % this.displayImages.length;
+      this.restartImageAutoPlay();
+    },
+    startImageAutoPlay() {
+      if (this.displayImages.length <= 1) return;
+      this.stopImageAutoPlay();
+      this.imageAutoPlayProgress = 0;
+      // Update progress every 50ms (will go 0-100 over 5 seconds)
+      this.imageAutoPlayProgressInterval = setInterval(() => {
+        this.imageAutoPlayProgress = Math.min(this.imageAutoPlayProgress + 1, 100);
+      }, 50);
+      // Advance to next image every 5 seconds
+      this.imageAutoPlayInterval = setInterval(() => {
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.displayImages.length;
+        this.imageAutoPlayProgress = 0;
+      }, 5000);
+    },
+    stopImageAutoPlay() {
+      if (this.imageAutoPlayInterval) {
+        clearInterval(this.imageAutoPlayInterval);
+        this.imageAutoPlayInterval = null;
+      }
+      if (this.imageAutoPlayProgressInterval) {
+        clearInterval(this.imageAutoPlayProgressInterval);
+        this.imageAutoPlayProgressInterval = null;
+      }
+      this.imageAutoPlayProgress = 0;
+    },
+    restartImageAutoPlay() {
+      if (this.displayImages.length > 1) {
+        this.startImageAutoPlay();
+      }
+    },
+    startDemoAutoPlay() {
+      if (this.demoCount <= 1) return;
+      this.stopDemoAutoPlay();
+      this.demoAutoPlayInterval = setInterval(() => {
+        this.currentDemoIndex = (this.currentDemoIndex + 1) % this.demoCount;
+      }, 5000);
+    },
+    stopDemoAutoPlay() {
+      if (this.demoAutoPlayInterval) {
+        clearInterval(this.demoAutoPlayInterval);
+        this.demoAutoPlayInterval = null;
+      }
+    },
+    restartDemoAutoPlay() {
+      if (this.demoCount > 1) {
+        this.startDemoAutoPlay();
+      }
+    },
+    maybeStartAutoPlay() {
+      // Start each autoplay independently so both galleries can rotate.
+      if (this.displayImages.length > 1) {
+        this.startImageAutoPlay();
+      } else {
+        this.stopImageAutoPlay();
+      }
+
+      if (this.demoCount > 1) {
+        this.startDemoAutoPlay();
+      } else {
+        this.stopDemoAutoPlay();
+      }
+    },
+    currentDemo() {
+      return this.demoList[this.currentDemoIndex];
+    },
+    nextDemo() {
+      if (this.demoCount === 0) return;
+      this.currentDemoIndex = (this.currentDemoIndex + 1) % this.demoCount;
+      this.restartDemoAutoPlay();
+    },
+    prevDemo() {
+      if (this.demoCount === 0) return;
+      this.currentDemoIndex = (this.currentDemoIndex - 1 + this.demoCount) % this.demoCount;
+      this.restartDemoAutoPlay();
     },
   },
   beforeUnmount() {
     document.body.style.overflow = '';
+    this.stopImageAutoPlay();
+    this.stopDemoAutoPlay();
   },
 };
 </script>
@@ -233,7 +355,7 @@ export default {
   background: var(--bg3);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  max-width: 900px;
+  max-width: 1100px;
   max-height: 90vh;
   overflow-y: auto;
   width: 100%;
@@ -241,12 +363,10 @@ export default {
 }
 
 .modal-close {
-  position: sticky;
-  top: 0;
-  right: 0;
-  float: right;
-  margin: 12px;
-  z-index: 10;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
   width: 36px;
   height: 36px;
   border: 1px solid var(--border);
@@ -271,10 +391,12 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 0;
+  width: 100%;
 }
 
 .media-section {
   flex-shrink: 0;
+  width: 100%;
 }
 
 .gallery-wrapper {
@@ -287,12 +409,15 @@ export default {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .gallery-controls {
@@ -329,34 +454,30 @@ export default {
   text-align: center;
 }
 
+.gallery-progress-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--bg1);
+  border-top: 1px solid var(--border);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent1);
+  transition: width 0.05s linear;
+}
+
 .video-embed {
   padding: 16px;
   background: var(--bg2);
   border-top: 1px solid var(--border);
-}
-
-.play-btn {
   width: 100%;
-  padding: 16px;
-  background: var(--accent1);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.play-btn:hover {
-  background: var(--accent2);
 }
 
 .video-player {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  margin-top: 12px;
 }
 
 .video-iframe {
@@ -374,6 +495,14 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+}
+
+.modal-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .modal-title {
@@ -381,6 +510,13 @@ export default {
   font-weight: 700;
   color: var(--text);
   margin: 0;
+}
+
+.modal-year {
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .modal-short {
@@ -439,11 +575,13 @@ export default {
 
 .modal-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .modal-link-btn {
+  flex: 1 1 220px;
   padding: 12px 16px;
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -492,6 +630,11 @@ export default {
     font-size: 18px;
   }
 
+  .modal-close {
+    top: 10px;
+    right: 10px;
+  }
+
   .modal-description {
     font-size: 13px;
   }
@@ -499,6 +642,10 @@ export default {
   .modal-meta {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .modal-links {
+    flex-direction: column;
   }
 }
 </style>

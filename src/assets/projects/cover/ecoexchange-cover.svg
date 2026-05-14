@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs><pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#gr)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">ecoexchange_routes.js</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">EcoExchange</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#8BB87A">E-Waste Collection Platform</text>
+  <!-- recycling symbol (3 arrows in triangle) -->
+  <g opacity="0.8">
+    <path d="M190 230 L175 255 L205 255 Z" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M190 230 L175 205 L205 205 Z" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linejoin="round" transform="rotate(120 190 230)"/>
+    <path d="M190 230 L175 205 L205 205 Z" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linejoin="round" transform="rotate(240 190 230)"/>
+  </g>
+  <!-- cleaner recycling icon using paths -->
+  <circle cx="190" cy="222" r="52" fill="none" stroke="#1a2a1a" stroke-width="1"/>
+  <circle cx="190" cy="222" r="42" fill="#0f1a0f"/>
+  <!-- Arrow 1: top -->
+  <path d="M190 185 L178 202 L186 202 L186 218 L194 218 L194 202 L202 202 Z" fill="#8BB87A" opacity="0.8"/>
+  <!-- Arrow 2: bottom-left -->
+  <path d="M190 185 L178 202 L186 202 L186 218 L194 218 L194 202 L202 202 Z" fill="#8BB87A" opacity="0.8" transform="rotate(120 190 222)"/>
+  <!-- Arrow 3: bottom-right -->
+  <path d="M190 185 L178 202 L186 202 L186 218 L194 218 L194 202 L202 202 Z" fill="#8BB87A" opacity="0.8" transform="rotate(240 190 222)"/>
+  <!-- centre -->
+  <circle cx="190" cy="222" r="10" fill="#0f1a0f" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="190" y="226" class="m" font-size="8" fill="#8BB87A" text-anchor="middle">♻</text>
+  <!-- corner brackets -->
+  <path d="M138 170 L138 185 M138 170 L153 170" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M242 170 L242 185 M242 170 L227 170" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M138 274 L138 259 M138 274 L153 274" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M242 274 L242 259 M242 274 L227 274" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- status pill -->
+  <rect x="148" y="282" width="84" height="22" rx="3" fill="#0f2a18" stroke="#8BB87A" stroke-width="1"/>
+  <circle cx="163" cy="293" r="3" fill="#8BB87A"/>
+  <text x="173" y="297" class="m" font-size="10" fill="#8BB87A">COLLECTION BOOKED</text>
+  <!-- user flow steps -->
+  <rect x="290" y="148" width="96" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="338" y="163" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">Schedule</text>
+  <text x="338" y="176" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">book pickup</text>
+  <line x1="338" y1="184" x2="338" y2="202" stroke="#333" stroke-width="0.8"/>
+  <rect x="290" y="202" width="96" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="338" y="217" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Track History</text>
+  <text x="338" y="230" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">recycling log</text>
+  <line x1="338" y1="238" x2="338" y2="256" stroke="#333" stroke-width="0.8"/>
+  <rect x="290" y="256" width="96" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="338" y="271" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Impact Report</text>
+  <text x="338" y="284" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">sustainability data</text>
+  <line x1="338" y1="292" x2="338" y2="310" stroke="#333" stroke-width="0.8"/>
+  <rect x="290" y="310" width="96" height="36" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+  <text x="338" y="325" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">Figma Prototype</text>
+  <text x="338" y="338" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">UX validated</text>
+  <!-- tech stack right -->
+  <rect x="412" y="148" width="90" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="457" y="163" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">HTML / CSS / JS</text>
+  <text x="457" y="176" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">vanilla frontend</text>
+  <line x1="457" y1="184" x2="457" y2="202" stroke="#333" stroke-width="0.8"/>
+  <rect x="412" y="202" width="90" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="457" y="217" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Node + Express</text>
+  <text x="457" y="230" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">REST API</text>
+  <line x1="457" y1="238" x2="457" y2="256" stroke="#333" stroke-width="0.8"/>
+  <rect x="412" y="256" width="90" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="457" y="271" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">MySQL</text>
+  <text x="457" y="284" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">database</text>
+  <!-- impact stat mockup -->
+  <rect x="520" y="148" width="130" height="80" rx="4" fill="#0f1a0f" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="585" y="165" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">impact_report.js</text>
+  <line x1="526" y1="171" x2="644" y2="171" stroke="#1a2a1a" stroke-width="0.6"/>
+  <text x="534" y="186" class="m" font-size="9" fill="#555">devices recycled</text>
+  <text x="630" y="186" class="m" font-size="11" fill="#8BB87A" text-anchor="end">247</text>
+  <text x="534" y="202" class="m" font-size="9" fill="#555">CO₂ saved (kg)</text>
+  <text x="630" y="202" class="m" font-size="11" fill="#C8C87A" text-anchor="end">1,840</text>
+  <text x="534" y="218" class="m" font-size="9" fill="#555">active users</text>
+  <text x="630" y="218" class="m" font-size="11" fill="#5BAADC" text-anchor="end">89</text>
+  <!-- code -->
+  <text x="64" y="344" class="m" font-size="10" fill="#2a3a2a">app.post(</text>
+  <text x="113" y="344" class="m" font-size="10" fill="#C8C87A">'/api/collection'</text>
+  <text x="231" y="344" class="m" font-size="10" fill="#d4d4d4">, async (req, res) => {</text>
+  <text x="64" y="360" class="m" font-size="10" fill="#4A72B0">  await</text>
+  <text x="101" y="360" class="m" font-size="10" fill="#d4d4d4"> db.schedule(req.body)</text>
+  <text x="64" y="376" class="m" font-size="10" fill="#d4d4d4">})</text>
+</svg>
