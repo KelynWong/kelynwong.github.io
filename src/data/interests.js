@@ -3,35 +3,35 @@ export const interestCategories = [
     id: 'clay',
     icon: '🏺',
     name: 'Clay Models',
-    label: '🏺 Clay Models',
+    label: 'Clay Models',
     story: `I got into clay modelling almost by accident as I was looking for something to do with my hands that wasn't a screen. I started with basic shapes like pyramid (triangles), dice (squares) and coins (circles), and slowly got hooked on the tactile nature of the medium. It doesn't let you fake anything. If the form is off, it's off. I enjoy the problem-solving side of it as much as the making: figuring out armatures, managing drying times, getting textures to read the way I want. It's become the thing I do when I need to think without thinking. There's something grounding about working with your hands on a physical material that pushes back. Unlike code, clay doesn't compile; it just is. I've since made more complex small figures and even merchandise of famous song artists (I'm too broke to buy actual merchandise LOL). Each piece is a bit of an experiment and I'm still very much learning, but that's the part I enjoy most.`,
   },
   {
     id: 'photo',
     icon: '📷',
     name: 'Photography',
-    label: '📷 Photography',
+    label: 'Photography',
     story: `I picked up photography because I wanted to remember things properly... not just snapshots, but the actual feeling of a place or a moment. I started out shooting mostly on my phone but picked up Fujifilm X-T5 along the way, though I would say that it's less about gear and more about training the eye to see composition everywhere. Carrying a camera forced me to slow down and actually look at places instead of just moving through them. My style is pretty casual: candid street moments, architecture, art exhibitions and the kind of quiet detail most people walk past.`,
   },
   {
     id: 'video',
     icon: '🎬',
     name: 'Content Creation',
-    label: '🎬 Content Creation',
+    label: 'Content Creation',
     story: `Content creation came naturally after photography — same eye, just adding time as a dimension. I make short clips mostly for tiktok (we live in a short attention span world after all), consisting of a little bit of everything from travel, gaming, vlogs to my yearly recap videos. Something about looking back at the moments I've captured brings a sense of fulfillment. It's like creating a little time capsule that I can revisit whenever I want. I enjoy the whole process of filming, editing and sharing, but the real joy comes from the end result: having a collection of memories that I can look back on and relive. It's also fun to share these moments with others and see how they connect with them. Whether it's a beautiful sunset, a funny moment in a game or just a slice of everyday life, I love being able to capture and share those experiences through video.`,
   },
   {
     id: 'music',
     icon: '🎵',
     name: 'Music',
-    label: '🎵 Music',
+    label: 'Music',
     story: `Music has been one of the biggest constants in my life. It started with my guitar and a phone balanced on my bed, using my AirPods microphone to record myself singing just for fun. Over time, I discovered BandLab and got a proper microphone, which made it easier to experiment with layering vocals and recording covers more intentionally. It has become one of my ways of expressing myself. The tracks here are raw, at-home vocal covers, unpolished but honest. Feel free to let the tracks play in the background while you explore the rest of my site!`,
   },
   {
     id: 'drawing',
     icon: '✏️',
     name: 'Drawings',
-    label: '✏️ Drawings',
+    label: 'Drawings',
     story: `Drawing is the oldest thing on this list (started a decade ago :0) and something that I don't focus on it much anymore, but it's still a part of me that I think is worth sharing. I work mainly in pencil and a spice of markers & colored pencil, sketching things that interest me: space, characters and small cute objects. I like how sketchbooks feel private in a way other creative work often isn't. I don't have any formal art training, so my drawings are rough and unpolished but to me that's what makes them stress-free and freeing.`,
   },
 ];
@@ -228,7 +228,7 @@ export const videoBeatSaber = [
 export const videoTiktoks = [
   {
     group: 'Vlogs',
-    icon: '🎥',
+    icon: '',
     items: [
       { id: 'ZSONcxOec5E', label: 'SG Night Festival 2025', shorts: true },
       { id: 'i9S0xR9e-MI', label: 'SG Design Week 2025', shorts: true },
@@ -237,7 +237,7 @@ export const videoTiktoks = [
   },
   {
     group: 'Billie Eilish',
-    icon: '🎤',
+    icon: '',
     items: [
       { id: '0mlSCAp0Uvg', label: 'Fall in Love Again and Again', shorts: true },
       { id: '6GKMaE0-n9s', label: 'HMHAS Visualised – Part 1', shorts: true },
@@ -247,8 +247,8 @@ export const videoTiktoks = [
     ],
   },
   {
-    group: 'Cats 🐱',
-    icon: '🐾',
+    group: 'My four fur babies',
+    icon: '',
     items: [
       { id: 'JGZodsHF2hA', label: 'Mimi Appreciation', shorts: true },
       { id: '1QlxtOx28Kk', label: 'Ding Ding Appreciation', shorts: true },

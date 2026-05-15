@@ -441,7 +441,7 @@
                     <img :src="currentTrack ? currentTrack.cover : '/src/assets/images/favicon.ico'" :alt="currentTrack ? `${currentTrack.displayTitle} cover art` : 'music cover art'" />
                   </div>
                   <div class="player-info">
-                    <div class="player-track-name">{{ currentTrack ? currentTrack.displayTitle : 'Select a track' }}</div>
+                    <div class="player-track-name">{{ currentTrack ? currentTrack.displayTitle : 'Select a track below' }}</div>
                     <div class="player-track-sub">{{ currentTrack ? currentTrack.detail : '— —' }}</div>
                   </div>
                 </div>
@@ -498,7 +498,7 @@
               <div class="gallery-item add-more-card music-more-card"><span>{{ appText.moreComing.music }}</span></div>
               <audio ref="audioEl" @timeupdate="onTimeUpdate" @ended="nextTrack" @loadedmetadata="onMeta" style="display:none"></audio>
             </div>
-            <div class="creative-note">// all credits go to the respective artists</div>
+            <div class="creative-note">// all credits goes to the respective artists</div>
           </div>
 
           <div v-if="cat.id === 'drawing'" class="gallery-grid">
@@ -625,7 +625,8 @@
           You scrolled this far, RESPECT! Enjoyed the website? Help fund my AI token usage :)
         </h3>
         <p class="kofi-support-cta">
-          <a href="https://ko-fi.com/kelynwong" target="_blank" rel="noreferrer noopener" class="kofi-button" aria-label="Buy me a coffee on Ko-fi">
+          <a href="https://ko-fi.com/kelynwong" target="_blank" rel="noreferrer noopener" class="kofi-button" aria-label="Fund Kelyn's AI token usage on Ko-fi">
+            <img src="/src/assets/gif/Sparkle mug.gif" alt="" class="kofi-gif" />
             Fund Kelyn's AI token usage
           </a>
         </p>
