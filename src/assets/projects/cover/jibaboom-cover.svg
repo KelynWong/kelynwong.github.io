@@ -20,14 +20,14 @@
   <text x="120" y="188" class="m" font-size="8" fill="#4a4a2a" text-anchor="middle">offline cache</text>
   <!-- browser client -->
   <rect x="80" y="222" width="80" height="52" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="1"/>
-  <rect x="86" y="230" width="68" height="36" rx="2" fill="#0a0f1a"/>
+  <rect x="86" y="228" width="68" height="40" rx="2" fill="#0a0f1a"/>
   <!-- browser header -->
-  <rect x="86" y="230" width="68" height="10" rx="2" fill="#1a1a2a"/>
-  <circle cx="92" cy="235" r="2" fill="#C4836A" opacity="0.7"/>
-  <circle cx="99" cy="235" r="2" fill="#C8C87A" opacity="0.7"/>
-  <circle cx="106" cy="235" r="2" fill="#8BB87A" opacity="0.7"/>
-  <text x="120" y="254" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Browser</text>
-  <text x="120" y="265" class="m" font-size="8" fill="#2a3a5a" text-anchor="middle">data viewer</text>
+  <rect x="86" y="228" width="68" height="10" rx="2" fill="#1a1a2a"/>
+  <circle cx="92" cy="233" r="2" fill="#C4836A" opacity="0.7"/>
+  <circle cx="99" cy="233" r="2" fill="#C8C87A" opacity="0.7"/>
+  <circle cx="106" cy="233" r="2" fill="#8BB87A" opacity="0.7"/>
+  <text x="120" y="250" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Browser</text>
+  <text x="120" y="260" class="m" font-size="8" fill="#2a3a5a" text-anchor="middle">data viewer</text>
   <!-- arrows to API -->
   <line x1="160" y1="178" x2="230" y2="200" stroke="#2a3a2a" stroke-width="0.8" stroke-dasharray="3 2"/>
   <line x1="160" y1="248" x2="230" y2="230" stroke="#2a3a4a" stroke-width="0.8" stroke-dasharray="3 2"/>
@@ -48,13 +48,13 @@
   <text x="455" y="216" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">PostgreSQL</text>
   <!-- code snippet -->
   <text x="64" y="310" class="m" font-size="10" fill="#2a3a2a">app.get(</text>
-  <text x="110" y="310" class="m" font-size="10" fill="#C8C87A">'/api/data'</text>
-  <text x="176" y="310" class="m" font-size="10" fill="#d4d4d4">, async (req, res) => {</text>
-  <text x="64" y="326" class="m" font-size="10" fill="#4A72B0">  const</text>
-  <text x="101" y="326" class="m" font-size="10" fill="#d4d4d4"> result = await </text>
-  <text x="196" y="326" class="m" font-size="10" fill="#8BB87A">db</text>
-  <text x="207" y="326" class="m" font-size="10" fill="#d4d4d4">.query(sql)</text>
-  <text x="64" y="342" class="m" font-size="10" fill="#4A72B0">  res</text>
-  <text x="90" y="342" class="m" font-size="10" fill="#d4d4d4">.json(result.rows)</text>
+  <text x="112" y="310" class="m" font-size="10" fill="#C8C87A">'/api/data'</text>
+  <text x="178" y="310" class="m" font-size="10" fill="#d4d4d4">, async (req, res) => {</text>
+  <text x="74" y="326" class="m" font-size="10" fill="#4A72B0">  const</text>
+  <text x="111" y="326" class="m" font-size="10" fill="#d4d4d4"> result = await </text>
+  <text x="200" y="326" class="m" font-size="10" fill="#8BB87A">db</text>
+  <text x="212" y="326" class="m" font-size="10" fill="#d4d4d4">.query(sql)</text>
+  <text x="74" y="342" class="m" font-size="10" fill="#4A72B0">  res</text>
+  <text x="93" y="342" class="m" font-size="10" fill="#d4d4d4">.json(result.rows)</text>
   <text x="64" y="358" class="m" font-size="10" fill="#d4d4d4">})</text>
 </svg>

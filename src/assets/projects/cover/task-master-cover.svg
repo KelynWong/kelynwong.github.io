@@ -35,7 +35,7 @@
   <text x="246" y="259" class="m" font-size="9" fill="#C4836A" text-anchor="middle">Task Service</text>
   <text x="246" y="269" class="m" font-size="8" fill="#5a3a2a" text-anchor="middle">Node.js / Express</text>
   <!-- Docker compose bracket -->
-  <rect x="64" y="296" width="236" height="28" rx="3" fill="#0a1a2a" stroke="#5BAADC" stroke-width="0.8" stroke-dasharray="4 2"/>
+  <rect x="64" y="296" width="236" height="33" rx="3" fill="#0a1a2a" stroke="#5BAADC" stroke-width="0.8" stroke-dasharray="4 2"/>
   <text x="182" y="311" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Docker Compose orchestration</text>
   <text x="182" y="320" class="m" font-size="8" fill="#2a4a6a" text-anchor="middle">independently deployable services</text>
   <!-- AI spotlight -->
@@ -44,7 +44,7 @@
   <text x="380" y="182" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">LLM powered</text>
   <line x1="300" y1="153" x2="326" y2="161" stroke="#2a2a3a" stroke-width="0.7" stroke-dasharray="3 2"/>
   <!-- task kanban mockup -->
-  <rect x="452" y="100" width="186" height="240" rx="4" fill="#111" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="452" y="100" width="186" height="100" rx="4" fill="#111" stroke="#2a2a2a" stroke-width="1"/>
   <!-- kanban header -->
   <rect x="452" y="100" width="186" height="20" rx="4" fill="#1a1a1a"/>
   <text x="545" y="114" class="m" font-size="9" fill="#555" text-anchor="middle">task-board.vue</text>
@@ -71,9 +71,9 @@
   <text x="603" y="180" class="m" font-size="7" fill="#aaa" text-anchor="middle">Auth flow</text>
   <text x="603" y="188" class="m" font-size="7" fill="#8BB87A" text-anchor="middle">✓</text>
   <!-- code -->
-  <text x="64" y="344" class="m" font-size="10" fill="#2a3a2a">services:</text>
-  <text x="64" y="360" class="m" font-size="10" fill="#4A72B0">  idea-service</text>
-  <text x="151" y="360" class="m" font-size="10" fill="#d4d4d4">:</text>
-  <text x="64" y="376" class="m" font-size="10" fill="#8BB87A">    build</text>
-  <text x="105" y="376" class="m" font-size="10" fill="#d4d4d4">: ./services/ideas</text>
+  <text x="400" y="284" class="m" font-size="10" fill="#2a3a2a">services:</text>
+  <text x="400" y="300" class="m" font-size="10" fill="#4A72B0">  idea-service</text>
+  <text x="472" y="300" class="m" font-size="10" fill="#d4d4d4">:</text>
+  <text x="400" y="316" class="m" font-size="10" fill="#8BB87A">    build</text>
+  <text x="432" y="316" class="m" font-size="10" fill="#d4d4d4">: ./services/ideas</text>
 </svg>

@@ -43,16 +43,16 @@
   <!-- home bar -->
   <rect x="114" y="340" width="40" height="5" rx="2.5" fill="#333"/>
   <!-- feature boxes right -->
-  <rect x="218" y="148" width="116" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <rect x="208" y="148" width="133" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
   <text x="276" y="163" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">AI Chatbot</text>
   <text x="276" y="176" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">medication guidance</text>
-  <rect x="218" y="196" width="116" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <rect x="208" y="196" width="133" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
   <text x="276" y="211" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Prescription OCR</text>
   <text x="276" y="224" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">scan label → plain text</text>
-  <rect x="218" y="244" width="116" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <rect x="208" y="244" width="133" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
   <text x="276" y="259" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Gamified Rewards</text>
   <text x="276" y="272" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">streaks + adherence</text>
-  <rect x="218" y="292" width="116" height="36" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+  <rect x="208" y="292" width="133" height="36" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
   <text x="276" y="307" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">Community</text>
   <text x="276" y="320" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">accountability groups</text>
   <!-- Kotlin + MVVM -->
@@ -73,10 +73,10 @@
   <text x="514" y="244" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">Model</text>
   <text x="514" y="272" class="m" font-size="9" fill="#3a3a3a" text-anchor="middle">MVVM</text>
   <!-- code -->
-  <text x="64" y="342" class="m" font-size="10" fill="#2a3a2a">@Composable fun MedCard(med: Med) {</text>
-  <text x="64" y="358" class="m" font-size="10" fill="#4A72B0">  val</text>
-  <text x="87" y="358" class="m" font-size="10" fill="#d4d4d4"> status by </text>
-  <text x="148" y="358" class="m" font-size="10" fill="#8BB87A">viewModel</text>
-  <text x="208" y="358" class="m" font-size="10" fill="#d4d4d4">.state</text>
-  <text x="64" y="374" class="m" font-size="10" fill="#d4d4d4">  MedicationRow(med, status, onTaken)</text>
+  <text x="400" y="322" class="m" font-size="10" fill="#2a3a2a">@Composable fun MedCard(med: Med) {</text>
+  <text x="410" y="338" class="m" font-size="10" fill="#4A72B0">  val</text>
+  <text x="435" y="338" class="m" font-size="10" fill="#d4d4d4"> status by </text>
+  <text x="495" y="338" class="m" font-size="10" fill="#8BB87A">viewModel</text>
+  <text x="548" y="338" class="m" font-size="10" fill="#d4d4d4">.state</text>
+  <text x="410" y="354" class="m" font-size="10" fill="#d4d4d4">  MedicationRow(med, status, onTaken)</text>
 </svg>

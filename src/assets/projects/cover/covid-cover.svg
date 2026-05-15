@@ -59,20 +59,20 @@
   <text x="315" y="307" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">SQLite + Settings</text>
   <text x="315" y="320" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">dark mode, language</text>
   <!-- tech stack row -->
-  <rect x="400" y="168" width="58" height="24" rx="3" fill="#141414" stroke="#4A72B0" stroke-width="0.7"/>
-  <text x="429" y="184" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Java / SDK</text>
-  <rect x="464" y="168" width="68" height="24" rx="3" fill="#141414" stroke="#8BB87A" stroke-width="0.7"/>
-  <text x="498" y="184" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">Material UI</text>
-  <rect x="400" y="198" width="58" height="24" rx="3" fill="#141414" stroke="#C4836A" stroke-width="0.7"/>
-  <text x="429" y="214" class="m" font-size="9" fill="#C4836A" text-anchor="middle">AsyncHttp</text>
-  <rect x="464" y="198" width="68" height="24" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.7"/>
-  <text x="498" y="214" class="m" font-size="9" fill="#B87DB8" text-anchor="middle">Picasso imgs</text>
+  <rect x="450" y="168" width="62" height="24" rx="3" fill="#141414" stroke="#4A72B0" stroke-width="0.7"/>
+  <text x="481" y="184" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Java / SDK</text>
+  <rect x="520" y="168" width="70" height="24" rx="3" fill="#141414" stroke="#8BB87A" stroke-width="0.7"/>
+  <text x="555" y="184" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">Material UI</text>
+  <rect x="450" y="198" width="62" height="24" rx="3" fill="#141414" stroke="#C4836A" stroke-width="0.7"/>
+  <text x="482" y="214" class="m" font-size="9" fill="#C4836A" text-anchor="middle">AsyncHttp</text>
+  <rect x="520" y="198" width="70" height="24" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.7"/>
+  <text x="555" y="214" class="m" font-size="9" fill="#B87DB8" text-anchor="middle">Picasso imgs</text>
   <!-- code -->
-  <text x="64" y="318" class="m" font-size="10" fill="#2a3a2a">AsyncHttpClient.get(covidAPI,</text>
-  <text x="64" y="334" class="m" font-size="10" fill="#d4d4d4">    new </text>
-  <text x="101" y="334" class="m" font-size="10" fill="#4A72B0">JsonHttpResponseHandler</text>
-  <text x="255" y="334" class="m" font-size="10" fill="#d4d4d4">() {</text>
-  <text x="64" y="350" class="m" font-size="10" fill="#4A72B0">    onSuccess</text>
-  <text x="133" y="350" class="m" font-size="10" fill="#d4d4d4">: updateUI(stats)</text>
-  <text x="64" y="366" class="m" font-size="10" fill="#d4d4d4">})</text>
+  <text x="430" y="268" class="m" font-size="10" fill="#2a3a2a">AsyncHttpClient.get(covidAPI,</text>
+  <text x="430" y="284" class="m" font-size="10" fill="#d4d4d4">    new </text>
+  <text x="455" y="284" class="m" font-size="10" fill="#4A72B0">JsonHttpResponseHandler</text>
+  <text x="595" y="284" class="m" font-size="10" fill="#d4d4d4">() {</text>
+  <text x="440" y="300" class="m" font-size="10" fill="#4A72B0">    onSuccess</text>
+  <text x="495" y="300" class="m" font-size="10" fill="#d4d4d4">: updateUI(stats)</text>
+  <text x="430" y="316" class="m" font-size="10" fill="#d4d4d4">})</text>
 </svg>

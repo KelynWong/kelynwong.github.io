@@ -3,11 +3,11 @@ export default [
     tabName: 'degree.ts',
     className: 'UniversityDegree',
     school: 'Singapore Management University',
-    degree: 'Bachelor of Science (Software Engineering), 2nd major in Physical-Cyber Systems',
+    degree: 'Bachelor of Science (Software Engineering), 2nd major in Computing Studies (Physical-Cyber Systems)',
     period: '2022 — 2026',
     gpa: null,
     ongoing: false,
-    desc: 'A work-study degree focused on learning how to design and build enterprise systems at scale. Completed one year of internship applying academic knowledge to real-world cloud infrastructure and DevOps projects. Also pursuing a second major in Internet of Things to expand into IoT systems.',
+    desc: 'A work-study degree focused on learning how to design and build enterprise systems at scale. Completed one year of internship applying academic knowledge to real-world cloud infrastructure and DevOps projects. Also pursued a second major in Computing Studies (Physical-Cyber Systems), where I explored the intersection of software with the physical world through modules in IoT.',
     tags: ['algorithms and programming', 'web application development', 'collaborative software development', 'operating systems and networking', 'solution architecture', 'enterprise solution development', 'enterprise solution management', 'software and system security', 'internet of things', 'mobile application development', 'data structures and databases', 'design for user interaction'],
   },
   {
@@ -29,7 +29,7 @@ export default [
     period: '2015 — 2018',
     gpa: null,
     ongoing: false,
-    desc: 'Performed well in Additional Mathematics and Science, developing strong analytical and problem-solving skills. Active in the Robotics CCA where I took on leadership roles being a quartermaster supervisoring the logistics of the club. I worked with EV3 robots, designing control systems and participating in robotics competitions. These hands-on experiences sparked a genuine interest in engineering and software.',
+    desc: 'Performed well in Additional Mathematics and Science, developing strong analytical and problem-solving skills. Active in the Robotics CCA where I took on leadership roles being a quartermaster supervisoring the logistics of the club. I worked with EV3 robots, designing control systems and participating in robotics competitions. These hands-on experiences sparked my strong interest in engineering and software.',
     tags: ['additional mathematics', 'mathematics', 'science (physics, chemistry)', 'english', 'chinese', 'humanities (social studies, geography)', 'principle of accounts', 'robotics'],
   },
   {

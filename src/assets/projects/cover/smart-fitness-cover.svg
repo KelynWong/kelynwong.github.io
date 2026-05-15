@@ -41,9 +41,9 @@
   <path d="M118 308 L118 293 M118 308 L133 308" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
   <path d="M272 308 L272 293 M272 308 L257 308" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
   <!-- rep counter -->
-  <rect x="120" y="316" width="148" height="22" rx="3" fill="#0f2a18" stroke="#8BB87A" stroke-width="1"/>
-  <circle cx="135" cy="327" r="3" fill="#8BB87A"/>
-  <text x="145" y="331" class="m" font-size="10" fill="#8BB87A">REPS: 8 / 12   FORM: GOOD</text>
+  <rect x="111" y="316" width="170" height="22" rx="3" fill="#0f2a18" stroke="#8BB87A" stroke-width="1"/>
+  <circle cx="125" cy="327" r="3" fill="#8BB87A"/>
+  <text x="135" y="331" class="m" font-size="10" fill="#8BB87A">REPS: 8 / 12   FORM: GOOD</text>
   <!-- right side components -->
   <rect x="340" y="78" width="90" height="38" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
   <text x="385" y="95" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">MediaPipe</text>
@@ -71,14 +71,14 @@
   <text x="484" y="168" class="m" font-size="8" fill="#5BAADC" text-anchor="middle">RPi 3B+</text>
   <line x1="452" y1="164" x2="430" y2="164" stroke="#2a2a2a" stroke-width="0.7" stroke-dasharray="3 2"/>
   <!-- code -->
-  <text x="64" y="318" class="m" font-size="10" fill="#2a3a2a">if form_angle &lt; threshold:</text>
-  <text x="64" y="334" class="m" font-size="10" fill="#4A72B0">    speaker</text>
-  <text x="116" y="334" class="m" font-size="10" fill="#d4d4d4">.say(</text>
-  <text x="147" y="334" class="m" font-size="10" fill="#C8C87A">"adjust posture"</text>
-  <text x="238" y="334" class="m" font-size="10" fill="#d4d4d4">)</text>
-  <text x="64" y="350" class="m" font-size="10" fill="#4A72B0">    reps</text>
-  <text x="98" y="350" class="m" font-size="10" fill="#d4d4d4"> += </text>
-  <text x="122" y="350" class="m" font-size="10" fill="#C8C87A">1</text>
-  <text x="64" y="366" class="m" font-size="10" fill="#4A72B0">    supabase</text>
-  <text x="128" y="366" class="m" font-size="10" fill="#d4d4d4">.insert(session)</text>
+  <text x="460" y="288" class="m" font-size="10" fill="#2a3a2a">if form_angle &lt; threshold:</text>
+  <text x="470" y="304" class="m" font-size="10" fill="#4A72B0">    speaker</text>
+  <text x="513" y="304" class="m" font-size="10" fill="#d4d4d4">.say(</text>
+  <text x="543" y="304" class="m" font-size="10" fill="#C8C87A">"adjust posture"</text>
+  <text x="640" y="304" class="m" font-size="10" fill="#d4d4d4">)</text>
+  <text x="470" y="320" class="m" font-size="10" fill="#4A72B0">    reps</text>
+  <text x="498" y="320" class="m" font-size="10" fill="#d4d4d4"> += </text>
+  <text x="515" y="320" class="m" font-size="10" fill="#C8C87A">1</text>
+  <text x="470" y="336" class="m" font-size="10" fill="#4A72B0">    supabase</text>
+  <text x="519" y="336" class="m" font-size="10" fill="#d4d4d4">.insert(session)</text>
 </svg>

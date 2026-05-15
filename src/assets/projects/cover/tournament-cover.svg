@@ -45,7 +45,7 @@
   <text x="320" y="222" class="m" font-size="8" fill="#8BB87A" text-anchor="middle">Player A wins</text>
   <text x="320" y="250" class="m" font-size="22" fill="#C8C87A" text-anchor="middle">🏆</text>
   <!-- Glicko badge -->
-  <rect x="64" y="294" width="130" height="28" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+  <rect x="64" y="294" width="130" height="32" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
   <text x="129" y="309" class="m" font-size="9" fill="#B87DB8" text-anchor="middle">Glicko Rating System</text>
   <text x="129" y="317" class="m" font-size="8" fill="#4a2a5a" text-anchor="middle">skill-based matchmaking</text>
   <!-- tech stack -->
@@ -74,6 +74,6 @@
   <!-- code -->
   <text x="64" y="344" class="m" font-size="10" fill="#2a3a2a">// Glicko rating update</text>
   <text x="64" y="360" class="m" font-size="10" fill="#4A72B0">double</text>
-  <text x="101" y="360" class="m" font-size="10" fill="#d4d4d4"> newRating = glicko.calculate(</text>
-  <text x="64" y="376" class="m" font-size="10" fill="#d4d4d4">    player, opponent, outcome)</text>
+  <text x="105" y="360" class="m" font-size="10" fill="#d4d4d4"> newRating = glicko.calculate(</text>
+  <text x="280" y="360" class="m" font-size="10" fill="#d4d4d4">    player, opponent, outcome)</text>
 </svg>
