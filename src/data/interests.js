@@ -58,6 +58,10 @@ export const clayItems = [
   { id: 19, title: 'No-Face', year: 'Ah', img: './src/assets/images/clay/noface.JPG' },
   { id: 20, title: 'Smiski', year: 'Smiski capsule series 9000', img: './src/assets/images/clay/smiski.jpg' },
   { id: 21, title: 'Tate Carplate Keychain', year: 'Yes, I\'m Miss possessive ~Tate McRae', img: './src/assets/images/clay/tate.JPG' },
+  { id: 22, title: 'Majong', year: 'Dangerous tiles', img: './src/assets/images/clay/majong.jpg' },
+  { id: 23, title: 'Mama & baby rubber ducky', year: 'Look, its a mini me :D', img: './src/assets/images/clay/mamababyduck.jpg' },
+  { id: 24, title: 'Gym bro ducky', year: 'No pain no gain. Today is back feathers day!', img: './src/assets/images/clay/gymduck.jpg' },
+  { id: 25, title: 'Coffee ducky', year: 'High on caffine', img: './src/assets/images/clay/coffeeduck.jpg' },
 ];
 
 export const drawingItems = [
