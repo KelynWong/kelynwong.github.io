@@ -112,6 +112,9 @@ const appOptions = {
       galleryLightboxSection: '',
       galleryLightboxItems: [],
       galleryLightboxIndex: 0,
+      galleryAutoPlayInterval: null,
+      galleryAutoPlayProgressInterval: null,
+      galleryAutoPlayProgress: 0,
 
       // Music player state
       currentTrackIdx: null,
@@ -288,6 +291,7 @@ const appOptions = {
     if (this._galleryKeyHandler) {
       window.removeEventListener('keydown', this._galleryKeyHandler)
     }
+    this.stopGalleryAutoPlay()
     this.stopHeroTypingSequence()
   },
 
@@ -335,12 +339,29 @@ const appOptions = {
       return 'Gallery'
     },
 
+    galleryLightboxMeta(item) {
+      if (!item) return ''
+
+      const details = []
+      if (item.description) details.push(item.description)
+      if (item.medium) details.push(item.medium)
+      if (item.location) details.push(item.location)
+      if (item.year) details.push(item.year)
+
+      if (details.length > 0) {
+        return details.join(' • ')
+      }
+
+      return this.gallerySectionLabel(this.galleryLightboxSection)
+    },
+
     openGalleryLightbox(section, items, startIndex = 0) {
       this.galleryLightboxSection = section
       this.galleryLightboxItems = Array.isArray(items) ? items : []
       this.galleryLightboxIndex = startIndex
       this.galleryLightboxOpen = true
       document.body.style.overflow = 'hidden'
+      this.startGalleryAutoPlay()
     },
 
     closeGalleryLightbox() {
@@ -349,17 +370,20 @@ const appOptions = {
       this.galleryLightboxItems = []
       this.galleryLightboxIndex = 0
       document.body.style.overflow = ''
+      this.stopGalleryAutoPlay()
     },
 
     nextGalleryImage() {
       if (!this.galleryLightboxItems.length) return
       this.galleryLightboxIndex = (this.galleryLightboxIndex + 1) % this.galleryLightboxItems.length
+      this.restartGalleryAutoPlay()
     },
 
     prevGalleryImage() {
       if (!this.galleryLightboxItems.length) return
       this.galleryLightboxIndex =
         (this.galleryLightboxIndex - 1 + this.galleryLightboxItems.length) % this.galleryLightboxItems.length
+      this.restartGalleryAutoPlay()
     },
 
     handleGalleryKeydown(event) {
@@ -387,6 +411,41 @@ const appOptions = {
       this._socialBounceTimer = setTimeout(() => {
         socialFloat.classList.remove('is-bouncing')
       }, 650)
+    },
+
+    startGalleryAutoPlay() {
+      if (!this.galleryLightboxItems || this.galleryLightboxItems.length <= 1) {
+        this.stopGalleryAutoPlay()
+        return
+      }
+      this.stopGalleryAutoPlay()
+      const autoPlayDurationMs = 3000
+      const progressTickMs = 50
+      const progressStep = (100 * progressTickMs) / autoPlayDurationMs
+      this.galleryAutoPlayProgress = 0
+      this.galleryAutoPlayProgressInterval = setInterval(() => {
+        this.galleryAutoPlayProgress = Math.min(this.galleryAutoPlayProgress + progressStep, 100)
+      }, progressTickMs)
+      this.galleryAutoPlayInterval = setInterval(() => {
+        this.galleryLightboxIndex = (this.galleryLightboxIndex + 1) % this.galleryLightboxItems.length
+        this.galleryAutoPlayProgress = 0
+      }, autoPlayDurationMs)
+    },
+
+    stopGalleryAutoPlay() {
+      if (this.galleryAutoPlayInterval) {
+        clearInterval(this.galleryAutoPlayInterval)
+        this.galleryAutoPlayInterval = null
+      }
+      if (this.galleryAutoPlayProgressInterval) {
+        clearInterval(this.galleryAutoPlayProgressInterval)
+        this.galleryAutoPlayProgressInterval = null
+      }
+      this.galleryAutoPlayProgress = 0
+    },
+
+    restartGalleryAutoPlay() {
+      this.startGalleryAutoPlay()
     },
 
     stopHeroTypingSequence() {

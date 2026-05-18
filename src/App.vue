@@ -249,7 +249,7 @@
               </button>
               <div class="gallery-caption">
                 <div class="gallery-caption-title">{{ item.title }}</div>
-                <div class="gallery-caption-sub">{{ item.year }}</div>
+                <div class="gallery-caption-sub">{{ item.description }}</div>
               </div>
             </div>
             <div class="gallery-item add-more-card"><span>{{ appText.moreComing.clay }}</span></div>
@@ -591,10 +591,14 @@
             <button class="gallery-lightbox-nav" @click="nextGalleryImage" :disabled="galleryLightboxItems.length < 2" aria-label="Next image">→</button>
           </div>
 
+          <div v-if="galleryLightboxItems.length > 1" class="gallery-lightbox-progress-bar">
+            <div class="gallery-lightbox-progress-fill" :style="{ width: galleryAutoPlayProgress + '%' }"></div>
+          </div>
+
           <div class="gallery-lightbox-meta">
             <div>
               <div class="gallery-lightbox-title">{{ currentGalleryLightboxItem?.title }}</div>
-              <div class="gallery-lightbox-subtitle">{{ gallerySectionLabel(galleryLightboxSection) }}</div>
+              <div class="gallery-lightbox-subtitle">{{ galleryLightboxMeta(currentGalleryLightboxItem) }}</div>
             </div>
             <div class="gallery-lightbox-counter">{{ galleryLightboxIndex + 1 }} / {{ galleryLightboxItems.length }}</div>
           </div>
