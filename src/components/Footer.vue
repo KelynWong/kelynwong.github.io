@@ -21,9 +21,8 @@ export default {
 }
 
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  padding: 20px 24px 20px 20px;
   text-align: right;
   font-size: 12px;
   color: var(--text-dim);
@@ -31,7 +30,7 @@ export default {
 
 @media (max-width: 768px) {
   .footer-content {
-    padding: 16px 24px;
+    padding: 16px 24px 16px 24px;
   }
 }
 </style>
