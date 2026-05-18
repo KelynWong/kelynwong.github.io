@@ -143,19 +143,17 @@ export default {
 .project-image-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 66.66%; /* 3:2 aspect ratio */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
 }
 
 .project-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .project-card:hover .project-image {
