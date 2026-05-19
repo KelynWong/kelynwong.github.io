@@ -114,8 +114,7 @@ export default [
     coverAlt: 'JiBaBoom',
     short: 'Full-stack app with a PostgreSQL REST API, browser data viewer & offline-capable mobile companion',
     description: 'A full-stack application built across three layers: a PostgreSQL-backed REST API built with Node.js and Express, a browser-based viewer for querying and displaying data and results, and a mobile companion app for on-the-go access with offline caching of previous responses. The project demonstrates end-to-end architecture — from database schema design and API endpoint development to building two distinct client interfaces that consume the same backend.',
-    screenshots: [],
-    demo: null,
+    screenshots: ['src/assets/projects/jibaboom/1.png', 'src/assets/projects/jibaboom/2.jpg', 'src/assets/projects/jibaboom/3.png', 'src/assets/projects/jibaboom/4.jpg', 'src/assets/projects/jibaboom/5.png', 'src/assets/projects/jibaboom/6.jpg', 'src/assets/projects/jibaboom/7.png', 'src/assets/projects/jibaboom/8.jpg', ],
     links: {
       github: 'https://github.com/KelynWong/applicationDevelopment',
       live: null,
@@ -248,10 +247,160 @@ export default [
     tags: ['React', 'JavaScript', 'Python', 'AWS Lambda', 'AWS API Gateway', 'AWS Cognito', 'AWS SAM', 'CI/CD', 'GitHub Actions'],
     year: '2023 - 2024',
   },
+  {
+    id: 'growtopia',
+    title: 'Growtopia Guide',
+    category: 'frontend',
+    coverImage: '/src/assets/projects/cover/growtopia-cover.svg',
+    coverAlt: 'Growtopia Guide',
+    short: 'Static fan-made guide website sharing structured tips, progression strategies & farming methods for the sandbox game Growtopia',
+    description: 'Growtopia Guide is a static fan-made website built to document strategies, farming techniques, and progression tips for players of the sandbox MMO Growtopia. Designed with HTML, CSS, JavaScript, and Bootstrap, the site organizes game knowledge into structured sections for easy navigation and readability. As one of my earlier frontend projects, it focuses on layout structuring, responsive design, and content presentation — translating gaming strategy into a clean, digestible web experience.',
+    screenshots: [],
+    demo: null,
+    links: {
+      github: 'https://github.com/KelynWong/growtopiaWebsiteV2',
+      live: 'https://p1935800.neocities.org',
+    },
+    tags: ['HTML', 'JavaScript', 'CSS', 'Bootstrap'],
+    year: '2019',
+  },
+  {
+    id: 'cyberbully',
+    title: 'Cyberbully Awareness',
+    category: 'frontend',
+    coverImage: '/src/assets/projects/cover/cyberbully-cover.svg',
+    coverAlt: 'Cyberbully Awareness',
+    short: 'Volunteer mentorship project — built a cyberbullying awareness website and guided underprivileged students to build their own',
+    description: 'A volunteer initiative under Heartcode by SMu x CDAC programme, where student mentors supported underprivileged secondary school students in developing their computing skills through five days of intensive one-on-one mentoring. As a mentor, I first built a sample cyberbullying awareness website covering the types, root causes, impacts, and prevention of cyberbullying — serving as both a teaching reference and a demonstration of what the students could achieve. The mentees then built their own version of the site from scratch using what they learned across the programme. The sample site features multi-page navigation, embedded videos, an image carousel, and an accordion-style content summary, all built with vanilla HTML, CSS, and JavaScript.',
+    screenshots: [],
+    demo: null,
+    links: {
+      github: [
+        {
+          link: 'https://github.com/KelynWong/projectHeartcodeSampleWebsite',
+          label: 'Mentor Sample Website Github'
+        },
+        {
+          link: 'https://github.com/KelynWong/heartcode2023',
+          label: 'Mentee Created Website Github'
+        }
+      ],
+      live: [
+        {
+          link: 'https://kelynwong.github.io/projectHeartcodeSampleWebsite',
+          label: 'Mentor Sample Website'
+        },
+        {
+          link: 'https://kelynwong.github.io/heartcode2023',
+          label: 'Mentee Created Website'
+        }
+      ]
+    },
+    tags: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages', 'Mentorship', 'Volunteering'],
+    year: '2023',
+  },
+  {
+    id: 'quiz',
+    title: 'Quizzlet',
+    category: 'backend',
+    coverImage: '/src/assets/projects/cover/quizzlet-cover.svg',
+    coverAlt: 'Quizzlet',
+    short: 'Vanilla JavaScript quiz engine with OOP-based question and session management',
+    description: 'Quizzlet is a lightweight quiz application built entirely in vanilla JavaScript, with no frameworks or dependencies. The codebase is structured around three clean object-oriented classes — MCQ for individual questions, Quiz for grouping and ordering them, and QuizApp for managing the full session lifecycle including scoring and state. It demonstrates core JavaScript fundamentals: class-based OOP, encapsulation, and separation of concerns — all in a runtime-only, zero-dependency implementation.',
+    screenshots: ['src/assets/projects/quizzlet/1.jpeg', 'src/assets/projects/quizzlet/2.jpeg', 'src/assets/projects/quizzlet/3.jpeg', 'src/assets/projects/quizzlet/4.jpg', 'src/assets/projects/quizzlet/5.jpeg', 'src/assets/projects/quizzlet/6.jpeg', 'src/assets/projects/quizzlet/7.jpeg', ],
+    demo: null,
+    links: {
+      github: 'https://github.com/KelynWong/simpleQuiz',
+    },
+    tags: ['JavaScript', 'OOP'],
+    year: '2019',
+  },
+  {
+    id: 'snapsell',
+    title: 'Snapsell',
+    category: 'fullstack',
+    coverImage: '/src/assets/projects/cover/snapsell-cover.svg',
+    coverAlt: 'Snapsell',
+    short: 'Second-hand marketplace web app with user listings, search & MySQL-backed transactions',
+    description: 'Snapsell is a second-hand goods marketplace web application that lets users list items for sale, browse and search listings, and manage transactions through dedicated buyer and seller interfaces. The project follows a clean separation between a JavaScript and HTML/CSS frontend and a backend REST API, backed by a relational MySQL database designed with a full ER diagram. Role-based access separates buyer and seller flows, and the database schema covers users, listings, and transaction records.',
+    screenshots: ['src/assets/projects/snapsell/1.png', 'src/assets/projects/snapsell/2.png', 'src/assets/projects/snapsell/3.png', 'src/assets/projects/snapsell/4.png', ],
+    demo: null,
+    links: {
+      github: 'https://github.com/KelynWong/SnapSellV2',
+    },
+    tags: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'MySQL'],
+    year: '2021',
+  },
+  {
+    id: 'fairprice',
+    title: 'FairPrice',
+    category: 'backend',
+    coverImage: '/src/assets/projects/cover/fairprice-cover.svg',
+    coverAlt: 'FairPrice',
+    short: 'Relational DB design for a supermarket catalogue',
+    description: 'A data engineering project inspired by FairPrice. It involves designing a fully normalised relational database to model a supermarket product catalogue — covering products, brands, categories, subcategories, and three distinct discount types (direct price cuts, quantity-based discounts, and gift-with-purchase). Complex SQL queries answer business questions such as listing all active promotions, computing effective discounted prices per discount type, and filtering products by brand and category. The second part builds a star-schema data warehouse on Databricks using car sales data. Dimension tables for time, customers, employees, products, and offices surround a central Sales Facts table. Raw CSV data is ingested via DBFS, cleaned with staging transformations (e.g. normalising country codes and nullifying empty fields), and analysed with advanced SQL including window functions, RANK(), and PARTITION BY to surface insights like the least profitable products, best-performing offices by period, order status breakdowns by quarter, and top-earning employees per office.',
+    screenshots: ['src/assets/projects/fairPrice/1.png', 'src/assets/projects/fairPrice/2.png', 'src/assets/projects/fairPrice/3.png', 'src/assets/projects/fairPrice/4.png', 'src/assets/projects/fairPrice/5.png', 'src/assets/projects/fairPrice/6.png', 'src/assets/projects/fairPrice/7.png', 'src/assets/projects/fairPrice/8.png', 'src/assets/projects/fairPrice/9.png', 'src/assets/projects/fairPrice/10.png', 'src/assets/projects/fairPrice/11.png', 'src/assets/projects/fairPrice/12.png', 'src/assets/projects/fairPrice/13.png', 'src/assets/projects/fairPrice/14.png', 'src/assets/projects/fairPrice/15.png', 'src/assets/projects/fairPrice/16.png', 'src/assets/projects/fairPrice/17.png', 'src/assets/projects/fairPrice/18.png', 'src/assets/projects/fairPrice/19.png', 'src/assets/projects/fairPrice/20.png', ],
+    demo: null,
+    links: {
+      github: '',
+    },
+    tags: ['SQL', 'MySQL', 'Database Design', 'ER Diagram', 'Star Schema', 'Data Warehouse', 'Databricks', 'Apache Spark', 'ETL', 'Window Functions'],
+    year: '2020',
+  },
+  {
+    id: 'duotexture',
+    title: 'DuoTexture',
+    category: 'fullstack',
+    coverImage: '/src/assets/projects/cover/duotexture-cover.svg',
+    coverAlt: 'DuoTexture',
+    short: 'Java web app for a textile e-commerce store with role-based admin and member portals',
+    description: 'DuoTexture is a full-stack e-commerce web application for a textile retailer, built with Java Servlets and JSP on a MySQL database. The platform supports two distinct user roles: members can browse and purchase products, while admins manage inventory, orders, and accounts through a dedicated portal. The database was designed with a full EER diagram and implemented with a normalised MySQL schema. The project was developed in Eclipse and demonstrates core web application patterns — session management, form handling, and MVC separation — using only Java EE fundamentals.',
+    screenshots: [],
+    demo: null,
+    links: {
+      github: 'https://github.com/KelynWong/duotexture',
+    },
+    tags: ['Java', 'Java Servlets', 'JSP', 'MySQL', 'CSS', 'HTML'],
+    year: '2021',
+  },
+  {
+    id: 'atmmachine',
+    title: 'ATM Machine',
+    category: 'fullstack',
+    coverImage: '/src/assets/projects/cover/atm-machine-cover.svg',
+    coverAlt: 'ATM Machine',
+    short: 'Java console ATM simulator with account management, deposits, withdrawals & file-based persistence',
+    description: 'A console-based ATM machine simulator built in Java that replicates core banking operations — account login, balance checking, deposits, withdrawals, and fund transfers. Account data is persisted to flat files between sessions using Java I/O, meaning state survives restarts without a database. The project is structured with a clear package hierarchy and demonstrates fundamental Java concepts including file serialisation, control flow, and modular class design.',
+    screenshots: ['src/assets/projects/atmMachine/1.png', 'src/assets/projects/atmMachine/2.png', 'src/assets/projects/atmMachine/3.png', 'src/assets/projects/atmMachine/4.png', 'src/assets/projects/atmMachine/5.png', 'src/assets/projects/atmMachine/6.png', 'src/assets/projects/atmMachine/7.png', 'src/assets/projects/atmMachine/8.png', 'src/assets/projects/atmMachine/9.png', 'src/assets/projects/atmMachine/10.png', 'src/assets/projects/atmMachine/11.png', 'src/assets/projects/atmMachine/12.png', 'src/assets/projects/atmMachine/13.png', 'src/assets/projects/atmMachine/14.png', 'src/assets/projects/atmMachine/15.png', 'src/assets/projects/atmMachine/16.png', 'src/assets/projects/atmMachine/17.png', 'src/assets/projects/atmMachine/18.png', 'src/assets/projects/atmMachine/19.png', 'src/assets/projects/atmMachine/20.png', 'src/assets/projects/atmMachine/21.png', 'src/assets/projects/atmMachine/22.png', 'src/assets/projects/atmMachine/23.png', 'src/assets/projects/atmMachine/24.png', 'src/assets/projects/atmMachine/25.png', 'src/assets/projects/atmMachine/26.png', 'src/assets/projects/atmMachine/27.png', 'src/assets/projects/atmMachine/28.png', 'src/assets/projects/atmMachine/29.png', 'src/assets/projects/atmMachine/30.png', 'src/assets/projects/atmMachine/31.png', 'src/assets/projects/atmMachine/32.png', 'src/assets/projects/atmMachine/33.png', 'src/assets/projects/atmMachine/34.png', 'src/assets/projects/atmMachine/35.png', 'src/assets/projects/atmMachine/36.png',],
+    demo: null,
+    links: {
+      github: 'https://github.com/KelynWong/atmMachineV2',
+    },
+    tags: ['Java', 'OOP', 'File I/O'],
+    year: '2021',
+  },
+  {
+    id: 'restaurant-ordering',
+    title: 'Restaurant Ordering System',
+    category: 'backend',
+    coverImage: '/src/assets/projects/cover/restaurant-ordering-cover.svg',
+    coverAlt: 'Restaurant Ordering System',
+    short: 'Multi-threaded Java restaurant simulation exploring race conditions, deadlocks & thread-safe fixes with ReentrantLocks',
+    description: 'A multi-threaded Java simulation of a restaurant kitchen, built to explore and fix real concurrency problems. Waiter threads place dish orders into a shared kitchen queue while chef threads pull from it and decrement a shared ingredient inventory — a setup deliberately designed to surface race conditions and deadlocks. The project ships three versions: an unfixed build that demonstrates observable race conditions (dish and inventory counts that don\'t tally, multiple chefs preparing the same order), a partially fixed build that introduces naive locking and results in deadlocks from circular lock dependencies, and a fully fixed build that resolves both issues using ReentrantLocks with consistent lock ordering. All thread counts, wait times, inventory limits, and dish quantities are configurable via a config file, making the concurrency issues reproducible and tunable. Full sequence and class diagrams are included.',
+    screenshots: [],
+    demo: null,
+    links: {
+      github: 'https://github.com/KelynWong/APD-RestaurantOrderingSys',
+    },
+    tags: ['Java', 'Multithreading', 'Concurrency', 'ReentrantLock', 'Deadlock', 'Race Condition', 'OOP'],
+    year: '2024',
+  },
 ];
 
 export const PROJECT_CATEGORY_ORDER = [
-  { key: 'iot', label: 'IoT Projects' },
-  { key: 'mobile', label: 'Mobile Apps' },
   { key: 'fullstack', label: 'Full Stack Projects' },
+  { key: 'mobile', label: 'Mobile Apps' },
+  { key: 'frontend', label: 'Frontend-Only Projects' },
+  { key: 'backend', label: 'Backend-Only Projects' },
+  { key: 'iot', label: 'IoT Projects' },
 ]

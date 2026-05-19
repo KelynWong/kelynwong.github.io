@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" viewBox="0 0 680 383" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>DuoTexture — project cover</title>
+  <desc>Dark terminal-aesthetic cover for DuoTexture, a Java Servlet textile e-commerce app.</desc>
+  <style>.mono{font-family:'JetBrains Mono','Courier New',monospace}</style>
+
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e1e1e" stroke-width="0.5"/>
+    </pattern>
+    <!-- weave pattern for textile feel -->
+    <pattern id="weave" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="#1a1a14" opacity="0.6"/>
+      <rect x="4" y="4" width="4" height="4" fill="#1a1a14" opacity="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="383" fill="url(#grid)"/>
+
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/>
+  <circle cx="90" cy="18" r="5" fill="#C8C87A"/>
+  <circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="134" y="22" class="mono" font-size="11" fill="#3a3a3a">ProductServlet.java</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#2a2a2a" stroke-width="1"/>
+
+  <text x="64" y="65" class="mono" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="89" class="mono" font-size="20" font-weight="500" fill="#ffffff">DuoTexture</text>
+  <text x="64" y="113" class="mono" font-size="20" font-weight="500" fill="#B87DB8">Textile E-Commerce</text>
+
+  <!-- fabric / weave icon centred left -->
+  <circle cx="175" cy="218" r="72" fill="none" stroke="#2a1a2a" stroke-width="18"/>
+  <circle cx="175" cy="218" r="56" fill="none" stroke="#1a0f1a" stroke-width="10"/>
+
+  <!-- fabric swatch square with woven texture -->
+  <rect x="128" y="168" width="94" height="100" rx="4" fill="url(#weave)" stroke="#B87DB8" stroke-width="1.2"/>
+  <!-- weave lines horizontal -->
+  <line x1="128" y1="176" x2="222" y2="176" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="128" y1="184" x2="222" y2="184" stroke="#C8C87A" stroke-width="0.5" opacity="0.25"/>
+  <line x1="128" y1="192" x2="222" y2="192" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="128" y1="200" x2="222" y2="200" stroke="#C8C87A" stroke-width="0.5" opacity="0.25"/>
+  <line x1="128" y1="208" x2="222" y2="208" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="128" y1="216" x2="222" y2="216" stroke="#C8C87A" stroke-width="0.5" opacity="0.25"/>
+  <line x1="128" y1="224" x2="222" y2="224" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="128" y1="232" x2="222" y2="232" stroke="#C8C87A" stroke-width="0.5" opacity="0.25"/>
+  <line x1="128" y1="240" x2="222" y2="240" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="128" y1="248" x2="222" y2="248" stroke="#C8C87A" stroke-width="0.5" opacity="0.25"/>
+  <line x1="128" y1="256" x2="222" y2="256" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <!-- weave lines vertical -->
+  <line x1="136" y1="168" x2="136" y2="268" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="144" y1="168" x2="144" y2="268" stroke="#C8C87A" stroke-width="0.5" opacity="0.2"/>
+  <line x1="152" y1="168" x2="152" y2="268" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="160" y1="168" x2="160" y2="268" stroke="#C8C87A" stroke-width="0.5" opacity="0.2"/>
+  <line x1="168" y1="168" x2="168" y2="268" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="176" y1="168" x2="176" y2="268" stroke="#C8C87A" stroke-width="0.5" opacity="0.2"/>
+  <line x1="184" y1="168" x2="184" y2="268" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="192" y1="168" x2="192" y2="268" stroke="#C8C87A" stroke-width="0.5" opacity="0.2"/>
+  <line x1="200" y1="168" x2="200" y2="268" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="208" y1="168" x2="208" y2="268" stroke="#C8C87A" stroke-width="0.5" opacity="0.2"/>
+  <line x1="216" y1="168" x2="216" y2="268" stroke="#B87DB8" stroke-width="0.5" opacity="0.3"/>
+  <!-- DT monogram overlay on swatch -->
+  <text x="175" y="227" class="mono" font-size="28" font-weight="700" fill="#B87DB8" opacity="0.25" text-anchor="middle">DT</text>
+  <!-- swatch folded corner -->
+  <polygon points="198,168 222,168 222,192" fill="#0d0d0d" opacity="0.6"/>
+  <line x1="198" y1="168" x2="222" y2="192" stroke="#B87DB8" stroke-width="0.8"/>
+
+  <!-- label pill -->
+  <rect x="117" y="280" width="116" height="22" rx="3" fill="#1a0f1a" stroke="#B87DB8" stroke-width="1"/>
+  <text x="121" y="295" class="mono" font-size="10" fill="#B87DB8">textile e-commerce</text>
+
+  <!-- RIGHT: MVC + role portal diagram -->
+  <!-- MVC flow -->
+  <rect x="290" y="92" width="78" height="38" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="329" y="108" class="mono" font-size="9" fill="#5BAADC" text-anchor="middle">JSP View</text>
+  <text x="329" y="120" class="mono" font-size="8" fill="#2a3a5a" text-anchor="middle">HTML/CSS</text>
+  <line x1="368" y1="111" x2="388" y2="111" stroke="#333" stroke-width="0.8"/>
+
+  <rect x="388" y="92" width="96" height="38" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="436" y="108" class="mono" font-size="9" fill="#C8C87A" text-anchor="middle">Java Servlet</text>
+  <text x="436" y="120" class="mono" font-size="8" fill="#4a4a2a" text-anchor="middle">Controller</text>
+  <line x1="484" y1="111" x2="504" y2="111" stroke="#333" stroke-width="0.8"/>
+
+  <rect x="504" y="92" width="132" height="38" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="570" y="108" class="mono" font-size="9" fill="#8BB87A" text-anchor="middle">MySQL Model</text>
+  <text x="570" y="120" class="mono" font-size="8" fill="#2a4a2a" text-anchor="middle">EER normalised schema</text>
+
+  <!-- MVC label -->
+  <text x="463" y="144" class="mono" font-size="9" fill="#3a3a3a" text-anchor="middle">MVC · Java EE Fundamentals · Session Mgmt</text>
+
+  <!-- product grid -->
+  <rect x="290" y="154" width="78" height="88" rx="3" fill="#1a1a14" stroke="#B87DB8" stroke-width="0.8"/>
+  <rect x="290" y="154" width="78" height="50" rx="3" fill="#1a1418"/>
+  <ellipse cx="329" cy="170" rx="18" ry="10" fill="#2a1a2a" stroke="#B87DB8" stroke-width="0.8"/>
+  <rect x="311" y="171" width="36" height="20" fill="#2a1a2a"/>
+  <ellipse cx="329" cy="191" rx="18" ry="10" fill="#2a1a2a" stroke="#B87DB8" stroke-width="0.8"/>
+  <line x1="311" y1="171" x2="311" y2="191" stroke="#B87DB8" stroke-width="0.8"/>
+  <line x1="347" y1="171" x2="347" y2="191" stroke="#B87DB8" stroke-width="0.8"/>
+  <text x="329" y="214" class="mono" font-size="7" fill="#d4d4d4" text-anchor="middle">Silk Chiffon</text>
+  <text x="329" y="223" class="mono" font-size="7" fill="#B87DB8" text-anchor="middle">$24.90/m</text>
+  <text x="329" y="234" class="mono" font-size="6" fill="#555" text-anchor="middle">In stock</text>
+
+  <rect x="376" y="154" width="78" height="88" rx="3" fill="#1a1a14" stroke="#C8C87A" stroke-width="0.8"/>
+  <rect x="376" y="154" width="78" height="50" rx="3" fill="#1a1810"/>
+  <rect x="396" y="164" width="36" height="30" rx="2" fill="#2a2a18" stroke="#C8C87A" stroke-width="0.8"/>
+  <line x1="396" y1="170" x2="432" y2="170" stroke="#C8C87A" stroke-width="0.5" opacity="0.4"/>
+  <line x1="396" y1="176" x2="432" y2="176" stroke="#C8C87A" stroke-width="0.5" opacity="0.4"/>
+  <line x1="396" y1="182" x2="432" y2="182" stroke="#C8C87A" stroke-width="0.5" opacity="0.4"/>
+  <line x1="396" y1="188" x2="432" y2="188" stroke="#C8C87A" stroke-width="0.5" opacity="0.4"/>
+  <text x="415" y="214" class="mono" font-size="7" fill="#d4d4d4" text-anchor="middle">Linen Blend</text>
+  <text x="415" y="223" class="mono" font-size="7" fill="#C8C87A" text-anchor="middle">$18.50/m</text>
+  <text x="415" y="234" class="mono" font-size="6" fill="#555" text-anchor="middle">In stock</text>
+
+  <rect x="462" y="154" width="78" height="88" rx="3" fill="#1a1a14" stroke="#5BAADC" stroke-width="0.8"/>
+  <rect x="462" y="154" width="78" height="50" rx="3" fill="#101820"/>
+  <rect x="480" y="162" width="40" height="32" rx="2" fill="#101820" stroke="#5BAADC" stroke-width="0.6"/>
+  <rect x="480" y="162" width="20" height="16" fill="#1a2a3a"/>
+  <rect x="500" y="178" width="20" height="16" fill="#1a2a3a"/>
+  <text x="501" y="214" class="mono" font-size="7" fill="#d4d4d4" text-anchor="middle">Cotton Plaid</text>
+  <text x="501" y="223" class="mono" font-size="7" fill="#5BAADC" text-anchor="middle">$12.00/m</text>
+  <text x="501" y="234" class="mono" font-size="6" fill="#555" text-anchor="middle">Low stock</text>
+
+  <rect x="548" y="154" width="88" height="88" rx="3" fill="#1a1a14" stroke="#C4836A" stroke-width="0.8"/>
+  <rect x="548" y="154" width="88" height="50" rx="3" fill="#1a1208"/>
+  <rect x="562" y="162" width="60" height="32" rx="2" fill="#1a1208" stroke="#C4836A" stroke-width="0.6"/>
+  <line x1="562" y1="168" x2="622" y2="168" stroke="#C4836A" stroke-width="0.4" opacity="0.5"/>
+  <line x1="562" y1="172" x2="622" y2="172" stroke="#C4836A" stroke-width="0.4" opacity="0.4"/>
+  <line x1="562" y1="176" x2="622" y2="176" stroke="#C4836A" stroke-width="0.4" opacity="0.5"/>
+  <line x1="562" y1="180" x2="622" y2="180" stroke="#C4836A" stroke-width="0.4" opacity="0.4"/>
+  <line x1="562" y1="184" x2="622" y2="184" stroke="#C4836A" stroke-width="0.4" opacity="0.5"/>
+  <line x1="562" y1="188" x2="622" y2="188" stroke="#C4836A" stroke-width="0.4" opacity="0.4"/>
+  <text x="592" y="214" class="mono" font-size="7" fill="#d4d4d4" text-anchor="middle">Velvet Drape</text>
+  <text x="592" y="223" class="mono" font-size="7" fill="#C4836A" text-anchor="middle">$38.00/m</text>
+  <text x="592" y="234" class="mono" font-size="6" fill="#555" text-anchor="middle">Featured</text>
+
+  <!-- role portals -->
+  <rect x="290" y="256" width="172" height="64" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <rect x="290" y="256" width="172" height="18" rx="4" fill="#1a1a0a"/>
+  <text x="376" y="268" class="mono" font-size="9" fill="#C8C87A" text-anchor="middle">Member Portal</text>
+  <text x="296" y="286" class="mono" font-size="8" fill="#5a5a2a">Browse &amp; purchase products</text>
+  <text x="296" y="297" class="mono" font-size="8" fill="#5a5a2a">Order history &amp; account</text>
+  <text x="296" y="308" class="mono" font-size="8" fill="#4a4a2a">Session-managed login</text>
+
+  <rect x="470" y="256" width="166" height="64" rx="4" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+  <rect x="470" y="256" width="166" height="18" rx="4" fill="#1a0f0a"/>
+  <text x="553" y="268" class="mono" font-size="9" fill="#C4836A" text-anchor="middle">Admin Portal</text>
+  <text x="476" y="286" class="mono" font-size="8" fill="#6a3a2a">Manage inventory &amp; products</text>
+  <text x="476" y="297" class="mono" font-size="8" fill="#6a3a2a">Process orders &amp; accounts</text>
+  <text x="476" y="308" class="mono" font-size="8" fill="#4a2a2a">Role-based access control</text>
+
+  <!-- code snippet -->
+  <text x="64" y="320" class="mono" font-size="10" fill="#2a3a2a">@WebServlet(</text>
+  <text x="136" y="320" class="mono" font-size="10" fill="#C8C87A">"/products"</text>
+  <text x="202" y="320" class="mono" font-size="10" fill="#2a3a2a">)</text>
+  <text x="64" y="336" class="mono" font-size="10" fill="#4A72B0">public class</text>
+  <text x="142" y="336" class="mono" font-size="10" fill="#8BB87A"> ProductServlet</text>
+  <text x="233" y="336" class="mono" font-size="10" fill="#4A72B0"> extends</text>
+  <text x="64" y="352" class="mono" font-size="10" fill="#B87DB8">  HttpServlet</text>
+  <text x="135" y="352" class="mono" font-size="10" fill="#d4d4d4"> { doGet / doPost }</text>
+  <text x="64" y="368" class="mono" font-size="10" fill="#2a3a2a">// MVC · EER · JSP · MySQL</text>
+</svg>

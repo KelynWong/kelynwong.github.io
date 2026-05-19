@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" viewBox="0 0 680 383" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>FairPrice — project cover</title>
+  <style>.mono{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e1e1e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="383" fill="url(#grid)"/>
+
+  <!-- terminal bar -->
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/>
+  <circle cx="90" cy="18" r="5" fill="#C8C87A"/>
+  <circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="134" y="22" class="mono" font-size="11" fill="#3a3a3a">fairprice_schema.sql</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#2a2a2a" stroke-width="1"/>
+
+  <!-- title -->
+  <text x="64" y="65" class="mono" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="89" class="mono" font-size="20" font-weight="500" fill="#ffffff">FairPrice</text>
+  <text x="64" y="113" class="mono" font-size="20" font-weight="500" fill="#8BB87A">DB Design</text>
+
+  <!-- DB cylinder icon with glow -->
+  <circle cx="175" cy="210" r="72" fill="none" stroke="#0a1a0a" stroke-width="18"/>
+  <circle cx="175" cy="220" r="56" fill="none" stroke="#081208" stroke-width="10"/>
+  <!-- 3 stacked cylinders -->
+  <ellipse cx="175" cy="178" rx="40" ry="13" fill="#0f2a18" stroke="#8BB87A" stroke-width="1.2"/>
+  <rect x="135" y="178" width="80" height="24" fill="#0f2a18"/>
+  <ellipse cx="175" cy="202" rx="40" ry="13" fill="#0f2a18" stroke="#8BB87A" stroke-width="1"/>
+  <rect x="135" y="202" width="80" height="24" fill="#112e1a"/>
+  <ellipse cx="175" cy="226" rx="40" ry="13" fill="#112e1a" stroke="#8BB87A" stroke-width="1"/>
+  <rect x="135" y="226" width="80" height="24" fill="#143218"/>
+  <ellipse cx="175" cy="250" rx="40" ry="13" fill="#143218" stroke="#8BB87A" stroke-width="1.2"/>
+  <!-- cylinder labels -->
+  <text x="175" y="180" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">products</text>
+  <text x="175" y="205" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">categories</text>
+  <text x="175" y="228" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">discounts</text>
+
+  <!-- label pill -->
+  <rect x="113" y="270" width="124" height="22" rx="3" fill="#0f2a18" stroke="#8BB87A" stroke-width="1"/>
+  <text x="122" y="284" class="mono" font-size="10" fill="#8BB87A">MySQL · normalised</text>
+
+  <!-- ═══════════════════════════════════
+       RIGHT: ER Diagram (entity boxes + relation lines)
+       ═══════════════════════════════════ -->
+
+  <!-- brands table -->
+  <rect x="298" y="92" width="96" height="66" rx="3" fill="#141414" stroke="#C8C87A" stroke-width="0.9"/>
+  <rect x="298" y="92" width="96" height="16" rx="3" fill="#1a1a0a"/>
+  <text x="346" y="103" class="mono" font-size="8" fill="#C8C87A" text-anchor="middle">brands</text>
+  <line x1="298" y1="108" x2="394" y2="108" stroke="#2a2a1a" stroke-width="0.5"/>
+  <text x="304" y="119" class="mono" font-size="7" fill="#C8C87A">🔑 brand_id</text>
+  <text x="304" y="129" class="mono" font-size="7" fill="#555">brand_name</text>
+  <text x="304" y="139" class="mono" font-size="7" fill="#555">country</text>
+  <text x="304" y="149" class="mono" font-size="7" fill="#555">founded_year</text>
+  
+  <!-- categories table -->
+  <rect x="298" y="192" width="96" height="56" rx="3" fill="#141414" stroke="#5BAADC" stroke-width="0.9"/>
+  <rect x="298" y="192" width="96" height="16" rx="3" fill="#0a1820"/>
+  <text x="346" y="203" class="mono" font-size="8" fill="#5BAADC" text-anchor="middle">categories</text>
+  <line x1="298" y1="208" x2="394" y2="208" stroke="#1a2a3a" stroke-width="0.5"/>
+  <text x="304" y="219" class="mono" font-size="7" fill="#5BAADC">🔑 cat_id</text>
+  <text x="304" y="229" class="mono" font-size="7" fill="#555">cat_name</text>
+  <text x="304" y="239" class="mono" font-size="7" fill="#555">parent_cat_id</text>
+  
+  <!-- products table -->
+  <rect x="420" y="78" width="110" height="96" rx="3" fill="#0f2a18" stroke="#8BB87A" stroke-width="1.2"/>
+  <rect x="420" y="78" width="110" height="16" rx="3" fill="#143218"/>
+  <text x="475" y="89" class="mono" font-size="8" fill="#8BB87A" text-anchor="middle">products</text>
+  <line x1="420" y1="94" x2="530" y2="94" stroke="#1a3a1a" stroke-width="0.5"/>
+  <text x="426" y="105" class="mono" font-size="7" fill="#8BB87A">🔑 product_id</text>
+  <text x="426" y="115" class="mono" font-size="7" fill="#3a5a3a">🔗 brand_id</text>
+  <text x="426" y="125" class="mono" font-size="7" fill="#3a5a3a">🔗 subcat_id</text>
+  <text x="426" y="135" class="mono" font-size="7" fill="#555">product_name</text>
+  <text x="426" y="145" class="mono" font-size="7" fill="#555">price · weight</text>
+  <text x="426" y="155" class="mono" font-size="7" fill="#555">stock_qty</text>
+  <text x="426" y="165" class="mono" font-size="7" fill="#555">is_active</text>
+  
+  <!-- subcategories table -->
+  <rect x="420" y="196" width="110" height="56" rx="3" fill="#141414" stroke="#C4836A" stroke-width="0.9"/>
+  <rect x="420" y="196" width="110" height="16" rx="3" fill="#1a1008"/>
+  <text x="475" y="207" class="mono" font-size="8" fill="#C4836A" text-anchor="middle">subcategories</text>
+  <line x1="420" y1="212" x2="530" y2="212" stroke="#2a1a0a" stroke-width="0.5"/>
+  <text x="426" y="223" class="mono" font-size="7" fill="#C4836A">🔑 subcat_id</text>
+  <text x="426" y="233" class="mono" font-size="7" fill="#555">🔗 cat_id</text>
+  <text x="426" y="243" class="mono" font-size="7" fill="#555">subcat_name</text>
+  
+  <!-- discounts table -->
+  <rect x="556" y="78" width="100" height="86" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.9"/>
+  <rect x="556" y="78" width="100" height="16" rx="3" fill="#1a0f1a"/>
+  <text x="606" y="89" class="mono" font-size="8" fill="#B87DB8" text-anchor="middle">discounts</text>
+  <line x1="556" y1="94" x2="656" y2="94" stroke="#2a1a2a" stroke-width="0.5"/>
+  <text x="562" y="105" class="mono" font-size="7" fill="#B87DB8">🔑 disc_id</text>
+  <text x="562" y="115" class="mono" font-size="7" fill="#4a2a5a">🔗 product_id</text>
+  <text x="562" y="125" class="mono" font-size="7" fill="#555">disc_type</text>
+  <text x="562" y="135" class="mono" font-size="7" fill="#555">value · min_qty</text>
+  <text x="562" y="145" class="mono" font-size="7" fill="#555">start · end date</text>
+  <text x="562" y="155" class="mono" font-size="7" fill="#555">gift_product_id</text>
+  
+  <!-- relation lines -->
+  <line x1="394" y1="122" x2="420" y2="122" stroke="#C8C87A" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <text x="400" y="116" class="mono" font-size="6" fill="#4a4a2a">1</text>
+  <text x="411" y="116" class="mono" font-size="6" fill="#4a4a2a">N</text>
+  
+  <line x1="394" y1="220" x2="420" y2="220" stroke="#5BAADC" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <text x="398" y="213" class="mono" font-size="6" fill="#2a3a5a">1</text>
+  <text x="412" y="213" class="mono" font-size="6" fill="#2a3a5a">N</text>
+  
+  <line x1="475" y1="196" x2="475" y2="174" stroke="#C4836A" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <text x="478" y="192" class="mono" font-size="6" fill="#5a3a2a">N</text>
+  <text x="478" y="182" class="mono" font-size="6" fill="#5a3a2a">1</text>
+  
+  <line x1="530" y1="120" x2="556" y2="120" stroke="#B87DB8" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <text x="534" y="116" class="mono" font-size="6" fill="#4a2a5a">1</text>
+  <text x="548" y="116" class="mono" font-size="6" fill="#4a2a5a">N</text>
+  
+  <!-- discount types legend -->
+  <rect x="298" y="272" width="358" height="80" rx="3" fill="#0a0f0a" stroke="#1a2a1a" stroke-width="0.6"/>
+  <text x="304" y="284" class="mono" font-size="8" fill="#3a5a3a">Discount types</text>
+  <line x1="298" y1="288" x2="656" y2="288" stroke="#1a2a1a" stroke-width="0.4"/>
+  
+  <rect x="304" y="294" width="100" height="50" rx="2" fill="#141414" stroke="#C4836A" stroke-width="0.6"/>
+  <text x="354" y="305" class="mono" font-size="7" fill="#C4836A" text-anchor="middle">Direct Cut</text>
+  <text x="310" y="317" class="mono" font-size="6" fill="#5a3a2a">Fixed price reduction</text>
+  <text x="310" y="327" class="mono" font-size="6" fill="#5a3a2a">e.g. $2.00 off</text>
+  <text x="310" y="337" class="mono" font-size="6" fill="#4a2a2a">disc_type = 'direct'</text>
+  
+  <rect x="414" y="294" width="114" height="50" rx="2" fill="#141414" stroke="#5BAADC" stroke-width="0.6"/>
+  <text x="471" y="305" class="mono" font-size="7" fill="#5BAADC" text-anchor="middle">Qty-Based</text>
+  <text x="420" y="317" class="mono" font-size="6" fill="#2a3a5a">Buy N get discount</text>
+  <text x="420" y="327" class="mono" font-size="6" fill="#2a3a5a">e.g. 3 for $5</text>
+  <text x="420" y="337" class="mono" font-size="6" fill="#1a2a4a">disc_type = 'quantity'</text>
+  
+  <rect x="538" y="294" width="112" height="50" rx="2" fill="#141414" stroke="#B87DB8" stroke-width="0.6"/>
+  <text x="594" y="305" class="mono" font-size="7" fill="#B87DB8" text-anchor="middle">Gift-with-Purchase</text>
+  <text x="544" y="317" class="mono" font-size="6" fill="#4a2a5a">Buy A get B free</text>
+  <text x="544" y="327" class="mono" font-size="6" fill="#4a2a5a">gift_product_id FK</text>
+  <text x="544" y="337" class="mono" font-size="6" fill="#3a1a4a">disc_type = 'gift'</text>
+
+  <!-- code snippet -->
+  <text x="64" y="318" class="mono" font-size="10" fill="#2a3a2a">SELECT</text>
+  <text x="104" y="318" class="mono" font-size="10" fill="#5BAADC"> p.product_name</text>
+  <text x="76" y="334" class="mono" font-size="10" fill="#8BB87A"> CASE</text>
+  <text x="106" y="334" class="mono" font-size="10" fill="#d4d4d4"> d.disc_type</text>
+  <text x="64" y="350" class="mono" font-size="10" fill="#d4d4d4">    </text>
+  <text x="76" y="350" class="mono" font-size="10" fill="#8BB87A">WHEN</text>
+  <text x="106" y="350" class="mono" font-size="10" fill="#C8C87A"> 'direct'</text>
+  <text x="158" y="350" class="mono" font-size="10" fill="#8BB87A"> THEN</text>
+  <text x="187" y="350" class="mono" font-size="10" fill="#d4d4d4"> p.price - d.value</text>
+  <text x="64" y="366" class="mono" font-size="10" fill="#2a3a2a">-- active promotions · effective price</text>
+</svg>
