@@ -2,6 +2,7 @@ import ProjectCard from './components/ProjectCard.vue'
 import ProjectModal from './components/ProjectModal.vue'
 import ThreeJSModel from './components/ThreeJSModel.vue'
 import Footer from './components/Footer.vue'
+import FilterPills from './components/FilterPills.vue'
 import {
   skillGroups,
   jobs,
@@ -61,6 +62,7 @@ const appOptions = {
     ProjectModal,
     ThreeJSModel,
     Footer,
+    FilterPills,
   },
   data() {
     return {
@@ -83,6 +85,7 @@ const appOptions = {
       activeCat: 'clay',
       activePhotoPlace: 'dopamineLand2026',
       activeVideoCat: 'travel',
+      isNavOpen: false,
 
       photoGroups: photoGroupDefs.map((d) => buildPhotoGroup(d.id, d.label, d.year, d.count, d.extOverrides || {})),
 
@@ -103,6 +106,9 @@ const appOptions = {
       showProjectModal: false,
       currentImageIndex: 0,
       videoVisible: false,
+      // project filtering
+      activeProjectFilter: 'all',
+      projectCategories: PROJECT_CATEGORY_ORDER,
       galleryAspects: {
         clay: {},
         drawing: {},
@@ -115,6 +121,7 @@ const appOptions = {
       galleryAutoPlayInterval: null,
       galleryAutoPlayProgressInterval: null,
       galleryAutoPlayProgress: 0,
+      galleryTl: null,
 
       // Music player state
       currentTrackIdx: null,
@@ -156,9 +163,13 @@ const appOptions = {
       return this.galleryLightboxItems[this.galleryLightboxIndex] || null
     },
     groupedProjects() {
+      const filtered = this.activeProjectFilter && this.activeProjectFilter !== 'all'
+        ? this.projects.filter((p) => (p.category || 'fullstack') === this.activeProjectFilter)
+        : this.projects
+
       const grouped = PROJECT_CATEGORY_ORDER.map((category) => ({
         ...category,
-        items: this.projects.filter((project) => (project.category || 'fullstack') === category.key),
+        items: filtered.filter((project) => (project.category || 'fullstack') === category.key),
       }))
 
       const uncategorized = this.projects.filter(
@@ -265,25 +276,41 @@ const appOptions = {
 
       return rows
     },
+
+    // normalized current gallery item for template usage
+    currentGalleryLightboxItem() {
+      return this.galleryLightboxItems[this.galleryLightboxIndex] || null
+    },
   },
 
   mounted() {
     this.fitHeroVerbs()
     this._heroResizeHandler = () => this.fitHeroVerbs()
     this._socialScrollHandler = () => this.triggerSocialBounce()
+    this._navResizeHandler = () => {
+      if (window.innerWidth > 900) {
+        this.isNavOpen = false
+      }
+    }
     this._galleryKeyHandler = (event) => this.handleGalleryKeydown(event)
     window.addEventListener('resize', this._heroResizeHandler)
+    window.addEventListener('resize', this._navResizeHandler)
     window.addEventListener('scroll', this._socialScrollHandler, { passive: true })
     window.addEventListener('keydown', this._galleryKeyHandler)
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => this.fitHeroVerbs())
     }
     this.startHeroTypingSequence()
+
+    // Initialize project-card reveal: handled via CSS transition-group rules
   },
 
   beforeUnmount() {
     if (this._heroResizeHandler) {
       window.removeEventListener('resize', this._heroResizeHandler)
+    }
+    if (this._navResizeHandler) {
+      window.removeEventListener('resize', this._navResizeHandler)
     }
     if (this._socialScrollHandler) {
       window.removeEventListener('scroll', this._socialScrollHandler)
@@ -302,6 +329,10 @@ const appOptions = {
       if (!heroLeft || !heroVerbs) return
 
       heroVerbs.style.fontSize = ''
+    },
+
+    closeNavMenu() {
+      this.isNavOpen = false
     },
 
     galleryImageStyle(section, itemId) {
@@ -337,6 +368,25 @@ const appOptions = {
       if (section === 'drawing') return 'Drawings'
       if (section === 'photo') return 'Photography'
       return 'Gallery'
+    },
+
+    // set project category filter (animation handled via CSS transition-group)
+    setProjectFilter(categoryKey) {
+      // simple filter assignment — animations handled by transition-group hooks
+      this.activeProjectFilter = categoryKey || 'all'
+    },
+
+    // transition-group hooks removed — CSS handles enter/leave animations
+    selectCategory(catId/*, evt */) {
+      this.activeCat = catId
+    },
+
+    selectPhotoPlace(placeId/*, evt */) {
+      this.activePhotoPlace = placeId
+    },
+
+    selectVideoCat(vcId/*, evt */) {
+      this.activeVideoCat = vcId
     },
 
     galleryLightboxMeta(item) {
@@ -421,18 +471,37 @@ const appOptions = {
       this.stopGalleryAutoPlay()
       const autoPlayDurationMs = 3000
       const progressTickMs = 50
-      const progressStep = (100 * progressTickMs) / autoPlayDurationMs
+      const selector = '.gallery-lightbox-progress-fill'
+      const fillEl = document.querySelector(selector)
+      if (!fillEl) return
+
+      // ensure any prior timers are cleared
+      if (this.galleryAutoPlayInterval) clearInterval(this.galleryAutoPlayInterval)
+      if (this.galleryAutoPlayProgressInterval) clearInterval(this.galleryAutoPlayProgressInterval)
+
+      // reset
       this.galleryAutoPlayProgress = 0
+      fillEl.style.width = '0%'
+
+      // update visible progress every tick
+      const progressStep = (100 * progressTickMs) / autoPlayDurationMs
       this.galleryAutoPlayProgressInterval = setInterval(() => {
         this.galleryAutoPlayProgress = Math.min(this.galleryAutoPlayProgress + progressStep, 100)
+        fillEl.style.width = `${this.galleryAutoPlayProgress}%`
       }, progressTickMs)
+
+      // advance image at interval
       this.galleryAutoPlayInterval = setInterval(() => {
         this.galleryLightboxIndex = (this.galleryLightboxIndex + 1) % this.galleryLightboxItems.length
         this.galleryAutoPlayProgress = 0
+        fillEl.style.width = '0%'
       }, autoPlayDurationMs)
     },
 
     stopGalleryAutoPlay() {
+      if (this.galleryTl) {
+        this.galleryTl = null
+      }
       if (this.galleryAutoPlayInterval) {
         clearInterval(this.galleryAutoPlayInterval)
         this.galleryAutoPlayInterval = null
@@ -442,6 +511,9 @@ const appOptions = {
         this.galleryAutoPlayProgressInterval = null
       }
       this.galleryAutoPlayProgress = 0
+      // reset DOM fill if present
+      const fill = document.querySelector('.gallery-lightbox-progress-fill')
+      if (fill) fill.style.width = '0%'
     },
 
     restartGalleryAutoPlay() {

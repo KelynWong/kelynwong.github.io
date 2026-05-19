@@ -1,9 +1,14 @@
 <template>
   <div id="app">
-    <nav class="nav">
+    <nav class="nav" :class="{ 'nav-open': isNavOpen }">
       <div class="nav-logo"><img src="./assets/images/logo.png" alt="logo" style="max-height: 32px;"></div>
-      <div class="nav-links">
-        <a v-for="link in appText.navLinks" :key="link.href" :href="link.href">{{ link.label }}</a>
+      <button class="nav-toggle" type="button" @click="isNavOpen = !isNavOpen" :aria-expanded="isNavOpen" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" :class="{ 'nav-links-open': isNavOpen }">
+        <a v-for="link in appText.navLinks" :key="link.href" :href="link.href" @click="closeNavMenu">{{ link.label }}</a>
       </div>
     </nav>
 
@@ -191,19 +196,29 @@
           <div class="sec-line"></div>
         </div>
         <div class="projects-groups">
+          <div class="projects-filter-row">
+            <FilterPills
+              :items="projectCategories"
+              :active="activeProjectFilter"
+              @select="setProjectFilter"
+              :show-all="true"
+              all-label="All"
+              button-class="ctab projects-filter-pill"
+            />
+          </div>
           <div v-for="group in groupedProjects" :key="group.key" class="projects-group">
             <div class="projects-group-header">
               <div class="projects-group-title">{{ group.label }}</div>
               <div class="projects-group-count">{{ group.items.length }} project{{ group.items.length === 1 ? '' : 's' }}</div>
             </div>
-            <div class="projects-grid">
+            <transition-group name="projects" tag="div" class="projects-grid">
               <ProjectCard
                 v-for="proj in group.items"
                 :key="proj.id"
                 :project="proj"
                 @open-project="activeProject = $event; showProjectModal = true; currentImageIndex = 0; videoVisible = false"
               />
-            </div>
+            </transition-group>
           </div>
         </div>
       </div>
@@ -224,13 +239,13 @@
           {{ interestsIntro.para2 }}
         </p>
         <div class="creative-tabs">
-          <button
-            v-for="cat in interestCategories"
-            :key="cat.id"
-            class="ctab"
-            :class="{active: activeCat === cat.id}"
-            @click="activeCat = cat.id"
-          >{{ cat.label }}</button>
+          <FilterPills
+            :items="interestCategories"
+            :active="activeCat"
+            @select="selectCategory"
+            :show-all="false"
+            button-class="ctab"
+          />
         </div>
         <div v-for="cat in interestCategories" :key="cat.id" v-show="activeCat === cat.id">
           <div class="cat-backstory">
@@ -257,16 +272,14 @@
 
           <div v-if="cat.id === 'photo'">
             <div class="photo-place-tabs">
-              <button
-                v-for="place in photoPlaces"
-                :key="place.id"
-                class="photo-place-pill"
-                :class="{ active: activePhotoPlace === place.id }"
-                @click="activePhotoPlace = place.id"
-              >
-                {{ place.label }}
-                <span class="photo-place-count">{{ place.count }}</span>
-              </button>
+              <FilterPills
+                :items="photoPlaces"
+                :active="activePhotoPlace"
+                @select="selectPhotoPlace"
+                :show-all="false"
+                button-class="ctab photo-place-pill"
+                :show-counts="true"
+              />
               <button class="photo-place-pill pill-muted" type="button" disabled>
                 {{ appText.moreComing.photo }}
               </button>
@@ -293,7 +306,7 @@
                 :key="vc.id"
                 class="vid-cat-pill"
                 :class="{ active: activeVideoCat === vc.id }"
-                @click="activeVideoCat = vc.id"
+                @click="selectVideoCat(vc.id, $event)"
               >
                 <span class="vid-cat-icon">{{ vc.icon }}</span>
                 {{ vc.label }}

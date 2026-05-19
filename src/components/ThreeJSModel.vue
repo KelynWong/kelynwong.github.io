@@ -14,6 +14,7 @@ export default {
       camera: null,
       animationId: null,
       handlers: null,
+      allowTouchControls: true,
     }
   },
   mounted() {
@@ -26,6 +27,8 @@ export default {
     initScene() {
       const canvas = this.$refs.canvas
       if (!canvas) return
+
+      this.allowTouchControls = window.innerWidth > 1024
 
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
       renderer.setPixelRatio(window.devicePixelRatio)
@@ -295,11 +298,13 @@ export default {
       window.addEventListener('mouseup', onMouseUp)
       window.addEventListener('mousemove', onMouseMove)
       canvas.addEventListener('wheel', onWheel, { passive: false })
-      canvas.addEventListener('touchstart', onTouchStart)
-      canvas.addEventListener('touchend', onTouchEnd)
-      canvas.addEventListener('touchmove', onTouchMove, { passive: false })
-      canvas.addEventListener('mousedown', resetIdle)
-      canvas.addEventListener('touchstart', resetIdle)
+      if (this.allowTouchControls) {
+        canvas.addEventListener('touchstart', onTouchStart)
+        canvas.addEventListener('touchend', onTouchEnd)
+        canvas.addEventListener('touchmove', onTouchMove, { passive: false })
+        canvas.addEventListener('mousedown', resetIdle)
+        canvas.addEventListener('touchstart', resetIdle)
+      }
 
       this.handlers = {
         resize,
@@ -333,11 +338,13 @@ export default {
       if (canvas && this.handlers) {
         canvas.removeEventListener('mousedown', this.handlers.onMouseDown)
         canvas.removeEventListener('wheel', this.handlers.onWheel)
-        canvas.removeEventListener('touchstart', this.handlers.onTouchStart)
-        canvas.removeEventListener('touchend', this.handlers.onTouchEnd)
-        canvas.removeEventListener('touchmove', this.handlers.onTouchMove)
-        canvas.removeEventListener('mousedown', this.handlers.resetIdle)
-        canvas.removeEventListener('touchstart', this.handlers.resetIdle)
+        if (this.allowTouchControls) {
+          canvas.removeEventListener('touchstart', this.handlers.onTouchStart)
+          canvas.removeEventListener('touchend', this.handlers.onTouchEnd)
+          canvas.removeEventListener('touchmove', this.handlers.onTouchMove)
+          canvas.removeEventListener('mousedown', this.handlers.resetIdle)
+          canvas.removeEventListener('touchstart', this.handlers.resetIdle)
+        }
       }
       if (this.handlers) {
         window.removeEventListener('resize', this.handlers.resize)

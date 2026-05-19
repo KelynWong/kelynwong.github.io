@@ -106,31 +106,36 @@
               <!-- Links Section -->
               <div v-if="hasLinks" class="modal-links">
                 <a
-                  v-if="project.links?.github"
-                  :href="project.links.github"
+                  v-for="(g, idx) in normalizedLinks.github"
+                  :key="`gh-${idx}`"
+                  :href="g.link"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="modal-link-btn"
                 >
-                  → GitHub Repository
+                  {{ g.label || '→ GitHub Repository' }}
                 </a>
+
                 <a
-                  v-if="project.links?.live"
-                  :href="project.links.live"
+                  v-for="(l, idx) in normalizedLinks.live"
+                  :key="`live-${idx}`"
+                  :href="l.link"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="modal-link-btn"
                 >
-                  → Live Demo
+                  {{ l.label || '→ Live Demo' }}
                 </a>
+
                 <a
-                  v-if="project.links?.figma"
-                  :href="project.links.figma"
+                  v-for="(f, idx) in normalizedLinks.figma"
+                  :key="`figma-${idx}`"
+                  :href="f.link"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="modal-link-btn"
                 >
-                  → Figma Design
+                  {{ f.label || '→ Figma Design' }}
                 </a>
               </div>
             </div>
@@ -171,11 +176,14 @@ export default {
   computed: {
     displayImages() {
       const imgs = [];
-      if (this.project.screenshots?.length) {
-        imgs.push(...this.project.screenshots);
-      }
-      if (this.project.coverImage && !imgs.includes(this.project.coverImage)) {
+      // Prefer the cover image as the first image if present
+      if (this.project.coverImage) {
         imgs.push(this.project.coverImage);
+      }
+      if (this.project.screenshots?.length) {
+        for (const s of this.project.screenshots) {
+          if (!imgs.includes(s)) imgs.push(s);
+        }
       }
       return imgs;
     },
@@ -193,6 +201,33 @@ export default {
     },
     hasLinks() {
       return this.project.links?.github || this.project.links?.live || this.project.links?.figma;
+    },
+    normalizedLinks() {
+      const out = { github: [], live: [], figma: [] }
+      const links = this.project.links || {}
+
+      const normalize = (value, defaultLabel) => {
+        if (!value) return []
+        if (typeof value === 'string') return [{ link: value, label: defaultLabel }]
+        if (Array.isArray(value)) {
+          return value.map((item) => {
+            if (!item) return null
+            if (typeof item === 'string') return { link: item, label: defaultLabel }
+            // assume object with link and optional label
+            return { link: item.link || item.url || '', label: item.label || defaultLabel }
+          }).filter(Boolean)
+        }
+        if (typeof value === 'object') {
+          return [{ link: value.link || value.url || '', label: value.label || defaultLabel }]
+        }
+        return []
+      }
+
+      out.github = normalize(links.github, '→ GitHub Repository')
+      out.live = normalize(links.live, '→ Live Demo')
+      out.figma = normalize(links.figma, '→ Figma Design')
+
+      return out
     },
   },
   watch: {
@@ -239,7 +274,8 @@ export default {
       this.$emit('close');
     },
     displayImageAlt(index) {
-      if (!this.project.screenshots?.length) {
+      // If the cover image is used as the first image, prefer its alt text
+      if (index === 0 && this.project.coverImage) {
         return this.project.coverAlt || this.project.title;
       }
 
@@ -329,6 +365,13 @@ export default {
       this.currentDemoIndex = (this.currentDemoIndex - 1 + this.demoCount) % this.demoCount;
       this.restartDemoAutoPlay();
     },
+  },
+  mounted() {
+    if (this.isOpen) {
+      this.$nextTick(() => {
+        this.maybeStartAutoPlay();
+      });
+    }
   },
   beforeUnmount() {
     document.body.style.overflow = '';
