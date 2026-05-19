@@ -411,7 +411,11 @@ const appOptions = {
       this.galleryLightboxIndex = startIndex
       this.galleryLightboxOpen = true
       document.body.style.overflow = 'hidden'
-      this.startGalleryAutoPlay()
+      this.$nextTick(() => {
+        if (this.galleryLightboxOpen) {
+          this.startGalleryAutoPlay()
+        }
+      })
     },
 
     closeGalleryLightbox() {
