@@ -599,42 +599,42 @@ export const tracks = [
     genre: 'cover',
     duration: '02:39',
     lyrics: `[00:00.00] [Intro]
-[00:00.00]She's wearing an old dress, walking it out
-[00:05.00]Waiting for someone to turn her around
-[00:10.00]But she won't believe you
-[00:15.00]When you fall down on your knees
-[00:20.00]She fell asleep listening to my friends
-[00:25.00]Talking on and on about how the world ends
-[00:30.00]Then she wakes up
-[00:35.00]And climbs in my front seat
-[00:40.00]And she said
-[00:45.00]Don't you wait to try it
-[00:50.00]Are you scared to find it?
-[00:55.00]And do you wanna take my broken heart?
-[01:00.00]Are you scared to start?
-[01:05.00]Let's lay in the dead grass, stare at the stars
-[01:10.00]Run away and live out of cars and bars
-[01:15.00]Let's just leave here
-[01:20.00]'Cause there's nothing left to see
-[01:25.00]And if that's wrong, let's make it right
-[01:30.00]And if you leave, just give me one more night
-[01:35.00]'Cause there's no one
-[01:40.00]That you'll find that's quite like me
-[01:45.00]And she said
-[01:50.00]Don't you wait to try it
-[01:55.00]Are you scared to find it?
-[02:00.00]And do you wanna take my broken heart?
-[02:05.00]Are you scared to start?
-[02:10.00]You don't need the paycheck, don't need the rent
-[02:15.00]You can take it all 'cause it's already spent
-[02:20.00]We can burn out, just as long as we burn bright
-[02:25.00]And she said
-[02:30.00]Don't you wait to try it
-[02:35.00]Are you scared to find it?
-[02:40.00]And do you wanna take my broken heart?
-[02:45.00]Will you ever heal from all these scars?
-[02:50.00]Did you ever take it all so far?
-[02:55.00]Are you scared to start?`,
+[00:00.40]She's wearing an old dress, walking it out
+[00:03.80]Waiting for someone to turn her around
+[00:07.00]But she won't believe you
+[00:09.00]When you fall down on your knees
+[00:13.40]She fell asleep listening to my friends
+[00:17.00]Talking on and on about how the world ends
+[00:20.00]Then she wakes up
+[00:21.50]And climbs in my front seat
+[00:26.40]And she said
+[00:27.90]Don't you wait to try it
+[00:34.50]Are you scared to find it?
+[00:41.00]And do you wanna take my broken heart?
+[00:47.60]Are you scared to start?
+[00:52.30]Let's lay in the dead grass, stare at the stars
+[00:55.80]Run away and live out of cars and bars
+[00:59.00]Let's just leave here
+[01:00.60]'Cause there's nothing left to see
+[01:05.00]And if that's wrong, let's make it right
+[01:08.40]And if you leave, just give me one more night
+[01:11.90]'Cause there's no one
+[01:13.70]That you'll find that's quite like me
+[01:18.20]And she said
+[01:20.00]Don't you wait to try it
+[01:26.60]Are you scared to find it?
+[01:32.90]And do you wanna take my broken heart?
+[01:39.30]Are you scared to start?
+[01:44.00]You don't need the paycheck, don't need the rent
+[01:47.90]You can take it all 'cause it's already spent
+[01:51.00]We can burn out, just as long as we burn bright
+[01:57.20]And she said
+[01:59.00]Don't you wait to try it
+[02:05.00]Are you scared to find it?
+[02:11.50]And do you wanna take my broken heart?
+[02:18.00]Will you ever heal from all these scars?
+[02:24.70]Did you ever take it all so far?
+[02:31.20]Are you scared to start?`,
   },
   {
     src: '/src/assets/music/the_race__chris_james_nylek_cover.mp3',
