@@ -482,57 +482,58 @@ export const tracks = [
     genre: 'cover',
     duration: '02:50',
     lyrics: `[00:00.00] [Intro]
-[00:00.00]I can never get some rest
-[00:05.00]Oh-oh, oh
-[00:10.00]Staring at my ceiling
-[00:15.00]Thinking 'bout the weight that's on my chest
-[00:20.00]I'm always worried 'bout what's next
-[00:25.00]I think I forgot
-[00:30.00]How to live in present tense (present tense)
-[00:35.00]Yeah, I'm supposed to be in the prime of my life
-[00:40.00]But all I can see are the demons I fight
-[00:45.00]Try to believe that there's a silver lining
-[00:50.00]I can't find it, I don't wanna be
-[00:55.00]Spending all my golden years
-[01:00.00]Climbing all the way to the top
-[01:05.00]So how the hell'd I wind up here
-[01:10.00]Tryna be somebody I'm not
-[01:15.00]I used to be a lot less gated
-[01:20.00]Now I'm lost and all frustrated
-[01:25.00]Trading happiness for tears
-[01:30.00]And all my golden years
-[01:35.00]I could be a mile ahead by now
-[01:40.00](Somewhere better)
-[01:45.00]But I'm burning all my daylight wondering how
-[01:50.00]I can get there
-[01:55.00]I know I shouldn't count all of my days under the sun
-[02:00.00]But I don't wanna think and then I wake up and it's gone
-[02:05.00]I never really got to be the person that I wanna be
-[02:10.00]Oh, oh
-[02:15.00]I'm supposed to feel like I'm living it right
-[02:20.00]Is it all in my head
-[02:25.00]Am I wasting my time
-[02:30.00]Try to believe that there's a silver lining
-[02:35.00]I can't find it, I don't wanna be
-[02:40.00]Spending all my golden years
-[02:45.00]Climbing all the way to the top
-[02:50.00]So how the hell'd I wind up here
-[02:55.00]Tryna be somebody I'm not
-[03:00.00]I used to be a lot less gated
-[03:05.00]Now I'm lost and all frustrated
-[03:10.00]Trading happiness for tears
-[03:15.00]And all my golden years
-[03:20.00]And all my golden years
-[03:25.00](Oh-oh, oh-oh, oh)
-[03:30.00]I don't wanna be
-[03:35.00]Spending all my golden years
-[03:40.00]Climbing all the way to the top
-[03:45.00]So how the hell'd I wind up here
-[03:50.00]Tryna be somebody I'm not
-[03:55.00]I used to be a lot less gated
-[04:00.00]Now I'm lost and all frustrated
-[04:05.00]Trading happiness for tears
-[04:10.00]And all my golden years`,
+[00:02.30]I can never get some rest
+[00:06.90]Oh-oh, oh
+[00:08.90]Staring at my ceiling
+[00:11.00]Thinking 'bout the weight that's on my chest
+[00:15.00]I'm always worried 'bout what's next
+[00:19.50]I think I forgot
+[00:21.60]How to live in present tense (present tense)
+[00:27.00]Yeah, I'm supposed to be in the prime of my life
+[00:30.70]But all I can see are the demons I fight
+[00:33.80]Try to believe that there's a silver lining
+[00:37.50]I can't find it, I don't wanna be
+[00:40.40]Spending all my golden years
+[00:44.50]Climbing all the way to the top
+[00:46.90]So how the hell'd I wind up here
+[00:51.30]Tryna be somebody I'm not
+[00:52.99]I used to be a lot less gated
+[00:56.60]Now I'm lost and all frustrated
+[00:59.80]Trading happiness for tears
+[01:03.80]And all my golden years
+[01:06.70]I could be a mile ahead by now
+[01:11.00](Somewhere better)
+[01:12.90]But I'm burning all my daylight wondering how
+[01:16.30]I can get there
+[01:18.10]I know I shouldn't count all of my days under the sun
+[01:21.40]But I don't wanna think and then I wake up and it's gone
+[01:24.90]I never really got to be the person that I wanna be
+[01:29.80]Oh, oh
+[01:31.20]I'm supposed to feel like I'm living it right
+[01:34.00]Is it all in my head
+[01:35.55]Am I wasting my time
+[01:37.60]Try to believe that there's a silver lining
+[01:42.00]I can't find it, I don't wanna be
+[01:44.90]Spending all my golden years
+[01:48.60]Climbing all the way to the top
+[01:51.00]So how the hell'd I wind up here
+[01:55.00]Tryna be somebody I'm not
+[01:57.30]I used to be a lot less gated
+[02:00.00]Now I'm lost and all frustrated
+[02:04.40]Trading happiness for tears
+[02:08.20]And all my golden years
+[02:09.70](Oh-oh, oh-oh, oh)
+[02:14.20]And all my golden years
+[02:16.00](Oh-oh, oh-oh, oh)
+[02:21.30]I don't wanna be
+[02:22.90]Spending all my golden years
+[02:27.00]Climbing all the way to the top
+[02:29.60]So how the hell'd I wind up here
+[02:33.00]Tryna be somebody I'm not
+[02:35.70]I used to be a lot less gated
+[02:38.80]Now I'm lost and all frustrated
+[02:42.00]Trading happiness for tears
+[02:46.00]And all my golden years`,
   },
   {
     src: '/src/assets/music/it_is_what_it_is__abe_parker_a_nylek_cover.mp3',
