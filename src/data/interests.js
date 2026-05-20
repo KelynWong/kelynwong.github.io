@@ -543,54 +543,53 @@ export const tracks = [
     genre: 'cover',
     duration: '03:16',
     lyrics: `[00:00.00] [Intro]
-[00:00.00]Talking to the wall 'cause, at least, I hear an echo
-[00:05.00]Ooh, oh-oh (ooh-ooh, oh-oh)
-[00:10.00]Carrying my cross 'til my spirit has to let go
-[00:15.00]Ooh, oh-oh (ooh-ooh, oh-oh)
-[00:20.00]Gave up finding one good reason
-[00:25.00]I'll stop trying to stop this breathin', no-oh
-[00:30.00]Runnin' out of all these alibis
-[00:35.00](Do they ask me how I'm holding on?)
-[00:40.00]I can feel me cavin' in
-[00:45.00]And now all that I can say
-[00:50.00]It is, it is, it is what it is
-[00:55.00]All the things I couldn't change
-[01:00.00]I lay with someone else's sins
-[01:05.00]Let my soul just fly away
-[01:10.00]All the way up to Heaven's light
-[01:15.00]I pound those gates with no reply
-[01:20.00]Ooh, ooh-ooh-ooh
-[01:25.00]I feel everything and nothin' at the same time
-[01:30.00](Oh, don't slow down)
-[01:35.00]Oh, the pain is so exquisite I don't even ask why
-[01:40.00](Oh, but here's your call)
-[01:45.00]You're walking on the water that I'm drowning in
-[01:50.00]Thought I heard a whisper, was it just the wind again
-[01:55.00]Or the trail of blood I'm following?
-[02:00.00](Following, following, following) mm-hm
-[02:05.00]And if I'm the one to blame
-[02:10.00]I guess all that I could say
-[02:15.00]It is, it is, it is what it is (ooh)
-[02:20.00]All the things I couldn't change
-[02:25.00]I lay with someone else's sins (ooh)
-[02:30.00]Let my soul just fly away
-[02:35.00]All the way up to Heaven's light
-[02:40.00]I pound those gates with no reply
-[02:45.00]Hey (oh), oh
-[02:50.00]Oh, when I grow numb, but I can't weep
-[02:55.00]Wake up, but I don't sleep
-[03:00.00]And I didn't choose this hell
-[03:05.00]Oh, when I'm the wolf from all the sheep
-[03:10.00]Wake up, but I don't sleep
-[03:15.00]Father, save me from myself (ooh)
-[03:20.00]Oh, no
-[03:25.00]Hm-mm
-[03:30.00]It is, it is, it is, it is
-[03:35.00]Hm, yeah
-[03:40.00]And my throats gone down
-[03:45.00]My words go dry
-[03:50.00]But you alone keep me alive
-[03:55.00]It is, it is, it is what it is`,
+[00:08.90]Talking to the wall 'cause, at least, I hear an echo
+[00:12.80]Ooh, oh-oh (ooh-ooh, oh-oh)
+[00:16.20]Carrying my cross 'til my spirit has to let go
+[00:19.70]Ooh, oh-oh (ooh-ooh, oh-oh)
+[00:23.00]Gave up finding one good reason
+[00:26.70]I'll stop trying to stop this breathin', no-oh
+[00:31.70]Runnin' out of all these alibis
+[00:35.50](Do they ask me how I'm holding on?)
+[00:39.40]I can feel me cavin' in
+[00:42.40]And now all that I can say
+[00:44.70]It is, it is, it is what it is
+[00:49.50]All the things I couldn't change
+[00:52.00]I lay with someone else's sins
+[00:56.40]Let my soul just fly away
+[00:58.50]All the way up to Heaven's light
+[01:02.00]I pound those gates with no reply
+[01:07.70]Ooh, ooh-ooh-ooh
+[01:13.00]I feel everything and nothin' at the same time
+[01:17.00](Oh, don't slow down)
+[01:19.80]Oh, the pain is so exquisite I don't even ask why
+[01:24.50](Oh, but here's your call)
+[01:27.00]You're walking on the water that I'm drowning in
+[01:30.30]Thought I heard a whisper, was it just the wind again
+[01:35.70]Or the trail of blood I'm following?
+[01:39.00](Following, following, following) mm-hm
+[01:42.90]And if I'm the one to blame
+[01:46.30]I guess all that I could say
+[01:49.20]It is, it is, it is what it is (ooh)
+[01:53.50]All the things I couldn't change
+[01:56.00]I lay with someone else's sins (ooh)
+[02:00.00]Let my soul just fly away
+[02:03.00]All the way up to Heaven's light
+[02:06.00]I pound those gates with no reply
+[02:11.90]Hey (oh), oh
+[02:14.90]Oh, when I grow numb, but I can't weep
+[02:21.00]Wake up, but I don't sleep
+[02:25.00]And I didn't choose this hell
+[02:29.30]Oh, when I'm the wolf from all the sheep
+[02:35.00]Wake up, but I don't sleep
+[02:39.00]Father, save me from myself (ooh)
+[02:48.00]Hm-mm
+[02:49.50]It is, it is, it is, it is
+[02:54.40]Hm, yeah
+[02:57.80]And my throats gone down
+[03:01.00]My words go dry
+[03:03.20]But you alone keep me alive
+[03:07.30]It is, it is, it is what it is`,
   },
   {
     src: '/src/assets/music/scared_to_start__michael_marcagi_a_nylek_cover.mp3',
