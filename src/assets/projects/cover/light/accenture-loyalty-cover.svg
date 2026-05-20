@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+
+  <!-- background -->
+  <rect width="680" height="383" fill="#f6f3ee"/>
+
+  <defs>
+    <pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0L0 0 0 32" fill="none" stroke="#ece4d9" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="383" fill="url(#gr)"/>
+
+  <!-- top bar -->
+  <rect x="0" y="0" width="680" height="36" fill="#ffffff"/>
+  <rect x="0" y="35" width="680" height="1" fill="#d8d1c7"/>
+
+  <!-- window dots -->
+  <circle cx="72" cy="18" r="5" fill="#b86f5e"/>
+  <circle cx="90" cy="18" r="5" fill="#9c8d4f"/>
+  <circle cx="108" cy="18" r="5" fill="#5b8d67"/>
+
+  <text x="136" y="23" class="m" font-size="11" fill="#8e98a4">
+    template.yaml  — AWS SAM
+  </text>
+
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#d8d1c7" stroke-width="1"/>
+
+  <text x="64" y="74" class="m" font-size="11" fill="#8e98a4">// project</text>
+
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#1f2933">
+    Accenture Loyalty
+  </text>
+
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#9c8d4f">
+    Serverless Points Platform
+  </text>
+
+  <!-- React frontend -->
+  <rect x="64" y="152" width="80" height="38" rx="4" fill="#fbf8f4" stroke="#2f6faa" stroke-width="1"/>
+  <text x="104" y="169" class="m" font-size="10" fill="#2f6faa" text-anchor="middle">React SPA</text>
+  <text x="104" y="182" class="m" font-size="9" fill="#5b6673" text-anchor="middle">AWS deploy</text>
+
+  <line x1="144" y1="171" x2="174" y2="171" stroke="#c9c1b5" stroke-width="0.8"/>
+
+  <!-- API Gateway -->
+  <rect x="174" y="148" width="80" height="46" rx="4" fill="#fbf8f4" stroke="#9c8d4f" stroke-width="1"/>
+  <text x="214" y="165" class="m" font-size="9" fill="#9c8d4f" text-anchor="middle">API Gateway</text>
+  <text x="214" y="177" class="m" font-size="8" fill="#5b6673" text-anchor="middle">routes requests</text>
+  <text x="214" y="187" class="m" font-size="8" fill="#5b6673" text-anchor="middle">to Lambdas</text>
+
+  <!-- fan-out arrows -->
+  <line x1="254" y1="171" x2="280" y2="152" stroke="#c9c1b5" stroke-width="0.7"/>
+  <line x1="254" y1="171" x2="280" y2="178" stroke="#c9c1b5" stroke-width="0.7"/>
+  <line x1="254" y1="171" x2="280" y2="204" stroke="#c9c1b5" stroke-width="0.7"/>
+  <line x1="254" y1="171" x2="280" y2="230" stroke="#c9c1b5" stroke-width="0.7"/>
+
+  <!-- Lambda functions -->
+  <rect x="280" y="138" width="110" height="28" rx="3" fill="#ffffff" stroke="#9c8d4f" stroke-width="0.7"/>
+  <text x="335" y="150" class="m" font-size="9" fill="#9c8d4f" text-anchor="middle">λ User Mgmt</text>
+  <text x="335" y="160" class="m" font-size="8" fill="#5b6673" text-anchor="middle">enroll / profile</text>
+
+  <rect x="280" y="170" width="110" height="28" rx="3" fill="#ffffff" stroke="#5b8d67" stroke-width="0.7"/>
+  <text x="335" y="182" class="m" font-size="9" fill="#5b8d67" text-anchor="middle">λ Points</text>
+  <text x="335" y="192" class="m" font-size="8" fill="#5b6673" text-anchor="middle">award / redeem</text>
+
+  <rect x="280" y="202" width="110" height="28" rx="3" fill="#ffffff" stroke="#2f6faa" stroke-width="0.7"/>
+  <text x="335" y="214" class="m" font-size="9" fill="#2f6faa" text-anchor="middle">λ Logging</text>
+  <text x="335" y="224" class="m" font-size="8" fill="#5b6673" text-anchor="middle">activity audit</text>
+
+  <rect x="280" y="234" width="110" height="28" rx="3" fill="#ffffff" stroke="#9a64a0" stroke-width="0.7"/>
+  <text x="335" y="246" class="m" font-size="9" fill="#9a64a0" text-anchor="middle">λ Admin</text>
+  <text x="335" y="256" class="m" font-size="8" fill="#5b6673" text-anchor="middle">manage companies</text>
+
+  <!-- CI/CD -->
+  <rect x="64" y="210" width="100" height="36" rx="4" fill="#fbf8f4" stroke="#b86f5e" stroke-width="0.8"/>
+  <text x="114" y="225" class="m" font-size="10" fill="#b86f5e" text-anchor="middle">GitHub Actions</text>
+  <text x="114" y="238" class="m" font-size="9" fill="#5b6673" text-anchor="middle">CI/CD pipeline</text>
+
+  <!-- Cognito -->
+  <rect x="64" y="258" width="100" height="36" rx="4" fill="#fbf8f4" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="114" y="273" class="m" font-size="10" fill="#9c8d4f" text-anchor="middle">AWS Cognito</text>
+  <text x="114" y="286" class="m" font-size="9" fill="#5b6673" text-anchor="middle">auth / identity</text>
+
+  <!-- dashboard -->
+  <rect x="420" y="100" width="216" height="240" rx="4" fill="#ffffff" stroke="#d8d1c7" stroke-width="1"/>
+
+  <!-- browser bar -->
+  <rect x="420" y="100" width="216" height="20" rx="4" fill="#fbf8f4"/>
+  <circle cx="434" cy="110" r="3" fill="#b86f5e" opacity="0.8"/>
+  <circle cx="444" cy="110" r="3" fill="#9c8d4f" opacity="0.8"/>
+  <circle cx="454" cy="110" r="3" fill="#5b8d67" opacity="0.8"/>
+
+  <text x="528" y="114" class="m" font-size="8" fill="#8e98a4" text-anchor="middle">
+    itsag1t4.com
+  </text>
+
+  <!-- header -->
+  <rect x="424" y="124" width="208" height="28" rx="2" fill="#ece4d9"/>
+  <text x="528" y="136" class="m" font-size="10" fill="#9c8d4f" text-anchor="middle">
+    Loyalty Dashboard
+  </text>
+  <text x="528" y="146" class="m" font-size="8" fill="#5b6673" text-anchor="middle">
+    ACME Corp · Multi-tenant
+  </text>
+
+  <!-- stats -->
+  <rect x="428" y="156" width="60" height="40" rx="2" fill="#fbf8f4" stroke="#5b8d67" stroke-width="0.6"/>
+  <text x="458" y="171" class="m" font-size="7" fill="#8e98a4" text-anchor="middle">POINTS</text>
+  <text x="458" y="185" class="m" font-size="12" fill="#5b8d67" text-anchor="middle">4,820</text>
+
+  <rect x="494" y="156" width="60" height="40" rx="2" fill="#fbf8f4" stroke="#2f6faa" stroke-width="0.6"/>
+  <text x="524" y="171" class="m" font-size="7" fill="#8e98a4" text-anchor="middle">REDEEMED</text>
+  <text x="524" y="185" class="m" font-size="12" fill="#2f6faa" text-anchor="middle">1,200</text>
+
+  <rect x="560" y="156" width="60" height="40" rx="2" fill="#fbf8f4" stroke="#b86f5e" stroke-width="0.6"/>
+  <text x="590" y="171" class="m" font-size="7" fill="#8e98a4" text-anchor="middle">MEMBERS</text>
+  <text x="590" y="185" class="m" font-size="12" fill="#b86f5e" text-anchor="middle">318</text>
+
+  <!-- activity -->
+  <rect x="428" y="202" width="192" height="16" rx="2" fill="#fbf8f4"/>
+  <text x="434" y="213" class="m" font-size="7" fill="#5b8d67">+200 pts</text>
+  <text x="490" y="213" class="m" font-size="7" fill="#5b6673">Purchase — Alice</text>
+  <text x="612" y="213" class="m" font-size="7" fill="#8e98a4" text-anchor="end">2m ago</text>
+
+  <rect x="428" y="222" width="192" height="16" rx="2" fill="#ece4d9"/>
+  <text x="434" y="233" class="m" font-size="7" fill="#b86f5e">-500 pts</text>
+  <text x="490" y="233" class="m" font-size="7" fill="#5b6673">Redeem — Bob</text>
+  <text x="612" y="233" class="m" font-size="7" fill="#8e98a4" text-anchor="end">5m ago</text>
+
+  <rect x="428" y="242" width="192" height="16" rx="2" fill="#fbf8f4"/>
+  <text x="434" y="253" class="m" font-size="7" fill="#5b8d67">+150 pts</text>
+  <text x="490" y="253" class="m" font-size="7" fill="#5b6673">Signup — Carol</text>
+  <text x="612" y="253" class="m" font-size="7" fill="#8e98a4" text-anchor="end">12m ago</text>
+
+  <!-- note -->
+  <rect x="428" y="266" width="192" height="32" rx="2" fill="#ece4d9" stroke="#5b8d67" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text x="524" y="279" class="m" font-size="8" fill="#5b8d67" text-anchor="middle">
+    fully serverless · zero infra mgmt
+  </text>
+  <text x="524" y="290" class="m" font-size="7" fill="#5b6673" text-anchor="middle">
+    AWS Lambda + API Gateway + SAM
+  </text>
+
+  <!-- code -->
+  <text x="64" y="318" class="m" font-size="10" fill="#5b6673">// SAM Lambda definition</text>
+  <text x="64" y="334" class="m" font-size="10" fill="#2f6faa">AwardPointsFunction</text>
+  <text x="64" y="350" class="m" font-size="10" fill="#1f2933">  Handler: </text>
+  <text x="120" y="350" class="m" font-size="10" fill="#9c8d4f">points.handler</text>
+  <text x="64" y="366" class="m" font-size="10" fill="#1f2933">  Runtime: </text>
+  <text x="124" y="366" class="m" font-size="10" fill="#5b8d67">python3.11</text>
+
+</svg>

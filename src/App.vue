@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <nav class="nav" :class="{ 'nav-open': isNavOpen }">
-      <div class="nav-logo"><img src="./assets/images/logo.png" alt="logo" style="max-height: 32px;"></div>
+      <div class="nav-logo"><img :src="logoSrc" alt="logo" style="max-height: 32px;" @error="handleThemeImageError($event, logoDarkSrc)"></div>
+      <div class="nav-links" :class="{ 'nav-links-open': isNavOpen }">
+        <a v-for="link in appText.navLinks" :key="link.href" :href="link.href" @click="closeNavMenu">{{ link.label }}</a>
+      </div>
+      <button class="nav-theme-toggle" type="button" @click="toggleTheme" :aria-label="themeMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+        <span aria-hidden="true">{{ themeMode === 'dark' ? '☾' : '☀' }}</span>
+      </button>
       <button class="nav-toggle" type="button" @click="isNavOpen = !isNavOpen" :aria-expanded="isNavOpen" aria-label="Toggle navigation menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <div class="nav-links" :class="{ 'nav-links-open': isNavOpen }">
-        <a v-for="link in appText.navLinks" :key="link.href" :href="link.href" @click="closeNavMenu">{{ link.label }}</a>
-      </div>
     </nav>
 
     <section id="hero" class="hero">
@@ -257,9 +260,9 @@
           </div>
 
           <div v-if="cat.id === 'clay'" class="gallery-grid">
-            <div v-for="(item, idx) in clayItems" :key="item.id" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('clay', item.id) }">
-              <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('clay', item.id)" @click="openGalleryLightbox('clay', clayItems, idx)">
-                <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('clay', item.id, $event)" />
+            <div v-for="(item, idx) in clayItemsForTheme" :key="item.id" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('clay', item.id) }">
+              <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('clay', item.id)" @click="openGalleryLightbox('clay', clayItemsForTheme, idx)">
+                <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('clay', item.id, $event)" @error="handleThemeImageError($event, item.darkImg || item.img)" />
                 <div v-else class="gallery-placeholder"><span>🏺</span><span>{{ appText.placeholders.clay }}</span></div>
               </button>
               <div class="gallery-caption">
@@ -489,6 +492,34 @@
                     aria-label="Volume"
                   />
                   <span class="volume-value">{{ Math.round(volume * 100) }}%</span>
+                </div>
+              </div>
+              <div class="lyrics-sync-shell">
+                <div class="lyrics-sync-header">
+                  <div class="lyrics-sync-title">Lyrics</div>
+                  <div class="lyrics-sync-meta">{{ currentTrack ? currentTrack.displayTitle + ' - ' + currentTrack.detail : 'No track selected' }}</div>
+                </div>
+
+                <div class="lyrics-sync-stage">
+                  <div class="lyrics-sync-list" ref="lyricsScrollList">
+                    <div class="lyrics-sync-track" ref="lyricsTrackList">
+                      <div class="lyrics-sync-spacer" aria-hidden="true"></div>
+                      <div
+                        v-for="line in visibleLyricLines"
+                        :key="`${currentTrack.src}-${line.time}-${line.text}`"
+                        class="lyrics-sync-line"
+                        :class="{ active: line.isActive }"
+                        :style="{ '--line-opacity': line.opacity }"
+                      >
+                        <span class="lyrics-sync-line-text">{{ line.text }}</span>
+                      </div>
+                      <div class="lyrics-sync-spacer" aria-hidden="true"></div>
+                    </div>
+                    <div v-if="!currentTrackLyricsEntries.length" class="lyrics-sync-empty">
+                      select a song below
+                    </div>
+                  </div>
+                  <div class="lyrics-sync-focus" ref="lyricsFocusBox" aria-hidden="true"></div>
                 </div>
               </div>
               <div class="music-grid">

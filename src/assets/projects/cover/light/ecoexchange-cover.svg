@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#f6f3ee"/>
+  <defs><pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#gr)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#fafaf7"/>
+  <rect x="0" y="35" width="680" height="1" fill="#d8d1c7"/>
+  <circle cx="72" cy="18" r="5" fill="#b86f5e"/><circle cx="90" cy="18" r="5" fill="#9c8d4f"/><circle cx="108" cy="18" r="5" fill="#5b8d67"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#8e98a4">ecoexchange_routes.js</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#e8e2d9" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#8e98a4">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#1f2933">EcoExchange</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#5b8d67">E-Waste Collection Platform</text>
+  <g opacity="0.8">
+    <path d="M170 230 L155 255 L185 255 Z" fill="none" stroke="#5b8d67" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M170 230 L155 205 L185 205 Z" fill="none" stroke="#5b8d67" stroke-width="1.5" stroke-linejoin="round" transform="rotate(120 170 230)"/>
+    <path d="M170 230 L155 205 L185 205 Z" fill="none" stroke="#5b8d67" stroke-width="1.5" stroke-linejoin="round" transform="rotate(240 170 230)"/>
+  </g>
+  <circle cx="170" cy="222" r="52" fill="none" stroke="#e0f0e0" stroke-width="1"/>
+  <circle cx="170" cy="222" r="42" fill="#e8f5e8"/>
+  <path d="M170 185 L158 202 L166 202 L166 218 L174 218 L174 202 L182 202 Z" fill="#5b8d67" opacity="0.8"/>
+  <path d="M170 185 L158 202 L166 202 L166 218 L174 218 L174 202 L182 202 Z" fill="#5b8d67" opacity="0.8" transform="rotate(120 170 222)"/>
+  <path d="M170 185 L158 202 L166 202 L166 218 L174 218 L174 202 L182 202 Z" fill="#5b8d67" opacity="0.8" transform="rotate(240 170 222)"/>
+  <circle cx="170" cy="222" r="10" fill="#e8f5e8" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="170" y="227" class="m" font-size="15" fill="#5b8d67" text-anchor="middle">♻</text>
+  <path d="M118 170 L118 185 M118 170 L133 170" fill="none" stroke="#5b8d67" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M222 170 L222 185 M222 170 L207 170" fill="none" stroke="#5b8d67" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M118 274 L118 259 M118 274 L133 274" fill="none" stroke="#5b8d67" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M222 274 L222 259 M222 274 L207 274" fill="none" stroke="#5b8d67" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="104" y="282" width="135" height="22" rx="3" fill="#d8f0e5" stroke="#5b8d67" stroke-width="1"/>
+  <circle cx="115" cy="293" r="3" fill="#5b8d67"/>
+  <text x="125" y="296" class="m" font-size="10" fill="#5b8d67">COLLECTION BOOKED</text>
+  <rect x="282" y="148" width="98" height="36" rx="4" fill="#fafaf7" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="332" y="163" class="m" font-size="10" fill="#9c8d4f" text-anchor="middle">HTML / CSS / JS</text>
+  <text x="332" y="176" class="m" font-size="9" fill="#606030" text-anchor="middle">vanilla frontend</text>
+  <line x1="332" y1="184" x2="332" y2="202" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="282" y="202" width="98" height="36" rx="4" fill="#fafaf7" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="332" y="217" class="m" font-size="10" fill="#5b8d67" text-anchor="middle">Node + Express</text>
+  <text x="332" y="230" class="m" font-size="9" fill="#305040" text-anchor="middle">REST API</text>
+  <line x1="332" y1="238" x2="332" y2="256" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="282" y="256" width="98" height="36" rx="4" fill="#fafaf7" stroke="#2f6faa" stroke-width="0.8"/>
+  <text x="332" y="271" class="m" font-size="10" fill="#2f6faa" text-anchor="middle">MySQL</text>
+  <text x="332" y="284" class="m" font-size="9" fill="#305075" text-anchor="middle">database</text>
+  <rect x="397" y="148" width="110" height="36" rx="4" fill="#fafaf7" stroke="#2f6faa" stroke-width="0.8"/>
+  <text x="453" y="163" class="m" font-size="10" fill="#2f6faa" text-anchor="middle">Schedule</text>
+  <text x="453" y="176" class="m" font-size="9" fill="#305075" text-anchor="middle">book pickup</text>
+  <line x1="453" y1="184" x2="453" y2="202" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="397" y="202" width="110" height="36" rx="4" fill="#fafaf7" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="453" y="217" class="m" font-size="10" fill="#9c8d4f" text-anchor="middle">Track History</text>
+  <text x="453" y="230" class="m" font-size="9" fill="#606030" text-anchor="middle">recycling log</text>
+  <line x1="453" y1="238" x2="453" y2="256" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="397" y="256" width="110" height="36" rx="4" fill="#fafaf7" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="453" y="271" class="m" font-size="10" fill="#5b8d67" text-anchor="middle">Impact Report</text>
+  <text x="453" y="284" class="m" font-size="9" fill="#305040" text-anchor="middle">sustainability data</text>
+  <line x1="453" y1="292" x2="453" y2="310" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="397" y="310" width="110" height="36" rx="4" fill="#fafaf7" stroke="#9a64a0" stroke-width="0.8"/>
+  <text x="453" y="325" class="m" font-size="10" fill="#9a64a0" text-anchor="middle">Figma Prototype</text>
+  <text x="453" y="338" class="m" font-size="9" fill="#604080" text-anchor="middle">UX validated</text>
+  <rect x="520" y="148" width="130" height="80" rx="4" fill="#e8f5e8" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="585" y="165" class="m" font-size="9" fill="#5b8d67" text-anchor="middle">impact_report.js</text>
+  <line x1="526" y1="171" x2="644" y2="171" stroke="#e0f0e0" stroke-width="0.6"/>
+  <text x="526" y="186" class="m" font-size="9" fill="#8e98a4">devices recycled</text>
+  <text x="640" y="186" class="m" font-size="11" fill="#5b8d67" text-anchor="end">247</text>
+  <text x="526" y="202" class="m" font-size="9" fill="#8e98a4">CO₂ saved (kg)</text>
+  <text x="640" y="202" class="m" font-size="11" fill="#9c8d4f" text-anchor="end">1,840</text>
+  <text x="526" y="218" class="m" font-size="9" fill="#8e98a4">active users</text>
+  <text x="640" y="218" class="m" font-size="11" fill="#2f6faa" text-anchor="end">89</text>
+  <text x="64" y="334" class="m" font-size="10" fill="#3a5540">app.post(</text>
+  <text x="120" y="334" class="m" font-size="10" fill="#9c8d4f">'/api/collection'</text>
+  <text x="223" y="334" class="m" font-size="10" fill="#2d3a45">, async (req, res) => {</text>
+  <text x="74" y="350" class="m" font-size="10" fill="#4c7fb8">  await</text>
+  <text x="111" y="350" class="m" font-size="10" fill="#2d3a45"> db.schedule(req.body)</text>
+  <text x="64" y="366" class="m" font-size="10" fill="#2d3a45">})</text>
+</svg>

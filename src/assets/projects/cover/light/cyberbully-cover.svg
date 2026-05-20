@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" viewBox="0 0 680 383" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Cyberbully Awareness — project cover</title>
+  <style>.mono{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#f6f3ee"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e8e2d9" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="383" fill="url(#grid)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#fafaf7"/>
+  <rect x="0" y="35" width="680" height="1" fill="#d8d1c7"/>
+  <circle cx="72" cy="18" r="5" fill="#b86f5e"/><circle cx="90" cy="18" r="5" fill="#9c8d4f"/><circle cx="108" cy="18" r="5" fill="#5b8d67"/>
+  <text x="134" y="22" class="mono" font-size="11" fill="#8e98a4">awareness.html — Heartcode 2023</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#d8d1c7" stroke-width="1"/>
+  <text x="64" y="65" class="mono" font-size="11" fill="#8e98a4">// project</text>
+  <text x="64" y="89" class="mono" font-size="20" font-weight="500" fill="#1f2933">Cyberbully</text>
+  <text x="64" y="113" class="mono" font-size="20" font-weight="500" fill="#2f6faa">Awareness</text>
+  <!-- shield glow -->
+  <circle cx="175" cy="218" r="72" fill="none" stroke="#e0eaf5" stroke-width="18"/>
+  <circle cx="175" cy="218" r="56" fill="none" stroke="#edf3f8" stroke-width="10"/>
+  <!-- shield body -->
+  <path d="M175 152 L222 172 L222 218 Q222 252 175 272 Q128 252 128 218 L128 172 Z" fill="#e8f0f8" stroke="#2f6faa" stroke-width="1.4"/>
+  <path d="M175 162 L214 179 L214 218 Q214 246 175 263 Q136 246 136 218 L136 179 Z" fill="none" stroke="#2f6faa" stroke-width="0.6" opacity="0.4"/>
+  <!-- shield cross -->
+  <rect x="169" y="185" width="12" height="44" rx="2" fill="#2f6faa" opacity="0.8"/>
+  <rect x="153" y="201" width="44" height="12" rx="2" fill="#2f6faa" opacity="0.8"/>
+  <path d="M175 155 L210 170 L210 180 L175 165 L140 180 L140 170 Z" fill="#2f6faa" opacity="0.15"/>
+  <!-- label pill -->
+  <rect x="130" y="280" width="90" height="22" rx="3" fill="#e8f0f8" stroke="#2f6faa" stroke-width="1"/>
+  <text x="149" y="295" class="mono" font-size="10" fill="#2f6faa">Heartcode</text>
+  <!-- mentor → mentee flow -->
+  <rect x="290" y="67" width="140" height="62" rx="4" fill="#fafaf7" stroke="#5b8d67" stroke-width="1"/>
+  <rect x="290" y="67" width="140" height="18" rx="4" fill="#d8f0e5"/>
+  <text x="360" y="79" class="mono" font-size="9" fill="#5b8d67" text-anchor="middle">Mentor (Kelyn)</text>
+  <text x="296" y="97" class="mono" font-size="8" fill="#2a5038">Builds sample website</text>
+  <text x="296" y="108" class="mono" font-size="8" fill="#2a5038">5-day 1-on-1 guidance</text>
+  <text x="296" y="119" class="mono" font-size="8" fill="#305040">Heartcode traineeship</text>
+  <line x1="360" y1="129" x2="360" y2="149" stroke="#2f6faa" stroke-width="1" stroke-dasharray="3 2"/>
+  <polygon points="360,153 355,145 365,145" fill="#2f6faa"/>
+  <rect x="290" y="153" width="140" height="62" rx="4" fill="#fafaf7" stroke="#2f6faa" stroke-width="1"/>
+  <rect x="290" y="153" width="140" height="18" rx="4" fill="#e5eef8"/>
+  <text x="360" y="165" class="mono" font-size="9" fill="#2f6faa" text-anchor="middle">Mentee (Students)</text>
+  <text x="296" y="183" class="mono" font-size="8" fill="#205080">Build own version</text>
+  <text x="296" y="194" class="mono" font-size="8" fill="#205080">From scratch</text>
+  <text x="296" y="205" class="mono" font-size="8" fill="#204870">Underprivileged sec school</text>
+  <!-- dual repo badges -->
+  <rect x="290" y="231" width="140" height="48" rx="4" fill="#eeede8" stroke="#c9c1b5" stroke-width="0.6"/>
+  <text x="360" y="243" class="mono" font-size="7" fill="#8e98a4" text-anchor="middle">Two repos · GitHub Pages</text>
+  <text x="296" y="257" class="mono" font-size="7" fill="#2f6faa">↗ Mentor sample site</text>
+  <text x="296" y="270" class="mono" font-size="7" fill="#5b8d67">↗ Mentee built site</text>
+  <!-- vol + mentor chips -->
+  <rect x="290" y="291" width="80" height="20" rx="3" fill="#d8f0e5" stroke="#5b8d67" stroke-width="0.7"/>
+  <text x="330" y="304" class="mono" font-size="8" fill="#5b8d67" text-anchor="middle">Volunteering</text>
+  <rect x="376" y="291" width="54" height="20" rx="3" fill="#e5eef8" stroke="#2f6faa" stroke-width="0.7"/>
+  <text x="403" y="304" class="mono" font-size="8" fill="#2f6faa" text-anchor="middle">Mentorship</text>
+  <!-- site browser mockup -->
+  <rect x="448" y="67" width="196" height="218" rx="4" fill="#eeede8" stroke="#d8d1c7" stroke-width="1"/>
+  <rect x="448" y="67" width="196" height="18" rx="4" fill="#fafaf7"/>
+  <circle cx="460" cy="76" r="3" fill="#b86f5e" opacity="0.7"/>
+  <circle cx="470" cy="76" r="3" fill="#9c8d4f" opacity="0.7"/>
+  <circle cx="480" cy="76" r="3" fill="#5b8d67" opacity="0.7"/>
+  <rect x="492" y="69" width="118" height="12" rx="2" fill="#f6f3ee"/>
+  <text x="551" y="78" class="mono" font-size="6" fill="#8e98a4" text-anchor="middle">kelynwong.github.io/...</text>
+  <!-- nav -->
+  <rect x="448" y="85" width="196" height="14" fill="#f8f5f0"/>
+  <text x="456" y="95" class="mono" font-size="7" fill="#2f6faa">CyberSafe</text>
+  <text x="502" y="95" class="mono" font-size="6" fill="#8e98a4">Types</text>
+  <text x="522" y="95" class="mono" font-size="6" fill="#8e98a4">Causes</text>
+  <text x="546" y="95" class="mono" font-size="6" fill="#8e98a4">Impact</text>
+  <text x="570" y="95" class="mono" font-size="6" fill="#8e98a4">Help</text>
+  <!-- hero band -->
+  <rect x="448" y="99" width="196" height="28" fill="#e8f0f8"/>
+  <text x="546" y="111" class="mono" font-size="8" fill="#2f6faa" text-anchor="middle">Cyberbullying Awareness</text>
+  <text x="546" y="122" class="mono" font-size="6" fill="#205080" text-anchor="middle">Know it. Prevent it. Report it.</text>
+  <!-- image carousel strip -->
+  <rect x="452" y="131" width="42" height="28" rx="2" fill="#eeeefa" stroke="#2f6faa" stroke-width="0.5"/>
+  <text x="473" y="149" class="mono" font-size="14" fill="#2f6faa" text-anchor="middle">☰</text>
+  <rect x="498" y="131" width="42" height="28" rx="2" fill="#e8f0f8" stroke="#2f6faa" stroke-width="0.8"/>
+  <text x="519" y="149" class="mono" font-size="14" fill="#2f6faa" text-anchor="middle">🛡</text>
+  <rect x="544" y="131" width="42" height="28" rx="2" fill="#eeeefa" stroke="#2f6faa" stroke-width="0.5"/>
+  <text x="565" y="149" class="mono" font-size="14" fill="#2f6faa" text-anchor="middle">⚠</text>
+  <rect x="590" y="131" width="50" height="28" rx="2" fill="#eeeefa" stroke="#2f6faa" stroke-width="0.5"/>
+  <text x="615" y="149" class="mono" font-size="14" fill="#2f6faa" text-anchor="middle">❤</text>
+  <!-- carousel dots -->
+  <circle cx="529" cy="167" r="3" fill="#2f6faa"/>
+  <circle cx="539" cy="167" r="2" fill="#c9c1b5"/>
+  <circle cx="548" cy="167" r="2" fill="#c9c1b5"/>
+  <circle cx="557" cy="167" r="2" fill="#c9c1b5"/>
+  <!-- section cards -->
+  <rect x="452" y="175" width="86" height="42" rx="2" fill="#fafaf7" stroke="#b86f5e" stroke-width="0.6"/>
+  <text x="495" y="185" class="mono" font-size="7" fill="#b86f5e" text-anchor="middle">Types</text>
+  <text x="458" y="195" class="mono" font-size="6" fill="#804838">Harassment</text>
+  <text x="458" y="204" class="mono" font-size="6" fill="#804838">Impersonation</text>
+  <text x="458" y="213" class="mono" font-size="6" fill="#803030">Cyberstalking</text>
+  <rect x="546" y="175" width="94" height="42" rx="2" fill="#fafaf7" stroke="#5b8d67" stroke-width="0.6"/>
+  <text x="593" y="185" class="mono" font-size="7" fill="#5b8d67" text-anchor="middle">Prevention</text>
+  <text x="552" y="195" class="mono" font-size="6" fill="#2a5038">Block &amp; report</text>
+  <text x="552" y="204" class="mono" font-size="6" fill="#2a5038">Talk to an adult</text>
+  <text x="552" y="213" class="mono" font-size="6" fill="#305040">Save evidence</text>
+  <!-- accordion -->
+  <rect x="452" y="223" width="188" height="12" rx="2" fill="#eef0f8" stroke="#9a64a0" stroke-width="0.4"/>
+  <text x="458" y="231" class="mono" font-size="6" fill="#9a64a0">▸ What is cyberbullying?</text>
+  <rect x="452" y="239" width="188" height="12" rx="2" fill="#fafaf7" stroke="#c9c1b5" stroke-width="0.4"/>
+  <text x="458" y="247" class="mono" font-size="6" fill="#707a86">▸ Root causes &amp; impacts</text>
+  <rect x="452" y="255" width="188" height="12" rx="2" fill="#fafaf7" stroke="#c9c1b5" stroke-width="0.4"/>
+  <text x="458" y="263" class="mono" font-size="6" fill="#707a86">▸ Getting help &amp; resources</text>
+  <!-- video embed block -->
+  <rect x="452" y="273" width="188" height="8" rx="1" fill="#e8f0f8" stroke="#2f6faa" stroke-width="0.4"/>
+  <text x="546" y="279" class="mono" font-size="5" fill="#205080" text-anchor="middle">▶ Embedded awareness video</text>
+  <!-- code snippet -->
+  <text x="64" y="320" class="mono" font-size="10" fill="#3a5540">&lt;section id=</text>
+  <text x="139" y="320" class="mono" font-size="10" fill="#9c8d4f">"prevention"</text>
+  <text x="212" y="320" class="mono" font-size="10" fill="#3a5540">&gt;</text>
+  <text x="74" y="336" class="mono" font-size="10" fill="#4c7fb8">  &lt;div</text>
+  <text x="104" y="336" class="mono" font-size="10" fill="#5b8d67"> class</text>
+  <text x="136" y="336" class="mono" font-size="10" fill="#2d3a45">=</text>
+  <text x="143" y="336" class="mono" font-size="10" fill="#9c8d4f">"accordion"</text>
+  <text x="210" y="336" class="mono" font-size="10" fill="#4c7fb8">&gt;</text>
+  <text x="74" y="352" class="mono" font-size="10" fill="#4c7fb8">  &lt;video</text>
+  <text x="115" y="352" class="mono" font-size="10" fill="#5b8d67"> src</text>
+  <text x="135" y="352" class="mono" font-size="10" fill="#2d3a45">=</text>
+  <text x="142" y="352" class="mono" font-size="10" fill="#9c8d4f">"awareness.mp4"</text>
+  <text x="235" y="352" class="mono" font-size="10" fill="#2d3a45"> controls&gt;</text>
+  <text x="64" y="368" class="mono" font-size="10" fill="#3a5540">&lt;!-- HTML · CSS · JS · GitHub Pages --&gt;</text>
+</svg>

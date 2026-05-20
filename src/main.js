@@ -3,6 +3,7 @@ import ProjectModal from './components/ProjectModal.vue'
 import ThreeJSModel from './components/ThreeJSModel.vue'
 import Footer from './components/Footer.vue'
 import FilterPills from './components/FilterPills.vue'
+import { themedAsset, toDarkAsset } from './utils/themeAssets.js'
 import {
   skillGroups,
   jobs,
@@ -86,6 +87,7 @@ const appOptions = {
       activePhotoPlace: 'dopamineLand2026',
       activeVideoCat: 'travel',
       isNavOpen: false,
+      themeMode: 'dark',
 
       photoGroups: photoGroupDefs.map((d) => buildPhotoGroup(d.id, d.label, d.year, d.count, d.extOverrides || {})),
 
@@ -156,23 +158,101 @@ const appOptions = {
   },
 
   computed: {
+    logoDarkSrc() {
+      return '/src/assets/images/logo.png'
+    },
+
+    logoSrc() {
+      return themedAsset(this.logoDarkSrc, this.themeMode, 'logo')
+    },
+
+    clayItemsForTheme() {
+      return this.clayItems.map((item) => {
+        if (!item || !item.img) return item
+        return {
+          ...item,
+          darkImg: item.img,
+          img: themedAsset(item.img, this.themeMode, 'clay'),
+        }
+      })
+    },
+
+    themedProjects() {
+      return this.projects.map((project) => {
+        const darkCover = project.coverImage || ''
+        return {
+          ...project,
+          darkCoverImage: darkCover,
+          coverImage: themedAsset(darkCover, this.themeMode, 'projectCover'),
+        }
+      })
+    },
+
     currentTrack() {
       return this.currentTrackIdx !== null ? this.tracks[this.currentTrackIdx] : null
+    },
+    currentTrackLyricsEntries() {
+      const lyrics = this.currentTrack?.lyrics || ''
+      if (!lyrics) return []
+
+      return lyrics
+        .split(/\r?\n/)
+        .map((line) => {
+          const match = line.match(/^\[(\d{2}):(\d{2})(?:\.(\d{1,2}))?\]\s*(.*)$/)
+          if (!match) return null
+          const minutes = Number(match[1])
+          const seconds = Number(match[2])
+          const fraction = Number((match[3] || '0').padEnd(2, '0'))
+          return {
+            time: minutes * 60 + seconds + fraction / 100,
+            text: match[4].trim(),
+          }
+        })
+        .filter(Boolean)
+        .sort((a, b) => a.time - b.time)
+    },
+    currentLyricIndex() {
+      if (!this.currentTrackLyricsEntries.length) return -1
+
+      let index = 0
+      for (let i = 0; i < this.currentTrackLyricsEntries.length; i += 1) {
+        if (this.currentTime >= this.currentTrackLyricsEntries[i].time) {
+          index = i
+        } else {
+          break
+        }
+      }
+      return index
+    },
+    currentLyricLine() {
+      return this.currentLyricIndex >= 0 ? this.currentTrackLyricsEntries[this.currentLyricIndex] : null
+    },
+    visibleLyricLines() {
+      if (!this.currentTrackLyricsEntries.length) return []
+      return this.currentTrackLyricsEntries.map((entry, index) => {
+        const distance = Math.abs(index - this.currentLyricIndex)
+        const opacity = this.currentLyricIndex < 0 ? 0.8 : Math.max(0.35, 1 - distance * 0.2)
+        return {
+          ...entry,
+          isActive: index === this.currentLyricIndex,
+          opacity: opacity.toFixed(2),
+        }
+      })
     },
     currentGalleryLightboxItem() {
       return this.galleryLightboxItems[this.galleryLightboxIndex] || null
     },
     groupedProjects() {
       const filtered = this.activeProjectFilter && this.activeProjectFilter !== 'all'
-        ? this.projects.filter((p) => (p.category || 'fullstack') === this.activeProjectFilter)
-        : this.projects
+        ? this.themedProjects.filter((p) => (p.category || 'fullstack') === this.activeProjectFilter)
+        : this.themedProjects
 
       const grouped = PROJECT_CATEGORY_ORDER.map((category) => ({
         ...category,
         items: filtered.filter((project) => (project.category || 'fullstack') === category.key),
       }))
 
-      const uncategorized = this.projects.filter(
+      const uncategorized = this.themedProjects.filter(
         (project) => !PROJECT_CATEGORY_ORDER.some((category) => category.key === (project.category || 'fullstack'))
       )
 
@@ -284,6 +364,7 @@ const appOptions = {
   },
 
   mounted() {
+    this.initTheme()
     this.fitHeroVerbs()
     this._heroResizeHandler = () => this.fitHeroVerbs()
     this._socialScrollHandler = () => this.triggerSocialBounce()
@@ -302,7 +383,17 @@ const appOptions = {
     }
     this.startHeroTypingSequence()
 
+    this.$nextTick(() => this.scrollLyricsToActiveLine())
+
     // Initialize project-card reveal: handled via CSS transition-group rules
+  },
+  watch: {
+    currentLyricIndex() {
+      this.$nextTick(() => this.scrollLyricsToActiveLine())
+    },
+    currentTrackIdx() {
+      this.$nextTick(() => this.scrollLyricsToActiveLine())
+    },
   },
 
   beforeUnmount() {
@@ -320,9 +411,86 @@ const appOptions = {
     }
     this.stopGalleryAutoPlay()
     this.stopHeroTypingSequence()
+    if (this._lyricsScrollRaf) {
+      cancelAnimationFrame(this._lyricsScrollRaf)
+      this._lyricsScrollRaf = null
+    }
   },
 
   methods: {
+    fallbackToDarkAsset(path) {
+      return toDarkAsset(path)
+    },
+
+    handleThemeImageError(event, explicitFallback = '') {
+      const target = event && event.target ? event.target : null
+      if (!target) return
+      const fallback = explicitFallback || this.fallbackToDarkAsset(target.currentSrc || target.src || '')
+      if (!fallback || fallback === target.src) return
+      target.onerror = null
+      target.src = fallback
+    },
+
+    initTheme() {
+      let savedTheme = 'dark'
+      try {
+        savedTheme = localStorage.getItem('themeMode') || 'dark'
+      } catch (e) {}
+      this.themeMode = savedTheme === 'light' ? 'light' : 'dark'
+      this.applyTheme(this.themeMode)
+    },
+
+    applyTheme(mode) {
+      const nextMode = mode === 'light' ? 'light' : 'dark'
+      this.themeMode = nextMode
+      document.documentElement.setAttribute('data-theme', nextMode)
+      document.documentElement.style.colorScheme = nextMode
+      try {
+        localStorage.setItem('themeMode', nextMode)
+      } catch (e) {}
+    },
+
+    toggleTheme() {
+      this.applyTheme(this.themeMode === 'dark' ? 'light' : 'dark')
+    },
+
+    resolveDomElement(ref) {
+      if (!ref) return null
+      if (Array.isArray(ref)) return this.resolveDomElement(ref[0])
+      if (ref.$el) return ref.$el
+      return ref
+    },
+
+    scrollLyricsToActiveLine() {
+      const container = this.resolveDomElement(this.$refs.lyricsScrollList)
+      const focus = this.resolveDomElement(this.$refs.lyricsFocusBox)
+      if (!container || !focus || !this.currentTrackLyricsEntries.length || this.currentLyricIndex < 0) {
+        return
+      }
+
+      const activeLines = container.querySelectorAll('.lyrics-sync-line')
+      const activeLine = activeLines[this.currentLyricIndex]
+      if (!activeLine) return
+
+      const focusRect = focus.getBoundingClientRect()
+      const activeRect = activeLine.getBoundingClientRect()
+      const targetScrollTop = container.scrollTop + (activeRect.top + activeRect.height / 2) - (focusRect.top + focusRect.height / 2)
+      const maxScrollTop = Math.max(0, container.scrollHeight - container.clientHeight)
+
+      container.scrollTop = Math.min(Math.max(0, targetScrollTop), maxScrollTop)
+    },
+
+    scheduleLyricsScroll() {
+      if (this._lyricsScrollRaf) {
+        cancelAnimationFrame(this._lyricsScrollRaf)
+      }
+
+      this._lyricsScrollRaf = requestAnimationFrame(() => {
+        this._lyricsScrollRaf = null
+        this.$nextTick(() => this.scrollLyricsToActiveLine())
+      })
+    },
+
     fitHeroVerbs() {
       const heroLeft = document.querySelector('.hero-left')
       const heroVerbs = document.querySelector('.hero-verbs')
@@ -357,7 +525,7 @@ const appOptions = {
     },
 
     getGalleryItems(section) {
-      if (section === 'clay') return this.clayItems
+      if (section === 'clay') return this.clayItemsForTheme
       if (section === 'drawing') return this.drawingItems
       if (section === 'photo') return this.activePhotoItems
       return []
@@ -750,6 +918,7 @@ const appOptions = {
       audio.volume = this.volume
       audio.load()
       audio.play().then(() => { this.isPlaying = true }).catch(() => {})
+      this.scheduleLyricsScroll()
     },
 
     togglePlay() {
@@ -777,6 +946,7 @@ const appOptions = {
       if (!audio) return
       this.currentTime = audio.currentTime
       this.progressPct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0
+      this.scheduleLyricsScroll()
     },
 
     onMeta() {

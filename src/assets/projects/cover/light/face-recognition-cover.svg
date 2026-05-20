@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#f6f3ee"/>
+  <defs><pattern id="g3" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#f0ede8" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#g3)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#fafaf7"/>
+  <rect x="0" y="35" width="680" height="1" fill="#d8d1c7"/>
+  <circle cx="72" cy="18" r="5" fill="#b86f5e"/><circle cx="90" cy="18" r="5" fill="#9c8d4f"/><circle cx="108" cy="18" r="5" fill="#5b8d67"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#8e98a4">attendance_system.py</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#e8e2d9" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#8e98a4">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#1f2933">Face Recognition</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#9a64a0">Attendance System</text>
+  <rect x="110" y="150" width="160" height="160" rx="4" fill="#f0f0fa" stroke="#eeeefa" stroke-width="1"/>
+  <ellipse cx="190" cy="225" rx="48" ry="56" fill="none" stroke="#9a64a0" stroke-width="1" opacity="0.5"/>
+  <ellipse cx="174" cy="215" rx="8" ry="5" fill="none" stroke="#9a64a0" stroke-width="1"/>
+  <ellipse cx="206" cy="215" rx="8" ry="5" fill="none" stroke="#9a64a0" stroke-width="1"/>
+  <circle cx="174" cy="215" r="3" fill="#9a64a0" opacity="0.5"/>
+  <circle cx="206" cy="215" r="3" fill="#9a64a0" opacity="0.5"/>
+  <circle cx="190" cy="228" r="2" fill="#9a64a0" opacity="0.4"/>
+  <path d="M178 240 Q190 248 202 240" fill="none" stroke="#9a64a0" stroke-width="1" opacity="0.5"/>
+  <line x1="110" y1="210" x2="270" y2="210" stroke="#9a64a0" stroke-width="0.6" opacity="0.25"/>
+  <line x1="110" y1="225" x2="270" y2="225" stroke="#9a64a0" stroke-width="1.2" opacity="0.5"/>
+  <line x1="110" y1="240" x2="270" y2="240" stroke="#9a64a0" stroke-width="0.6" opacity="0.25"/>
+  <path d="M118 158 L118 173 M118 158 L133 158" fill="none" stroke="#9a64a0" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M262 158 L262 173 M262 158 L247 158" fill="none" stroke="#9a64a0" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M118 302 L118 287 M118 302 L133 302" fill="none" stroke="#9a64a0" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M262 302 L262 287 M262 302 L247 302" fill="none" stroke="#9a64a0" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="162" cy="203" r="2" fill="#9a64a0" opacity="0.7"/>
+  <circle cx="218" cy="203" r="2" fill="#9a64a0" opacity="0.7"/>
+  <circle cx="190" cy="194" r="2" fill="#9a64a0" opacity="0.7"/>
+  <circle cx="150" cy="230" r="2" fill="#9a64a0" opacity="0.7"/>
+  <circle cx="230" cy="230" r="2" fill="#9a64a0" opacity="0.7"/>
+  <circle cx="190" cy="255" r="2" fill="#9a64a0" opacity="0.7"/>
+  <rect x="118" y="316" width="145" height="22" rx="3" fill="#ede0f5" stroke="#9a64a0" stroke-width="1"/>
+  <circle cx="130" cy="327" r="3" fill="#9a64a0"/>
+  <text x="140" y="331" class="m" font-size="10" fill="#9a64a0">MATCH FOUND — 98.4%</text>
+  <rect x="340" y="78" width="90" height="38" rx="4" fill="#fafaf7" stroke="#9a64a0" stroke-width="0.8"/>
+  <text x="385" y="95" class="m" font-size="10" fill="#9a64a0" text-anchor="middle">RPi Camera</text>
+  <text x="385" y="108" class="m" font-size="9" fill="#6030a0" text-anchor="middle">live feed</text>
+  <line x1="385" y1="116" x2="385" y2="134" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="340" y="134" width="90" height="38" rx="4" fill="#fafaf7" stroke="#4c7fb8" stroke-width="0.8"/>
+  <text x="385" y="151" class="m" font-size="10" fill="#2f6faa" text-anchor="middle">OpenCV</text>
+  <text x="385" y="164" class="m" font-size="9" fill="#205080" text-anchor="middle">face detect</text>
+  <line x1="385" y1="172" x2="385" y2="190" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="340" y="190" width="90" height="38" rx="4" fill="#fafaf7" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="385" y="207" class="m" font-size="10" fill="#5b8d67" text-anchor="middle">Encoding DB</text>
+  <text x="385" y="220" class="m" font-size="9" fill="#1a6040" text-anchor="middle">face match</text>
+  <line x1="385" y1="228" x2="385" y2="246" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="340" y="246" width="90" height="38" rx="4" fill="#fafaf7" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="385" y="263" class="m" font-size="10" fill="#9c8d4f" text-anchor="middle">MySQL</text>
+  <text x="385" y="276" class="m" font-size="9" fill="#706820" text-anchor="middle">log attendance</text>
+  <line x1="385" y1="284" x2="385" y2="302" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="340" y="302" width="90" height="38" rx="4" fill="#fafaf7" stroke="#b86f5e" stroke-width="0.8"/>
+  <text x="385" y="319" class="m" font-size="10" fill="#b86f5e" text-anchor="middle">Streamlit</text>
+  <text x="385" y="332" class="m" font-size="9" fill="#904020" text-anchor="middle">analytics</text>
+  <rect x="452" y="190" width="80" height="36" rx="4" fill="#fafaf7" stroke="#b86f5e" stroke-width="0.8"/>
+  <text x="492" y="205" class="m" font-size="10" fill="#b86f5e" text-anchor="middle">Node-RED</text>
+  <text x="492" y="219" class="m" font-size="9" fill="#904020" text-anchor="middle">orchestration</text>
+  <line x1="430" y1="209" x2="452" y2="209" stroke="#d8d1c7" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <text x="460" y="300" class="m" font-size="10" fill="#2a6040">matches = face_recognition</text>
+  <text x="460" y="315" class="m" font-size="10" fill="#2d3a45">    .compare_faces(</text>
+  <text x="470" y="328" class="m" font-size="10" fill="#9c8d4f">        known_encodings, face</text>
+  <text x="460" y="340" class="m" font-size="10" fill="#2d3a45">    )</text>
+</svg>

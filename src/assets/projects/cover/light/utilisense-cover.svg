@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs><pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#gr)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">utilisense_monitor.py</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">UtiliSense</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#8BB87A">Smart Facility Monitor</text>
+  <!-- Room A - occupied -->
+  <rect x="64" y="148" width="118" height="82" rx="3" fill="#0f1f0f" stroke="#8BB87A" stroke-width="1"/>
+  <text x="123" y="164" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">SEMINAR ROOM A</text>
+  <circle cx="85" cy="183" r="5" fill="#8BB87A" opacity="0.9"/>
+  <circle cx="100" cy="183" r="5" fill="#8BB87A" opacity="0.9"/>
+  <circle cx="115" cy="183" r="5" fill="#8BB87A" opacity="0.9"/>
+  <circle cx="85" cy="198" r="5" fill="#8BB87A" opacity="0.9"/>
+  <circle cx="100" cy="198" r="5" fill="#8BB87A" opacity="0.3"/>
+  <circle cx="115" cy="198" r="5" fill="#8BB87A" opacity="0.3"/>
+  <text x="123" y="220" class="m" font-size="8" fill="#8BB87A" text-anchor="middle">4 / 6 occupied</text>
+  <!-- Room B - no-show -->
+  <rect x="64" y="242" width="118" height="82" rx="3" fill="#1a0a0a" stroke="#C4836A" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="123" y="258" class="m" font-size="9" fill="#C4836A" text-anchor="middle">SEMINAR ROOM B</text>
+  <text x="123" y="285" class="m" font-size="22" fill="#C4836A" text-anchor="middle">⚠</text>
+  <text x="123" y="305" class="m" font-size="8" fill="#C4836A" text-anchor="middle">no-show detected</text>
+  <text x="123" y="315" class="m" font-size="8" fill="#5a2a2a" text-anchor="middle">AC + lights off</text>
+  <!-- pipeline -->
+  <rect x="214" y="148" width="104" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="266" y="163" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">Nicla Vision</text>
+  <text x="266" y="176" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">TinyML count</text>
+  <line x1="266" y1="184" x2="266" y2="202" stroke="#333" stroke-width="0.8"/>
+  <rect x="214" y="202" width="104" height="36" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+  <text x="266" y="217" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">Edge Impulse</text>
+  <text x="266" y="230" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">TinyML model</text>
+  <line x1="266" y1="238" x2="266" y2="256" stroke="#333" stroke-width="0.8"/>
+  <rect x="214" y="256" width="104" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="266" y="271" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Supabase</text>
+  <text x="266" y="284" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">occupancy data</text>
+  <line x1="266" y1="292" x2="266" y2="310" stroke="#333" stroke-width="0.8"/>
+  <rect x="214" y="310" width="104" height="36" rx="4" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+  <text x="266" y="325" class="m" font-size="10" fill="#C4836A" text-anchor="middle">Streamlit + LLM</text>
+  <text x="266" y="338" class="m" font-size="9" fill="#5a3a2a" text-anchor="middle">query dashboard</text>
+  <!-- Telegram + Microbit -->
+  <rect x="340" y="202" width="96" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="388" y="217" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">Telegram Bot</text>
+  <text x="388" y="230" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">instant alerts</text>
+  <line x1="318" y1="220" x2="340" y2="220" stroke="#2a2a3a" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <rect x="340" y="256" width="96" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="388" y="271" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Micro:bit</text>
+  <text x="388" y="284" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">AC / light ctrl</text>
+  <line x1="318" y1="274" x2="340" y2="274" stroke="#2a3a2a" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <!-- LLM query box -->
+  <rect x="452" y="148" width="180" height="80" rx="4" fill="#0f1820" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="464" y="165" class="m" font-size="9" fill="#5BAADC">LLM Query Interface</text>
+  <text x="464" y="182" class="m" font-size="9" fill="#3a5a7a">&gt; Which rooms were underused</text>
+  <text x="464" y="195" class="m" font-size="9" fill="#3a5a7a">  this week?</text>
+  <text x="464" y="210" class="m" font-size="9" fill="#8BB87A">  Room B: 3 no-shows (Mon–Wed)</text>
+  <!-- Booking system -->
+  <rect x="452" y="248" width="180" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="542" y="263" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Facilities Booking</text>
+  <text x="542" y="276" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">cross-reference booked vs actual</text>
+  <!-- code -->
+  <text x="400" y="326" class="m" font-size="10" fill="#2a3a2a">if occupancy == 0 and booked:</text>
+  <text x="410" y="342" class="m" font-size="10" fill="#4A72B0">    telegram</text>
+  <text x="459" y="342" class="m" font-size="10" fill="#d4d4d4">.alert(</text>
+  <text x="500" y="342" class="m" font-size="10" fill="#C8C87A">"no-show"</text>
+  <text x="554" y="342" class="m" font-size="10" fill="#d4d4d4">)</text>
+</svg>

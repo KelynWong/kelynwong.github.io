@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs><pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#gr)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">MediMate.kt</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">Medimate</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#5BAADC">Medication Manager</text>
+  <!-- phone mockup -->
+  <rect x="80" y="140" width="108" height="210" rx="14" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="86" y="152" width="96" height="186" rx="4" fill="#0d0d0d"/>
+  <!-- status bar -->
+  <rect x="86" y="152" width="96" height="14" rx="0" fill="#141414"/>
+  <text x="134" y="162" class="m" font-size="7" fill="#5BAADC" text-anchor="middle">MediMate</text>
+  <!-- med list item 1: taken -->
+  <rect x="90" y="172" width="88" height="26" rx="2" fill="#1a1a2a" stroke="#5BAADC" stroke-width="0.6"/>
+  <text x="90" y="188" class="m" font-size="15" fill="#5BAADC">✓</text>
+  <text x="106" y="183" class="m" font-size="7" fill="#d4d4d4">Metformin 500mg</text>
+  <text x="106" y="192" class="m" font-size="6" fill="#555">08:00 · taken</text>
+  <!-- med list item 2: due now -->
+  <rect x="90" y="202" width="88" height="26" rx="2" fill="#1a0a0a" stroke="#C4836A" stroke-width="0.6"/>
+  <text x="91" y="219" class="m" font-size="13" fill="#C4836A">!</text>
+  <text x="106" y="213" class="m" font-size="7" fill="#d4d4d4">Lisinopril 10mg</text>
+  <text x="106" y="222" class="m" font-size="6" fill="#C4836A">14:00 · due now</text>
+  <!-- med list item 3: upcoming -->
+  <rect x="90" y="232" width="88" height="26" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="0.6"/>
+  <text x="106" y="243" class="m" font-size="7" fill="#666">Vitamin D3</text>
+  <text x="106" y="252" class="m" font-size="6" fill="#444">20:00 · upcoming</text>
+  <!-- streak bar -->
+  <rect x="90" y="262" width="88" height="20" rx="3" fill="#1a1a0a" stroke="#C8C87A" stroke-width="0.6"/>
+  <text x="134" y="271" class="m" font-size="7" fill="#C8C87A" text-anchor="middle">🔥 14 day streak</text>
+  <text x="134" y="279" class="m" font-size="6" fill="#4a4a2a" text-anchor="middle">adherence: 96%</text>
+  <!-- AI chat bubble -->
+  <rect x="90" y="286" width="88" height="26" rx="4" fill="#0f1820" stroke="#5BAADC" stroke-width="0.6"/>
+  <text x="134" y="297" class="m" font-size="7" fill="#5BAADC" text-anchor="middle">AI: Take with food.</text>
+  <text x="134" y="306" class="m" font-size="6" fill="#2a3a5a" text-anchor="middle">Avoid grapefruit juice.</text>
+  <!-- home bar -->
+  <rect x="114" y="340" width="40" height="5" rx="2.5" fill="#333"/>
+  <!-- feature boxes right -->
+  <rect x="208" y="148" width="133" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="276" y="163" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">AI Chatbot</text>
+  <text x="276" y="176" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">medication guidance</text>
+  <rect x="208" y="196" width="133" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="276" y="211" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Prescription OCR</text>
+  <text x="276" y="224" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">scan label → plain text</text>
+  <rect x="208" y="244" width="133" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="276" y="259" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Gamified Rewards</text>
+  <text x="276" y="272" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">streaks + adherence</text>
+  <rect x="208" y="292" width="133" height="36" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+  <text x="276" y="307" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">Community</text>
+  <text x="276" y="320" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">accountability groups</text>
+  <!-- Kotlin + MVVM -->
+  <rect x="354" y="196" width="108" height="36" rx="4" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+  <text x="408" y="211" class="m" font-size="10" fill="#C4836A" text-anchor="middle">Kotlin + Compose</text>
+  <text x="408" y="224" class="m" font-size="9" fill="#5a3a2a" text-anchor="middle">MVVM architecture</text>
+  <rect x="354" y="244" width="108" height="36" rx="4" fill="#141414" stroke="#555" stroke-width="0.8"/>
+  <text x="408" y="259" class="m" font-size="10" fill="#888" text-anchor="middle">Room DB</text>
+  <text x="408" y="272" class="m" font-size="9" fill="#3a3a3a" text-anchor="middle">local persistence</text>
+  <!-- MVVM diagram -->
+  <rect x="480" y="148" width="68" height="24" rx="3" fill="#141414" stroke="#5BAADC" stroke-width="0.6"/>
+  <text x="514" y="164" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">View</text>
+  <line x1="514" y1="172" x2="514" y2="188" stroke="#333" stroke-width="0.7"/>
+  <rect x="480" y="188" width="68" height="24" rx="3" fill="#141414" stroke="#C8C87A" stroke-width="0.6"/>
+  <text x="514" y="204" class="m" font-size="9" fill="#C8C87A" text-anchor="middle">ViewModel</text>
+  <line x1="514" y1="212" x2="514" y2="228" stroke="#333" stroke-width="0.7"/>
+  <rect x="480" y="228" width="68" height="24" rx="3" fill="#141414" stroke="#8BB87A" stroke-width="0.6"/>
+  <text x="514" y="244" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">Model</text>
+  <text x="514" y="272" class="m" font-size="9" fill="#3a3a3a" text-anchor="middle">MVVM</text>
+  <!-- code -->
+  <text x="400" y="322" class="m" font-size="10" fill="#2a3a2a">@Composable fun MedCard(med: Med) {</text>
+  <text x="410" y="338" class="m" font-size="10" fill="#4A72B0">  val</text>
+  <text x="435" y="338" class="m" font-size="10" fill="#d4d4d4"> status by </text>
+  <text x="495" y="338" class="m" font-size="10" fill="#8BB87A">viewModel</text>
+  <text x="548" y="338" class="m" font-size="10" fill="#d4d4d4">.state</text>
+  <text x="410" y="354" class="m" font-size="10" fill="#d4d4d4">  MedicationRow(med, status, onTaken)</text>
+</svg>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" viewBox="0 0 680 383" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Restaurant Ordering System — project cover</title>
+  <style>.mono{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e1e1e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="383" fill="url(#grid)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="134" y="22" class="mono" font-size="11" fill="#3a3a3a">Kitchen.java — ReentrantLock</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="64" y="65" class="mono" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="89" class="mono" font-size="20" font-weight="500" fill="#ffffff">Restaurant</text>
+  <text x="64" y="113" class="mono" font-size="20" font-weight="500" fill="#C4836A">Ordering System</text>
+  <!-- thread icon: interlocking circles -->
+  <circle cx="175" cy="218" r="72" fill="none" stroke="#2a0a0a" stroke-width="18"/>
+  <circle cx="175" cy="218" r="56" fill="none" stroke="#1a0808" stroke-width="10"/>
+  <!-- waiter thread -->
+  <circle cx="152" cy="210" r="28" fill="#1a0808" stroke="#C4836A" stroke-width="1.2"/>
+  <text x="150" y="206" class="mono" font-size="7" fill="#C4836A" text-anchor="middle">Thread</text>
+  <text x="151" y="216" class="mono" font-size="7" fill="#C4836A" text-anchor="middle">Waiter</text>
+  <text x="150" y="226" class="mono" font-size="7" fill="#7a3a2a" text-anchor="middle">→ queue</text>
+  <!-- chef thread -->
+  <circle cx="198" cy="210" r="28" fill="#0a1808" stroke="#8BB87A" stroke-width="1.2"/>
+  <text x="200" y="206" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">Thread</text>
+  <text x="199" y="216" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">Chef</text>
+  <text x="198" y="226" class="mono" font-size="7" fill="#3a5a2a" text-anchor="middle">← queue</text>
+  <!-- shared queue between them -->
+  <rect x="162" y="240" width="26" height="14" rx="2" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="175" y="249" class="mono" font-size="6" fill="#C8C87A" text-anchor="middle">queue</text>
+  <!-- lock icon overlay -->
+  <rect x="166" y="192" width="18" height="14" rx="2" fill="#1a1a14" stroke="#C8C87A" stroke-width="0.8"/>
+  <path d="M170 192 L170 188 Q175 184 180 188 L180 192" fill="none" stroke="#C8C87A" stroke-width="0.8"/>
+  <circle cx="175" cy="199" r="2" fill="#C8C87A"/>
+  <!-- label pill -->
+  <rect x="110" y="265" width="130" height="22" rx="3" fill="#1a0808" stroke="#C4836A" stroke-width="1"/>
+  <text x="123" y="279" class="mono" font-size="10" fill="#C4836A">Multithreaded Java</text>
+  <!-- RIGHT: 3 version cards -->
+  <rect x="290" y="52" width="116" height="78" rx="4" fill="#141414" stroke="#C4836A" stroke-width="1"/>
+  <rect x="290" y="52" width="116" height="18" rx="4" fill="#2a0808"/>
+  <text x="348" y="64" class="mono" font-size="8" fill="#C4836A" text-anchor="middle">v1: Unfixed</text>
+  <text x="348" y="76" class="mono" font-size="7" fill="#C4836A" text-anchor="middle">⚠ Race Condition</text>
+  <line x1="290" y1="78" x2="406" y2="78" stroke="#2a0808" stroke-width="0.4"/>
+  <text x="296" y="90" class="mono" font-size="7" fill="#6a2a2a">Dish counts wrong</text>
+  <text x="296" y="100" class="mono" font-size="7" fill="#6a2a2a">Multiple chefs same</text>
+  <text x="296" y="110" class="mono" font-size="7" fill="#6a2a2a">order simultaneously</text>
+  <text x="296" y="120" class="mono" font-size="7" fill="#5a2a2a">No sync — observable</text>
+
+  <rect x="414" y="52" width="116" height="78" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="1"/>
+  <rect x="414" y="52" width="116" height="18" rx="4" fill="#1a1808"/>
+  <text x="472" y="64" class="mono" font-size="8" fill="#C8C87A" text-anchor="middle">v2: Partial Fix</text>
+  <text x="472" y="76" class="mono" font-size="7" fill="#C8C87A" text-anchor="middle">🔒 Deadlock</text>
+  <line x1="414" y1="78" x2="530" y2="78" stroke="#2a2808" stroke-width="0.4"/>
+  <text x="420" y="90" class="mono" font-size="7" fill="#6a6a2a">Naive locking added</text>
+  <text x="420" y="100" class="mono" font-size="7" fill="#6a6a2a">Circular dependency</text>
+  <text x="420" y="110" class="mono" font-size="7" fill="#6a6a2a">Thread A waits B</text>
+  <text x="420" y="120" class="mono" font-size="7" fill="#5a5a2a">Thread B waits A</text>
+
+  <rect x="538" y="52" width="106" height="78" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="1"/>
+  <rect x="538" y="52" width="106" height="18" rx="4" fill="#0f2808"/>
+  <text x="591" y="64" class="mono" font-size="8" fill="#8BB87A" text-anchor="middle">v3: Fixed</text>
+  <text x="591" y="76" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">✓ ReentrantLock</text>
+  <line x1="538" y1="78" x2="644" y2="78" stroke="#0f2808" stroke-width="0.4"/>
+  <text x="544" y="90" class="mono" font-size="7" fill="#3a5a2a">Consistent ordering</text>
+  <text x="544" y="100" class="mono" font-size="7" fill="#3a5a2a">No race condition</text>
+  <text x="544" y="110" class="mono" font-size="7" fill="#3a5a2a">No deadlock</text>
+  <text x="544" y="120" class="mono" font-size="7" fill="#2a4a2a">Thread-safe kitchen</text>
+
+  <!-- thread sequence diagram -->
+  <rect x="290" y="144" width="354" height="136" rx="4" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="296" y="156" class="mono" font-size="8" fill="#3a3a3a">Thread Sequence — v3 Fixed</text>
+  <!-- timeline columns -->
+  <line x1="340" y1="175" x2="340" y2="252" stroke="#C4836A" stroke-width="0.6" stroke-dasharray="2 2"/>
+  <line x1="430" y1="175" x2="430" y2="252" stroke="#8BB87A" stroke-width="0.6" stroke-dasharray="2 2"/>
+  <line x1="520" y1="175" x2="520" y2="252" stroke="#C8C87A" stroke-width="0.6" stroke-dasharray="2 2"/>
+  <text x="340" y="170" class="mono" font-size="7" fill="#C4836A" text-anchor="middle">Waiter-1</text>
+  <text x="430" y="170" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">Kitchen</text>
+  <text x="520" y="170" class="mono" font-size="7" fill="#C8C87A" text-anchor="middle">Chef-1</text>
+  <!-- event arrows -->
+  <line x1="340" y1="182" x2="416" y2="182" stroke="#C4836A" stroke-width="0.8"/>
+  <polygon points="416,182 410,179 410,185" fill="#C4836A"/>
+  <text x="360" y="179" class="mono" font-size="6" fill="#6a3a2a">enqueue(Dish)</text>
+  <rect x="416" y="178" width="28" height="8" rx="1" fill="#1a2a1a" stroke="#8BB87A" stroke-width="0.4"/>
+  <text x="430" y="184" class="mono" font-size="5" fill="#8BB87A" text-anchor="middle">lock()</text>
+  <line x1="445" y1="200" x2="506" y2="200" stroke="#8BB87A" stroke-width="0.8"/>
+  <polygon points="506,200 500,197 500,203" fill="#8BB87A"/>
+  <text x="460" y="197" class="mono" font-size="6" fill="#3a5a2a">dequeue()</text>
+  <rect x="506" y="196" width="28" height="8" rx="1" fill="#1a1a2a" stroke="#C8C87A" stroke-width="0.4"/>
+  <text x="520" y="202" class="mono" font-size="5" fill="#C8C87A" text-anchor="middle">cook()</text>
+  <line x1="506" y1="218" x2="444" y2="218" stroke="#C8C87A" stroke-width="0.8"/>
+  <polygon points="444,218 450,215 450,221" fill="#C8C87A"/>
+  <text x="460" y="215" class="mono" font-size="6" fill="#4a4a2a">done(Dish)</text>
+  <rect x="395" y="238" width="70" height="8" rx="1" fill="#1a2a1a" stroke="#8BB87A" stroke-width="0.4"/>
+  <text x="430" y="244" class="mono" font-size="5" fill="#8BB87A" text-anchor="middle">unlock() · inventory--</text>
+  <text x="296" y="260" class="mono" font-size="7" fill="#2a3a2a">config: threads · wait-times · inventory · dish-qty all tunable</text>
+  <text x="296" y="272" class="mono" font-size="7" fill="#1a2a2a">ships with sequence diagram + class diagram</text>
+
+  <!-- ingredients inventory block -->
+  <rect x="290" y="292" width="166" height="60" rx="3" fill="#0a0a14" stroke="#B87DB8" stroke-width="0.7"/>
+  <text x="373" y="304" class="mono" font-size="8" fill="#B87DB8" text-anchor="middle">Shared Inventory</text>
+  <line x1="290" y1="308" x2="456" y2="308" stroke="#1a1a2a" stroke-width="0.4"/>
+  <text x="296" y="320" class="mono" font-size="8" fill="#4a2a5a">tomatoes: 24 remaining</text>
+  <text x="296" y="332" class="mono" font-size="8" fill="#4a2a5a">pasta:    18 remaining</text>
+  <text x="296" y="344" class="mono" font-size="8" fill="#4a2a5a">chicken:   6 remaining</text>
+
+  <!-- code snippet -->
+  <text x="464" y="304" class="mono" font-size="10" fill="#2a3a2a">lock.lock()</text>
+  <text x="464" y="320" class="mono" font-size="10" fill="#4A72B0">try</text>
+  <text x="484" y="320" class="mono" font-size="10" fill="#d4d4d4"> { process(order) }</text>
+  <text x="464" y="336" class="mono" font-size="10" fill="#4A72B0">finally</text>
+  <text x="464" y="352" class="mono" font-size="10" fill="#d4d4d4">  { lock.unlock() }</text>
+  <text x="464" y="368" class="mono" font-size="10" fill="#2a3a2a">// ReentrantLock v3</text>
+</svg>

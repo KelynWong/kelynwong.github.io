@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs><pattern id="g4" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#g4)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">fitness_trainer.py</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">Smart Fitness</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#8BB87A">Trainer</text>
+  <!-- stick figure doing squat pose -->
+  <circle cx="195" cy="165" r="16" fill="none" stroke="#8BB87A" stroke-width="1.5"/>
+  <!-- torso -->
+  <line x1="195" y1="181" x2="195" y2="230" stroke="#8BB87A" stroke-width="1.5"/>
+  <!-- arms -->
+  <line x1="195" y1="195" x2="168" y2="215" stroke="#8BB87A" stroke-width="1.2"/>
+  <line x1="195" y1="195" x2="222" y2="215" stroke="#8BB87A" stroke-width="1.2"/>
+  <!-- legs bent (squat) -->
+  <line x1="195" y1="230" x2="175" y2="258" stroke="#8BB87A" stroke-width="1.5"/>
+  <line x1="195" y1="230" x2="215" y2="258" stroke="#8BB87A" stroke-width="1.5"/>
+  <line x1="175" y1="258" x2="162" y2="285" stroke="#8BB87A" stroke-width="1.5"/>
+  <line x1="215" y1="258" x2="228" y2="285" stroke="#8BB87A" stroke-width="1.5"/>
+  <!-- joint dots -->
+  <circle cx="195" cy="230" r="3" fill="#8BB87A" opacity="0.8"/>
+  <circle cx="175" cy="258" r="3" fill="#8BB87A" opacity="0.8"/>
+  <circle cx="215" cy="258" r="3" fill="#8BB87A" opacity="0.8"/>
+  <circle cx="168" cy="215" r="3" fill="#8BB87A" opacity="0.8"/>
+  <circle cx="222" cy="215" r="3" fill="#8BB87A" opacity="0.8"/>
+  <!-- skeleton lines angles (MediaPipe style) -->
+  <line x1="162" y1="285" x2="228" y2="285" stroke="#2a3a2a" stroke-width="0.6" stroke-dasharray="3 2"/>
+  <!-- angle arc at knee -->
+  <path d="M167 252 A12 12 0 0 1 178 265" fill="none" stroke="#C8C87A" stroke-width="1"/>
+  <text x="152" y="262" class="m" font-size="9" fill="#C8C87A">92°</text>
+  <!-- corner brackets -->
+  <path d="M118 148 L118 163 M118 148 L133 148" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M272 148 L272 163 M272 148 L257 148" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M118 308 L118 293 M118 308 L133 308" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M272 308 L272 293 M272 308 L257 308" fill="none" stroke="#8BB87A" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- rep counter -->
+  <rect x="111" y="316" width="170" height="22" rx="3" fill="#0f2a18" stroke="#8BB87A" stroke-width="1"/>
+  <circle cx="125" cy="327" r="3" fill="#8BB87A"/>
+  <text x="135" y="331" class="m" font-size="10" fill="#8BB87A">REPS: 8 / 12   FORM: GOOD</text>
+  <!-- right side components -->
+  <rect x="340" y="78" width="90" height="38" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+  <text x="385" y="95" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">MediaPipe</text>
+  <text x="385" y="108" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">pose estimation</text>
+  <line x1="385" y1="116" x2="385" y2="134" stroke="#333" stroke-width="0.8"/>
+  <rect x="340" y="134" width="90" height="38" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="385" y="151" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">Rep Counter</text>
+  <text x="385" y="164" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">angle analysis</text>
+  <line x1="385" y1="172" x2="385" y2="190" stroke="#333" stroke-width="0.8"/>
+  <rect x="340" y="190" width="90" height="38" rx="4" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+  <text x="385" y="207" class="m" font-size="10" fill="#C4836A" text-anchor="middle">Audio TTS</text>
+  <text x="385" y="220" class="m" font-size="9" fill="#5a3a2a" text-anchor="middle">form feedback</text>
+  <line x1="385" y1="228" x2="385" y2="246" stroke="#333" stroke-width="0.8"/>
+  <rect x="340" y="246" width="90" height="38" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+  <text x="385" y="263" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Supabase</text>
+  <text x="385" y="276" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">workout log</text>
+  <line x1="385" y1="284" x2="385" y2="302" stroke="#333" stroke-width="0.8"/>
+  <rect x="340" y="302" width="90" height="38" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="385" y="319" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Streamlit</text>
+  <text x="385" y="332" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">analytics</text>
+  <!-- RPi right -->
+  <rect x="452" y="134" width="80" height="60" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="458" y="140" width="68" height="48" rx="2" fill="#0a1a1a"/>
+  <rect x="466" y="150" width="36" height="28" rx="2" fill="#0f2020" stroke="#5BAADC" stroke-width="0.6"/>
+  <text x="484" y="168" class="m" font-size="8" fill="#5BAADC" text-anchor="middle">RPi 3B+</text>
+  <line x1="452" y1="164" x2="430" y2="164" stroke="#2a2a2a" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <!-- code -->
+  <text x="460" y="288" class="m" font-size="10" fill="#2a3a2a">if form_angle &lt; threshold:</text>
+  <text x="470" y="304" class="m" font-size="10" fill="#4A72B0">    speaker</text>
+  <text x="513" y="304" class="m" font-size="10" fill="#d4d4d4">.say(</text>
+  <text x="543" y="304" class="m" font-size="10" fill="#C8C87A">"adjust posture"</text>
+  <text x="640" y="304" class="m" font-size="10" fill="#d4d4d4">)</text>
+  <text x="470" y="320" class="m" font-size="10" fill="#4A72B0">    reps</text>
+  <text x="498" y="320" class="m" font-size="10" fill="#d4d4d4"> += </text>
+  <text x="515" y="320" class="m" font-size="10" fill="#C8C87A">1</text>
+  <text x="470" y="336" class="m" font-size="10" fill="#4A72B0">    supabase</text>
+  <text x="519" y="336" class="m" font-size="10" fill="#d4d4d4">.insert(session)</text>
+</svg>

@@ -8,6 +8,7 @@
         loading="lazy"
         decoding="async"
         class="project-image"
+        @error="handleCoverError"
       />
       <div class="image-overlay">
         <button
@@ -92,6 +93,8 @@
 </template>
 
 <script>
+import { toDarkAsset } from '../utils/themeAssets.js'
+
 export default {
   name: 'ProjectCard',
   props: {
@@ -117,6 +120,15 @@ export default {
     },
     hasDemos(project) {
       return this.getDemoCount(project) > 0;
+    },
+    handleCoverError(event) {
+      const target = event && event.target ? event.target : null;
+      if (!target) return;
+      const fallback = this.project.darkCoverImage
+        || toDarkAsset(String(target.currentSrc || target.src || ''));
+      if (!fallback || fallback === target.src) return;
+      target.onerror = null;
+      target.src = fallback;
     },
   },
 };

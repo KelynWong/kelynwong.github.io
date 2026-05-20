@@ -23,6 +23,7 @@
                     :src="displayImages[currentImageIndex]"
                     :alt="displayImageAlt(currentImageIndex)"
                     class="gallery-image"
+                    @error="handleGalleryImageError"
                   />
                 </div>
                 <div v-if="displayImages.length > 1" class="gallery-controls">
@@ -147,6 +148,8 @@
 </template>
 
 <script>
+import { toDarkAsset } from '../utils/themeAssets.js'
+
 export default {
   name: 'ProjectModal',
   props: {
@@ -365,6 +368,14 @@ export default {
       this.currentDemoIndex = (this.currentDemoIndex - 1 + this.demoCount) % this.demoCount;
       this.restartDemoAutoPlay();
     },
+    handleGalleryImageError(event) {
+      const target = event && event.target ? event.target : null;
+      if (!target) return;
+      const fallback = toDarkAsset(String(target.currentSrc || target.src || ''));
+      if (!fallback || fallback === target.src) return;
+      target.onerror = null;
+      target.src = fallback;
+    },
   },
   mounted() {
     if (this.isOpen) {
@@ -385,7 +396,7 @@ export default {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.82);
+  background: var(--overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -402,7 +413,7 @@ export default {
   max-height: 90vh;
   overflow-y: auto;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 20px 60px rgba(var(--shadow-rgb), 0.45);
 }
 
 .modal-close {

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+  <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs><pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="url(#gr)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">docker-compose.yml</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">Task Master</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#5BAADC">Microservices Platform</text>
+  <!-- Vue frontend -->
+  <rect x="64" y="152" width="90" height="44" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="1"/>
+  <text x="109" y="172" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Vue Frontend</text>
+  <text x="109" y="185" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">SPA / SCSS</text>
+  <!-- connector lines to each service -->
+  <line x1="154" y1="174" x2="192" y2="152" stroke="#2a2a2a" stroke-width="0.7"/>
+  <line x1="154" y1="174" x2="192" y2="188" stroke="#2a2a2a" stroke-width="0.7"/>
+  <line x1="154" y1="174" x2="192" y2="224" stroke="#2a2a2a" stroke-width="0.7"/>
+  <line x1="154" y1="174" x2="192" y2="260" stroke="#2a2a2a" stroke-width="0.7"/>
+  <!-- 4 microservices -->
+  <rect x="192" y="138" width="108" height="30" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+  <text x="246" y="151" class="m" font-size="9" fill="#B87DB8" text-anchor="middle">AI Idea Service</text>
+  <text x="246" y="161" class="m" font-size="8" fill="#4a2a5a" text-anchor="middle">Flask / Python</text>
+  <rect x="192" y="174" width="108" height="30" rx="3" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+  <text x="246" y="187" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Group Service</text>
+  <text x="246" y="197" class="m" font-size="8" fill="#2a3a5a" text-anchor="middle">Node.js / Express</text>
+  <rect x="192" y="210" width="108" height="30" rx="3" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+  <text x="246" y="223" class="m" font-size="9" fill="#C8C87A" text-anchor="middle">Enroll Service</text>
+  <text x="246" y="233" class="m" font-size="8" fill="#4a4a2a" text-anchor="middle">Flask / Python</text>
+  <rect x="192" y="246" width="108" height="30" rx="3" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+  <text x="246" y="259" class="m" font-size="9" fill="#C4836A" text-anchor="middle">Task Service</text>
+  <text x="246" y="269" class="m" font-size="8" fill="#5a3a2a" text-anchor="middle">Node.js / Express</text>
+  <!-- Docker compose bracket -->
+  <rect x="64" y="296" width="236" height="33" rx="3" fill="#0a1a2a" stroke="#5BAADC" stroke-width="0.8" stroke-dasharray="4 2"/>
+  <text x="182" y="311" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Docker Compose orchestration</text>
+  <text x="182" y="320" class="m" font-size="8" fill="#2a4a6a" text-anchor="middle">independently deployable services</text>
+  <!-- AI spotlight -->
+  <rect x="326" y="148" width="108" height="44" rx="6" fill="#1a0f2a" stroke="#B87DB8" stroke-width="1"/>
+  <text x="380" y="168" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">AI Idea Gen</text>
+  <text x="380" y="182" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">LLM powered</text>
+  <line x1="300" y1="153" x2="326" y2="161" stroke="#2a2a3a" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <!-- task kanban mockup -->
+  <rect x="452" y="100" width="186" height="100" rx="4" fill="#111" stroke="#2a2a2a" stroke-width="1"/>
+  <!-- kanban header -->
+  <rect x="452" y="100" width="186" height="20" rx="4" fill="#1a1a1a"/>
+  <text x="545" y="114" class="m" font-size="9" fill="#555" text-anchor="middle">task-board.vue</text>
+  <!-- 3 columns -->
+  <rect x="458" y="126" width="52" height="14" rx="2" fill="#1a1a2a"/>
+  <text x="484" y="136" class="m" font-size="8" fill="#5BAADC" text-anchor="middle">TODO</text>
+  <rect x="458" y="144" width="52" height="22" rx="2" fill="#141414" stroke="#333" stroke-width="0.5"/>
+  <text x="484" y="154" class="m" font-size="7" fill="#aaa" text-anchor="middle">Design DB</text>
+  <text x="484" y="162" class="m" font-size="7" fill="#555" text-anchor="middle">@Alice</text>
+  <rect x="458" y="170" width="52" height="22" rx="2" fill="#141414" stroke="#333" stroke-width="0.5"/>
+  <text x="484" y="180" class="m" font-size="7" fill="#aaa" text-anchor="middle">Write tests</text>
+  <text x="484" y="188" class="m" font-size="7" fill="#555" text-anchor="middle">@Bob</text>
+  <rect x="516" y="126" width="52" height="14" rx="2" fill="#1a2a1a"/>
+  <text x="542" y="136" class="m" font-size="8" fill="#C8C87A" text-anchor="middle">IN PROGRESS</text>
+  <rect x="516" y="144" width="52" height="22" rx="2" fill="#141414" stroke="#C8C87A" stroke-width="0.5"/>
+  <text x="542" y="154" class="m" font-size="7" fill="#aaa" text-anchor="middle">Build API</text>
+  <text x="542" y="162" class="m" font-size="7" fill="#555" text-anchor="middle">@Carol</text>
+  <rect x="574" y="126" width="58" height="14" rx="2" fill="#0f2a0f"/>
+  <text x="603" y="136" class="m" font-size="8" fill="#8BB87A" text-anchor="middle">DONE</text>
+  <rect x="574" y="144" width="58" height="22" rx="2" fill="#141414" stroke="#8BB87A" stroke-width="0.5"/>
+  <text x="603" y="154" class="m" font-size="7" fill="#aaa" text-anchor="middle">Setup repo</text>
+  <text x="603" y="162" class="m" font-size="7" fill="#8BB87A" text-anchor="middle">✓</text>
+  <rect x="574" y="170" width="58" height="22" rx="2" fill="#141414" stroke="#8BB87A" stroke-width="0.5"/>
+  <text x="603" y="180" class="m" font-size="7" fill="#aaa" text-anchor="middle">Auth flow</text>
+  <text x="603" y="188" class="m" font-size="7" fill="#8BB87A" text-anchor="middle">✓</text>
+  <!-- code -->
+  <text x="400" y="284" class="m" font-size="10" fill="#2a3a2a">services:</text>
+  <text x="400" y="300" class="m" font-size="10" fill="#4A72B0">  idea-service</text>
+  <text x="472" y="300" class="m" font-size="10" fill="#d4d4d4">:</text>
+  <text x="400" y="316" class="m" font-size="10" fill="#8BB87A">    build</text>
+  <text x="432" y="316" class="m" font-size="10" fill="#d4d4d4">: ./services/ideas</text>
+</svg>
