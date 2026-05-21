@@ -704,12 +704,12 @@ export const tracks = [
     genre: 'cover',
     duration: '00:27',
     lyrics: `[00:00.00] [Intro]
-[00:00.00]Pray for me now
-[00:05.00]Pray for me now, pray for me now (dies irae illa)
-[00:10.00]Pray for me now, pray for me now (vos solve in favillam)
-[00:15.00]Pray for me now, pray for me now (maledictus erus)
-[00:20.00]Pray for me now, pray for me now (in flammas aeternum)
-[00:25.00]I'll be your idol`,
+[00:00.20]Pray for me now
+[00:02.00]Pray for me now, pray for me now (dies irae illa)
+[00:07.00]Pray for me now, pray for me now (vos solve in favillam)
+[00:12.40]Pray for me now, pray for me now (maledictus erus)
+[00:18.00]Pray for me now, pray for me now (in flammas aeternum)
+[00:21.50]I'll be your idol`,
   },
 ]
 
