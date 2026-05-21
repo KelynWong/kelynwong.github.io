@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" viewBox="0 0 680 383" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>ROW — project cover</title>
+  <style>.mono{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#0d0d0d"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1e1e1e" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="383" fill="url(#grid)"/>
+
+  <!-- terminal bar -->
+  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
+  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
+  <circle cx="72" cy="18" r="5" fill="#C4836A"/>
+  <circle cx="90" cy="18" r="5" fill="#C8C87A"/>
+  <circle cx="108" cy="18" r="5" fill="#8BB87A"/>
+  <text x="134" y="22" class="mono" font-size="11" fill="#3a3a3a">App.js — React Native 0.61</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#2a2a2a" stroke-width="1"/>
+
+  <!-- title -->
+  <text x="64" y="65" class="mono" font-size="11" fill="#3a3a3a">// project</text>
+  <text x="64" y="89" class="mono" font-size="20" font-weight="500" fill="#ffffff">ROW</text>
+  <text x="64" y="113" class="mono" font-size="20" font-weight="500" fill="#5BAADC">Community App</text>
+
+  <!-- ═══════════════════════════
+     LEFT: phone mockup with app UI
+     ═══════════════════════════ -->
+    <g transform="translate(60, 25) scale(0.8)">
+
+    <rect x="82" y="132" width="112" height="204" rx="14" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.2"/>
+    
+    <!-- screen -->
+    <rect x="88" y="144" width="100" height="180" rx="5" fill="#0d0d0d"/>
+    
+    <!-- notch -->
+    <rect x="118" y="144" width="40" height="8" rx="4" fill="#1a1a1a"/>
+
+    <!-- app top bar -->
+    <rect x="88" y="152" width="100" height="20" fill="#141414"/>
+    <text x="138" y="166" class="mono" font-size="8" fill="#5BAADC" text-anchor="middle">ROW</text>
+    <text x="180" y="165" class="mono" font-size="8" fill="#555">✎</text>
+
+    <!-- feed post 1 -->
+    <rect x="90" y="174" width="96" height="50" rx="2" fill="#141414" stroke="#1e1e1e" stroke-width="0.5"/>
+
+    <!-- avatar -->
+    <circle cx="101" cy="183" r="6" fill="#1a2a3a" stroke="#5BAADC" stroke-width="0.7"/>
+    <text x="101" y="185" class="mono" font-size="6" fill="#5BAADC" text-anchor="middle">K</text>
+    <text x="114" y="182" class="mono" font-size="6" fill="#d4d4d4">kelyn_w</text>
+    <text x="114" y="190" class="mono" font-size="5" fill="#555">2 mins ago</text>
+
+    <!-- post content lines -->
+    <rect x="94" y="195" width="76" height="4" rx="1" fill="#2a2a2a"/>
+    <rect x="94" y="202" width="60" height="4" rx="1" fill="#2a2a2a"/>
+
+    <!-- like row -->
+    <text x="94" y="218" class="mono" font-size="7" fill="#C4836A">♥ 12</text>
+    <text x="116" y="218" class="mono" font-size="7" fill="#555">💬 4</text>
+
+    <!-- feed post 2 -->
+    <rect x="90" y="228" width="96" height="50" rx="2" fill="#141414" stroke="#1e1e1e" stroke-width="0.5"/>
+
+    <circle cx="101" cy="237" r="6" fill="#1a2a1a" stroke="#8BB87A" stroke-width="0.7"/>
+    <text x="101" y="239" class="mono" font-size="6" fill="#8BB87A" text-anchor="middle">A</text>
+    <text x="114" y="236" class="mono" font-size="6" fill="#d4d4d4">alex_rn</text>
+    <text x="114" y="244" class="mono" font-size="5" fill="#555">15 mins ago</text>
+
+    <rect x="94" y="249" width="76" height="4" rx="1" fill="#2a2a2a"/>
+    <rect x="94" y="256" width="50" height="4" rx="1" fill="#2a2a2a"/>
+
+    <text x="94" y="272" class="mono" font-size="7" fill="#C4836A">♥ 7</text>
+    <text x="116" y="272" class="mono" font-size="7" fill="#555">💬 1</text>
+
+    <!-- tab bar -->
+    <rect x="88" y="306" width="100" height="18" rx="3" fill="#141414" stroke="#1e1e1e" stroke-width="0.5"/>
+
+    <line x1="113" y1="306" x2="113" y2="324" stroke="#1e1e1e" stroke-width="0.5"/>
+    <line x1="138" y1="306" x2="138" y2="324" stroke="#1e1e1e" stroke-width="0.5"/>
+    <line x1="163" y1="306" x2="163" y2="324" stroke="#1e1e1e" stroke-width="0.5"/>
+
+    <text x="100" y="319" class="mono" font-size="8" fill="#5BAADC" text-anchor="middle">⊞</text>
+    <text x="125" y="319" class="mono" font-size="8" fill="#555" text-anchor="middle">+</text>
+    <text x="150" y="319" class="mono" font-size="8" fill="#555" text-anchor="middle">◯</text>
+    <text x="175" y="319" class="mono" font-size="8" fill="#555" text-anchor="middle">☰</text>
+
+    <!-- home indicator -->
+    <rect x="118" y="328" width="32" height="5" rx="2.5" fill="#2a2a2a"/>
+
+    </g>
+
+    <!-- ═══════════════════════════
+     RIGHT: architecture + screens breakdown
+     ═══════════════════════════ -->
+    <g transform="translate(20)">
+    <!-- component tree -->
+    <text x="375" y="62" class="mono" font-size="9" fill="#3a3a3a">// component architecture</text>
+
+    <!-- App root -->
+    <rect x="414" y="70" width="70" height="22" rx="3" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
+    <text x="449" y="85" class="mono" font-size="8" fill="#C8C87A" text-anchor="middle">&lt;App /&gt;</text>
+
+    <!-- vertical line down -->
+    <line x1="449" y1="92" x2="449" y2="108" stroke="#333" stroke-width="0.7"/>
+
+    <!-- Navigator -->
+    <rect x="390" y="108" width="118" height="22" rx="3" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
+    <text x="449" y="123" class="mono" font-size="8" fill="#5BAADC" text-anchor="middle">TabNavigator</text>
+
+    <!-- fan out lines -->
+    <line x1="449" y1="130" x2="449" y2="144" stroke="#333" stroke-width="0.7"/>
+    <line x1="449" y1="144" x2="336" y2="144" stroke="#333" stroke-width="0.7"/>
+    <line x1="449" y1="144" x2="449" y2="144" stroke="#333" stroke-width="0.7"/>
+    <line x1="449" y1="144" x2="562" y2="144" stroke="#333" stroke-width="0.7"/>
+    <line x1="336" y1="144" x2="336" y2="158" stroke="#333" stroke-width="0.7"/>
+    <line x1="449" y1="144" x2="449" y2="158" stroke="#333" stroke-width="0.7"/>
+    <line x1="562" y1="144" x2="562" y2="158" stroke="#333" stroke-width="0.7"/>
+
+    <!-- 3 screen boxes -->
+    <rect x="290" y="158" width="92" height="38" rx="3" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
+    <text x="336" y="172" class="mono" font-size="8" fill="#8BB87A" text-anchor="middle">FeedScreen</text>
+    <text x="336" y="185" class="mono" font-size="7" fill="#2a4a2a" text-anchor="middle">browse · create</text>
+
+    <rect x="403" y="158" width="92" height="38" rx="3" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
+    <text x="449" y="172" class="mono" font-size="8" fill="#C4836A" text-anchor="middle">PostScreen</text>
+    <text x="449" y="185" class="mono" font-size="7" fill="#5a3a2a" text-anchor="middle">create · submit</text>
+
+    <rect x="516" y="158" width="92" height="38" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
+    <text x="562" y="172" class="mono" font-size="8" fill="#B87DB8" text-anchor="middle">ProfileScreen</text>
+    <text x="562" y="185" class="mono" font-size="7" fill="#4a2a5a" text-anchor="middle">user · posts</text>
+
+    <!-- reusable components row -->
+    <text x="290" y="216" class="mono" font-size="8" fill="#3a3a3a">// reusable components</text>
+
+    <rect x="290" y="222" width="66" height="28" rx="3" fill="#141414" stroke="#5BAADC" stroke-width="0.6"/>
+    <text x="323" y="234" class="mono" font-size="7" fill="#5BAADC" text-anchor="middle">PostCard</text>
+    <text x="323" y="243" class="mono" font-size="6" fill="#2a3a5a" text-anchor="middle">feed item</text>
+
+    <rect x="362" y="222" width="66" height="28" rx="3" fill="#141414" stroke="#C4836A" stroke-width="0.6"/>
+    <text x="395" y="234" class="mono" font-size="7" fill="#C4836A" text-anchor="middle">LikeButton</text>
+    <text x="395" y="243" class="mono" font-size="6" fill="#5a3a2a" text-anchor="middle">interaction</text>
+
+    <rect x="434" y="222" width="66" height="28" rx="3" fill="#141414" stroke="#8BB87A" stroke-width="0.6"/>
+    <text x="467" y="234" class="mono" font-size="7" fill="#8BB87A" text-anchor="middle">Avatar</text>
+    <text x="467" y="243" class="mono" font-size="6" fill="#2a4a2a" text-anchor="middle">user icon</text>
+
+    <rect x="506" y="222" width="66" height="28" rx="3" fill="#141414" stroke="#C8C87A" stroke-width="0.6"/>
+    <text x="539" y="234" class="mono" font-size="7" fill="#C8C87A" text-anchor="middle">TabBar</text>
+    <text x="539" y="243" class="mono" font-size="6" fill="#4a4a2a" text-anchor="middle">navigation</text>
+
+    <rect x="578" y="222" width="66" height="28" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.6"/>
+    <text x="611" y="234" class="mono" font-size="7" fill="#B87DB8" text-anchor="middle">Header</text>
+    <text x="611" y="243" class="mono" font-size="6" fill="#4a2a5a" text-anchor="middle">screen title</text>
+
+    <!-- project structure block -->
+    <rect x="290" y="262" width="354" height="94" rx="3" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="0.8"/>
+    <text x="296" y="274" class="mono" font-size="8" fill="#3a3a3a">// project structure</text>
+    <line x1="290" y1="278" x2="644" y2="278" stroke="#1a1a1a" stroke-width="0.4"/>
+
+    <!-- left column -->
+    <text x="296" y="290" class="mono" font-size="8" fill="#555">src/</text>
+    <text x="304" y="301" class="mono" font-size="8" fill="#5BAADC">  screens/</text>
+    <text x="312" y="312" class="mono" font-size="7" fill="#2a4a6a">    FeedScreen.js</text>
+    <text x="312" y="322" class="mono" font-size="7" fill="#2a4a6a">    ProfileScreen.js</text>
+    <text x="312" y="332" class="mono" font-size="7" fill="#2a4a6a">    PostScreen.js</text>
+    <text x="312" y="342" class="mono" font-size="7" fill="#2a4a6a">    LoginScreen.js</text>
+
+    <!-- middle column -->
+    <text x="440" y="290" class="mono" font-size="8" fill="#8BB87A">  components/</text>
+    <text x="448" y="301" class="mono" font-size="7" fill="#3a5a3a">    PostCard.js</text>
+    <text x="448" y="312" class="mono" font-size="7" fill="#3a5a3a">    Avatar.js</text>
+    <text x="448" y="323" class="mono" font-size="7" fill="#3a5a3a">    Header.js</text>
+
+    <text x="440" y="334" class="mono" font-size="8" fill="#C8C87A">  navigation/</text>
+    <text x="448" y="345" class="mono" font-size="7" fill="#4a4a2a">    TabNavigator.js</text>
+
+    <!-- right -->
+    <text x="560" y="290" class="mono" font-size="8" fill="#B87DB8">  assets/fonts/</text>
+    <text x="560" y="303" class="mono" font-size="7" fill="#4a2a5a">  custom fonts</text>
+
+    <text x="560" y="314" class="mono" font-size="8" fill="#C4836A">  __tests__/</text>
+    <text x="560" y="325" class="mono" font-size="7" fill="#5a3a2a">  Jest setup</text>
+
+    <text x="560" y="338" class="mono" font-size="8" fill="#555">  App.js</text>
+    </g>
+    
+  <!-- code snippet bottom left -->
+  <text x="64" y="318" class="mono" font-size="10" fill="#2a3a2a">const</text>
+  <text x="100" y="318" class="mono" font-size="10" fill="#5BAADC"> Tab</text>
+  <text x="123" y="318" class="mono" font-size="10" fill="#d4d4d4"> = createBottomTabNavigator()</text>
+  <text x="74" y="334" class="mono" font-size="10" fill="#8BB87A">  &lt;Tab.Navigator&gt;</text>
+  <text x="84" y="350" class="mono" font-size="10" fill="#C4836A">    &lt;Tab.Screen</text>
+  <text x="156" y="350" class="mono" font-size="10" fill="#d4d4d4"> name=</text>
+  <text x="187" y="350" class="mono" font-size="10" fill="#C8C87A">"Feed"</text>
+  <text x="223" y="350" class="mono" font-size="10" fill="#d4d4d4"> /&gt;</text>
+  <text x="74" y="366" class="mono" font-size="10" fill="#8BB87A">  &lt;/Tab.Navigator&gt;</text>
+</svg>
