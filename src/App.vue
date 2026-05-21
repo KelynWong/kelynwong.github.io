@@ -46,7 +46,7 @@
         </div>
 
         <div class="hero-model-wrap">
-          <ThreeJSModel />
+          <ThreeJSModel :theme-mode="themeMode" />
         </div>
 
         <div class="hero-3d-hint">
@@ -516,7 +516,7 @@
                       <div class="lyrics-sync-spacer" aria-hidden="true"></div>
                     </div>
                     <div v-if="!currentTrackLyricsEntries.length" class="lyrics-sync-empty">
-                      select a song below
+                      select a track below
                     </div>
                   </div>
                   <div class="lyrics-sync-focus" ref="lyricsFocusBox" aria-hidden="true"></div>

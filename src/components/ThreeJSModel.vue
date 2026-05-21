@@ -7,6 +7,12 @@ import * as THREE from 'three'
 
 export default {
   name: 'ThreeJSModel',
+  props: {
+    themeMode: {
+      type: String,
+      default: 'dark',
+    },
+  },
   data() {
     return {
       renderer: null,
@@ -15,6 +21,7 @@ export default {
       animationId: null,
       handlers: null,
       allowTouchControls: true,
+      themeObjects: null,
     }
   },
   mounted() {
@@ -75,6 +82,33 @@ export default {
       const matWall = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 1.0 })
       const matFloor = new THREE.MeshStandardMaterial({ color: 0x0e0e0e, roughness: 0.9 })
       const matCable = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.8 })
+      const chairMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.8 })
+
+      this.themeObjects = {
+        scene,
+        renderer,
+        materials: {
+          matDesk,
+          matLeg,
+          matMonBody,
+          matScreen,
+          matKeyb,
+          matMouse,
+          matLamp,
+          matLampShd,
+          matMug,
+          matBook1,
+          matBook2,
+          matBook3,
+          matPlant,
+          matPot,
+          matWall,
+          matFloor,
+          matCable,
+          chairMat,
+        },
+        lights: {},
+      }
 
       const box = (w, h, d, mat, x, y, z, rx = 0, ry = 0) => {
         const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat)
@@ -191,14 +225,14 @@ export default {
       const cableTube = new THREE.TubeGeometry(cableCurve, 12, 0.006, 6, false)
       scene.add(new THREE.Mesh(cableTube, matCable))
 
-      const chairMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.8 })
       box(0.56, 0.04, 0.5, chairMat, 0, 0.52, 0.9)
       box(0.56, 0.6, 0.04, chairMat, 0, 0.82, 1.15)
       for (const [cx, cz] of [[-0.24, 0.65], [0.24, 0.65], [-0.24, 1.15], [0.24, 1.15]]) {
         cyl(0.018, 0.018, 0.52, 8, chairMat, cx, 0.26, cz)
       }
 
-      scene.add(new THREE.AmbientLight(0xffffff, 0.35))
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.35)
+      scene.add(ambientLight)
       const sun = new THREE.DirectionalLight(0xffffff, 0.9)
       sun.position.set(3, 5, 4)
       sun.castShadow = true
@@ -210,6 +244,15 @@ export default {
       const screenGlow = new THREE.PointLight(0x1a6aaa, 0.7, 1.5)
       screenGlow.position.set(0, mBase + 0.58, -0.14)
       scene.add(screenGlow)
+      this.themeObjects.lights = {
+        ambientLight,
+        sun,
+        fill,
+        screenGlow,
+        lampLight,
+      }
+
+      this.applyTheme(this.themeMode)
 
       let isDragging = false
       let prevMouse = { x: 0, y: 0 }
@@ -329,6 +372,105 @@ export default {
       animate()
     },
 
+    applyTheme(mode) {
+      if (!this.themeObjects) return
+
+      const isLight = mode === 'light'
+      const { scene, renderer, materials, lights } = this.themeObjects
+
+      const palette = isLight
+        ? {
+            background: 0xf5f2ea,
+            desk: 0xd8c3a5,
+            leg: 0x7b6a58,
+            monBody: 0xd5d7db,
+            screen: 0xf4f7fb,
+            screenEmissive: 0x6ea6d8,
+            screenEmissiveIntensity: 0.26,
+            keyb: 0xc4c8ce,
+            mouse: 0xc7cacf,
+            lamp: 0xb7b1a6,
+            lampShade: 0xf0eadf,
+            mug: 0x7cb9de,
+            book1: 0xa8c29a,
+            book2: 0xc59cc6,
+            book3: 0xd0a08a,
+            plant: 0x5a8b46,
+            pot: 0xb27c54,
+            wall: 0xf9f6f0,
+            floor: 0xeee6da,
+            cable: 0x6f6a63,
+            chair: 0xd7d0c5,
+            ambientIntensity: 0.9,
+            sunIntensity: 1.05,
+            fillIntensity: 0.55,
+            screenGlowIntensity: 0.35,
+            lampLightIntensity: 0.85,
+          }
+        : {
+            background: 0x141414,
+            desk: 0x2a1f14,
+            leg: 0x1a1208,
+            monBody: 0x1c1c1c,
+            screen: 0x0d1117,
+            screenEmissive: 0x1a3a5c,
+            screenEmissiveIntensity: 0.6,
+            keyb: 0x222222,
+            mouse: 0x1c1c1c,
+            lamp: 0x333333,
+            lampShade: 0x888866,
+            mug: 0x5baadc,
+            book1: 0x8bb87a,
+            book2: 0xb87db8,
+            book3: 0xc4836a,
+            plant: 0x4a7a3a,
+            pot: 0x8a5a3a,
+            wall: 0x111111,
+            floor: 0x0e0e0e,
+            cable: 0x333333,
+            chair: 0x111111,
+            ambientIntensity: 0.35,
+            sunIntensity: 0.9,
+            fillIntensity: 0.3,
+            screenGlowIntensity: 0.7,
+            lampLightIntensity: 1.2,
+          }
+
+      scene.background = new THREE.Color(palette.background)
+      renderer.setClearColor(palette.background, 1)
+
+      materials.matDesk.color.setHex(palette.desk)
+      materials.matLeg.color.setHex(palette.leg)
+      materials.matMonBody.color.setHex(palette.monBody)
+      materials.matScreen.color.setHex(palette.screen)
+      materials.matScreen.emissive.setHex(palette.screenEmissive)
+      materials.matScreen.emissiveIntensity = palette.screenEmissiveIntensity
+      materials.matKeyb.color.setHex(palette.keyb)
+      materials.matMouse.color.setHex(palette.mouse)
+      materials.matLamp.color.setHex(palette.lamp)
+      materials.matLampShd.color.setHex(palette.lampShade)
+      materials.matMug.color.setHex(palette.mug)
+      materials.matBook1.color.setHex(palette.book1)
+      materials.matBook2.color.setHex(palette.book2)
+      materials.matBook3.color.setHex(palette.book3)
+      materials.matPlant.color.setHex(palette.plant)
+      materials.matPot.color.setHex(palette.pot)
+      materials.matWall.color.setHex(palette.wall)
+      materials.matFloor.color.setHex(palette.floor)
+      materials.matCable.color.setHex(palette.cable)
+      materials.chairMat.color.setHex(palette.chair)
+
+      lights.ambientLight.intensity = palette.ambientIntensity
+      lights.sun.intensity = palette.sunIntensity
+      lights.fill.intensity = palette.fillIntensity
+      lights.screenGlow.intensity = palette.screenGlowIntensity
+      lights.lampLight.intensity = palette.lampLightIntensity
+      lights.sun.color.setHex(isLight ? 0xfff5e8 : 0xffffff)
+      lights.fill.color.setHex(isLight ? 0xbad2ef : 0x6090c0)
+      lights.screenGlow.color.setHex(isLight ? 0x7db6ea : 0x1a6aaa)
+      lights.lampLight.color.setHex(isLight ? 0xffe9bf : 0xffe8b0)
+    },
+
     disposeScene() {
       const canvas = this.$refs.canvas
       if (this.animationId) {
@@ -366,6 +508,13 @@ export default {
       if (this.renderer) {
         this.renderer.dispose()
       }
+
+      this.themeObjects = null
+    },
+  },
+  watch: {
+    themeMode(mode) {
+      this.applyTheme(mode)
     },
   },
 }
