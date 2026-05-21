@@ -644,51 +644,57 @@ export const tracks = [
     genre: 'cover',
     duration: '02:22',
     lyrics: `[00:00.00] [Intro]
-[00:00.00]I found myself on the freeway
-[00:05.00]One hundred and eighty
-[00:10.00]But something is changing, mhm
-[00:15.00]The scenery is amazing
-[00:20.00]Thats's what they're saying
-[00:25.00]Don't know what I'm chasing, mhm
-[00:30.00]Could've done this
-[00:35.00]Could've done that
-[00:40.00]Could've done better
-[00:45.00]Would've gone mad
-[00:50.00]When what you love's just making you sad
-[00:55.00]Maybe you should move on and leave it
-[01:00.00]Just take it easy
-[01:05.00]You've got good reason
-[01:10.00]To give yourself a break
-[01:15.00]Enjoy the feeling
-[01:20.00]Words have no meaning
-[01:25.00]Just blame the season
-[01:30.00]Go give yourself a break, yeah
-[01:35.00]Remember it's not a race
-[01:40.00]Everyone's got these days
-[01:45.00]Remember you'll be okay, hmm
-[01:50.00]So overwhelmed, and underwhelmed
-[01:55.00]Where is the balance
-[02:00.00]Pacing myself and slowing down's
-[02:05.00]Never been my talent
-[02:10.00]Could've done this
-[02:15.00]Could've done that
-[02:20.00]Could've done better
-[02:25.00]Would've gone mad
-[02:30.00]When what you love's just making you sad
-[02:35.00]Maybe you should move on and leave it
-[02:40.00]Just take it easy
-[02:45.00]You've got good reason
-[02:50.00]To give yourself a break
-[02:55.00]Enjoy the feeling
-[03:00.00]Words have no meaning
-[03:05.00]Just blame the season
-[03:10.00]Go give yourself a break, yeah
-[03:15.00]Remember it's not a race
-[03:20.00]Everyone's got these days
-[03:25.00]Remember you'll be okay, hmm
-[03:30.00]Remember it's not a race
-[03:35.00]Everyone's got these days
-[03:40.00]Remember you'll be okay, hmm`,
+[00:00.10]Hmm-mm hmm-mm ba-da-da-da-da
+[00:04.40]Hmm-mm hmm-mm ba-da-da-da-da-da
+[00:09.50]I found myself on the freeway
+[00:12.30]One hundred and eighty
+[00:14.40]But something is changing, mhm
+[00:18.80]The scenery is amazing
+[00:21.90]Thats's what they're saying
+[00:24.00]Don't know what I'm chasing, mhm
+[00:28.30]Could've done this
+[00:29.10]Could've done that
+[00:30.50]Could've done better
+[00:31.50]Would've gone mad
+[00:32.90]When what you love's just making you sad
+[00:36.00]Maybe you should move on and leave it
+[00:39.40]Just take it easy
+[00:41.90]You've got good reason
+[00:44.20]To give yourself a break
+[00:46.30]Enjoy the feeling
+[00:49.10]Words have no meaning
+[00:51.00]Just blame the season
+[00:53.90]Go give yourself a break, yeah
+[00:56.60]Remember it's not a race
+[00:59.00]Everyone's got these days
+[01:01.50]Remember you'll be okay, hmm
+[01:06.20]Remember it's not a race
+[01:08.30]Everyone's got these days
+[01:10.80]Remember you'll be okay, hmm
+[01:14.90]So overwhelmed, and underwhelmed
+[01:17.80]Where is the balance
+[01:19.40]Pacing myself and slowing down's
+[01:22.10]Never been my talent
+[01:23.95]Could've done this
+[01:25.00]Could've done that
+[01:26.50]Could've done better
+[01:27.30]Would've gone mad
+[01:29.00]When what you love's just making you sad
+[01:32.00]Maybe you should move on and leave it
+[01:35.70]Just take it easy
+[01:38.00]You've got good reason
+[01:40.40]To give yourself a break
+[01:42.20]Enjoy the feeling
+[01:45.00]Words have no meaning
+[01:47.00]Just blame the season
+[01:49.50]Go give yourself a break, yeah
+[01:52.80]Remember it's not a race
+[01:55.20]Everyone's got these days
+[01:57.40]Remember you'll be okay, hmm
+[02:02.00]Remember it's not a race
+[02:04.30]Everyone's got these days
+[02:06.60]Remember you'll be okay, hmm
+[02:10.00] [Outro]`,
   },
   {
     src: '/src/assets/music/your_idol__saja_boys_intro_only.mp3',
