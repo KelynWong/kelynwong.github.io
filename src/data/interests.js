@@ -62,6 +62,7 @@ export const clayItems = [
   { id: 23, title: 'Mama & baby rubber ducky', description: 'Look, its a mini me :D', img: './src/assets/images/clay/mamababyduck.jpg' },
   { id: 24, title: 'Gym bro ducky', description: 'No pain no gain. Today is back feathers day!', img: './src/assets/images/clay/gymduck.jpg' },
   { id: 25, title: 'Coffee ducky', description: 'High on caffine', img: './src/assets/images/clay/coffeeduck.jpg' },
+  { id: 26, title: 'T-rex dino', description: 'I will entertain you when you have no internet', img: './src/assets/images/clay/8-bitdino.jpg' },
 ];
 
 export const drawingItems = [
