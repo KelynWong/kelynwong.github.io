@@ -19,7 +19,7 @@ export default [
     gpa: '3.89 / 4.0',
     ongoing: false,
     desc: 'Achieved consistently strong results across all subjects, earning a GPA of 3.89/4.0. Received Certificate of Commendation for being placed on the Director\'s Honour Roll during the academic year 2019/2020. Also attained a Certificate in Internet of Things (IoT), combining practical skills in IoT systems design with core software engineering fundamentals.',
-    tags: ['back-end web development', 'front-end web development', 'mobile/android application development', 'data engineering', 'data structures and algorithms', 'design for user interaction', 'internet of things'],
+    tags: ['back-end web development', 'front-end web development', 'java application development', 'mobile/android application development', 'data engineering', 'enterprise system development', 'design for user interaction', 'internet of things'],
   },
   {
     tabName: 'olevels.ts',

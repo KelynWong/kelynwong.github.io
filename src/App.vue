@@ -535,7 +535,15 @@
                     <div class="track-name">{{ track.displayTitle }}</div>
                     <div class="track-detail">{{ track.detail }}</div>
                   </div>
-                  <span class="track-tag">{{ track.genre }}</span>
+                  <div class="track-tags">
+                    <span
+                      v-for="(genre, gIndex) in track.genre"
+                      :key="gIndex"
+                      class="track-tag"
+                    >
+                      {{ genre }}
+                    </span>
+                  </div>
                   <span class="track-dur">{{ track.duration }}</span>
                 </div>
               </div>

@@ -25,14 +25,14 @@ export const interestCategories = [
     icon: '🎵',
     name: 'Music',
     label: 'Music',
-    story: `Music has been one of the biggest constants in my life. It started with my guitar and a phone balanced on my bed, using my AirPods microphone to record myself singing just for fun. Over time, I discovered BandLab and got a proper microphone, which made it easier to experiment with layering vocals and recording covers more intentionally. It has become one of my ways of expressing myself. The tracks here are raw, at-home vocal covers, unpolished but honest. Feel free to let the tracks play in the background while you explore the rest of my site!`,
+    story: `Music has been one of the biggest constants in my life. It started with my guitar and a phone balanced on my bed, using my AirPods microphone to record myself singing just for fun. Over time, I discovered BandLab and got a proper microphone, which made it easier to experiment with layering vocals and recording covers more intentionally. It has become one of my ways of expressing myself. The tracks here are raw, at-home vocal covers, unpolished but honest. Feel free to let the tracks play in the background while you explore the rest of my site or sing along karaoke-style with the lyrics on screen!`,
   },
   {
     id: 'drawing',
     icon: '✏️',
     name: 'Drawings',
     label: 'Drawings',
-    story: `Drawing is the oldest thing on this list (started a decade ago :0) and something that I don't focus on it much anymore, but it's still a part of me that I think is worth sharing. I work mainly in pencil and a spice of markers & colored pencil, sketching things that interest me: space, characters and small cute objects. I like how sketchbooks feel private in a way other creative work often isn't. I don't have any formal art training, so my drawings are rough and unpolished but to me that's what makes them stress-free and freeing.`,
+    story: `Drawing is the oldest thing on this list (started a decade ago :0) and it's something that I don't focus on it much anymore, but it's still a part of me that I think is worth sharing. I work mainly in pencil with a spice of markers & colored pencil to sketch things that interest me: space, characters and small cute objects. I like how sketchbooks feel private in a way other creative work often isn't. I don't have any formal art training, so my drawings are rough and unpolished but to me that's what makes them stress-free and fun.`,
   },
 ];
 
@@ -245,9 +245,9 @@ export const videoTiktoks = [
     icon: '',
     items: [
       { id: '0mlSCAp0Uvg', label: 'Fall in Love Again and Again', shorts: true },
-      { id: '6GKMaE0-n9s', label: 'HMHAS Visualised – Part 1', shorts: true },
-      { id: '6GKMaE0-n9s', label: 'HMHAS Visualised – Part 2', shorts: true },
-      { id: 'QfsLqKL-UVg', label: 'HMHAS Visualised – Part 3', shorts: true },
+      { id: '6GKMaE0-n9s', label: 'HMHAS Visualised - Part 1', shorts: true },
+      { id: '6GKMaE0-n9s', label: 'HMHAS Visualised - Part 2', shorts: true },
+      { id: 'QfsLqKL-UVg', label: 'HMHAS Visualised - Part 3', shorts: true },
       { id: 'LdKmWU92DSI', label: 'Billie Eilish Is…', shorts: true },
     ],
   },
@@ -262,13 +262,25 @@ export const videoTiktoks = [
       { id: 'EoTepXbBaBo', label: 'Ding Ding Pictures', shorts: true },
       { id: 'MHFUjSWCraw', label: 'Nala Pictures', shorts: true },
       { id: 'rMRtb53CfNo', label: 'Obsessed Mochi', shorts: true },
+      { id: 'mgPWz7qCozA', label: 'Mochi!', shorts: true },
+    ],
+  },
+  {
+    group: 'Others & tiktoks',
+    icon: '',
+    items: [
+      { id: 'Xc7sSQm7-SM', label: 'I hope you find some peace of mind in this lifetime', shorts: true },
+      { id: 'V_YaYGLEsB8', label: 'High achiever, don\'t you see?', shorts: true },
+      { id: 'mb7DvAs-7Ws', label: 'The art of noticing', shorts: true },
+      { id: 'Tt9xqrDCtqE', label: 'Why\'d you take your camera everywhere you go?', shorts: true },
+      { id: 'tVk1dgNM56s', label: 'Might as well get the whole set', shorts: true },
     ],
   },
 ];
 
 export const interestsIntro = {
   para1: `By day, I'm a software engineer building systems and solving problems with code. By night (and weekends), I'm usually making something with my hands like sculpting clay, framing photographs, making music covers, sketching characters. These creative outlets are more than just hobbies to me! They're a way to express parts of myself that don't fit into the logical, structured world of engineering. They allow me to explore ideas and emotions in a different way, and I find that they actually inform and inspire my work as an engineer.`,
-  para2: `The technical precision of engineering and creative expression aren't contradictory for me, rather I believe they complement each other. I approach both with the same mindset of iteration and improvement, whether it's refining a piece of code or getting the proportions right on a clay figure. It's all about the process of creating something that feels right to me. Indulge yourself in some of my creative works below :)`,
+  para2: `The technical precision of engineering and creative expression aren't contradictory for me, rather I believe they complement each other. I approach both with the same mindset of iteration and improvement, whether it's refining a piece of code or getting the proportions right on a clay figure. It's all about the process of creating something that feels right to me. Feel free to indulge yourself in some of my creative works below if it tickles your fancy :)`,
 };
 
 export const placeholders = {
@@ -302,7 +314,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/what-was-benson-boone-cover.jpg',
     displayTitle: 'What Was',
     detail: 'Benson Boone (A cover by Kelyn)',
-    genre: 'cover',
+    genre: ['pop', 'pop ballad', 'alternative pop', 'pop rock', 'indie pop'],
     duration: '03:34',
     lyrics: `[00:00.00] [Intro]
 [00:07.54]Young, standing on the edge of twenty-one
@@ -353,7 +365,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/cry-cigarettes-after-sex-cover.jpg',
     displayTitle: 'Cry',
     detail: 'Cigarettes After Sex (A cover by Kelyn) [inspired by Sally Kim]',
-    genre: 'cover',
+    genre: ['dream pop', 'slowcore', 'ambient pop', 'indie rock', 'shoegaze'],
     duration: '01:50',
     lyrics: `[00:00.00] [Intro]
 [00:01.20] (Cigarettes After Sex) It's making you cry
@@ -416,7 +428,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/for-crying-out-loud-finneas-cover.png',
     displayTitle: 'For Crying Out Loud',
     detail: 'Finneas (A cover by Kelyn)',
-    genre: 'cover',
+    genre: ['pop', 'pop rock', 'alternative/indie rock', 'singer-songwriter'],
     duration: '03:36',
     lyrics: `[00:00.00] [Intro]
 [00:19.11]Maybe it's me, or maybe it's you
@@ -480,7 +492,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/golden-years-christian-french-cover.png',
     displayTitle: 'Golden Years',
     detail: 'Christian French (A cover by Kelyn)',
-    genre: 'cover',
+    genre: ['pop', 'indie pop', 'alternative pop', 'singer-songwriter'],
     duration: '02:50',
     lyrics: `[00:00.00] [Intro]
 [00:02.30]I can never get some rest
@@ -541,7 +553,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/it-is-what-it-is-abe-parker-cover.jpg',
     displayTitle: 'It Is What It Is',
     detail: 'Abe Parker (A cover by Kelyn)',
-    genre: 'cover',
+    genre: ['pop', 'pop rock', 'alternative pop', 'singer-songwriter'],
     duration: '03:16',
     lyrics: `[00:00.00] [Intro]
 [00:08.90]Talking to the wall 'cause, at least, I hear an echo
@@ -597,7 +609,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/scared-to-start-michael-marcagi-cover.png',
     displayTitle: 'Scared to Start',
     detail: 'Michael Marcagi (A cover by Kelyn)',
-    genre: 'cover',
+    genre: ['folk', 'folk pop', 'indie folk', 'singer-songwriter'],
     duration: '02:39',
     lyrics: `[00:00.00] [Intro]
 [00:00.40]She's wearing an old dress, walking it out
@@ -642,7 +654,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/the-race-chris-james-cover.jpg',
     displayTitle: 'The Race',
     detail: 'Chris James (A cover by Kelyn)',
-    genre: 'cover',
+    genre: ['pop', 'indie pop', 'alternative pop', 'singer-songwriter'],
     duration: '02:22',
     lyrics: `[00:00.00] [Intro]
 [00:00.10]Hmm-mm hmm-mm ba-da-da-da-da
@@ -702,7 +714,7 @@ export const tracks = [
     cover: '/src/assets/music/cover/your-idol-saja-boys-cover.png',
     displayTitle: 'Your Idol',
     detail: 'Saja Boys (A cover by Kelyn) [intro only]',
-    genre: 'cover',
+    genre: ['k-pop', 'dance pop', 'electronic/synth-pop', 'dark pop'],
     duration: '00:27',
     lyrics: `[00:00.00] [Intro]
 [00:00.20]Pray for me now

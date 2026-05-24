@@ -17,11 +17,11 @@ export const sectionTitles = {
 }
 
 export const aboutParagraphs = [
-  "Hi hi, I'm <strong>Kelyn Wong</strong>! A software engineer who loves building things that make life a little smoother.",
-  "I've explored <strong>backend, frontend, IoT, mobile, and cloud</strong>, and recently I've been deep in the DevOps world where I created Azure infrastructure using Terraform, refined CI/CD pipelines and automating deployments to turn complex processes into seamless workflows. I'm driven by efficiency and clarity! From refactoring messy code, optimizing delivery pipelines to architecting scalable systems.",
-  "Simply at heart, I'm someone who likes to <strong>solve problems</strong> with thoughtful engineering.",
-  "When I step away from my keyboard, I'm still building but just with different tools. You can find me sculpting clay figurines, creating video content, capturing photos or experimenting with music. Whether it's code, clay, conntent creation, photography, or music, I'm drawn to the same thing: taking small pieces and shaping them into something meaningful.",
-  "I'm curious by nature, <strong>always learning</strong>, <strong>always building</strong> sometimes in the cloud, sometimes with my hands but always with intention.",
+  "Hi hi, I'm <strong>Kelyn Wong</strong>! A software engineer who loves building things that make life a little smoother for others.",
+  "I've explored <strong>backend, frontend, IoT, mobile, and cloud</strong>, and recently I've been diving deep into the DevOps world where I've built Azure infrastructure with Terraform, refined CI/CD pipelines, and automated deployments to turn complex processes into seamless workflows. I'm driven by efficiency and impact, whether it's refactoring messy code, optimizing delivery pipelines, or architecting scalable systems with the goal of leaving things better than I found them.",
+  "At heart, I'm someone who loves to <strong>solve problems</strong> through thoughtful engineering.",
+  "When I step away from my keyboard, I'm still building, just with different tools. You can find me sculpting clay figurines, creating video content, capturing photos, or experimenting with music. Whether it's code, clay, content creation, photography, or music, I'm drawn to the same thing: taking small pieces and shaping them into something meaningful.",
+  "I'm curious by nature, <strong>always learning</strong> and <strong>always building</strong>, sometimes in the cloud, sometimes with my hands, but always with intention.",
   "I'm currently open to <strong>fresh graduate software engineering</strong> opportunities. Let's build something together.",
 ]
 

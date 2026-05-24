@@ -1007,6 +1007,8 @@ section {
 
 .edu-code-block { font-size: var(--fs-xs); }
 
+.edu-period { color: var(--code3); }
+
 .edu-desc {
   font-family: var(--sans);
   font-size: var(--fs-sm);
@@ -2352,6 +2354,12 @@ section {
 .track-name { font-size: var(--fs-xs); color: var(--text); }
 
 .track-detail { font-size: var(--fs-3xs); color: var(--text-faint); margin-top: 2px; }
+
+.track-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
 
 .track-tag {
   font-size: var(--fs-3xs);
