@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" viewBox="0 0 680 383" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>ROW — Right Or Wrong community app cover</title>
+  <style>.mono{font-family:'JetBrains Mono','Courier New',monospace}</style>
+  <rect width="680" height="383" fill="#f6f3ee"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#e8e2d9" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="383" fill="url(#grid)"/>
+  <rect x="0" y="0" width="680" height="36" fill="#fafaf7"/>
+  <rect x="0" y="35" width="680" height="1" fill="#d8d1c7"/>
+  <circle cx="72" cy="18" r="5" fill="#b86f5e"/>
+  <circle cx="90" cy="18" r="5" fill="#9c8d4f"/>
+  <circle cx="108" cy="18" r="5" fill="#5b8d67"/>
+  <text x="134" y="22" class="mono" font-size="11" fill="#8e98a4">App.js — React Native</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#d8d1c7" stroke-width="1"/>
+  <text x="64" y="65" class="mono" font-size="11" fill="#8e98a4">// project</text>
+  <text x="64" y="89" class="mono" font-size="20" font-weight="500" fill="#1f2933">ROW</text>
+  <text x="64" y="113" class="mono" font-size="20" font-weight="500" fill="#2f6faa">Right Or Wrong</text>
+  <circle cx="175" cy="220" r="72" fill="none" stroke="#e5f5e5" stroke-width="18"/>
+  <circle cx="175" cy="220" r="58" fill="none" stroke="#e8f5e8" stroke-width="10"/>
+  <circle cx="175" cy="220" r="50" fill="#f6f3ee" stroke="#d8d1c7" stroke-width="1"/>
+  <path d="M175 170 A50 50 0 0 0 175 270" fill="#d8f0e5"/>
+  <path d="M175 170 A50 50 0 0 1 175 270" fill="#f5d8d0"/>
+  <line x1="175" y1="170" x2="175" y2="270" stroke="#f6f3ee" stroke-width="3"/>
+  <circle cx="175" cy="220" r="50" fill="none" stroke="#d8d1c7" stroke-width="1"/>
+  <circle cx="175" cy="220" r="50" fill="none" stroke="#5b8d67" stroke-width="2.5" stroke-dasharray="94 220" stroke-dashoffset="55" stroke-linecap="round"/>
+  <circle cx="175" cy="220" r="50" fill="none" stroke="#b86f5e" stroke-width="2.5" stroke-dasharray="126 220" stroke-dashoffset="149" stroke-linecap="round"/>
+  <text x="152" y="210" class="mono" font-size="9" fill="#5b8d67" text-anchor="middle">&#10003;</text>
+  <text x="152" y="228" class="mono" font-size="22" font-weight="700" fill="#5b8d67" text-anchor="middle">R</text>
+  <text x="198" y="210" class="mono" font-size="9" fill="#b86f5e" text-anchor="middle">&#10007;</text>
+  <text x="198" y="228" class="mono" font-size="22" font-weight="700" fill="#b86f5e" text-anchor="middle">W</text>
+  <circle cx="175" cy="220" r="6" fill="#fafaf7" stroke="#d8d1c7" stroke-width="1"/>
+  <rect x="114" y="280" width="58" height="18" rx="3" fill="#d8f0e5" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="143" y="292" class="mono" font-size="9" fill="#5b8d67" text-anchor="middle">RIGHT 43%</text>
+  <rect x="178" y="280" width="62" height="18" rx="3" fill="#f5d8d0" stroke="#b86f5e" stroke-width="0.8"/>
+  <text x="209" y="292" class="mono" font-size="9" fill="#b86f5e" text-anchor="middle">WRONG 57%</text>
+  <rect x="290" y="68" width="118" height="216" rx="14" fill="#ebebeb" stroke="#c9c1b5" stroke-width="1"/>
+  <rect x="296" y="80" width="106" height="192" rx="4" fill="#f6f3ee"/>
+  <rect x="296" y="80" width="106" height="14" fill="#fafaf7" rx="4"/>
+  <text x="349" y="90" class="mono" font-size="6" fill="#2f6faa" text-anchor="middle">ROW</text>
+  <rect x="296" y="94" width="106" height="16" fill="#fafaf7"/>
+  <text x="302" y="104" class="mono" font-size="7" fill="#2f6faa">ROW</text>
+  <text x="394" y="104" class="mono" font-size="7" fill="#8e98a4" text-anchor="end">&#128276;</text>
+  <rect x="298" y="112" width="102" height="50" rx="2" fill="#fafaf7" stroke="#d8d1c7" stroke-width="0.5"/>
+  <text x="303" y="122" class="mono" font-size="6" fill="#8e98a4">@user_01 · 2h</text>
+  <text x="303" y="133" class="mono" font-size="6" fill="#2d3a45">Is reply-all on group</text>
+  <text x="303" y="142" class="mono" font-size="6" fill="#2d3a45">chats acceptable?</text>
+  <rect x="303" y="147" width="32" height="9" rx="2" fill="#d8f0e5" stroke="#5b8d67" stroke-width="0.5"/>
+  <text x="319" y="153" class="mono" font-size="5" fill="#5b8d67" text-anchor="middle">RIGHT 61%</text>
+  <rect x="339" y="147" width="32" height="9" rx="2" fill="#f5d8d0" stroke="#b86f5e" stroke-width="0.5"/>
+  <text x="355" y="153" class="mono" font-size="5" fill="#b86f5e" text-anchor="middle">WRONG 39%</text>
+  <text x="395" y="154" class="mono" font-size="5" fill="#8e98a4" text-anchor="end">&#128172;12</text>
+  <rect x="298" y="165" width="102" height="50" rx="2" fill="#fafaf7" stroke="#d8d1c7" stroke-width="0.5"/>
+  <text x="303" y="175" class="mono" font-size="6" fill="#8e98a4">@user_02 · 5h</text>
+  <text x="303" y="186" class="mono" font-size="6" fill="#2d3a45">Eating alone at a</text>
+  <text x="303" y="195" class="mono" font-size="6" fill="#2d3a45">restaurant is fine?</text>
+  <rect x="303" y="200" width="32" height="9" rx="2" fill="#d8f0e5" stroke="#5b8d67" stroke-width="0.5"/>
+  <text x="319" y="206" class="mono" font-size="5" fill="#5b8d67" text-anchor="middle">RIGHT 88%</text>
+  <rect x="339" y="200" width="32" height="9" rx="2" fill="#f5d8d0" stroke="#b86f5e" stroke-width="0.5"/>
+  <text x="355" y="206" class="mono" font-size="5" fill="#b86f5e" text-anchor="middle">WRONG 12%</text>
+  <text x="395" y="207" class="mono" font-size="5" fill="#8e98a4" text-anchor="end">&#128172; 8</text>
+  <rect x="298" y="218" width="102" height="42" rx="2" fill="#fafaf7" stroke="#d8d1c7" stroke-width="0.5"/>
+  <text x="303" y="228" class="mono" font-size="6" fill="#8e98a4">@user_03 · 1d</text>
+  <text x="303" y="239" class="mono" font-size="6" fill="#2d3a45">Skipping intros at</text>
+  <text x="303" y="249" class="mono" font-size="6" fill="#2d3a45">the cinema is ok?</text>
+  <rect x="296" y="264" width="106" height="8" fill="#fafaf7"/>
+  <text x="314" y="270" class="mono" font-size="6" fill="#2f6faa" text-anchor="middle">&#8862;</text>
+  <text x="336" y="270" class="mono" font-size="6" fill="#8e98a4" text-anchor="middle">+</text>
+  <text x="358" y="270" class="mono" font-size="6" fill="#8e98a4" text-anchor="middle">&#8856;</text>
+  <text x="380" y="270" class="mono" font-size="6" fill="#8e98a4" text-anchor="middle">&#128100;</text>
+  <rect x="331" y="275" width="36" height="4" rx="2" fill="#c9c1b5"/>
+  <rect x="290" y="292" width="54" height="16" rx="3" fill="#fafaf7" stroke="#2f6faa" stroke-width="0.6"/>
+  <text x="317" y="303" class="mono" font-size="7" fill="#2f6faa" text-anchor="middle">Android</text>
+  <rect x="350" y="292" width="58" height="16" rx="3" fill="#fafaf7" stroke="#7a8490" stroke-width="0.6"/>
+  <text x="379" y="303" class="mono" font-size="7" fill="#7a8490" text-anchor="middle">iOS</text>
+  <rect x="424" y="78" width="222" height="115" rx="4" fill="#fafaf7" stroke="#d8d1c7" stroke-width="1"/>
+  <rect x="424" y="78" width="222" height="16" rx="4" fill="#e5eef8"/>
+  <text x="535" y="89" class="mono" font-size="8" fill="#2f6faa" text-anchor="middle">Post Detail</text>
+  <text x="430" y="106" class="mono" font-size="8" fill="#2d3a45">Is reply-all on group chats ok?</text>
+  <text x="430" y="117" class="mono" font-size="7" fill="#8e98a4">@user_01 · 2h · #etiquette</text>
+  <rect x="430" y="123" width="178" height="7" rx="3" fill="#ebebeb"/>
+  <rect x="430" y="123" width="109" height="7" rx="3" fill="#5b8d67"/>
+  <text x="430" y="141" class="mono" font-size="7" fill="#5b8d67">RIGHT  61%</text>
+  <text x="608" y="141" class="mono" font-size="7" fill="#b86f5e" text-anchor="end">WRONG  39%</text>
+  <rect x="430" y="146" width="82" height="16" rx="3" fill="#d8f0e5" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="471" y="157" class="mono" font-size="8" fill="#5b8d67" text-anchor="middle">&#10003;  RIGHT</text>
+  <rect x="520" y="146" width="88" height="16" rx="3" fill="#f5d8d0" stroke="#b86f5e" stroke-width="0.8"/>
+  <text x="564" y="157" class="mono" font-size="8" fill="#b86f5e" text-anchor="middle">&#10007;  WRONG</text>
+  <rect x="430" y="166" width="210" height="10" rx="1" fill="#ebebeb"/>
+  <text x="436" y="174" class="mono" font-size="6" fill="#8e98a4">@alice: Definitely wrong lol &#128517;</text>
+  <rect x="430" y="179" width="210" height="10" rx="1" fill="#fafaf7"/>
+  <text x="436" y="187" class="mono" font-size="6" fill="#8e98a4">@bob: Depends on the group tbh</text>
+  <rect x="424" y="198" width="102" height="40" rx="3" fill="#fafaf7" stroke="#9a64a0" stroke-width="0.7"/>
+  <text x="430" y="209" class="mono" font-size="7" fill="#9a64a0">&#128100; Profiles</text>
+  <text x="430" y="220" class="mono" font-size="6" fill="#6a4080">avatar · bio</text>
+  <text x="430" y="230" class="mono" font-size="6" fill="#6a5a80">vote history · likes</text>
+  <rect x="534" y="198" width="112" height="40" rx="3" fill="#fafaf7" stroke="#9c8d4f" stroke-width="0.7"/>
+  <text x="540" y="209" class="mono" font-size="7" fill="#9c8d4f">&#128269; Topic Search</text>
+  <text x="540" y="220" class="mono" font-size="6" fill="#6a6030">search by keyword</text>
+  <text x="540" y="230" class="mono" font-size="6" fill="#3a3a2a">filter by topic tag</text>
+  <rect x="424" y="246" width="102" height="40" rx="3" fill="#fafaf7" stroke="#b86f5e" stroke-width="0.7"/>
+  <text x="430" y="257" class="mono" font-size="7" fill="#b86f5e">&#9997; Post + Vote</text>
+  <text x="430" y="268" class="mono" font-size="6" fill="#7a5030">create query post</text>
+  <text x="430" y="278" class="mono" font-size="6" fill="#784040">R / W community vote</text>
+  <rect x="534" y="246" width="112" height="40" rx="3" fill="#fafaf7" stroke="#5b8d67" stroke-width="0.7"/>
+  <text x="540" y="257" class="mono" font-size="7" fill="#5b8d67">&#128172; Comments</text>
+  <text x="540" y="268" class="mono" font-size="6" fill="#2a5038">threaded replies</text>
+  <text x="540" y="278" class="mono" font-size="6" fill="#3a6040">like comments</text>
+  <text x="64" y="318" class="mono" font-size="10" fill="#d8ead8">// bottom tab navigator</text>
+  <text x="64" y="334" class="mono" font-size="10" fill="#4c7fb8">const</text>
+  <text x="98" y="334" class="mono" font-size="10" fill="#2d3a45"> Tab = </text>
+  <text x="134" y="334" class="mono" font-size="10" fill="#5b8d67">createBottomTabNavigator</text>
+  <text x="280" y="334" class="mono" font-size="10" fill="#2d3a45">()</text>
+  <text x="64" y="350" class="mono" font-size="10" fill="#2d3a45">&lt;</text>
+  <text x="72" y="350" class="mono" font-size="10" fill="#2f6faa">Tab.Screen</text>
+  <text x="138" y="350" class="mono" font-size="10" fill="#5b8d67"> name</text>
+  <text x="168" y="350" class="mono" font-size="10" fill="#2d3a45">=</text>
+  <text x="179" y="350" class="mono" font-size="10" fill="#9c8d4f">"Feed"</text>
+  <text x="219" y="350" class="mono" font-size="10" fill="#5b8d67"> component</text>
+  <text x="276" y="350" class="mono" font-size="10" fill="#2d3a45">=</text>
+  <text x="285" y="350" class="mono" font-size="10" fill="#9c8d4f">{FeedScreen}</text>
+  <text x="357" y="350" class="mono" font-size="10" fill="#2d3a45">/&gt;</text>
+  <text x="64" y="366" class="mono" font-size="10" fill="#d8ead8">// Feed · Post · Search · Profile</text>
+</svg>

@@ -1,79 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
   <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
-  <rect width="680" height="383" fill="#0d0d0d"/>
-  <defs><pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="#f6f3ee"/>
+  <defs><pattern id="gr" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#ebebeb" stroke-width="0.5"/></pattern></defs>
   <rect width="680" height="383" fill="url(#gr)"/>
-  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
-  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
-  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
-  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">TournamentService.java</text>
-  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
-  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
-  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">Tournament</text>
-  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#C8C87A">Management System</text>
-  <!-- bracket R1 -->
-  <rect x="64" y="152" width="72" height="24" rx="3" fill="#1a1a14" stroke="#C8C87A" stroke-width="0.8"/>
-  <text x="100" y="168" class="m" font-size="9" fill="#C8C87A" text-anchor="middle">Player A</text>
-  <rect x="64" y="180" width="72" height="24" rx="3" fill="#1a1a14" stroke="#333" stroke-width="0.8"/>
-  <text x="100" y="196" class="m" font-size="9" fill="#555" text-anchor="middle">Player B</text>
-  <rect x="64" y="224" width="72" height="24" rx="3" fill="#1a1a14" stroke="#C8C87A" stroke-width="0.8"/>
-  <text x="100" y="240" class="m" font-size="9" fill="#C8C87A" text-anchor="middle">Player C</text>
-  <rect x="64" y="252" width="72" height="24" rx="3" fill="#1a1a14" stroke="#333" stroke-width="0.8"/>
-  <text x="100" y="268" class="m" font-size="9" fill="#555" text-anchor="middle">Player D</text>
-  <!-- R1 connectors -->
-  <line x1="136" y1="164" x2="154" y2="164" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="136" y1="192" x2="154" y2="192" stroke="#555" stroke-width="0.8"/>
-  <line x1="154" y1="164" x2="154" y2="192" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="154" y1="178" x2="172" y2="178" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="136" y1="236" x2="154" y2="236" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="136" y1="264" x2="154" y2="264" stroke="#555" stroke-width="0.8"/>
-  <line x1="154" y1="236" x2="154" y2="264" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="154" y1="250" x2="172" y2="250" stroke="#C8C87A" stroke-width="0.8"/>
-  <!-- R2 -->
-  <rect x="172" y="166" width="72" height="24" rx="3" fill="#1a1a14" stroke="#C8C87A" stroke-width="1"/>
-  <text x="208" y="182" class="m" font-size="9" fill="#C8C87A" text-anchor="middle">Player A</text>
-  <rect x="172" y="238" width="72" height="24" rx="3" fill="#1a1a14" stroke="#C8C87A" stroke-width="1"/>
-  <text x="208" y="254" class="m" font-size="9" fill="#C8C87A" text-anchor="middle">Player C</text>
-  <line x1="244" y1="178" x2="262" y2="178" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="244" y1="250" x2="262" y2="250" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="262" y1="178" x2="262" y2="250" stroke="#C8C87A" stroke-width="0.8"/>
-  <line x1="262" y1="214" x2="280" y2="214" stroke="#C8C87A" stroke-width="0.8"/>
-  <!-- Final -->
-  <rect x="280" y="200" width="80" height="28" rx="3" fill="#1a2a0a" stroke="#8BB87A" stroke-width="1.2"/>
-  <text x="320" y="213" class="m" font-size="9" fill="#ffffff" text-anchor="middle">FINAL</text>
-  <text x="320" y="222" class="m" font-size="8" fill="#8BB87A" text-anchor="middle">Player A wins</text>
-  <text x="320" y="250" class="m" font-size="22" fill="#C8C87A" text-anchor="middle">🏆</text>
-  <!-- Glicko badge -->
-  <rect x="64" y="294" width="130" height="32" rx="3" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
-  <text x="129" y="309" class="m" font-size="9" fill="#B87DB8" text-anchor="middle">Glicko Rating System</text>
-  <text x="129" y="317" class="m" font-size="8" fill="#4a2a5a" text-anchor="middle">skill-based matchmaking</text>
-  <!-- tech stack -->
-  <rect x="430" y="100" width="100" height="38" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
-  <text x="480" y="116" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">Next.js + TS</text>
-  <text x="480" y="129" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">Vercel deploy</text>
-  <line x1="480" y1="138" x2="480" y2="156" stroke="#333" stroke-width="0.8"/>
-  <rect x="430" y="156" width="100" height="38" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
-  <text x="480" y="172" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Spring Boot</text>
-  <text x="480" y="185" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">Java REST API</text>
-  <line x1="480" y1="194" x2="480" y2="212" stroke="#333" stroke-width="0.8"/>
-  <rect x="430" y="212" width="100" height="38" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
-  <text x="480" y="228" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Docker</text>
-  <text x="480" y="241" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">containerized</text>
-  <line x1="480" y1="250" x2="480" y2="268" stroke="#333" stroke-width="0.8"/>
-  <rect x="430" y="268" width="100" height="38" rx="4" fill="#141414" stroke="#B87DB8" stroke-width="0.8"/>
-  <text x="480" y="284" class="m" font-size="10" fill="#B87DB8" text-anchor="middle">Glicko Rating</text>
-  <text x="480" y="297" class="m" font-size="9" fill="#4a2a5a" text-anchor="middle">fair matchmaking</text>
-  <!-- roles -->
-  <rect x="548" y="156" width="80" height="24" rx="3" fill="#141420" stroke="#5BAADC" stroke-width="0.6"/>
-  <text x="588" y="172" class="m" font-size="9" fill="#5BAADC" text-anchor="middle">Organizer</text>
-  <rect x="548" y="186" width="80" height="24" rx="3" fill="#141420" stroke="#C8C87A" stroke-width="0.6"/>
-  <text x="588" y="202" class="m" font-size="9" fill="#C8C87A" text-anchor="middle">Participant</text>
-  <rect x="548" y="216" width="80" height="24" rx="3" fill="#141420" stroke="#8BB87A" stroke-width="0.6"/>
-  <text x="588" y="232" class="m" font-size="9" fill="#8BB87A" text-anchor="middle">Spectator</text>
-  <!-- code -->
-  <text x="64" y="344" class="m" font-size="10" fill="#2a3a2a">// Glicko rating update</text>
-  <text x="64" y="360" class="m" font-size="10" fill="#4A72B0">double</text>
-  <text x="105" y="360" class="m" font-size="10" fill="#d4d4d4"> newRating = glicko.calculate(</text>
-  <text x="280" y="360" class="m" font-size="10" fill="#d4d4d4">    player, opponent, outcome)</text>
+  <rect x="0" y="0" width="680" height="36" fill="#fafaf7"/>
+  <rect x="0" y="35" width="680" height="1" fill="#d8d1c7"/>
+  <circle cx="72" cy="18" r="5" fill="#b86f5e"/><circle cx="90" cy="18" r="5" fill="#9c8d4f"/><circle cx="108" cy="18" r="5" fill="#5b8d67"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#8e98a4">TournamentService.java</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#e8e2d9" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#8e98a4">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#1f2933">Tournament</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#9c8d4f">Management System</text>
+  <rect x="64" y="152" width="72" height="24" rx="3" fill="#f5f2ec" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="100" y="168" class="m" font-size="9" fill="#9c8d4f" text-anchor="middle">Player A</text>
+  <rect x="64" y="180" width="72" height="24" rx="3" fill="#f5f2ec" stroke="#c9c1b5" stroke-width="0.8"/>
+  <text x="100" y="196" class="m" font-size="9" fill="#8e98a4" text-anchor="middle">Player B</text>
+  <rect x="64" y="224" width="72" height="24" rx="3" fill="#f5f2ec" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="100" y="240" class="m" font-size="9" fill="#9c8d4f" text-anchor="middle">Player C</text>
+  <rect x="64" y="252" width="72" height="24" rx="3" fill="#f5f2ec" stroke="#c9c1b5" stroke-width="0.8"/>
+  <text x="100" y="268" class="m" font-size="9" fill="#8e98a4" text-anchor="middle">Player D</text>
+  <line x1="136" y1="164" x2="154" y2="164" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="136" y1="192" x2="154" y2="192" stroke="#8e98a4" stroke-width="0.8"/>
+  <line x1="154" y1="164" x2="154" y2="192" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="154" y1="178" x2="172" y2="178" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="136" y1="236" x2="154" y2="236" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="136" y1="264" x2="154" y2="264" stroke="#8e98a4" stroke-width="0.8"/>
+  <line x1="154" y1="236" x2="154" y2="264" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="154" y1="250" x2="172" y2="250" stroke="#9c8d4f" stroke-width="0.8"/>
+  <rect x="172" y="166" width="72" height="24" rx="3" fill="#f5f2ec" stroke="#9c8d4f" stroke-width="1"/>
+  <text x="208" y="182" class="m" font-size="9" fill="#9c8d4f" text-anchor="middle">Player A</text>
+  <rect x="172" y="238" width="72" height="24" rx="3" fill="#f5f2ec" stroke="#9c8d4f" stroke-width="1"/>
+  <text x="208" y="254" class="m" font-size="9" fill="#9c8d4f" text-anchor="middle">Player C</text>
+  <line x1="244" y1="178" x2="262" y2="178" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="244" y1="250" x2="262" y2="250" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="262" y1="178" x2="262" y2="250" stroke="#9c8d4f" stroke-width="0.8"/>
+  <line x1="262" y1="214" x2="280" y2="214" stroke="#9c8d4f" stroke-width="0.8"/>
+  <rect x="280" y="200" width="80" height="28" rx="3" fill="#e5f5d0" stroke="#5b8d67" stroke-width="1.2"/>
+  <text x="320" y="213" class="m" font-size="9" fill="#1f2933" text-anchor="middle">FINAL</text>
+  <text x="320" y="222" class="m" font-size="8" fill="#5b8d67" text-anchor="middle">Player A wins</text>
+  <text x="320" y="250" class="m" font-size="22" fill="#9c8d4f" text-anchor="middle">&#127942;</text>
+  <rect x="64" y="294" width="130" height="32" rx="3" fill="#fafaf7" stroke="#9a64a0" stroke-width="0.8"/>
+  <text x="129" y="309" class="m" font-size="9" fill="#9a64a0" text-anchor="middle">Glicko Rating System</text>
+  <text x="129" y="317" class="m" font-size="8" fill="#6a4080" text-anchor="middle">skill-based matchmaking</text>
+  <rect x="430" y="100" width="100" height="38" rx="4" fill="#fafaf7" stroke="#2f6faa" stroke-width="0.8"/>
+  <text x="480" y="116" class="m" font-size="10" fill="#2f6faa" text-anchor="middle">Next.js + TS</text>
+  <text x="480" y="129" class="m" font-size="9" fill="#304878" text-anchor="middle">Vercel deploy</text>
+  <line x1="480" y1="138" x2="480" y2="156" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="430" y="156" width="100" height="38" rx="4" fill="#fafaf7" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="480" y="172" class="m" font-size="10" fill="#9c8d4f" text-anchor="middle">Spring Boot</text>
+  <text x="480" y="185" class="m" font-size="9" fill="#6a6030" text-anchor="middle">Java REST API</text>
+  <line x1="480" y1="194" x2="480" y2="212" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="430" y="212" width="100" height="38" rx="4" fill="#fafaf7" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="480" y="228" class="m" font-size="10" fill="#5b8d67" text-anchor="middle">Docker</text>
+  <text x="480" y="241" class="m" font-size="9" fill="#3a6040" text-anchor="middle">containerized</text>
+  <line x1="480" y1="250" x2="480" y2="268" stroke="#c9c1b5" stroke-width="0.8"/>
+  <rect x="430" y="268" width="100" height="38" rx="4" fill="#fafaf7" stroke="#9a64a0" stroke-width="0.8"/>
+  <text x="480" y="284" class="m" font-size="10" fill="#9a64a0" text-anchor="middle">Glicko Rating</text>
+  <text x="480" y="297" class="m" font-size="9" fill="#6a4080" text-anchor="middle">fair matchmaking</text>
+  <rect x="548" y="156" width="80" height="24" rx="3" fill="#f0f0fa" stroke="#2f6faa" stroke-width="0.6"/>
+  <text x="588" y="172" class="m" font-size="9" fill="#2f6faa" text-anchor="middle">Organizer</text>
+  <rect x="548" y="186" width="80" height="24" rx="3" fill="#f0f0fa" stroke="#9c8d4f" stroke-width="0.6"/>
+  <text x="588" y="202" class="m" font-size="9" fill="#9c8d4f" text-anchor="middle">Participant</text>
+  <rect x="548" y="216" width="80" height="24" rx="3" fill="#f0f0fa" stroke="#5b8d67" stroke-width="0.6"/>
+  <text x="588" y="232" class="m" font-size="9" fill="#5b8d67" text-anchor="middle">Spectator</text>
+  <text x="64" y="344" class="m" font-size="10" fill="#d8ead8">// Glicko rating update</text>
+  <text x="64" y="360" class="m" font-size="10" fill="#4c7fb8">double</text>
+  <text x="105" y="360" class="m" font-size="10" fill="#2d3a45"> newRating = glicko.calculate(</text>
+  <text x="280" y="360" class="m" font-size="10" fill="#2d3a45">    player, opponent, outcome)</text>
 </svg>

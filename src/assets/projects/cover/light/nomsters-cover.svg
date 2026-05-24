@@ -1,245 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
   <style>.m{font-family:'JetBrains Mono','Courier New',monospace}</style>
-  <rect width="680" height="383" fill="#0d0d0d"/>
-  <defs><pattern id="g7" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+  <rect width="680" height="383" fill="#f6f3ee"/>
+  <defs><pattern id="g7" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="#ebebeb" stroke-width="0.5"/></pattern></defs>
   <rect width="680" height="383" fill="url(#g7)"/>
-  <rect x="0" y="0" width="680" height="36" fill="#141414"/>
-  <rect x="0" y="35" width="680" height="1" fill="#2a2a2a"/>
-  <circle cx="72" cy="18" r="5" fill="#C4836A"/><circle cx="90" cy="18" r="5" fill="#C8C87A"/><circle cx="108" cy="18" r="5" fill="#8BB87A"/>
-  <text x="136" y="23" class="m" font-size="11" fill="#3a3a3a">Nomsters.vue</text>
-  <line x1="52" y1="36" x2="52" y2="383" stroke="#1e1e1e" stroke-width="1"/>
-  <text x="64" y="74" class="m" font-size="11" fill="#3a3a3a">// project</text>
-  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#ffffff">Nomsters</text>
-  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#C4836A">Recipe Discovery App</text>
-  <!-- Nomsters logo card -->
-  <rect x="82" y="148" width="148" height="160" rx="6" fill="#141414" stroke="#C4836A" stroke-width="1"/>
-  <!-- card dark bg with subtle radial glow -->
-  <rect x="96" y="154" width="118" height="102" rx="3" fill="#1a0a06"/>
-  <circle cx="155" cy="205" r="48" fill="none" stroke="#2a1208" stroke-width="16"/>
-  <!-- NOMSTERS logo mark: large bold letters in red, O replaced with plate icon -->
-  <!-- N -->
-  <text x="91" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#C4836A" letter-spacing="-1">N</text>
-  <!-- O as plate/bowl icon -->
-  <circle cx="120" cy="190" r="9" fill="none" stroke="#C4836A" stroke-width="2"/>
-  <circle cx="120" cy="190" r="5" fill="none" stroke="#C4836A" stroke-width="1.2"/>
-  <circle cx="120" cy="190" r="1.5" fill="#C4836A"/>
-  <!-- M -->
-  <text x="133" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#C4836A" letter-spacing="-1">M</text>
-  <!-- S -->
-  <text x="154" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#C4836A" letter-spacing="-1">S</text>
-  <!-- T with horizontal bars like the reference (strikethrough style) -->
-  <rect x="168" y="184" width="14" height="2.5" rx="1" fill="#C4836A"/>
-  <rect x="173" y="184" width="4" height="14" rx="1" fill="#C4836A"/>
-
-  <!-- E -->
-  <text x="185" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#C4836A" letter-spacing="-1">E</text>
-  <!-- R -->
-  <text x="198" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#C4836A" letter-spacing="-1">R</text>
-  <!-- S -->
-  <text x="212" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#C4836A">S</text>
-
-  <!-- tagline under logo -->
-  <text x="155" y="213" class="m" font-size="7" fill="#5a3a2a" text-anchor="middle" letter-spacing="0.12em">RECIPE DISCOVERY</text>
-  <!-- thin divider -->
-  <line x1="110" y1="218" x2="200" y2="218" stroke="#2a1208" stroke-width="0.8"/>
-  <!-- food scatter dots (ingredients floating) -->
-  <circle cx="105" cy="165" r="3" fill="#C4836A" opacity="0.35"/>
-  <circle cx="202" cy="162" r="4" fill="#C4836A" opacity="0.2"/>
-  <circle cx="112" cy="248" r="2.5" fill="#8BB87A" opacity="0.3"/>
-  <circle cx="198" cy="244" r="3" fill="#C4836A" opacity="0.25"/>
-  <!-- card text area below -->
-  <rect x="96" y="260" width="118" height="12" rx="2" fill="#1f0e08"/>
-  <text x="155" y="270" class="m" font-size="9" fill="#C4836A" text-anchor="middle">nomsters.app</text>
-  <rect x="96" y="276" width="80" height="7" rx="1" fill="#1a1a1a"/>
-  <rect x="96" y="287" width="60" height="7" rx="1" fill="#1a1a1a"/>
-  <!-- feature boxes -->
-  <rect x="250" y="148" width="116" height="36" rx="4" fill="#141414" stroke="#C4836A" stroke-width="0.8"/>
-  <text x="308" y="163" class="m" font-size="10" fill="#C4836A" text-anchor="middle">Spoonacular API</text>
-  <text x="308" y="176" class="m" font-size="9" fill="#5a3a2a" text-anchor="middle">nutrition data</text>
-  <rect x="250" y="196" width="116" height="36" rx="4" fill="#141414" stroke="#8BB87A" stroke-width="0.8"/>
-  <text x="308" y="211" class="m" font-size="10" fill="#8BB87A" text-anchor="middle">Meal Planning</text>
-  <text x="308" y="224" class="m" font-size="9" fill="#2a4a2a" text-anchor="middle">grocery lists</text>
-  <rect x="250" y="244" width="116" height="36" rx="4" fill="#141414" stroke="#5BAADC" stroke-width="0.8"/>
-  <text x="308" y="259" class="m" font-size="10" fill="#5BAADC" text-anchor="middle">Vue 3 + Vite</text>
-  <text x="308" y="272" class="m" font-size="9" fill="#2a3a5a" text-anchor="middle">SPA frontend</text>
-  <rect x="250" y="292" width="116" height="36" rx="4" fill="#141414" stroke="#C8C87A" stroke-width="0.8"/>
-  <text x="308" y="307" class="m" font-size="10" fill="#C8C87A" text-anchor="middle">Express + MySQL</text>
-  <text x="308" y="320" class="m" font-size="9" fill="#4a4a2a" text-anchor="middle">REST API backend</text>
-  <!-- code -->
-  <text x="64" y="332" class="m" font-size="10" fill="#2a3a2a">const recipe = await</text>
-  <text x="64" y="348" class="m" font-size="10" fill="#5BAADC">  spoonacular</text>
-  <text x="130" y="348" class="m" font-size="10" fill="#d4d4d4">.analyze(ingredients)</text>
-  <text x="64" y="364" class="m" font-size="10" fill="#d4d4d4">// nutrition + cost + grocery list</text>
-
+  <rect x="0" y="0" width="680" height="36" fill="#fafaf7"/>
+  <rect x="0" y="35" width="680" height="1" fill="#d8d1c7"/>
+  <circle cx="72" cy="18" r="5" fill="#b86f5e"/><circle cx="90" cy="18" r="5" fill="#9c8d4f"/><circle cx="108" cy="18" r="5" fill="#5b8d67"/>
+  <text x="136" y="23" class="m" font-size="11" fill="#8e98a4">Nomsters.vue</text>
+  <line x1="52" y1="36" x2="52" y2="383" stroke="#e8e2d9" stroke-width="1"/>
+  <text x="64" y="74" class="m" font-size="11" fill="#8e98a4">// project</text>
+  <text x="64" y="98" class="m" font-size="20" font-weight="500" fill="#1f2933">Nomsters</text>
+  <text x="64" y="122" class="m" font-size="20" font-weight="500" fill="#b86f5e">Recipe Discovery App</text>
+  <rect x="82" y="148" width="148" height="160" rx="6" fill="#fafaf7" stroke="#b86f5e" stroke-width="1"/>
+  <rect x="96" y="154" width="118" height="102" rx="3" fill="#f8ede5"/>
+  <circle cx="155" cy="205" r="48" fill="none" stroke="#f0e8d5" stroke-width="16"/>
+  <text x="91" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#b86f5e" letter-spacing="-1">N</text>
+  <circle cx="120" cy="190" r="9" fill="none" stroke="#b86f5e" stroke-width="2"/>
+  <circle cx="120" cy="190" r="5" fill="none" stroke="#b86f5e" stroke-width="1.2"/>
+  <circle cx="120" cy="190" r="1.5" fill="#b86f5e"/>
+  <text x="133" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#b86f5e" letter-spacing="-1">M</text>
+  <text x="154" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#b86f5e" letter-spacing="-1">S</text>
+  <rect x="168" y="184" width="14" height="2.5" rx="1" fill="#b86f5e"/>
+  <rect x="173" y="184" width="4" height="14" rx="1" fill="#b86f5e"/>
+  <text x="185" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#b86f5e" letter-spacing="-1">E</text>
+  <text x="198" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#b86f5e" letter-spacing="-1">R</text>
+  <text x="212" y="198" font-family="'Arial Black','Impact',sans-serif" font-size="19" font-weight="900" fill="#b86f5e">S</text>
+  <text x="155" y="213" class="m" font-size="7" fill="#7a5030" text-anchor="middle" letter-spacing="0.12em">RECIPE DISCOVERY</text>
+  <line x1="110" y1="218" x2="200" y2="218" stroke="#f0e8d5" stroke-width="0.8"/>
+  <circle cx="105" cy="165" r="3" fill="#b86f5e" opacity="0.35"/>
+  <circle cx="202" cy="162" r="4" fill="#b86f5e" opacity="0.2"/>
+  <circle cx="112" cy="248" r="2.5" fill="#5b8d67" opacity="0.3"/>
+  <circle cx="198" cy="244" r="3" fill="#b86f5e" opacity="0.25"/>
+  <rect x="96" y="260" width="118" height="12" rx="2" fill="#f8eed8"/>
+  <text x="155" y="270" class="m" font-size="9" fill="#b86f5e" text-anchor="middle">nomsters.app</text>
+  <rect x="96" y="276" width="80" height="7" rx="1" fill="#ebebeb"/>
+  <rect x="96" y="287" width="60" height="7" rx="1" fill="#ebebeb"/>
+  <rect x="250" y="148" width="116" height="36" rx="4" fill="#fafaf7" stroke="#b86f5e" stroke-width="0.8"/>
+  <text x="308" y="163" class="m" font-size="10" fill="#b86f5e" text-anchor="middle">Spoonacular API</text>
+  <text x="308" y="176" class="m" font-size="9" fill="#7a5030" text-anchor="middle">nutrition data</text>
+  <rect x="250" y="196" width="116" height="36" rx="4" fill="#fafaf7" stroke="#5b8d67" stroke-width="0.8"/>
+  <text x="308" y="211" class="m" font-size="10" fill="#5b8d67" text-anchor="middle">Meal Planning</text>
+  <text x="308" y="224" class="m" font-size="9" fill="#3a6040" text-anchor="middle">grocery lists</text>
+  <rect x="250" y="244" width="116" height="36" rx="4" fill="#fafaf7" stroke="#2f6faa" stroke-width="0.8"/>
+  <text x="308" y="259" class="m" font-size="10" fill="#2f6faa" text-anchor="middle">Vue 3 + Vite</text>
+  <text x="308" y="272" class="m" font-size="9" fill="#304878" text-anchor="middle">SPA frontend</text>
+  <rect x="250" y="292" width="116" height="36" rx="4" fill="#fafaf7" stroke="#9c8d4f" stroke-width="0.8"/>
+  <text x="308" y="307" class="m" font-size="10" fill="#9c8d4f" text-anchor="middle">Express + MySQL</text>
+  <text x="308" y="320" class="m" font-size="9" fill="#6a6030" text-anchor="middle">REST API backend</text>
+  <text x="64" y="332" class="m" font-size="10" fill="#d8ead8">const recipe = await</text>
+  <text x="64" y="348" class="m" font-size="10" fill="#2f6faa">  spoonacular</text>
+  <text x="130" y="348" class="m" font-size="10" fill="#2d3a45">.analyze(ingredients)</text>
+  <text x="64" y="364" class="m" font-size="10" fill="#2d3a45">// nutrition + cost + grocery list</text>
   <g transform="translate(0,25)">
-
-    <!-- ── RIGHT SIDE: browser mockup ── -->
-    <rect x="388" y="48" width="272" height="290" rx="5" fill="#111" stroke="#2a2a2a" stroke-width="1"/>
-
-    <!-- browser chrome -->
-    <rect x="388" y="48" width="272" height="22" rx="5" fill="#1a1a1a"/>
-    <circle cx="402" cy="59" r="3" fill="#C4836A" opacity="0.7"/>
-    <circle cx="414" cy="59" r="3" fill="#C8C87A" opacity="0.7"/>
-    <circle cx="426" cy="59" r="3" fill="#8BB87A" opacity="0.7"/>
-
-    <rect x="438" y="52" width="140" height="14" rx="3" fill="#0d0d0d"/>
-    <text x="508" y="62" class="m" font-size="7" fill="#3a3a3a" text-anchor="middle">nomsters.app</text>
-
-    <!-- nav bar inside browser -->
-    <rect x="388" y="70" width="272" height="18" fill="#141414"/>
-    <text x="400" y="82" class="m" font-size="8" fill="#C4836A">Nomsters</text>
-    <text x="470" y="82" class="m" font-size="7" fill="#555">Browse</text>
-    <text x="500" y="82" class="m" font-size="7" fill="#555">Favourites</text>
-    <text x="548" y="82" class="m" font-size="7" fill="#555">Meal Plan</text>
-
-    <rect x="598" y="74" width="52" height="10" rx="2" fill="#1a1008" stroke="#C4836A" stroke-width="0.5"/>
-    <text x="624" y="81" class="m" font-size="6" fill="#C4836A" text-anchor="middle">+ Add Recipe</text>
-
-    <!-- search bar -->
-    <rect x="394" y="92" width="160" height="12" rx="3" fill="#0d0d0d" stroke="#2a2a2a" stroke-width="0.5"/>
-    <text x="400" y="100" class="m" font-size="7" fill="#333">Search recipes...</text>
-
-    <!-- filter pills -->
-    <rect x="558" y="92" width="30" height="12" rx="5" fill="#1a1008" stroke="#C4836A" stroke-width="0.5"/>
-    <text x="573" y="100" class="m" font-size="6" fill="#C4836A" text-anchor="middle">Italian</text>
-
-    <rect x="592" y="92" width="30" height="12" rx="5" fill="#0f1a0f" stroke="#8BB87A" stroke-width="0.5"/>
-    <text x="607" y="100" class="m" font-size="6" fill="#8BB87A" text-anchor="middle">Vegan</text>
-
-    <rect x="626" y="92" width="28" height="12" rx="5" fill="#1a1a14" stroke="#C8C87A" stroke-width="0.5"/>
-    <text x="640" y="101" class="m" font-size="6" fill="#C8C87A" text-anchor="middle">Quick</text>
-
-    <!-- recipe grid: 3 columns × 2 rows -->
-
-    <!-- card 1 -->
-    <rect x="394" y="108" width="74" height="72" rx="3" fill="#1a1008" stroke="#2a2a2a" stroke-width="0.5"/>
-    <rect x="394" y="108" width="74" height="44" rx="3" fill="#2a1a0a"/>
-    <ellipse cx="431" cy="136" rx="20" ry="6" fill="#3a2a0a" stroke="#C4836A" stroke-width="0.6"/>
-    <path d="M411 132 Q431 123 451 132" fill="#3a2a0a" stroke="#C4836A" stroke-width="0.6"/>
-    <path d="M424 124 Q422 120 424 117" fill="none" stroke="#C4836A" stroke-width="0.6" opacity="0.5"/>
-    <path d="M431 122 Q429 118 431 115" fill="none" stroke="#C4836A" stroke-width="0.6" opacity="0.5"/>
-    <path d="M438 124 Q436 120 438 117" fill="none" stroke="#C4836A" stroke-width="0.6" opacity="0.5"/>
-
-    <text x="431" y="160" class="m" font-size="6" fill="#d4d4d4" text-anchor="middle">Pasta Carbonara</text>
-    <text x="431" y="169" class="m" font-size="5" fill="#8BB87A" text-anchor="middle">520 kcal · $4.20</text>
-    <text x="431" y="176" class="m" font-size="5" fill="#555" text-anchor="middle">★★★★☆</text>
-
-    <!-- card 2 -->
-    <rect x="474" y="108" width="74" height="72" rx="3" fill="#0f1a0a" stroke="#2a2a2a" stroke-width="0.5"/>
-    <rect x="474" y="108" width="74" height="44" rx="3" fill="#1a2a0a"/>
-    <circle cx="511" cy="126" r="16" fill="none" stroke="#8BB87A" stroke-width="0.6"/>
-    <ellipse cx="511" cy="130" rx="14" ry="8" fill="#1a3a0a" stroke="#8BB87A" stroke-width="0.5"/>
-    <circle cx="503" cy="122" r="4" fill="#2a4a0a" stroke="#8BB87A" stroke-width="0.4"/>
-    <circle cx="519" cy="120" r="3" fill="#2a4a0a" stroke="#8BB87A" stroke-width="0.4"/>
-    <circle cx="511" cy="118" r="3.5" fill="#2a4a0a" stroke="#8BB87A" stroke-width="0.4"/>
-
-    <text x="511" y="160" class="m" font-size="6" fill="#d4d4d4" text-anchor="middle">Garden Salad</text>
-    <text x="511" y="169" class="m" font-size="5" fill="#8BB87A" text-anchor="middle">180 kcal · $2.10</text>
-    <text x="511" y="176" class="m" font-size="5" fill="#555" text-anchor="middle">★★★★★</text>
-
-    <!-- card 3 -->
-    <rect x="554" y="108" width="100" height="72" rx="3" fill="#1a0f0a" stroke="#C4836A" stroke-width="0.8"/>
-    <rect x="554" y="108" width="100" height="38" rx="3" fill="#2a1a10"/>
-
-    <text x="604" y="125" class="m" font-size="7" fill="#C4836A" text-anchor="middle">Chicken Tikka</text>
+    <rect x="388" y="48" width="272" height="290" rx="5" fill="#f8f5f0" stroke="#d8d1c7" stroke-width="1"/>
+    <rect x="388" y="48" width="272" height="22" rx="5" fill="#ebebeb"/>
+    <circle cx="402" cy="59" r="3" fill="#b86f5e" opacity="0.7"/>
+    <circle cx="414" cy="59" r="3" fill="#9c8d4f" opacity="0.7"/>
+    <circle cx="426" cy="59" r="3" fill="#5b8d67" opacity="0.7"/>
+    <rect x="438" y="52" width="140" height="14" rx="3" fill="#f6f3ee"/>
+    <text x="508" y="62" class="m" font-size="7" fill="#8e98a4" text-anchor="middle">nomsters.app</text>
+    <rect x="388" y="70" width="272" height="18" fill="#fafaf7"/>
+    <text x="400" y="82" class="m" font-size="8" fill="#b86f5e">Nomsters</text>
+    <text x="470" y="82" class="m" font-size="7" fill="#8e98a4">Browse</text>
+    <text x="500" y="82" class="m" font-size="7" fill="#8e98a4">Favourites</text>
+    <text x="548" y="82" class="m" font-size="7" fill="#8e98a4">Meal Plan</text>
+    <rect x="598" y="74" width="52" height="10" rx="2" fill="#f5ede0" stroke="#b86f5e" stroke-width="0.5"/>
+    <text x="624" y="81" class="m" font-size="6" fill="#b86f5e" text-anchor="middle">+ Add Recipe</text>
+    <rect x="394" y="92" width="160" height="12" rx="3" fill="#f6f3ee" stroke="#d8d1c7" stroke-width="0.5"/>
+    <text x="400" y="100" class="m" font-size="7" fill="#c9c1b5">Search recipes...</text>
+    <rect x="558" y="92" width="30" height="12" rx="5" fill="#f5ede0" stroke="#b86f5e" stroke-width="0.5"/>
+    <text x="573" y="100" class="m" font-size="6" fill="#b86f5e" text-anchor="middle">Italian</text>
+    <rect x="592" y="92" width="30" height="12" rx="5" fill="#e8f5e8" stroke="#5b8d67" stroke-width="0.5"/>
+    <text x="607" y="100" class="m" font-size="6" fill="#5b8d67" text-anchor="middle">Vegan</text>
+    <rect x="626" y="92" width="28" height="12" rx="5" fill="#f5f2ec" stroke="#9c8d4f" stroke-width="0.5"/>
+    <text x="640" y="101" class="m" font-size="6" fill="#9c8d4f" text-anchor="middle">Quick</text>
+    <rect x="394" y="108" width="74" height="72" rx="3" fill="#f5ede0" stroke="#d8d1c7" stroke-width="0.5"/>
+    <rect x="394" y="108" width="74" height="44" rx="3" fill="#f5eed8"/>
+    <ellipse cx="431" cy="136" rx="20" ry="6" fill="#f0e8c0" stroke="#b86f5e" stroke-width="0.6"/>
+    <path d="M411 132 Q431 123 451 132" fill="#f0e8c0" stroke="#b86f5e" stroke-width="0.6"/>
+    <path d="M424 124 Q422 120 424 117" fill="none" stroke="#b86f5e" stroke-width="0.6" opacity="0.5"/>
+    <path d="M431 122 Q429 118 431 115" fill="none" stroke="#b86f5e" stroke-width="0.6" opacity="0.5"/>
+    <path d="M438 124 Q436 120 438 117" fill="none" stroke="#b86f5e" stroke-width="0.6" opacity="0.5"/>
+    <text x="431" y="160" class="m" font-size="6" fill="#2d3a45" text-anchor="middle">Pasta Carbonara</text>
+    <text x="431" y="169" class="m" font-size="5" fill="#5b8d67" text-anchor="middle">520 kcal · $4.20</text>
+    <text x="431" y="176" class="m" font-size="5" fill="#8e98a4" text-anchor="middle">&#9733;&#9733;&#9733;&#9733;&#9734;</text>
+    <rect x="474" y="108" width="74" height="72" rx="3" fill="#e8f5e0" stroke="#d8d1c7" stroke-width="0.5"/>
+    <rect x="474" y="108" width="74" height="44" rx="3" fill="#e5f5d0"/>
+    <circle cx="511" cy="126" r="16" fill="none" stroke="#5b8d67" stroke-width="0.6"/>
+    <ellipse cx="511" cy="130" rx="14" ry="8" fill="#d0eecc" stroke="#5b8d67" stroke-width="0.5"/>
+    <circle cx="503" cy="122" r="4" fill="#c0e8b8" stroke="#5b8d67" stroke-width="0.4"/>
+    <circle cx="519" cy="120" r="3" fill="#c0e8b8" stroke="#5b8d67" stroke-width="0.4"/>
+    <circle cx="511" cy="118" r="3.5" fill="#c0e8b8" stroke="#5b8d67" stroke-width="0.4"/>
+    <text x="511" y="160" class="m" font-size="6" fill="#2d3a45" text-anchor="middle">Garden Salad</text>
+    <text x="511" y="169" class="m" font-size="5" fill="#5b8d67" text-anchor="middle">180 kcal · $2.10</text>
+    <text x="511" y="176" class="m" font-size="5" fill="#8e98a4" text-anchor="middle">&#9733;&#9733;&#9733;&#9733;&#9733;</text>
+    <rect x="554" y="108" width="100" height="72" rx="3" fill="#f5ebe0" stroke="#b86f5e" stroke-width="0.8"/>
+    <rect x="554" y="108" width="100" height="38" rx="3" fill="#f0e8d5"/>
+    <text x="604" y="125" class="m" font-size="7" fill="#b86f5e" text-anchor="middle">Chicken Tikka</text>
     <text x="604" y="133" class="m" font-size="6" fill="#7a5a3a" text-anchor="middle">Masala</text>
-
-    <rect x="558" y="148" width="40" height="10" rx="2" fill="#0f2a18" stroke="#8BB87A" stroke-width="0.4"/>
-    <text x="578" y="155" class="m" font-size="5" fill="#8BB87A" text-anchor="middle">450 kcal</text>
-
-    <rect x="602" y="148" width="28" height="10" rx="2" fill="#1a1a0a" stroke="#C8C87A" stroke-width="0.4"/>
-    <text x="616" y="155" class="m" font-size="5" fill="#C8C87A" text-anchor="middle">$5.80</text>
-
-    <text x="563" y="167" class="m" font-size="6" fill="#d4d4d4">Spicy · 35 min · Indian</text>
-    <text x="604" y="175" class="m" font-size="5" fill="#C4836A" text-anchor="middle">★★★★☆  · ♥ saved</text>
-
-    <!-- nutrition panel -->
-    <rect x="394" y="186" width="154" height="78" rx="3" fill="#0f1a0f" stroke="#8BB87A" stroke-width="0.6"/>
-    <text x="400" y="197" class="m" font-size="7" fill="#8BB87A">Nutrition Breakdown</text>
-
-    <line x1="394" y1="200" x2="548" y2="200" stroke="#1a2a1a" stroke-width="0.5"/>
-
-    <text x="400" y="212" class="m" font-size="6" fill="#555">Protein</text>
-    <rect x="430" y="207" width="70" height="5" rx="2" fill="#1a1a1a"/>
-    <rect x="430" y="207" width="48" height="5" rx="2" fill="#5BAADC"/>
-    <text x="504" y="212" class="m" font-size="6" fill="#5BAADC">32g</text>
-
-    <text x="400" y="223" class="m" font-size="6" fill="#555">Carbs</text>
-    <rect x="430" y="218" width="70" height="5" rx="2" fill="#1a1a1a"/>
-    <rect x="430" y="218" width="55" height="5" rx="2" fill="#C8C87A"/>
-    <text x="504" y="223" class="m" font-size="6" fill="#C8C87A">42g</text>
-
-    <text x="400" y="234" class="m" font-size="6" fill="#555">Fat</text>
-    <rect x="430" y="229" width="70" height="5" rx="2" fill="#1a1a1a"/>
-    <rect x="430" y="229" width="30" height="5" rx="2" fill="#C4836A"/>
-    <text x="504" y="234" class="m" font-size="6" fill="#C4836A">18g</text>
-
-    <text x="400" y="245" class="m" font-size="6" fill="#555">Fibre</text>
-    <rect x="430" y="240" width="70" height="5" rx="2" fill="#1a1a1a"/>
-    <rect x="430" y="240" width="18" height="5" rx="2" fill="#B87DB8"/>
-    <text x="504" y="245" class="m" font-size="6" fill="#B87DB8">4g</text>
-
-    <text x="400" y="256" class="m" font-size="6" fill="#3a3a3a">Est. cost: </text>
-    <text x="442" y="256" class="m" font-size="6" fill="#C8C87A">$5.80</text>
-    <text x="462" y="256" class="m" font-size="6" fill="#3a3a3a">per serving</text>
-
-    <!-- grocery list panel -->
-    <rect x="554" y="186" width="100" height="78" rx="3" fill="#141414" stroke="#C8C87A" stroke-width="0.6"/>
-    <text x="560" y="197" class="m" font-size="7" fill="#C8C87A">Grocery List</text>
-
-    <line x1="554" y1="200" x2="654" y2="200" stroke="#2a2a2a" stroke-width="0.5"/>
-
-    <text x="559" y="211" class="m" font-size="6" fill="#8BB87A">✓</text>
-    <text x="568" y="211" class="m" font-size="6" fill="#555">Chicken breast</text>
-
-    <text x="559" y="221" class="m" font-size="6" fill="#8BB87A">✓</text>
-    <text x="568" y="221" class="m" font-size="6" fill="#555">Tomatoes</text>
-
-    <text x="559" y="231" class="m" font-size="6" fill="#555">☐</text>
-    <text x="568" y="231" class="m" font-size="6" fill="#aaa">Greek yoghurt</text>
-
-    <text x="559" y="241" class="m" font-size="6" fill="#555">☐</text>
-    <text x="568" y="241" class="m" font-size="6" fill="#aaa">Garam masala</text>
-
-    <text x="559" y="251" class="m" font-size="6" fill="#555">☐</text>
-    <text x="568" y="251" class="m" font-size="6" fill="#aaa">Basmati rice</text>
-
-    <rect x="558" y="254" width="90" height="8" rx="2" fill="#1a1a0a" stroke="#C8C87A" stroke-width="0.4"/>
-    <text x="603" y="260" class="m" font-size="5" fill="#C8C87A" text-anchor="middle">Export shopping list</text>
-
-    <!-- meal plan strip -->
-    <rect x="394" y="270" width="260" height="52" rx="3" fill="#0f0f1a" stroke="#5BAADC" stroke-width="0.6"/>
-    <text x="400" y="281" class="m" font-size="7" fill="#5BAADC">Weekly Meal Plan</text>
-
-    <line x1="394" y1="284" x2="654" y2="284" stroke="#1a1a2a" stroke-width="0.5"/>
-
-    <text x="415" y="293" class="m" font-size="5" fill="#3a3a3a" text-anchor="middle">MON</text>
-    <rect x="401" y="295" width="26" height="22" rx="2" fill="#1a1008" stroke="#C4836A" stroke-width="0.4"/>
-    <text x="414" y="304" class="m" font-size="5" fill="#C4836A" text-anchor="middle">Pasta</text>
-    <text x="414" y="312" class="m" font-size="4" fill="#5a3a2a" text-anchor="middle">520kcal</text>
-
-    <text x="452" y="293" class="m" font-size="5" fill="#3a3a3a" text-anchor="middle">TUE</text>
-    <rect x="438" y="295" width="26" height="22" rx="2" fill="#0f1a0a" stroke="#8BB87A" stroke-width="0.4"/>
-    <text x="451" y="304" class="m" font-size="5" fill="#8BB87A" text-anchor="middle">Salad</text>
-    <text x="451" y="312" class="m" font-size="4" fill="#2a4a2a" text-anchor="middle">180kcal</text>
-
-    <text x="489" y="293" class="m" font-size="5" fill="#3a3a3a" text-anchor="middle">WED</text>
-    <rect x="475" y="295" width="26" height="22" rx="2" fill="#1a0f0a" stroke="#C4836A" stroke-width="0.4"/>
-    <text x="488" y="304" class="m" font-size="5" fill="#C4836A" text-anchor="middle">Tikka</text>
-    <text x="488" y="312" class="m" font-size="4" fill="#5a3a2a" text-anchor="middle">450kcal</text>
-
-    <text x="526" y="293" class="m" font-size="5" fill="#3a3a3a" text-anchor="middle">THU</text>
-    <rect x="512" y="295" width="26" height="22" rx="2" fill="#141414" stroke="#333" stroke-width="0.4" stroke-dasharray="2 1"/>
-    <text x="525" y="307" class="m" font-size="7" fill="#333" text-anchor="middle">+</text>
-
-    <text x="563" y="293" class="m" font-size="5" fill="#3a3a3a" text-anchor="middle">FRI</text>
-    <rect x="549" y="295" width="26" height="22" rx="2" fill="#141414" stroke="#333" stroke-width="0.4" stroke-dasharray="2 1"/>
-    <text x="562" y="307" class="m" font-size="7" fill="#333" text-anchor="middle">+</text>
-
-    <text x="600" y="298" class="m" font-size="6" fill="#555">Week total</text>
-    <text x="600" y="308" class="m" font-size="8" fill="#C8C87A">1,150 kcal</text>
-    <text x="600" y="318" class="m" font-size="6" fill="#555">$12.10 est.</text>
-
+    <rect x="558" y="148" width="40" height="10" rx="2" fill="#d8f0e5" stroke="#5b8d67" stroke-width="0.4"/>
+    <text x="578" y="155" class="m" font-size="5" fill="#5b8d67" text-anchor="middle">450 kcal</text>
+    <rect x="602" y="148" width="28" height="10" rx="2" fill="#f5f5e0" stroke="#9c8d4f" stroke-width="0.4"/>
+    <text x="616" y="155" class="m" font-size="5" fill="#9c8d4f" text-anchor="middle">$5.80</text>
+    <text x="563" y="167" class="m" font-size="6" fill="#2d3a45">Spicy · 35 min · Indian</text>
+    <text x="604" y="175" class="m" font-size="5" fill="#b86f5e" text-anchor="middle">&#9733;&#9733;&#9733;&#9733;&#9734;  · &#9829; saved</text>
+    <rect x="394" y="186" width="154" height="78" rx="3" fill="#e8f5e8" stroke="#5b8d67" stroke-width="0.6"/>
+    <text x="400" y="197" class="m" font-size="7" fill="#5b8d67">Nutrition Breakdown</text>
+    <line x1="394" y1="200" x2="548" y2="200" stroke="#e0f0e0" stroke-width="0.5"/>
+    <text x="400" y="212" class="m" font-size="6" fill="#8e98a4">Protein</text>
+    <rect x="430" y="207" width="70" height="5" rx="2" fill="#ebebeb"/>
+    <rect x="430" y="207" width="48" height="5" rx="2" fill="#2f6faa"/>
+    <text x="504" y="212" class="m" font-size="6" fill="#2f6faa">32g</text>
+    <text x="400" y="223" class="m" font-size="6" fill="#8e98a4">Carbs</text>
+    <rect x="430" y="218" width="70" height="5" rx="2" fill="#ebebeb"/>
+    <rect x="430" y="218" width="55" height="5" rx="2" fill="#9c8d4f"/>
+    <text x="504" y="223" class="m" font-size="6" fill="#9c8d4f">42g</text>
+    <text x="400" y="234" class="m" font-size="6" fill="#8e98a4">Fat</text>
+    <rect x="430" y="229" width="70" height="5" rx="2" fill="#ebebeb"/>
+    <rect x="430" y="229" width="30" height="5" rx="2" fill="#b86f5e"/>
+    <text x="504" y="234" class="m" font-size="6" fill="#b86f5e">18g</text>
+    <text x="400" y="245" class="m" font-size="6" fill="#8e98a4">Fibre</text>
+    <rect x="430" y="240" width="70" height="5" rx="2" fill="#ebebeb"/>
+    <rect x="430" y="240" width="18" height="5" rx="2" fill="#9a64a0"/>
+    <text x="504" y="245" class="m" font-size="6" fill="#9a64a0">4g</text>
+    <text x="400" y="256" class="m" font-size="6" fill="#8e98a4">Est. cost: </text>
+    <text x="442" y="256" class="m" font-size="6" fill="#9c8d4f">$5.80</text>
+    <text x="462" y="256" class="m" font-size="6" fill="#8e98a4">per serving</text>
+    <rect x="554" y="186" width="100" height="78" rx="3" fill="#fafaf7" stroke="#9c8d4f" stroke-width="0.6"/>
+    <text x="560" y="197" class="m" font-size="7" fill="#9c8d4f">Grocery List</text>
+    <line x1="554" y1="200" x2="654" y2="200" stroke="#d8d1c7" stroke-width="0.5"/>
+    <text x="559" y="211" class="m" font-size="6" fill="#5b8d67">&#10003;</text>
+    <text x="568" y="211" class="m" font-size="6" fill="#8e98a4">Chicken breast</text>
+    <text x="559" y="221" class="m" font-size="6" fill="#5b8d67">&#10003;</text>
+    <text x="568" y="221" class="m" font-size="6" fill="#8e98a4">Tomatoes</text>
+    <text x="559" y="231" class="m" font-size="6" fill="#8e98a4">&#9744;</text>
+    <text x="568" y="231" class="m" font-size="6" fill="#6a7480">Greek yoghurt</text>
+    <text x="559" y="241" class="m" font-size="6" fill="#8e98a4">&#9744;</text>
+    <text x="568" y="241" class="m" font-size="6" fill="#6a7480">Garam masala</text>
+    <text x="559" y="251" class="m" font-size="6" fill="#8e98a4">&#9744;</text>
+    <text x="568" y="251" class="m" font-size="6" fill="#6a7480">Basmati rice</text>
+    <rect x="558" y="254" width="90" height="8" rx="2" fill="#f5f5e0" stroke="#9c8d4f" stroke-width="0.4"/>
+    <text x="603" y="260" class="m" font-size="5" fill="#9c8d4f" text-anchor="middle">Export shopping list</text>
+    <rect x="394" y="270" width="260" height="52" rx="3" fill="#eeeef8" stroke="#2f6faa" stroke-width="0.6"/>
+    <text x="400" y="281" class="m" font-size="7" fill="#2f6faa">Weekly Meal Plan</text>
+    <line x1="394" y1="284" x2="654" y2="284" stroke="#eeeefa" stroke-width="0.5"/>
+    <text x="415" y="293" class="m" font-size="5" fill="#8e98a4" text-anchor="middle">MON</text>
+    <rect x="401" y="295" width="26" height="22" rx="2" fill="#f5ede0" stroke="#b86f5e" stroke-width="0.4"/>
+    <text x="414" y="304" class="m" font-size="5" fill="#b86f5e" text-anchor="middle">Pasta</text>
+    <text x="414" y="312" class="m" font-size="4" fill="#7a5030" text-anchor="middle">520kcal</text>
+    <text x="452" y="293" class="m" font-size="5" fill="#8e98a4" text-anchor="middle">TUE</text>
+    <rect x="438" y="295" width="26" height="22" rx="2" fill="#e8f5e0" stroke="#5b8d67" stroke-width="0.4"/>
+    <text x="451" y="304" class="m" font-size="5" fill="#5b8d67" text-anchor="middle">Salad</text>
+    <text x="451" y="312" class="m" font-size="4" fill="#3a6040" text-anchor="middle">180kcal</text>
+    <text x="489" y="293" class="m" font-size="5" fill="#8e98a4" text-anchor="middle">WED</text>
+    <rect x="475" y="295" width="26" height="22" rx="2" fill="#f5ebe0" stroke="#b86f5e" stroke-width="0.4"/>
+    <text x="488" y="304" class="m" font-size="5" fill="#b86f5e" text-anchor="middle">Tikka</text>
+    <text x="488" y="312" class="m" font-size="4" fill="#7a5030" text-anchor="middle">450kcal</text>
+    <text x="526" y="293" class="m" font-size="5" fill="#8e98a4" text-anchor="middle">THU</text>
+    <rect x="512" y="295" width="26" height="22" rx="2" fill="#fafaf7" stroke="#c9c1b5" stroke-width="0.4" stroke-dasharray="2 1"/>
+    <text x="525" y="307" class="m" font-size="7" fill="#c9c1b5" text-anchor="middle">+</text>
+    <text x="563" y="293" class="m" font-size="5" fill="#8e98a4" text-anchor="middle">FRI</text>
+    <rect x="549" y="295" width="26" height="22" rx="2" fill="#fafaf7" stroke="#c9c1b5" stroke-width="0.4" stroke-dasharray="2 1"/>
+    <text x="562" y="307" class="m" font-size="7" fill="#c9c1b5" text-anchor="middle">+</text>
+    <text x="600" y="298" class="m" font-size="6" fill="#8e98a4">Week total</text>
+    <text x="600" y="308" class="m" font-size="8" fill="#9c8d4f">1,150 kcal</text>
+    <text x="600" y="318" class="m" font-size="6" fill="#8e98a4">$12.10 est.</text>
   </g>
 </svg>
