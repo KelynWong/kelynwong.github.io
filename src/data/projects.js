@@ -397,18 +397,18 @@ export default [
   },
   {
     id: 'row',
-    title: 'ROW',
+    title: 'Right Or Wrong (ROW)',
     category: 'mobile',
     coverImage: '/src/assets/projects/cover/row-cover.svg',
-    coverAlt: 'ROW',
-    short: 'Cross-platform React Native community app with a social feed, user profiles & post interactions',
-    description: 'ROW is a cross-platform mobile community application built with React Native, targeting both iOS and Android from a single codebase. The app features a tab-navigated interface with a social feed where users can browse and create posts, interact with content through likes, and view user profiles. The project is structured with a clean separation between screens, reusable components, and navigation logic, and includes custom font assets for a polished UI. Built on React Native 0.61 with a component-based architecture and Jest set up for testing.',
+    coverAlt: 'Right Or Wrong (ROW)',
+    short: 'Cross-platform community app where users post queries and vote Right Or Wrong — with profiles, comments, likes & topic search',
+    description: 'ROW (Right Or Wrong) is a cross-platform mobile community app built with React Native where users post their doubts or questions and let the community weigh in with a Right or Wrong vote. Users can create profiles, browse and search posts by topic, leave comments, and like content from others. The tab-based navigation keeps the core flows — feed, post, search, and profile — instantly accessible. Built for both Android and iOS from a single codebase using React Native and React Navigation.',
     screenshots: [],
     demo: null,
     links: {
       github: 'https://github.com/KelynWong/row',
     },
-    tags: ['JavaScript', 'React Native', 'iOS', 'Android', 'React Navigation'],
+    tags: ['React Native', 'JavaScript', 'React Navigation', 'Android', 'iOS'],
     year: '2020',
   },
 ];
