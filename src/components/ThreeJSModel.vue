@@ -673,7 +673,7 @@ export default {
 
       let isDragging = false
       let prevMouse = { x: 0, y: 0 }
-      const spherical = { theta: 0.6, phi: 0.75, radius: 10 }
+      const spherical = { theta: -0.5, phi: 1.2, radius: 7 }
 
       const updateCamera = () => {
         const st = Math.sin(spherical.theta)
