@@ -288,6 +288,24 @@ export default {
 @media (max-width: 768px) {
   .project-card {
     border-radius: calc(var(--radius) - 2px);
+    height: auto;
+  }
+
+  .project-image-wrapper {
+    min-height: 180px;
+    flex: 0 0 auto;
+  }
+
+  .project-image {
+    object-fit: cover;
+  }
+
+  .project-content {
+    flex: 0 0 auto;
+  }
+
+  .project-actions {
+    margin-top: auto;
   }
 
   .project-title {
