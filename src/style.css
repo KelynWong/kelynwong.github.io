@@ -477,6 +477,19 @@ section {
   .vid-cat-bar .filter-pills {
     width: max-content;
   }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-group-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .project-card {
+    width: 100%;
+  }
 }
 
 @media (max-width: 560px) {
