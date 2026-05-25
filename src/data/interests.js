@@ -66,20 +66,20 @@ export const clayItems = [
 ];
 
 export const drawingItems = [
-  { id: 1, title: 'Our universe', medium: 'pencil on paper', img: './src/assets/images/drawings/planets.jpg' },
-  { id: 2, title: 'Phases of the moon', medium: 'pencil on paper', img: './src/assets/images/drawings/moon.jpg' },
-  { id: 3, title: 'Floating in space', medium: 'pencil on paper', img: './src/assets/images/drawings/astronaut.jpg' },
-  { id: 4, title: 'Blast off', medium: 'pencil on paper', img: './src/assets/images/drawings/spaceship.jpg' },
+  { id: 1, title: 'Our universe', medium: 'pencil on paper', img: './src/assets/images/drawings/planets.JPG' },
+  { id: 2, title: 'Phases of the moon', medium: 'pencil on paper', img: './src/assets/images/drawings/moon.JPG' },
+  { id: 3, title: 'Floating in space', medium: 'pencil on paper', img: './src/assets/images/drawings/astronaut.JPG' },
+  { id: 4, title: 'Blast off', medium: 'pencil on paper', img: './src/assets/images/drawings/spaceship.JPG' },
   { id: 5, title: 'Jackfrosty', medium: 'pencil on paper', img: './src/assets/images/drawings/jackfrost.jpg' },
   { id: 6, title: 'Shy tracer', medium: 'pencil on paper', img: './src/assets/images/drawings/tracer.jpg' },
-  { id: 7, title: 'Ahoy matey', medium: 'pencil on paper', img: './src/assets/images/drawings/ship.jpg' },
-  { id: 8, title: 'i love you.', medium: 'pencil on paper', img: './src/assets/images/drawings/doll.jpg' },
-  { id: 9, title: 'Heart bleeding', medium: 'pencil on paper', img: './src/assets/images/drawings/heartwings.jpg' },
-  { id: 10, title: 'Under the sea', medium: 'pencil on paper', img: './src/assets/images/drawings/underthesea.jpg' },
-  { id: 11, title: 'In the jungle', medium: 'pencil, marker and color on paper', img: './src/assets/images/drawings/inthejungle.jpg' },
-  { id: 12, title: 'Wolf howling', medium: 'pencil, marker and color on paper', img: './src/assets/images/drawings/wolf.jpg' },
-  { id: 13, title: 'Weather icons', medium: 'pencil on paper', img: './src/assets/images/drawings/weather.jpg' },
-  { id: 14, title: 'Loch Ness Monster', medium: 'pencil on paper', img: './src/assets/images/drawings/lochness.jpg' },
+  { id: 7, title: 'Ahoy matey', medium: 'pencil on paper', img: './src/assets/images/drawings/ship.JPG' },
+  { id: 8, title: 'i love you.', medium: 'pencil on paper', img: './src/assets/images/drawings/doll.JPG' },
+  { id: 9, title: 'Heart bleeding', medium: 'pencil on paper', img: './src/assets/images/drawings/heartwings.JPG' },
+  { id: 10, title: 'Under the sea', medium: 'pencil on paper', img: './src/assets/images/drawings/underthesea.JPG' },
+  { id: 11, title: 'In the jungle', medium: 'pencil, marker and color on paper', img: './src/assets/images/drawings/inthejungle.JPG' },
+  { id: 12, title: 'Wolf howling', medium: 'pencil, marker and color on paper', img: './src/assets/images/drawings/wolf.JPG' },
+  { id: 13, title: 'Weather icons', medium: 'pencil on paper', img: './src/assets/images/drawings/weather.JPG' },
+  { id: 14, title: 'Loch Ness Monster', medium: 'pencil on paper', img: './src/assets/images/drawings/lochness.JPG' },
 ];
 
 export const videoCats = [
