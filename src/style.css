@@ -628,6 +628,7 @@ section {
   --fs-4xl: 40px;
   --fs-5xl: 52px;
   height: 100vh;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   width: 100%;
@@ -666,8 +667,8 @@ section {
 
 .hero-verbs-wrap {
   position: relative;
-  flex: 1;
-  min-height: 180px;
+  flex: 0 0 auto;
+  min-height: clamp(220px, 24vw, 280px);
   width: 100%;
   align-self: flex-start;
 }
@@ -796,7 +797,7 @@ section {
 
 .hero-3d-hint {
   position: absolute;
-  bottom: 16px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   font-size: var(--fs-3xs);
@@ -830,7 +831,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   padding: 0;
   color: var(--text-faint);
   font-size: var(--fs-4xs);
@@ -838,7 +839,7 @@ section {
   text-transform: uppercase;
   position: absolute;
   left: 50%;
-  bottom: 10px;
+  bottom: 20px;
   transform: translateX(-50%);
   z-index: 7;
   pointer-events: none;
