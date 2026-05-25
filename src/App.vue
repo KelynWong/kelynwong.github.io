@@ -282,7 +282,15 @@
             <div v-if="cat.id === 'clay'" class="gallery-grid">
               <div v-for="(item, idx) in clayItemsForTheme" :key="item.id" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('clay', item.id) }">
                 <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('clay', item.id)" @click="openGalleryLightbox('clay', clayItemsForTheme, idx)">
-                  <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('clay', item.id, $event)" @error="handleThemeImageError($event, item.darkImg || item.img)" />
+                  <img
+                    v-if="item.img"
+                    :key="`${themeMode}-${item.id}`"
+                    :src="item.img"
+                    :alt="item.title"
+                    loading="lazy"
+                    @load="recordGalleryAspect('clay', item.id, $event)"
+                    @error="handleThemeImageError($event, item.darkImg || item.img)"
+                  />
                   <div v-else class="gallery-placeholder"><span>🏺</span><span>{{ appText.placeholders.clay }}</span></div>
                 </button>
                 <div class="gallery-caption">
