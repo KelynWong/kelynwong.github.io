@@ -8,7 +8,7 @@ export default [
     gpa: null,
     ongoing: false,
     desc: 'A work-study degree focused on learning how to design and build enterprise systems at scale. Completed one year of internship applying academic knowledge to real-world cloud infrastructure and DevOps projects. Also pursued a second major in Computing Studies (Physical-Cyber Systems), where I explored the intersection of software with the physical world through modules in IoT.',
-    tags: ['algorithms and programming', 'web application development', 'collaborative software development', 'operating systems and networking', 'solution architecture', 'enterprise solution development', 'enterprise solution management', 'software and system security', 'internet of things', 'mobile application development', 'data structures and databases', 'design for user interaction'],
+    tags: ['algorithms and programming', 'web application development', 'collaborative software development', 'operating systems and networking', 'solution architecture', 'enterprise solution development', 'enterprise solution management', 'software and system security', 'internet of things', 'mobile application development', 'data structures and databases', ],
   },
   {
     tabName: 'diploma.ts',
