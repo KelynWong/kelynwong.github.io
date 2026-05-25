@@ -754,14 +754,13 @@ section {
 .hero-right {
   position: relative;
   background: var(--bg2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   min-width: 0;
 }
 
 .hero-model-wrap {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
@@ -871,7 +870,7 @@ section {
   100% { top: 120%; opacity: 0; }
 }
 
-#hero-3d-canvas {
+.hero-canvas {
   width: 100%;
   height: 100%;
   display: block;
@@ -2638,7 +2637,7 @@ section {
     font-size: var(--fs-sm);
   }
 
-  #hero-3d-canvas {
+  .hero-canvas {
     touch-action: pan-y;
   }
 }
