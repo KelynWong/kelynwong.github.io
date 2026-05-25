@@ -2578,6 +2578,11 @@ section {
     padding-bottom: 0;
   }
 
+  .hero-left {
+    padding: 32px;
+    border-right: 0;
+  }
+
   .hero-right {
     grid-column: 1;
     grid-row: 2;
@@ -2638,6 +2643,10 @@ section {
   .hero-annotation {
     top: 18px;
     right: 18px;
+  }
+
+  .hero-3d-hint {
+    display: none;
   }
 
   .about-grid,
