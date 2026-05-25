@@ -2649,6 +2649,32 @@ section {
     display: none;
   }
 
+  .job-header {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(72px, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  .job-header-left {
+    min-width: 0;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .job-filename {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .job-date {
+    justify-self: end;
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
   .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
