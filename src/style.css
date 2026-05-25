@@ -2658,20 +2658,25 @@ section {
 
   .job-header-left {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 6px;
   }
 
   .job-filename {
+    display: block;
     min-width: 0;
     white-space: normal;
     overflow-wrap: anywhere;
+    line-height: 1.35;
   }
 
   .job-date {
     justify-self: end;
     text-align: right;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
     padding-top: 1px;
   }
 
