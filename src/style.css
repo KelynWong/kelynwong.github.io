@@ -414,9 +414,31 @@ section {
 }
 
 @media (max-width: 820px) {
+  .projects-filter-row {
+    position: sticky;
+    top: 56px;
+    z-index: 25;
+    margin-bottom: 16px;
+    padding: 10px 0 12px;
+    background: var(--bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
   .creative-tabs,
   .photo-place-tabs,
   .vid-cat-bar {
+    position: sticky;
+    top: 56px;
+    z-index: 25;
+    margin-bottom: 20px;
+    padding: 10px 0 12px;
+    background: var(--bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
     overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -426,7 +448,8 @@ section {
 
   .creative-tabs::-webkit-scrollbar,
   .photo-place-tabs::-webkit-scrollbar,
-  .vid-cat-bar::-webkit-scrollbar {
+  .vid-cat-bar::-webkit-scrollbar,
+  .projects-filter-row::-webkit-scrollbar {
     display: none;
   }
 
@@ -435,6 +458,24 @@ section {
   .vid-cat-pill {
     flex: 0 0 auto;
     white-space: nowrap;
+  }
+
+  .photo-place-tabs > *,
+  .vid-cat-bar > * {
+    flex: 0 0 auto;
+  }
+
+  .photo-place-tabs > .pill-muted,
+  .vid-cat-bar > .pill-muted {
+    white-space: nowrap;
+    min-width: max-content;
+  }
+
+  .projects-filter-row .filter-pills,
+  .creative-tabs .filter-pills,
+  .photo-place-tabs .filter-pills,
+  .vid-cat-bar .filter-pills {
+    width: max-content;
   }
 }
 
@@ -1657,6 +1698,28 @@ section {
 .vid-cat-pill.active .vid-cat-count {
   background: rgba(91,170,220,0.15);
   color: var(--accent1);
+}
+
+@media (max-width: 820px) {
+  .photo-place-tabs,
+  .vid-cat-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    align-items: center;
+  }
+
+  .photo-place-tabs > *,
+  .vid-cat-bar > * {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .photo-place-tabs > .pill-muted,
+  .vid-cat-bar > .pill-muted {
+    min-width: max-content;
+  }
 }
 
 .vid-video-list {

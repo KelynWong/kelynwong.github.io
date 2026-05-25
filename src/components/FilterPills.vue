@@ -40,4 +40,11 @@ export default {
 <style scoped>
 .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .pill-count { margin-left: 0.5rem; opacity: 0.8; font-size: 0.85em; }
+
+@media (max-width: 820px) {
+  .filter-pills {
+    flex-wrap: nowrap;
+    width: max-content;
+  }
+}
 </style>
