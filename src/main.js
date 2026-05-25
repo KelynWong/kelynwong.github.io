@@ -111,6 +111,10 @@ const appOptions = {
       // project filtering
       activeProjectFilter: 'all',
       projectCategories: PROJECT_CATEGORY_ORDER,
+      sectionLoadState: {
+        projects: false,
+        interests: false,
+      },
       galleryAspects: {
         clay: {},
         drawing: {},
@@ -366,6 +370,7 @@ const appOptions = {
   mounted() {
     this.initTheme()
     this.fitHeroVerbs()
+    this.initSectionLoaders()
     this._heroResizeHandler = () => this.fitHeroVerbs()
     this._socialScrollHandler = () => this.triggerSocialBounce()
     this._navResizeHandler = () => {
@@ -409,6 +414,10 @@ const appOptions = {
     if (this._galleryKeyHandler) {
       window.removeEventListener('keydown', this._galleryKeyHandler)
     }
+    if (this.sectionLoadObserver) {
+      this.sectionLoadObserver.disconnect()
+      this.sectionLoadObserver = null
+    }
     this.stopGalleryAutoPlay()
     this.stopHeroTypingSequence()
     if (this._lyricsScrollRaf) {
@@ -429,6 +438,51 @@ const appOptions = {
       if (!fallback || fallback === target.src) return
       target.onerror = null
       target.src = fallback
+    },
+
+    initSectionLoaders() {
+      const loadSection = (sectionId) => {
+        if (this.sectionLoadState[sectionId] !== true) {
+          this.sectionLoadState[sectionId] = true
+        }
+      }
+
+      if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+        loadSection('projects')
+        loadSection('interests')
+        return
+      }
+
+      if (this.sectionLoadObserver) {
+        this.sectionLoadObserver.disconnect()
+      }
+
+      this.sectionLoadObserver = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          const sectionId = entry.target?.dataset?.loadSection
+          if (!sectionId) continue
+          loadSection(sectionId)
+          this.sectionLoadObserver.unobserve(entry.target)
+        }
+      }, {
+        rootMargin: '220px 0px',
+        threshold: 0.12,
+      })
+
+      this.$nextTick(() => {
+        const targets = this.$el?.querySelectorAll?.('[data-load-section]')
+        if (!targets || !targets.length) return
+        targets.forEach((target) => {
+          const sectionId = target?.dataset?.loadSection
+          if (!sectionId || this.sectionLoadState[sectionId]) return
+          this.sectionLoadObserver.observe(target)
+        })
+      })
+    },
+
+    isSectionReady(sectionId) {
+      return this.sectionLoadState[sectionId] !== false
     },
 
     initTheme() {

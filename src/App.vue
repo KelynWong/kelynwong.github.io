@@ -191,163 +191,277 @@
     <!-- Projects Section -->
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
+    <section id="projects" class="section" data-load-section="projects">
       <div class="container">
         <div class="sec-header">
           <span class="sec-prefix">04.</span>
           <span class="sec-title">{{ appText.sectionTitles.projects }}</span>
           <div class="sec-line"></div>
         </div>
-        <div class="projects-groups">
-          <div class="projects-filter-row">
-            <FilterPills
-              :items="projectCategories"
-              :active="activeProjectFilter"
-              @select="setProjectFilter"
-              :show-all="true"
-              all-label="All"
-              button-class="ctab projects-filter-pill"
-            />
-          </div>
-          <div v-for="group in groupedProjects" :key="group.key" class="projects-group">
-            <div class="projects-group-header">
-              <div class="projects-group-title">{{ group.label }}</div>
-              <div class="projects-group-count">{{ group.items.length }} project{{ group.items.length === 1 ? '' : 's' }}</div>
-            </div>
-            <transition-group name="projects" tag="div" class="projects-grid">
-              <ProjectCard
-                v-for="proj in group.items"
-                :key="proj.id"
-                :project="proj"
-                @open-project="activeProject = $event; showProjectModal = true; currentImageIndex = 0; videoVisible = false"
+        <template v-if="isSectionReady('projects')">
+          <div class="projects-groups">
+            <div class="projects-filter-row">
+              <FilterPills
+                :items="projectCategories"
+                :active="activeProjectFilter"
+                @select="setProjectFilter"
+                :show-all="true"
+                all-label="All"
+                button-class="ctab projects-filter-pill"
               />
-            </transition-group>
+            </div>
+            <div v-for="group in groupedProjects" :key="group.key" class="projects-group">
+              <div class="projects-group-header">
+                <div class="projects-group-title">{{ group.label }}</div>
+                <div class="projects-group-count">{{ group.items.length }} project{{ group.items.length === 1 ? '' : 's' }}</div>
+              </div>
+              <transition-group name="projects" tag="div" class="projects-grid">
+                <ProjectCard
+                  v-for="proj in group.items"
+                  :key="proj.id"
+                  :project="proj"
+                  @open-project="activeProject = $event; showProjectModal = true; currentImageIndex = 0; videoVisible = false"
+                />
+              </transition-group>
+            </div>
+          </div>
+        </template>
+        <div v-else class="section-loader" aria-busy="true" aria-live="polite">
+          <div class="section-loader-copy">
+            <div class="section-loader-kicker">Loading projects</div>
+            <div class="section-loader-title">Coding up the full stack, frontend, backend, mobile and IoT projects...</div>
+            <div class="section-loader-text">Please be patient, I promise it is worth the wait!</div>
+          </div>
+          <div class="section-loader-grid projects-loader-grid">
+            <div v-for="n in 6" :key="`projects-loader-${n}`" class="section-loader-card">
+              <div class="section-loader-thumb"></div>
+              <div class="section-loader-line section-loader-line-lg"></div>
+              <div class="section-loader-line"></div>
+              <div class="section-loader-chip-row">
+                <span v-for="chip in 3" :key="chip" class="section-loader-chip"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Interests Section -->
-    <section id="interests" class="section">
+    <section id="interests" class="section" data-load-section="interests">
       <div class="container">
         <div class="sec-header">
           <span class="sec-prefix">05.</span>
           <span class="sec-title">{{ appText.sectionTitles.interests }}</span>
           <div class="sec-line"></div>
         </div>
-        <p class="interests-text">
-          {{ interestsIntro.para1 }}
-        </p>
-        <p class="interests-text">
-          {{ interestsIntro.para2 }}
-        </p>
-        <div class="creative-tabs">
-          <FilterPills
-            :items="interestCategories"
-            :active="activeCat"
-            @select="selectCategory"
-            :show-all="false"
-            button-class="ctab"
-          />
-        </div>
-        <div v-for="cat in interestCategories" :key="cat.id" v-show="activeCat === cat.id">
-          <div class="cat-backstory">
-            <div class="cat-backstory-icon">{{ cat.icon }}</div>
-            <div class="cat-backstory-text">
-              <div class="cat-backstory-title">{{ cat.name }}</div>
-              <p>{{ cat.story }}</p>
-            </div>
+        <template v-if="isSectionReady('interests')">
+          <p class="interests-text">
+            {{ interestsIntro.para1 }}
+          </p>
+          <p class="interests-text">
+            {{ interestsIntro.para2 }}
+          </p>
+          <div class="creative-tabs">
+            <FilterPills
+              :items="interestCategories"
+              :active="activeCat"
+              @select="selectCategory"
+              :show-all="false"
+              button-class="ctab"
+            />
           </div>
-
-          <div v-if="cat.id === 'clay'" class="gallery-grid">
-            <div v-for="(item, idx) in clayItemsForTheme" :key="item.id" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('clay', item.id) }">
-              <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('clay', item.id)" @click="openGalleryLightbox('clay', clayItemsForTheme, idx)">
-                <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('clay', item.id, $event)" @error="handleThemeImageError($event, item.darkImg || item.img)" />
-                <div v-else class="gallery-placeholder"><span>🏺</span><span>{{ appText.placeholders.clay }}</span></div>
-              </button>
-              <div class="gallery-caption">
-                <div class="gallery-caption-title">{{ item.title }}</div>
-                <div class="gallery-caption-sub">{{ item.description }}</div>
+          <div v-for="cat in interestCategories" :key="cat.id" v-show="activeCat === cat.id">
+            <div class="cat-backstory">
+              <div class="cat-backstory-icon">{{ cat.icon }}</div>
+              <div class="cat-backstory-text">
+                <div class="cat-backstory-title">{{ cat.name }}</div>
+                <p>{{ cat.story }}</p>
               </div>
             </div>
-            <div class="gallery-item add-more-card"><span>{{ appText.moreComing.clay }}</span></div>
-          </div>
 
-          <div v-if="cat.id === 'photo'">
-            <div class="photo-place-tabs">
-              <FilterPills
-                :items="photoPlaces"
-                :active="activePhotoPlace"
-                @select="selectPhotoPlace"
-                :show-all="false"
-                button-class="ctab photo-place-pill"
-                :show-counts="true"
-              />
-              <button class="photo-place-pill pill-muted" type="button" disabled>
-                {{ appText.moreComing.photo }}
-              </button>
-            </div>
-
-            <div class="gallery-grid">
-              <div v-for="(item, idx) in activePhotoItems" :key="`${activePhotoPlace}-${item.id}`" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('photo', activePhotoPlace + '-' + item.id) }">
-                <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('photo', activePhotoPlace + '-' + item.id)" @click="openGalleryLightbox('photo', activePhotoItems, idx)">
-                  <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('photo', activePhotoPlace + '-' + item.id, $event)" />
-                  <div v-else class="gallery-placeholder"><span>📷</span><span>{{ appText.placeholders.photo }}</span></div>
+            <div v-if="cat.id === 'clay'" class="gallery-grid">
+              <div v-for="(item, idx) in clayItemsForTheme" :key="item.id" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('clay', item.id) }">
+                <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('clay', item.id)" @click="openGalleryLightbox('clay', clayItemsForTheme, idx)">
+                  <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('clay', item.id, $event)" @error="handleThemeImageError($event, item.darkImg || item.img)" />
+                  <div v-else class="gallery-placeholder"><span>🏺</span><span>{{ appText.placeholders.clay }}</span></div>
                 </button>
                 <div class="gallery-caption">
                   <div class="gallery-caption-title">{{ item.title }}</div>
-                  <div class="gallery-caption-sub">{{ item.location }} · {{ item.year }}</div>
+                  <div class="gallery-caption-sub">{{ item.description }}</div>
+                </div>
+              </div>
+              <div class="gallery-item add-more-card"><span>{{ appText.moreComing.clay }}</span></div>
+            </div>
+
+            <div v-if="cat.id === 'photo'">
+              <div class="photo-place-tabs">
+                <FilterPills
+                  :items="photoPlaces"
+                  :active="activePhotoPlace"
+                  @select="selectPhotoPlace"
+                  :show-all="false"
+                  button-class="ctab photo-place-pill"
+                  :show-counts="true"
+                />
+                <button class="photo-place-pill pill-muted" type="button" disabled>
+                  {{ appText.moreComing.photo }}
+                </button>
+              </div>
+
+              <div class="gallery-grid">
+                <div v-for="(item, idx) in activePhotoItems" :key="`${activePhotoPlace}-${item.id}`" class="gallery-item" :class="{ 'gallery-item-landscape': isGalleryLandscape('photo', activePhotoPlace + '-' + item.id) }">
+                  <button class="gallery-img-wrap gallery-img-button" :style="galleryImageStyle('photo', activePhotoPlace + '-' + item.id)" @click="openGalleryLightbox('photo', activePhotoItems, idx)">
+                    <img v-if="item.img" :src="item.img" :alt="item.title" loading="lazy" @load="recordGalleryAspect('photo', activePhotoPlace + '-' + item.id, $event)" />
+                    <div v-else class="gallery-placeholder"><span>📷</span><span>{{ appText.placeholders.photo }}</span></div>
+                  </button>
+                  <div class="gallery-caption">
+                    <div class="gallery-caption-title">{{ item.title }}</div>
+                    <div class="gallery-caption-sub">{{ item.location }} · {{ item.year }}</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div v-if="cat.id === 'video'">
-            <div class="vid-cat-bar">
-              <button
-                v-for="vc in videoCats"
-                :key="vc.id"
-                class="vid-cat-pill"
-                :class="{ active: activeVideoCat === vc.id }"
-                @click="selectVideoCat(vc.id, $event)"
-              >
-                <span class="vid-cat-icon">{{ vc.icon }}</span>
-                {{ vc.label }}
-                <span class="vid-cat-count">{{ vc.count }}</span>
-              </button>
-              <button class="vid-cat-pill pill-muted" type="button" disabled>
-                more content coming soon...
-              </button>
-            </div>
-
-            <div v-if="activeVideoCat === 'travel'" class="vid-video-list">
-              <div v-for="row in activeVideoRows" :key="row[0]?.key || 'travel-row'" class="vid-video-row">
-                <div
-                  v-for="group in row"
-                  :key="group.key"
-                  class="vid-group"
-                  :style="{ gridColumn: `span ${group.span || 1}` }"
+            <div v-if="cat.id === 'video'">
+              <div class="vid-cat-bar">
+                <button
+                  v-for="vc in videoCats"
+                  :key="vc.id"
+                  class="vid-cat-pill"
+                  :class="{ active: activeVideoCat === vc.id }"
+                  @click="selectVideoCat(vc.id, $event)"
                 >
-                  <div class="vid-group-header">
-                    <span class="vid-group-title">{{ group.title }}</span>
-                    <span class="vid-group-meta">{{ group.meta }}</span>
-                  </div>
-                  <div class="vid-grid-dynamic" :style="{ '--group-cols': group.span || 1 }">
-                    <div
-                      v-for="block in group.items"
-                      :key="block.key"
-                      :class="block.shorts ? 'vid-card-short' : 'vid-card-wide'"
-                    >
-                      <div :class="block.shorts ? 'vid-thumb-short' : 'vid-thumb-wide'">
-                        <iframe
-                          :src="ytEmbed(block.id, block.shorts)"
-                          frameborder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowfullscreen
-                        ></iframe>
+                  <span class="vid-cat-icon">{{ vc.icon }}</span>
+                  {{ vc.label }}
+                  <span class="vid-cat-count">{{ vc.count }}</span>
+                </button>
+                <button class="vid-cat-pill pill-muted" type="button" disabled>
+                  more content coming soon...
+                </button>
+              </div>
+
+              <div v-if="activeVideoCat === 'travel'" class="vid-video-list">
+                <div v-for="row in activeVideoRows" :key="row[0]?.key || 'travel-row'" class="vid-video-row">
+                  <div
+                    v-for="group in row"
+                    :key="group.key"
+                    class="vid-group"
+                    :style="{ gridColumn: `span ${group.span || 1}` }"
+                  >
+                    <div class="vid-group-header">
+                      <span class="vid-group-title">{{ group.title }}</span>
+                      <span class="vid-group-meta">{{ group.meta }}</span>
+                    </div>
+                    <div class="vid-grid-dynamic" :style="{ '--group-cols': group.span || 1 }">
+                      <div
+                        v-for="block in group.items"
+                        :key="block.key"
+                        :class="block.shorts ? 'vid-card-short' : 'vid-card-wide'"
+                      >
+                        <div :class="block.shorts ? 'vid-thumb-short' : 'vid-thumb-wide'">
+                          <iframe
+                            :src="ytEmbed(block.id, block.shorts)"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                          ></iframe>
+                        </div>
+                        <div class="vid-card-caption">
+                          <span class="vid-card-label">{{ block.label }}</span>
+                        </div>
                       </div>
-                      <div class="vid-card-caption">
-                        <span class="vid-card-label">{{ block.label }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div v-if="activeVideoCat === 'recaps'" class="vid-video-list">
+                <div v-for="row in activeVideoRows" :key="row[0]?.key || 'recaps-row'" class="vid-video-row">
+                  <div
+                    v-for="group in row"
+                    :key="group.key"
+                    class="vid-group"
+                    :style="{ gridColumn: `span ${group.span || 1}` }"
+                  >
+                    <div class="vid-group-header">
+                      <span class="vid-group-title">{{ group.title }}</span>
+                      <span class="vid-group-meta">{{ group.meta }}</span>
+                    </div>
+                    <div class="vid-grid-dynamic" :style="{ '--group-cols': group.span || 1 }">
+                      <div
+                        v-for="block in group.items"
+                        :key="block.key"
+                        :class="block.shorts ? 'vid-card-short' : 'vid-card-wide'"
+                      >
+                        <div :class="block.shorts ? 'vid-thumb-short' : 'vid-thumb-wide'">
+                          <iframe
+                            :src="ytEmbed(block.id, block.shorts)"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                          ></iframe>
+                        </div>
+                        <div class="vid-card-caption">
+                          <span class="vid-card-label">{{ block.label }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div v-if="activeVideoCat === 'beatsaber'">
+                <div class="vid-bs-grid">
+                  <a
+                    v-for="v in videoBeatSaber"
+                    :key="v.id"
+                    :href="'https://youtube.com/shorts/' + v.id"
+                    target="_blank"
+                    class="vid-bs-card"
+                  >
+                    <div class="vid-bs-thumb">
+                      <img :src="'https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg'" :alt="v.title" loading="lazy" />
+                      <div class="vid-bs-play">▶</div>
+                      <div v-if="v.multi" class="vid-bs-badge">multiplayer</div>
+                    </div>
+                    <div class="vid-bs-info">
+                      <div class="vid-bs-title">{{ v.title }}</div>
+                      <div class="vid-bs-artist">{{ v.artist }}</div>
+                    </div>
+                  </a>
+                </div>
+                <div class="creative-note">// opens on YouTube — 39 clips and counting 🎮</div>
+              </div>
+
+              <div v-if="activeVideoCat === 'tiktoks'" class="vid-video-list">
+                <div v-for="row in activeVideoRows" :key="row[0]?.key || 'tiktoks-row'" class="vid-video-row">
+                  <div
+                    v-for="group in row"
+                    :key="group.key"
+                    class="vid-group"
+                    :style="{ gridColumn: `span ${group.span || 1}` }"
+                  >
+                    <div class="vid-group-header">
+                      <span class="vid-group-title">{{ group.title }}</span>
+                      <span class="vid-group-meta">{{ group.meta }}</span>
+                    </div>
+                    <div class="vid-grid-dynamic" :style="{ '--group-cols': group.span || 1 }">
+                      <div
+                        v-for="block in group.items"
+                        :key="block.key"
+                        :class="block.shorts ? 'vid-card-short' : 'vid-card-wide'"
+                      >
+                        <div :class="block.shorts ? 'vid-thumb-short' : 'vid-thumb-wide'">
+                          <iframe
+                            :src="ytEmbed(block.id, block.shorts)"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                          ></iframe>
+                        </div>
+                        <div class="vid-card-caption">
+                          <span class="vid-card-label">{{ block.label }}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -355,101 +469,7 @@
               </div>
             </div>
 
-            <div v-if="activeVideoCat === 'recaps'" class="vid-video-list">
-              <div v-for="row in activeVideoRows" :key="row[0]?.key || 'recaps-row'" class="vid-video-row">
-                <div
-                  v-for="group in row"
-                  :key="group.key"
-                  class="vid-group"
-                  :style="{ gridColumn: `span ${group.span || 1}` }"
-                >
-                  <div class="vid-group-header">
-                    <span class="vid-group-title">{{ group.title }}</span>
-                    <span class="vid-group-meta">{{ group.meta }}</span>
-                  </div>
-                  <div class="vid-grid-dynamic" :style="{ '--group-cols': group.span || 1 }">
-                    <div
-                      v-for="block in group.items"
-                      :key="block.key"
-                      :class="block.shorts ? 'vid-card-short' : 'vid-card-wide'"
-                    >
-                      <div :class="block.shorts ? 'vid-thumb-short' : 'vid-thumb-wide'">
-                        <iframe
-                          :src="ytEmbed(block.id, block.shorts)"
-                          frameborder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowfullscreen
-                        ></iframe>
-                      </div>
-                      <div class="vid-card-caption">
-                        <span class="vid-card-label">{{ block.label }}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div v-if="activeVideoCat === 'beatsaber'">
-              <div class="vid-bs-grid">
-                <a
-                  v-for="v in videoBeatSaber"
-                  :key="v.id"
-                  :href="'https://youtube.com/shorts/' + v.id"
-                  target="_blank"
-                  class="vid-bs-card"
-                >
-                  <div class="vid-bs-thumb">
-                    <img :src="'https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg'" :alt="v.title" loading="lazy" />
-                    <div class="vid-bs-play">▶</div>
-                    <div v-if="v.multi" class="vid-bs-badge">multiplayer</div>
-                  </div>
-                  <div class="vid-bs-info">
-                    <div class="vid-bs-title">{{ v.title }}</div>
-                    <div class="vid-bs-artist">{{ v.artist }}</div>
-                  </div>
-                </a>
-              </div>
-              <div class="creative-note">// opens on YouTube — 39 clips and counting 🎮</div>
-            </div>
-
-            <div v-if="activeVideoCat === 'tiktoks'" class="vid-video-list">
-              <div v-for="row in activeVideoRows" :key="row[0]?.key || 'tiktoks-row'" class="vid-video-row">
-                <div
-                  v-for="group in row"
-                  :key="group.key"
-                  class="vid-group"
-                  :style="{ gridColumn: `span ${group.span || 1}` }"
-                >
-                  <div class="vid-group-header">
-                    <span class="vid-group-title">{{ group.title }}</span>
-                    <span class="vid-group-meta">{{ group.meta }}</span>
-                  </div>
-                  <div class="vid-grid-dynamic" :style="{ '--group-cols': group.span || 1 }">
-                    <div
-                      v-for="block in group.items"
-                      :key="block.key"
-                      :class="block.shorts ? 'vid-card-short' : 'vid-card-wide'"
-                    >
-                      <div :class="block.shorts ? 'vid-thumb-short' : 'vid-thumb-wide'">
-                        <iframe
-                          :src="ytEmbed(block.id, block.shorts)"
-                          frameborder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowfullscreen
-                        ></iframe>
-                      </div>
-                      <div class="vid-card-caption">
-                        <span class="vid-card-label">{{ block.label }}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="cat.id === 'music'" class="music-player-tab">
+            <div v-if="cat.id === 'music'" class="music-player-tab">
             <div class="music-player">
               <div class="player-bar">
                 <div class="player-now-playing">
@@ -565,6 +585,24 @@
               </div>
             </div>
             <div class="gallery-item add-more-card"><span>{{ appText.moreComing.drawings }}</span></div>
+          </div>
+          </div>
+        </template>
+        <div v-else class="section-loader interests-loader" aria-busy="true" aria-live="polite">
+          <div class="section-loader-copy">
+            <div class="section-loader-kicker">Loading interests section</div>
+            <div class="section-loader-title">Baking clay models, framing photos, creating videos, recording music and drawing cute characters</div>
+            <div class="section-loader-text">Please be patient, I promise it is worth the wait!</div>
+          </div>
+          <div class="section-loader-grid interests-loader-grid">
+            <div v-for="n in 4" :key="`interests-loader-${n}`" class="section-loader-card section-loader-card-wide">
+              <div class="section-loader-thumb section-loader-thumb-tall"></div>
+              <div class="section-loader-line section-loader-line-lg"></div>
+              <div class="section-loader-line"></div>
+              <div class="section-loader-chip-row">
+                <span v-for="chip in 4" :key="chip" class="section-loader-chip"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
