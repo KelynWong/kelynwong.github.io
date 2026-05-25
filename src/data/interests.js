@@ -246,7 +246,7 @@ export const videoTiktoks = [
     items: [
       { id: '0mlSCAp0Uvg', label: 'Fall in Love Again and Again', shorts: true },
       { id: '6GKMaE0-n9s', label: 'HMHAS Visualised - Part 1', shorts: true },
-      { id: '6GKMaE0-n9s', label: 'HMHAS Visualised - Part 2', shorts: true },
+      { id: 'q9ZVBQNwTxw', label: 'HMHAS Visualised - Part 2', shorts: true },
       { id: 'QfsLqKL-UVg', label: 'HMHAS Visualised - Part 3', shorts: true },
       { id: 'LdKmWU92DSI', label: 'Billie Eilish Is…', shorts: true },
     ],
