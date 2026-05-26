@@ -251,8 +251,51 @@ button:focus-visible {
 }
 
 
-/* App styles moved from App.vue */
-/* Core styles from index.html */
+/* Mobile full-bleed projects - make project cards edge-to-edge on small screens */
+@media (max-width: 768px) {
+  /* remove horizontal container padding for the projects section so cards can reach edges */
+  #projects .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* keep the section header and filter row readable by inset padding */
+  #projects .sec-header,
+  #projects .projects-filter-row {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* projects grid stacked; each card expands to viewport width */
+  #projects .projects-grid {
+    display: block;
+    gap: 12px;
+    padding: 0;
+  }
+
+  /* make each card full viewport width and align to the left edge */
+  #projects .projects-grid > * {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  /* ensure image and card have no inner rounding so image is full-bleed */
+  #projects .project-card,
+  #projects .project-image-wrapper {
+    border-radius: 0;
+  }
+
+  /* keep content padded inside the full-bleed card */
+  #projects .project-content,
+  #projects .project-actions {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 #app {
   width: 100%;
 }
