@@ -292,7 +292,8 @@ export default {
   }
 
   .project-image-wrapper {
-    min-height: 180px;
+    aspect-ratio: 4 / 3;
+    min-height: clamp(240px, 58vw, 340px);
     flex: 0 0 auto;
   }
 
