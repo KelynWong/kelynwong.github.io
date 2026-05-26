@@ -298,7 +298,8 @@ export default {
   }
 
   .project-image {
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
   }
 
   .project-content {

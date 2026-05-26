@@ -266,26 +266,24 @@ button:focus-visible {
     padding-right: 16px;
   }
 
-  /* projects grid stacked; each card expands to viewport width */
+  /* projects grid stacked with side gutters and consistent vertical spacing */
   #projects .projects-grid {
-    display: block;
-    gap: 12px;
-    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+    padding: 0 12px;
   }
 
-  /* make each card full viewport width and align to the left edge */
+  /* keep each card inside the mobile gutters */
   #projects .projects-grid > * {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    border-radius: 0;
+    width: 100%;
+    margin: 0;
+    border-radius: 10px;
     overflow: hidden;
   }
 
-  /* ensure image and card have no inner rounding so image is full-bleed */
-  #projects .project-card,
-  #projects .project-image-wrapper {
-    border-radius: 0;
+  #projects .project-card {
+    border-radius: 10px;
   }
 
   /* keep content padded inside the full-bleed card */
