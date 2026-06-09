@@ -38,19 +38,31 @@ import {
 } from './data/index.js'
 
 
-function buildPhotoGroup(id, label, year, count, extOverrides = {}) {
+const photographyImageFiles = import.meta.glob('./assets/images/photography/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
+  eager: true,
+  import: 'default',
+})
+
+function buildPhotoGroup(id, label, year, extOverrides = {}) {
+  const imageEntries = Object.entries(photographyImageFiles)
+    .filter(([filePath]) => filePath.includes(`/photography/${id}/`))
+    .sort((left, right) => {
+      const leftIndex = Number((left[0].match(/\/(\d+)\./) || [])[1] || 0)
+      const rightIndex = Number((right[0].match(/\/(\d+)\./) || [])[1] || 0)
+      return leftIndex - rightIndex
+    })
+
   return {
     id,
     label,
-    items: Array.from({ length: count }, (_, idx) => {
-      const i = idx + 1
-      const ext = extOverrides[i] || 'JPG'
+    items: imageEntries.map(([filePath, img], idx) => {
+      const i = Number((filePath.match(/\/(\d+)\./) || [])[1] || idx + 1)
       return {
         id: i,
         title: `${label} #${i}`,
         location: label,
         year,
-        img: `/src/assets/images/photography/${id}/${i}.${ext}`,
+        img,
       }
     }),
   }
@@ -89,7 +101,7 @@ const appOptions = {
       isNavOpen: false,
       themeMode: 'dark',
 
-      photoGroups: photoGroupDefs.map((d) => buildPhotoGroup(d.id, d.label, d.year, d.count, d.extOverrides || {})),
+      photoGroups: photoGroupDefs.map((d) => buildPhotoGroup(d.id, d.label, d.year, d.extOverrides || {})),
 
       // Form state
       form: { name: '', email: '', message: '' },

@@ -82,13 +82,6 @@ export const drawingItems = [
   { id: 14, title: 'Loch Ness Monster', medium: 'pencil on paper', img: './src/assets/images/drawings/lochness.JPG' },
 ];
 
-export const videoCats = [
-  { id: 'travel',    icon: '', label: 'Travel',      count: 16 },
-  { id: 'recaps',    icon: '', label: 'Year Recaps', count: 14 },
-  { id: 'beatsaber', icon: '', label: 'Beat Saber',  count: 39 },
-  { id: 'tiktoks',   icon: '', label: 'Vlogs & More',count: 17 },
-];
-
 export const videoTravel = [
   {
     title: 'China, Wuxi x Suzhou x Hangzhou x Shanghai',
@@ -298,16 +291,36 @@ export const moreComing = {
   photo: 'more photography coming soon...',
 }
 
+const countVideoItems = (groups) => groups.reduce((total, group) => {
+  if (Array.isArray(group.parts)) return total + group.parts.length
+  if (Array.isArray(group.items)) return total + group.items.length
+  return total
+}, 0)
+
 export const photoGroupDefs = [
-  { id: 'dopamineLand2026', label: 'Dopamine Land', year: 'January 2026', count: 5 },
-  { id: 'christmasWonderland2025', label: 'Christmas Wonderland', year: 'December 2025', count: 45 },
-  { id: 'illumi2024', label: 'Illumi', year: 'October 2024', count: 19, extOverrides: { 4: 'jpg', 6: 'jpg' } },
-  { id: 'sgDesignWeek2025', label: 'SG Design Week', year: 'September 2025', count: 51 },
-  { id: 'balloonMuseum2025', label: 'Balloon Museum', year: 'August 2025', count: 14 },
-  { id: 'sgNightFest2025', label: 'SG Night Fest', year: 'August 2025', count: 38 },
-  { id: 'ilight2025', label: 'i Light Singapore', year: 'May 2025', count: 16 },
-  { id: 'studioGhibli2025', label: 'Studio Ghibli', year: 'January 2025', count: 19 },
-  { id: 'nationalOrchidGarden2024', label: 'National Orchid Garden', year: 'June 2024', count: 19 },
+  { id: 'dopamineLand2026', label: 'Dopamine Land', year: 'January 2026' },
+  { id: 'christmasWonderland2025', label: 'Christmas Wonderland', year: 'December 2025' },
+  { id: 'illumi2024', label: 'Illumi', year: 'October 2024', extOverrides: { 4: 'jpg', 6: 'jpg' } },
+  { id: 'sgDesignWeek2025', label: 'SG Design Week', year: 'September 2025' },
+  { id: 'balloonMuseum2025', label: 'Balloon Museum', year: 'August 2025' },
+  { id: 'sgNightFest2025', label: 'SG Night Fest', year: 'August 2025' },
+  { id: 'ilight2025', label: 'i Light Singapore', year: 'May 2025' },
+  { id: 'studioGhibli2025', label: 'Studio Ghibli', year: 'January 2025' },
+  { id: 'nationalOrchidGarden2024', label: 'National Orchid Garden', year: 'June 2024' },
+]
+
+export const videoCategoryCounts = {
+  travel: countVideoItems(videoTravel),
+  recaps: countVideoItems(videoRecaps),
+  beatsaber: videoBeatSaber.length,
+  tiktoks: countVideoItems(videoTiktoks),
+}
+
+export const videoCats = [
+  { id: 'travel', icon: '', label: 'Travel', count: videoCategoryCounts.travel },
+  { id: 'recaps', icon: '', label: 'Year Recaps', count: videoCategoryCounts.recaps },
+  { id: 'beatsaber', icon: '', label: 'Beat Saber', count: videoCategoryCounts.beatsaber },
+  { id: 'tiktoks', icon: '', label: 'Vlogs & More', count: videoCategoryCounts.tiktoks },
 ]
 
 export const tracks = [

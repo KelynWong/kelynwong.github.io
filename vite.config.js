@@ -20,5 +20,6 @@ function copySourceAssets() {
 
 // https://vite.dev/config/
 export default defineConfig({
+  assetsInclude: ['**/*.jpg', '**/*.JPG', '**/*.jpeg', '**/*.JPEG', '**/*.png', '**/*.PNG', '**/*.webp', '**/*.WEBP'],
   plugins: [vue(), copySourceAssets()],
 })
