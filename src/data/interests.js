@@ -228,6 +228,8 @@ export const videoBeatSaber = [
   { id: '3ZiCwMxIjBI', title: 'Here with Me', artist: 'CHVRCHES & Marshmello' },
   { id: 'MELhToWptcI', title: 'How You Like That', artist: 'BLACKPINK' },
   { id: 'bANHUjfeRAU', title: 'IDOL', artist: 'BTS' },
+  { id: 'VON346LEM5c', title: 'Magic', artist: 'Jaroslav Beck' },
+  { id: '99csx9CEduQ', title: 'Full Charge', artist: 'PIXL' },
 ];
 
 export const videoTiktoks = [
