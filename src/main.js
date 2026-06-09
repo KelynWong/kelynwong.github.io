@@ -111,6 +111,14 @@ const appOptions = {
       // project filtering
       activeProjectFilter: 'all',
       projectCategories: PROJECT_CATEGORY_ORDER,
+      featuredRotationMs: 5000,
+      featuredSideOffsetLeft: '-112%',
+      featuredSideOffsetRight: '12%',
+      featuredSideScale: 0.84,
+      featuredSideOpacity: 0.58,
+      featuredSideBlur: '1.7px',
+      featuredProjectRotationIndex: 0,
+      featuredProjectRotationInterval: null,
       sectionLoadState: {
         projects: false,
         interests: false,
@@ -266,6 +274,43 @@ const appOptions = {
 
       return grouped.filter((group) => group.items.length)
     },
+    featuredProjects() {
+      return this.themedProjects
+        .filter((project) => project.featured)
+        .sort((left, right) => {
+          const leftOrder = left.featuredOrder ?? Number.MAX_SAFE_INTEGER
+          const rightOrder = right.featuredOrder ?? Number.MAX_SAFE_INTEGER
+          return leftOrder - rightOrder
+        })
+        .slice(0, 3)
+    },
+    featuredProjectSlides() {
+      const projects = this.featuredProjects
+      const total = projects.length
+      if (!total) return []
+
+      const activeIndex = this.featuredProjectRotationIndex % total
+
+      return projects.map((project, index) => {
+        const offset = (index - activeIndex + total) % total
+        const position = offset === 0 ? 'center' : offset === 1 ? 'right' : 'left'
+
+        return {
+          project,
+          position,
+          positionClass: `projects-featured-${position}`,
+        }
+      })
+    },
+    featuredCarouselStyle() {
+      return {
+        '--featured-side-left-x': this.featuredSideOffsetLeft,
+        '--featured-side-right-x': this.featuredSideOffsetRight,
+        '--featured-side-scale': this.featuredSideScale,
+        '--featured-side-opacity': this.featuredSideOpacity,
+        '--featured-side-blur': this.featuredSideBlur,
+      }
+    },
     typedHeroVerbTokens() {
       return this.typedHeroVerbs.match(/\S+\s*/g) || []
     },
@@ -387,6 +432,7 @@ const appOptions = {
       document.fonts.ready.then(() => this.fitHeroVerbs())
     }
     this.startHeroTypingSequence()
+    this.startFeaturedProjectRotation()
 
     this.$nextTick(() => this.scrollLyricsToActiveLine())
 
@@ -424,6 +470,7 @@ const appOptions = {
       cancelAnimationFrame(this._lyricsScrollRaf)
       this._lyricsScrollRaf = null
     }
+    this.stopFeaturedProjectRotation()
   },
 
   methods: {
@@ -596,6 +643,22 @@ const appOptions = {
     setProjectFilter(categoryKey) {
       // simple filter assignment — animations handled by transition-group hooks
       this.activeProjectFilter = categoryKey || 'all'
+    },
+
+    startFeaturedProjectRotation() {
+      this.stopFeaturedProjectRotation()
+      if (this.featuredProjects.length <= 1) return
+
+      this.featuredProjectRotationInterval = setInterval(() => {
+        this.featuredProjectRotationIndex = (this.featuredProjectRotationIndex + 1) % this.featuredProjects.length
+      }, this.featuredRotationMs)
+    },
+
+    stopFeaturedProjectRotation() {
+      if (this.featuredProjectRotationInterval) {
+        clearInterval(this.featuredProjectRotationInterval)
+        this.featuredProjectRotationInterval = null
+      }
     },
 
     // transition-group hooks removed — CSS handles enter/leave animations

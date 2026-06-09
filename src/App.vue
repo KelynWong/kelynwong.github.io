@@ -200,6 +200,21 @@
         </div>
         <template v-if="isSectionReady('projects')">
           <div class="projects-groups">
+            <div v-if="featuredProjectSlides.length" class="projects-featured">
+              <div class="projects-featured-carousel" :style="featuredCarouselStyle" aria-label="Featured projects carousel">
+                <div
+                  v-for="slide in featuredProjectSlides"
+                  :key="slide.project.id"
+                  class="projects-featured-slot"
+                  :class="slide.positionClass"
+                >
+                  <ProjectCard
+                    :project="slide.project"
+                    @open-project="activeProject = $event; showProjectModal = true; currentImageIndex = 0; videoVisible = false"
+                  />
+                </div>
+              </div>
+            </div>
             <div class="projects-filter-row">
               <FilterPills
                 :items="projectCategories"

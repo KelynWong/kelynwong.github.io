@@ -283,39 +283,4 @@ export default {
 .proj-view-btn {
   cursor: pointer;
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .project-card {
-    border-radius: calc(var(--radius) - 2px);
-    height: auto;
-  }
-
-  .project-image-wrapper {
-    aspect-ratio: 4 / 3;
-    min-height: clamp(240px, 58vw, 340px);
-    flex: 0 0 auto;
-  }
-
-  .project-image {
-    object-fit: contain;
-    object-position: center;
-  }
-
-  .project-content {
-    flex: 0 0 auto;
-  }
-
-  .project-actions {
-    margin-top: auto;
-  }
-
-  .project-title {
-    font-size: 13px;
-  }
-
-  .project-description {
-    font-size: 11px;
-  }
-}
 </style>
