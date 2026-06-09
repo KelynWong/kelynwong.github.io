@@ -266,6 +266,14 @@ button:focus-visible {
     padding-right: 16px;
   }
 
+  /* give the featured block breathing room under the section header */
+  #projects .projects-featured {
+    margin-top: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
   /* projects grid stacked with side gutters and consistent vertical spacing */
   #projects .projects-grid {
     display: grid;
@@ -560,47 +568,42 @@ section {
 }
 
 @media (max-width: 560px) {
+  .projects-featured {
+    margin-top: 16px;
+  }
+
   .projects-featured-carousel {
-    min-height: clamp(340px, 104vw, 460px);
-    padding-inline: 0;
-    padding-top: 8px;
-    padding-bottom: 18px;
-    --featured-side-left-x: -118%;
-    --featured-side-right-x: 18%;
-    --featured-side-scale: 0.56;
-    --featured-side-opacity: 0.16;
-    --featured-side-blur: 1.4px;
+    min-height: clamp(320px, 92vw, 420px);
+    padding: 0 12px;
     overflow: hidden;
+    --featured-side-left-x: -72%;
+    --featured-side-right-x: 72%;
+    --featured-side-scale: 0.58;
+    --featured-side-opacity: 0.22;
+    --featured-side-blur: 1.1px;
   }
 
   .projects-featured-slot {
-    width: min(82vw, 300px);
+    width: min(72vw, 300px);
     height: auto;
-    top: 52%;
+    top: 50%;
   }
 
   .projects-featured-slot .project-card {
     width: 100%;
-    transform: scale(0.9);
-    transform-origin: center top;
-  }
-
-  .projects-featured-left,
-  .projects-featured-right {
-    pointer-events: none;
-  }
-
-  .projects-featured-left .project-card,
-  .projects-featured-right .project-card {
-    pointer-events: none;
   }
 
   .projects-featured-left {
-    transform: translate(-118%, -50%) scale(0.56);
+    transform: translate(var(--featured-side-left-x), -50%) scale(var(--featured-side-scale));
   }
 
   .projects-featured-right {
-    transform: translate(18%, -50%) scale(0.56);
+    transform: translate(var(--featured-side-right-x), -50%) scale(var(--featured-side-scale));
+  }
+
+  .projects-featured-center {
+    opacity: 1;
+    z-index: 3;
   }
 
   .creative-tabs,
