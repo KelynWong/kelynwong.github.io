@@ -560,6 +560,22 @@ const appOptions = {
       this.applyTheme(this.themeMode === 'dark' ? 'light' : 'dark')
     },
 
+    handleNavLinkClick(href) {
+      this.closeNavMenu()
+
+      if (typeof window === 'undefined' || !href || !href.startsWith('#')) return
+
+      const target = document.querySelector(href)
+      if (!target) return
+
+      const targetTop = window.scrollY + target.getBoundingClientRect().top
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: 'smooth',
+      })
+    },
+
     resolveDomElement(ref) {
       if (!ref) return null
       if (Array.isArray(ref)) return this.resolveDomElement(ref[0])
