@@ -81,6 +81,7 @@ export const drawingItems = [
   { id: 12, title: 'Wolf howling', medium: 'pencil, marker and color on paper', img: './src/assets/images/drawings/wolf.JPG' },
   { id: 13, title: 'Weather icons', medium: 'pencil on paper', img: './src/assets/images/drawings/weather.JPG' },
   { id: 14, title: 'Loch Ness Monster', medium: 'pencil on paper', img: './src/assets/images/drawings/lochness.JPG' },
+  { id: 15, title: 'Get Jinxed', medium: 'markers on whiteboard', img: './src/assets/images/drawings/jinx.jpg' },
 ];
 
 export const videoTravel = [
