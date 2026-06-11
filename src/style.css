@@ -251,57 +251,6 @@ button:focus-visible {
 }
 
 
-/* Mobile full-bleed projects - make project cards edge-to-edge on small screens */
-@media (max-width: 768px) {
-  /* remove horizontal container padding for the projects section so cards can reach edges */
-  #projects .container {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* keep the section header and filter row readable by inset padding */
-  #projects .sec-header,
-  #projects .projects-filter-row {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  /* give the featured block breathing room under the section header */
-  #projects .projects-featured {
-    margin-top: 12px;
-    padding-left: 16px;
-    padding-right: 16px;
-    box-sizing: border-box;
-  }
-
-  /* projects grid stacked with side gutters and consistent vertical spacing */
-  #projects .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 14px;
-    padding: 0 12px;
-  }
-
-  /* keep each card inside the mobile gutters */
-  #projects .projects-grid > * {
-    width: 100%;
-    margin: 0;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  #projects .project-card {
-    border-radius: 10px;
-  }
-
-  /* keep content padded inside the full-bleed card */
-  #projects .project-content,
-  #projects .project-actions {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
 #app {
   width: 100%;
 }
@@ -471,6 +420,11 @@ section {
   .projects-featured-copy {
     max-width: none;
     text-align: left;
+  }
+
+  .projects-featured {
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   .projects-featured-carousel {
