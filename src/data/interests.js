@@ -84,6 +84,14 @@ export const drawingItems = [
 
 export const videoTravel = [
   {
+    title: 'Taiwan, Taichung x Nantou County X Taipei',
+    dates: '29 May - 7 Jun 2026',
+    parts: [
+      { id: 'LvB_WrvZ3O4', label: 'Taichung & Nantou County (part 1)', shorts: true },
+      { id: 'SBaI6mMwPqg', label: 'Taipei (part 2)', shorts: true },
+    ],
+  },
+  {
     title: 'China, Wuxi x Suzhou x Hangzhou x Shanghai',
     dates: '22 Mar - 4 Apr 2026',
     parts: [
