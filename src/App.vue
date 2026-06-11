@@ -304,7 +304,7 @@
                     :alt="item.title"
                     loading="lazy"
                     @load="recordGalleryAspect('clay', item.id, $event)"
-                    @error="handleThemeImageError($event, item.darkImg || item.img)"
+                    @error="handleThemeImageError($event, item.img)"
                   />
                   <div v-else class="gallery-placeholder"><span>🏺</span><span>{{ appText.placeholders.clay }}</span></div>
                 </button>

@@ -3,10 +3,6 @@ const LIGHT_RULES = {
     dark: '/src/assets/images/logo.png',
     light: '/src/assets/images/light/logo.png',
   },
-  clay: {
-    darkSegment: '/images/clay/',
-    lightSegment: '/images/clay/light/',
-  },
   projectCover: {
     darkSegment: '/projects/cover/',
     lightSegment: '/projects/cover/light/',
@@ -18,12 +14,6 @@ export function toLightAsset(path, type) {
 
   if (type === 'logo') {
     return path === LIGHT_RULES.logo.light ? path : LIGHT_RULES.logo.light
-  }
-
-  if (type === 'clay') {
-    return path.includes(LIGHT_RULES.clay.lightSegment)
-      ? path
-      : path.replace(LIGHT_RULES.clay.darkSegment, LIGHT_RULES.clay.lightSegment)
   }
 
   if (type === 'projectCover') {
@@ -40,7 +30,6 @@ export function toDarkAsset(path) {
 
   return path
     .replace(LIGHT_RULES.logo.light, LIGHT_RULES.logo.dark)
-    .replace(LIGHT_RULES.clay.lightSegment, LIGHT_RULES.clay.darkSegment)
     .replace(LIGHT_RULES.projectCover.lightSegment, LIGHT_RULES.projectCover.darkSegment)
 }
 

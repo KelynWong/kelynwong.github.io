@@ -191,14 +191,7 @@ const appOptions = {
     },
 
     clayItemsForTheme() {
-      return this.clayItems.map((item) => {
-        if (!item || !item.img) return item
-        return {
-          ...item,
-          darkImg: item.img,
-          img: themedAsset(item.img, this.themeMode, 'clay'),
-        }
-      })
+      return this.clayItems
     },
 
     themedProjects() {
