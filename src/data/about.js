@@ -3,6 +3,7 @@ export const navLinks = [
   { href: '#work', label: '_Work' },
   { href: '#education', label: '_Education' },
   { href: '#projects', label: '_Projects' },
+  { href: '#featured', label: '_Featured' },
   { href: '#interests', label: '_Interests' },
   { href: '#contact', label: '_Contact' },
 ]
@@ -12,6 +13,7 @@ export const sectionTitles = {
   work: '_Work Experience',
   education: '_My Education',
   projects: '_Projects',
+  featured: '_Featured In',
   interests: '_Other Interests',
   contact: '_Contact Me',
 }

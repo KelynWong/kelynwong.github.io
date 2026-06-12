@@ -744,8 +744,8 @@ export default {
           spherical.radius = Math.max(3, Math.min(12, spherical.radius - (d - lastTouchDist) * 0.02))
           lastTouchDist = d
           updateCamera()
+          e.preventDefault()
         }
-        e.preventDefault()
       }
 
       let idleTimer = null
@@ -971,7 +971,7 @@ export default {
   height: 100%;
   display: block;
   cursor: grab;
-  touch-action: none;
+  touch-action: pan-y;
   -webkit-touch-callout: none;
   user-select: none;
 }

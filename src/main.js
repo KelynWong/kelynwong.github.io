@@ -35,6 +35,8 @@ import {
   moreComing,
   contact,
   form,
+  featuredPosts,
+  featuredIntro,
 } from './data/index.js'
 
 
@@ -93,6 +95,12 @@ const appOptions = {
       videoTiktoks,
       interestsIntro,
       projects,
+      featuredPosts,
+      featuredIntro,
+
+      featuredScrollPaused: false,
+      featuredScrollRaf: null,
+      featuredNeedsToggle: {},
 
       // UI state
       activeCat: 'clay',
@@ -428,16 +436,27 @@ const appOptions = {
         this.isNavOpen = false
       }
     }
+    this._featuredResizeHandler = () => {
+      this.syncFeaturedHeight()
+      this.checkFeaturedOverflow()
+    }
     this._galleryKeyHandler = (event) => this.handleGalleryKeydown(event)
     window.addEventListener('resize', this._heroResizeHandler)
     window.addEventListener('resize', this._navResizeHandler)
+    window.addEventListener('resize', this._featuredResizeHandler)
     window.addEventListener('scroll', this._socialScrollHandler, { passive: true })
     window.addEventListener('keydown', this._galleryKeyHandler)
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => this.fitHeroVerbs())
+      document.fonts.ready.then(() => {
+        this.fitHeroVerbs()
+        this.checkFeaturedOverflow()
+      })
     }
     this.startHeroTypingSequence()
     this.startFeaturedProjectRotation()
+    this.startFeaturedScroll()
+    this.setupFeaturedHeightSync()
+    this.checkFeaturedOverflow()
 
     this.$nextTick(() => this.scrollLyricsToActiveLine())
 
@@ -450,6 +469,10 @@ const appOptions = {
     currentTrackIdx() {
       this.$nextTick(() => this.scrollLyricsToActiveLine())
     },
+    'sectionLoadState.projects'(ready) {
+      // the featured carousel only mounts once the projects section loads in
+      if (ready) this.setupFeaturedHeightSync()
+    },
   },
 
   beforeUnmount() {
@@ -458,6 +481,13 @@ const appOptions = {
     }
     if (this._navResizeHandler) {
       window.removeEventListener('resize', this._navResizeHandler)
+    }
+    if (this._featuredResizeHandler) {
+      window.removeEventListener('resize', this._featuredResizeHandler)
+    }
+    if (this.featuredHeightObserver) {
+      this.featuredHeightObserver.disconnect()
+      this.featuredHeightObserver = null
     }
     if (this._socialScrollHandler) {
       window.removeEventListener('scroll', this._socialScrollHandler)
@@ -476,9 +506,113 @@ const appOptions = {
       this._lyricsScrollRaf = null
     }
     this.stopFeaturedProjectRotation()
+    this.stopFeaturedScroll()
   },
 
   methods: {
+    // Keep the (absolutely-positioned) featured carousel as tall as its tallest
+    // card so the gap to the filter tabs is consistent and nothing overlaps,
+    // without a viewport-based min-height that mismatches the actual content.
+    syncFeaturedHeight() {
+      const carousel = this.resolveDomElement(this.$refs.featuredProjectCarousel)
+      if (!carousel) return
+      const slots = carousel.querySelectorAll('.projects-featured-slot')
+      let tallest = 0
+      slots.forEach((slot) => {
+        // offsetHeight ignores the scale() transform, so it's the real card height
+        tallest = Math.max(tallest, slot.offsetHeight)
+      })
+      if (tallest > 0) {
+        carousel.style.minHeight = `${Math.ceil(tallest)}px`
+      }
+    },
+
+    setupFeaturedHeightSync() {
+      this.$nextTick(() => {
+        const carousel = this.resolveDomElement(this.$refs.featuredProjectCarousel)
+        if (!carousel) return
+
+        this.syncFeaturedHeight()
+
+        if (typeof ResizeObserver !== 'undefined') {
+          if (this.featuredHeightObserver) this.featuredHeightObserver.disconnect()
+          this.featuredHeightObserver = new ResizeObserver(() => this.syncFeaturedHeight())
+          carousel.querySelectorAll('.projects-featured-slot').forEach((slot) => {
+            this.featuredHeightObserver.observe(slot)
+          })
+        }
+      })
+    },
+
+    // Render the LinkedIn post text safely: escape HTML, then style hashtags and
+    // links and preserve line breaks.
+    formatPostText(text) {
+      const escaped = this.escapeHtml(text || '')
+      return escaped
+        .replace(
+          /(https?:\/\/[^\s]+)/g,
+          '<a href="$1" target="_blank" rel="noreferrer noopener" class="li-inline-link">$1</a>'
+        )
+        .replace(/(^|\s)(#[\w]+)/g, '$1<span class="li-tag">$2</span>')
+    },
+
+    // Only show the "…more" indicator on cards whose text actually overflows the
+    // clamped height (so short posts don't get a pointless indicator).
+    checkFeaturedOverflow() {
+      this.$nextTick(() => {
+        const refs = this.$refs.featuredText
+        if (!refs) return
+        const nodes = Array.isArray(refs) ? refs : [refs]
+        const needs = {}
+        nodes.forEach((node) => {
+          if (!node) return
+          needs[node.dataset.postId] = node.scrollHeight - node.clientHeight > 4
+        })
+        this.featuredNeedsToggle = needs
+      })
+    },
+
+    startFeaturedScroll() {
+      this.stopFeaturedScroll()
+      if (typeof window === 'undefined' || !window.requestAnimationFrame) return
+
+      const step = () => {
+        const track = this.resolveDomElement(this.$refs.featuredScroll)
+        if (track && !this.featuredScrollPaused) {
+          const max = track.scrollWidth - track.clientWidth
+          if (max > 0) {
+            // gentle continuous drift; wrap back to the start at the end
+            track.scrollLeft = track.scrollLeft >= max - 0.5 ? 0 : track.scrollLeft + 0.5
+          }
+        }
+        this.featuredScrollRaf = window.requestAnimationFrame(step)
+      }
+
+      this.featuredScrollRaf = window.requestAnimationFrame(step)
+    },
+
+    stopFeaturedScroll() {
+      if (this.featuredScrollRaf) {
+        cancelAnimationFrame(this.featuredScrollRaf)
+        this.featuredScrollRaf = null
+      }
+    },
+
+    pauseFeaturedScroll() {
+      this.featuredScrollPaused = true
+    },
+
+    resumeFeaturedScroll() {
+      this.featuredScrollPaused = false
+    },
+
+    scrollFeatured(direction) {
+      const track = this.resolveDomElement(this.$refs.featuredScroll)
+      if (!track) return
+      const amount = Math.max(280, track.clientWidth * 0.8)
+      track.scrollBy({ left: direction * amount, behavior: 'smooth' })
+    },
+
     fallbackToDarkAsset(path) {
       return toDarkAsset(path)
     },
