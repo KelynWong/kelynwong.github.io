@@ -39,7 +39,7 @@
     </div>
 
     <!-- Action Links -->
-    <div class="project-actions">
+    <div v-if="hasActions" class="project-actions">
       <a
         v-if="project.links?.github"
         :href="project.links.github"
@@ -48,8 +48,13 @@
         rel="noopener noreferrer"
         :aria-label="`GitHub repo for ${project.title}`"
       >
-        GitHub ↗
+        <span class="link-text">GitHub</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
       </a>
+
       <a
         v-if="project.links?.live"
         :href="project.links.live"
@@ -58,8 +63,13 @@
         rel="noopener noreferrer"
         :aria-label="`Live demo for ${project.title}`"
       >
-        Live ↗
+        <span class="link-text">Live</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
       </a>
+
       <a
         v-if="project.links?.figma"
         :href="project.links.figma"
@@ -68,8 +78,13 @@
         rel="noopener noreferrer"
         :aria-label="`Figma for ${project.title}`"
       >
-        Figma ↗
+        <span class="link-text">Figma</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
       </a>
+
       <a
         v-if="project.links?.prototype"
         :href="project.links.prototype"
@@ -78,15 +93,24 @@
         rel="noopener noreferrer"
         :aria-label="`Prototype for ${project.title}`"
       >
-        Prototype ↗
+        <span class="link-text">Prototype</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
       </a>
+
       <button
         v-if="hasDemos(project)"
         @click="$emit('open-project', project)"
         class="proj-link proj-view-btn"
         :aria-label="`Open demo${getDemoCount(project) > 1 ? 's' : ''} for ${project.title}`"
       >
-        {{ getDemoCount(project) > 1 ? `Demos (${getDemoCount(project)})` : 'Demo' }} ↗
+        <span class="link-text">{{ getDemoCount(project) > 1 ? `Demos (${getDemoCount(project)})` : 'Demo' }}</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
       </button>
     </div>
   </article>
@@ -107,6 +131,14 @@ export default {
     },
   },
   emits: ['open-project'],
+  computed: {
+    hasActions() {
+      const links = this.project.links || {};
+      return Boolean(
+        links.github || links.live || links.figma || links.prototype || this.hasDemos(this.project)
+      );
+    },
+  },
   methods: {
     truncate(text, length) {
       if (!text) return '';
@@ -265,6 +297,10 @@ export default {
 }
 
 .proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
   color: var(--text-faint);
   text-decoration: none;
   font-size: 10px;
@@ -278,6 +314,10 @@ export default {
 
 .proj-link:hover {
   color: var(--accent1);
+}
+
+.external-icon {
+  flex-shrink: 0;
 }
 
 .proj-view-btn {

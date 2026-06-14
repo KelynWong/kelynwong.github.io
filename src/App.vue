@@ -320,7 +320,12 @@
                   <span class="li-react" aria-hidden="true">{{ post.reactions }} {{ post.platform === 'instagram' ? 'likes' : 'reactions' }}</span>
                   <template v-if="post.comments"> · {{ post.comments }} comment{{ post.comments === 1 ? '' : 's' }}</template>
                 </span>
-                <a :href="post.url" target="_blank" rel="noreferrer noopener" class="li-link">View on {{ post.platform === 'instagram' ? 'Instagram' : 'LinkedIn' }} ↗</a>
+                <a :href="post.url" target="_blank" rel="noreferrer noopener" class="li-link">View on {{ post.platform === 'instagram' ? 'Instagram' : 'LinkedIn' }} 
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
               </footer>
             </article>
           </div>

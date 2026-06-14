@@ -2908,11 +2908,19 @@ section {
 .li-react { font-size: var(--fs-2xs); }
 
 .li-link {
+  /* flex row keeps the "View on …" label and the arrow icon on the same line */
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   font-size: var(--fs-3xs);
   font-weight: 600;
   color: var(--accent1);
   text-decoration: none;
   white-space: nowrap;
+}
+
+.li-link .external-icon {
+  flex-shrink: 0;
 }
 
 .li-link:hover { text-decoration: underline; }
