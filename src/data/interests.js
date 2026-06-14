@@ -279,6 +279,7 @@ export const videoTiktoks = [
       { id: 'mb7DvAs-7Ws', label: 'The art of noticing', shorts: true },
       { id: 'Tt9xqrDCtqE', label: 'Why\'d you take your camera everywhere you go?', shorts: true },
       { id: 'tVk1dgNM56s', label: 'Might as well get the whole set', shorts: true },
+      { id: 'WspJ30aYNj4', label: 'Sorry I cannot hear you, I\'m kinda busy', shorts: true },
     ],
   },
 ];
