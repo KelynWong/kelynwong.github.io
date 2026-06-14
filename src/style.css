@@ -3160,9 +3160,9 @@ section {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .track {
-    grid-template-columns: auto minmax(0, 1.5fr) minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 2fr) minmax(0, 1fr) auto;
     gap: 8px 10px;
     padding: 10px 12px;
   }
@@ -3188,5 +3188,9 @@ section {
   .track-tag {
     padding: 2px 6px;
     font-size: 9px;
+    /* let a long genre name wrap inside its pill instead of overflowing into
+       the title column */
+    white-space: normal;
+    overflow-wrap: break-word;
   }
 }
