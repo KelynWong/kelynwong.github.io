@@ -3107,20 +3107,23 @@ section {
   .job-header {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 12px;
-    align-items: start;
+    grid-template-areas:
+      "dots dots"
+      "name date";
+    gap: 8px 12px;
+    align-items: center;
   }
 
   .job-header-left {
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    display: contents;
+  }
+
+  .job-dots {
+    grid-area: dots;
   }
 
   .job-filename {
-    display: block;
+    grid-area: name;
     min-width: 0;
     white-space: normal;
     overflow-wrap: anywhere;
@@ -3128,11 +3131,10 @@ section {
   }
 
   .job-date {
+    grid-area: date;
     justify-self: end;
     text-align: right;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    padding-top: 1px;
+    white-space: nowrap;
   }
 
   .about-grid,
@@ -3160,8 +3162,6 @@ section {
 
 @media (max-width: 600px) {
   .track {
-    /* name/detail keeps the larger share; genres take a smaller proportional
-       share (both shrink together, so genres never overflow into the name) */
     grid-template-columns: auto minmax(0, 1.5fr) minmax(0, 1fr) auto;
     gap: 8px 10px;
     padding: 10px 12px;
