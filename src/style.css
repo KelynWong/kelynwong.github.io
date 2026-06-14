@@ -89,6 +89,49 @@ body {
 
 ::selection { background: var(--accent2); color: #fff; }
 
+/* Scroll-reveal: blocks fade + slide up as they enter the viewport (via v-reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* directional variants (defined before .is-visible so it can reset them) */
+.reveal.reveal-left {
+  transform: translateX(-32px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(32px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* When a section header reveals, sweep its divider line in */
+.sec-header.reveal .sec-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s;
+}
+
+.sec-header.reveal.is-visible .sec-line {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .sec-header.reveal .sec-line {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 
@@ -321,6 +364,61 @@ nav {
 .nav-theme-toggle:hover {
   border-color: var(--accent1);
   color: var(--accent1);
+}
+
+/* Sun <-> moon morph (no glyph swap): a mask circle "bites" the disc into a
+   crescent and the rays retract. Keyed on data-theme; default = moon (dark). */
+.theme-toggle-icon {
+  display: block;
+  overflow: visible;
+}
+
+.theme-toggle-core,
+.theme-toggle-cutout,
+.theme-toggle-rays {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.45s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+
+.theme-toggle-rays {
+  transition: transform 0.45s cubic-bezier(0.25, 0.6, 0.3, 1), opacity 0.3s ease;
+}
+
+/* default (no/declared dark) = moon */
+.theme-toggle-cutout {
+  transform: scale(1);
+}
+
+.theme-toggle-rays {
+  transform: scale(0.5) rotate(40deg);
+  opacity: 0;
+}
+
+.theme-toggle-core {
+  transform: scale(1.05);
+}
+
+/* light = full sun with rays */
+:root[data-theme='light'] .theme-toggle-cutout {
+  transform: scale(0);
+}
+
+:root[data-theme='light'] .theme-toggle-rays {
+  transform: none;
+  opacity: 1;
+}
+
+:root[data-theme='light'] .theme-toggle-core {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-core,
+  .theme-toggle-cutout,
+  .theme-toggle-rays {
+    transition: none;
+  }
 }
 
 .nav-toggle {
@@ -926,6 +1024,26 @@ section {
   transform: translateY(15px);
 }
 
+/* "Draw" the hand-drawn arrow toward the 3D model on load */
+.annotation-arrow path {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: drawArrow 1.1s ease forwards 0.9s;
+}
+
+@keyframes drawArrow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .annotation-arrow path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
 .hero-3d-hint {
   position: absolute;
   bottom: 24px;
@@ -1379,18 +1497,34 @@ section {
   border-bottom: 1px solid var(--border);
 }
 
-/* Transition-group CSS for projects staggered-ish reveal (no GSAP) */
+/* Project cards "focus in": scale up + un-blur (distinct from the page's fade-up).
+   Drives both the initial appear (transition-group `appear`) and filter changes. */
 .projects-enter-active,
+.projects-appear-active,
 .projects-leave-active {
-  transition: opacity 0.36s ease, transform 0.36s ease;
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter 0.5s ease;
 }
-.projects-enter-from {
+.projects-enter-from,
+.projects-appear-from {
   opacity: 0;
-  transform: translateY(12px) scale(0.995);
+  transform: scale(0.9) translateY(16px);
+  filter: blur(6px);
 }
 .projects-leave-to {
   opacity: 0;
-  transform: translateY(-8px) scale(0.98);
+  transform: scale(0.96);
+  filter: blur(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-enter-from,
+  .projects-appear-from,
+  .projects-leave-to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 
 /* lightweight stagger using nth-child delays (up to 12 items) */

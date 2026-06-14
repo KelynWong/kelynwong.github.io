@@ -6,7 +6,23 @@
         <a v-for="link in appText.navLinks" :key="link.href" :href="link.href" @click.prevent="handleNavLinkClick(link.href)">{{ link.label }}</a>
       </div>
       <button class="nav-theme-toggle" type="button" @click="toggleTheme" :aria-label="themeMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
-        <span aria-hidden="true">{{ themeMode === 'dark' ? '☾' : '☀' }}</span>
+        <svg class="theme-toggle-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <mask id="themeToggleMask">
+            <rect x="0" y="0" width="24" height="24" fill="white" />
+            <circle class="theme-toggle-cutout" cx="17" cy="11" r="6" fill="black" />
+          </mask>
+          <circle class="theme-toggle-core" cx="12" cy="12" r="6" fill="currentColor" mask="url(#themeToggleMask)" />
+          <g class="theme-toggle-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="12" y1="1.5" x2="12" y2="3.5" />
+            <line x1="12" y1="20.5" x2="12" y2="22.5" />
+            <line x1="3.5" y1="3.5" x2="4.9" y2="4.9" />
+            <line x1="19.1" y1="19.1" x2="20.5" y2="20.5" />
+            <line x1="1.5" y1="12" x2="3.5" y2="12" />
+            <line x1="20.5" y1="12" x2="22.5" y2="12" />
+            <line x1="3.5" y1="20.5" x2="4.9" y2="19.1" />
+            <line x1="19.1" y1="4.9" x2="20.5" y2="3.5" />
+          </g>
+        </svg>
       </button>
       <button class="nav-toggle" type="button" @click="isNavOpen = !isNavOpen" :aria-expanded="isNavOpen" aria-label="Toggle navigation menu">
         <span></span>
@@ -80,18 +96,18 @@
 
     <section id="about" class="section">
       <div class="container">
-        <div class="sec-header">
+        <div class="sec-header" v-reveal>
           <span class="sec-prefix">01.</span>
           <span class="sec-title">{{ appText.sectionTitles.about }}</span>
           <div class="sec-line"></div>
         </div>
         <div class="about-grid">
-            <div class="about-text">
+            <div class="about-text" v-reveal>
               <p v-for="(p, idx) in appText.aboutParagraphs" :key="idx" v-html="p"></p>
             </div>
           <div class="skills-block">
-            <div class="skills-label">{{ appText.skillsLabel }}</div>
-            <div v-for="group in skillGroups" :key="group.name" class="skill-group">
+            <div class="skills-label" v-reveal>{{ appText.skillsLabel }}</div>
+            <div v-for="(group, idx) in skillGroups" :key="group.name" class="skill-group" v-reveal="{ delay: idx * 90 }">
               <div class="skill-group-name">{{ group.name }}</div>
               <div class="skill-chips">
                 <span v-for="skill in group.skills" :key="skill.name" :class="['chip', skill.color]">
@@ -106,12 +122,12 @@
 
     <section id="work" class="section">
       <div class="container">
-        <div class="sec-header">
+        <div class="sec-header" v-reveal>
           <span class="sec-prefix">02.</span>
           <span class="sec-title">{{ appText.sectionTitles.work }}</span>
           <div class="sec-line"></div>
         </div>
-        <div v-for="job in jobs" :key="job.filename" class="job-block">
+        <div v-for="job in jobs" :key="job.filename" class="job-block" v-reveal>
           <div class="job-header">
             <div class="job-header-left">
               <div class="job-dots">
@@ -135,13 +151,13 @@
 
     <section id="education" class="section">
       <div class="container">
-        <div class="sec-header">
+        <div class="sec-header" v-reveal>
           <span class="sec-prefix">03.</span>
           <span class="sec-title">{{ appText.sectionTitles.education }}</span>
           <div class="sec-line"></div>
         </div>
         <div class="edu-items">
-          <div v-for="edu in education" :key="edu.school" class="edu-card">
+          <div v-for="(edu, idx) in education" :key="edu.school" class="edu-card" v-reveal="{ delay: idx * 110 }">
             <div class="edu-card-header">
               <div class="edu-tab-bar">
                 <div class="edu-tab edu-tab-active">{{ edu.tabName }}</div>
@@ -193,7 +209,7 @@
     <!-- Projects Section -->
     <section id="projects" class="section" data-load-section="projects">
       <div class="container">
-        <div class="sec-header">
+        <div class="sec-header" v-reveal>
           <span class="sec-prefix">04.</span>
           <span class="sec-title">{{ appText.sectionTitles.projects }}</span>
           <div class="sec-line"></div>
@@ -230,7 +246,7 @@
                 <div class="projects-group-title">{{ group.label }}</div>
                 <div class="projects-group-count">{{ group.items.length }} project{{ group.items.length === 1 ? '' : 's' }}</div>
               </div>
-              <transition-group name="projects" tag="div" class="projects-grid">
+              <transition-group name="projects" tag="div" class="projects-grid" appear>
                 <ProjectCard
                   v-for="proj in group.items"
                   :key="proj.id"
@@ -264,7 +280,7 @@
     <!-- Featured / LinkedIn Section -->
     <section id="featured" class="section">
       <div class="container">
-        <div class="sec-header">
+        <div class="sec-header" v-reveal>
           <span class="sec-prefix">05.</span>
           <span class="sec-title">{{ appText.sectionTitles.featured }}</span>
           <div class="sec-line"></div>
@@ -336,7 +352,7 @@
     <!-- Interests Section -->
     <section id="interests" class="section" data-load-section="interests">
       <div class="container">
-        <div class="sec-header">
+        <div class="sec-header" v-reveal>
           <span class="sec-prefix">06.</span>
           <span class="sec-title">{{ appText.sectionTitles.interests }}</span>
           <div class="sec-line"></div>
@@ -727,13 +743,13 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
       <div class="container">
-        <div class="sec-header">
+        <div class="sec-header" v-reveal>
           <span class="sec-prefix">07.</span>
           <span class="sec-title">{{ appText.sectionTitles.contact }}</span>
           <div class="sec-line"></div>
         </div>
         <div class="contact-grid">
-          <div>
+          <div v-reveal.left>
             <h2 class="contact-heading">{{ appText.contact.headingPrefix }} <span class="hl">{{ appText.contact.headingHighlight }}</span></h2>
             <p class="contact-sub">{{ appText.contact.sub }}</p>
             <div class="contact-links">
@@ -766,7 +782,7 @@
               </a>
             </div>
           </div>
-          <form class="contact-form-block" @submit.prevent="submitForm">
+          <form class="contact-form-block" @submit.prevent="submitForm" v-reveal.right>
             <div class="form-title">{{ appText.form.title }}</div>
             <div class="form-field">
               <label>{{ appText.form.nameLabel }}</label>
@@ -842,7 +858,7 @@
     </div>
 
     <section class="kofi-support" aria-label="Support section">
-      <div class="container kofi-support-inner">
+      <div class="container kofi-support-inner" v-reveal>
         <h3 class="kofi-support-heading">
           You scrolled this far, RESPECT! Enjoyed the website? Help fund my AI token usage :)
         </h3>
