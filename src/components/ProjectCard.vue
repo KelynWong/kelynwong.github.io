@@ -49,10 +49,7 @@
         :aria-label="`GitHub repo for ${project.title}`"
       >
         <span class="link-text">GitHub</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
+        <ExternalLinkIcon />
       </a>
 
       <a
@@ -64,10 +61,7 @@
         :aria-label="`Live demo for ${project.title}`"
       >
         <span class="link-text">Live</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
+        <ExternalLinkIcon />
       </a>
 
       <a
@@ -79,10 +73,7 @@
         :aria-label="`Figma for ${project.title}`"
       >
         <span class="link-text">Figma</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
+        <ExternalLinkIcon />
       </a>
 
       <a
@@ -94,10 +85,7 @@
         :aria-label="`Prototype for ${project.title}`"
       >
         <span class="link-text">Prototype</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
+        <ExternalLinkIcon />
       </a>
 
       <button
@@ -107,10 +95,7 @@
         :aria-label="`Open demo${getDemoCount(project) > 1 ? 's' : ''} for ${project.title}`"
       >
         <span class="link-text">{{ getDemoCount(project) > 1 ? `Demos (${getDemoCount(project)})` : 'Demo' }}</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
+        <ExternalLinkIcon />
       </button>
     </div>
   </article>
@@ -118,9 +103,11 @@
 
 <script>
 import { toDarkAsset } from '../utils/themeAssets.js'
+import ExternalLinkIcon from './ExternalLinkIcon.vue'
 
 export default {
   name: 'ProjectCard',
+  components: { ExternalLinkIcon },
   props: {
     project: {
       type: Object,

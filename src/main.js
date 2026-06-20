@@ -3,6 +3,11 @@ import ProjectModal from './components/ProjectModal.vue'
 import ThreeJSModel from './components/ThreeJSModel.vue'
 import Footer from './components/Footer.vue'
 import FilterPills from './components/FilterPills.vue'
+import SectionHeader from './components/SectionHeader.vue'
+import ExternalLinkIcon from './components/ExternalLinkIcon.vue'
+import VideoRowList from './components/VideoRowList.vue'
+import GalleryGrid from './components/GalleryGrid.vue'
+import BrandIcon from './components/BrandIcon.vue'
 import { themedAsset, toDarkAsset } from './utils/themeAssets.js'
 import {
   skillGroups,
@@ -78,47 +83,11 @@ const appOptions = {
     ThreeJSModel,
     Footer,
     FilterPills,
-  },
-  directives: {
-    reveal: {
-      mounted(el, binding) {
-        const reduceMotion =
-          typeof window !== 'undefined' &&
-          window.matchMedia &&
-          window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-        if (reduceMotion || typeof IntersectionObserver === 'undefined') {
-          el.classList.add('reveal', 'is-visible')
-          return
-        }
-
-        el.classList.add('reveal')
-        if (binding.modifiers.left) el.classList.add('reveal-left')
-        if (binding.modifiers.right) el.classList.add('reveal-right')
-        const delay = binding.value && binding.value.delay
-        if (delay) el.style.transitionDelay = `${delay}ms`
-
-        const observer = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible')
-                obs.unobserve(entry.target)
-              }
-            })
-          },
-          { threshold: 0, rootMargin: '0px 0px -10% 0px' }
-        )
-        observer.observe(el)
-        el._revealObserver = observer
-      },
-      unmounted(el) {
-        if (el._revealObserver) {
-          el._revealObserver.disconnect()
-          el._revealObserver = null
-        }
-      },
-    },
+    SectionHeader,
+    ExternalLinkIcon,
+    VideoRowList,
+    GalleryGrid,
+    BrandIcon,
   },
   data() {
     return {
@@ -145,7 +114,7 @@ const appOptions = {
 
       // UI state
       activeCat: 'clay',
-      activePhotoPlace: 'dopamineLand2026',
+      activePhotoPlace: 'ilight2026',
       activeVideoCat: 'travel',
       isNavOpen: false,
       themeMode: 'dark',
@@ -800,16 +769,6 @@ const appOptions = {
       this.isNavOpen = false
     },
 
-    galleryImageStyle(section, itemId) {
-      const ratio = this.galleryAspects?.[section]?.[itemId]
-      return ratio ? { '--gallery-aspect': ratio } : null
-    },
-
-    isGalleryLandscape(section, itemId) {
-      const ratio = this.galleryAspects?.[section]?.[itemId]
-      return typeof ratio === 'number' && ratio > 1.15
-    },
-
     recordGalleryAspect(section, itemId, event) {
       const image = event?.target
       if (!image || !image.naturalWidth || !image.naturalHeight) return
@@ -1120,9 +1079,6 @@ const appOptions = {
       this.toast.show = false
     },
 
-    ytEmbed(id) {
-      return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`
-    },
 
     async submitForm() {
       const name = this.form.name.trim()
