@@ -309,13 +309,14 @@ const countVideoItems = (groups) => groups.reduce((total, group) => {
 }, 0)
 
 export const photoGroupDefs = [
+  { id: 'ilight2026', label: 'Ilight 2026', year: 'June 2026' },
   { id: 'dopamineLand2026', label: 'Dopamine Land', year: 'January 2026' },
   { id: 'christmasWonderland2025', label: 'Christmas Wonderland', year: 'December 2025' },
   { id: 'illumi2024', label: 'Illumi', year: 'October 2024', extOverrides: { 4: 'jpg', 6: 'jpg' } },
   { id: 'sgDesignWeek2025', label: 'SG Design Week', year: 'September 2025' },
   { id: 'balloonMuseum2025', label: 'Balloon Museum', year: 'August 2025' },
   { id: 'sgNightFest2025', label: 'SG Night Fest', year: 'August 2025' },
-  { id: 'ilight2025', label: 'i Light Singapore', year: 'May 2025' },
+  { id: 'ilight2025', label: 'Ilight 2025', year: 'May 2025' },
   { id: 'studioGhibli2025', label: 'Studio Ghibli', year: 'January 2025' },
   { id: 'nationalOrchidGarden2024', label: 'National Orchid Garden', year: 'June 2024' },
 ]
