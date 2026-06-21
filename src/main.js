@@ -8,6 +8,7 @@ import ExternalLinkIcon from './components/ExternalLinkIcon.vue'
 import VideoRowList from './components/VideoRowList.vue'
 import GalleryGrid from './components/GalleryGrid.vue'
 import BrandIcon from './components/BrandIcon.vue'
+import RevealText from './components/RevealText.vue'
 import { themedAsset, toDarkAsset } from './utils/themeAssets.js'
 import {
   skillGroups,
@@ -88,6 +89,7 @@ const appOptions = {
     VideoRowList,
     GalleryGrid,
     BrandIcon,
+    RevealText,
   },
   data() {
     return {
@@ -114,6 +116,10 @@ const appOptions = {
 
       // UI state
       activeCat: 'clay',
+      // direction of the interests tab slide ('forward' = clicked tab is to the right)
+      tabSlideForward: true,
+      // gate the project grid so its cards pop in when scrolled into view
+      projectsGridReady: false,
       activePhotoPlace: 'ilight2026',
       activeVideoCat: 'travel',
       isNavOpen: false,
@@ -200,6 +206,17 @@ const appOptions = {
   },
 
   computed: {
+    tabSlideName() {
+      return this.tabSlideForward ? 'tab-fwd' : 'tab-back'
+    },
+
+    // delay para 2's word reveal until para 1 has finished (para 1 stagger 35ms
+    // per word + ~0.5s word animation)
+    interestsPara2Delay() {
+      const words = (this.interestsIntro.para1 || '').split(/\s+/).filter(Boolean).length
+      return words * 35 + 450
+    },
+
     logoDarkSrc() {
       return '/src/assets/images/logo.png'
     },
@@ -480,8 +497,11 @@ const appOptions = {
       this.$nextTick(() => this.scrollLyricsToActiveLine())
     },
     'sectionLoadState.projects'(ready) {
-      // the featured carousel only mounts once the projects section loads in
-      if (ready) this.setupFeaturedHeightSync()
+      // the featured carousel + grid only mount once the projects section loads in
+      if (ready) {
+        this.setupFeaturedHeightSync()
+        this.setupProjectsGridReveal()
+      }
     },
   },
 
@@ -498,6 +518,10 @@ const appOptions = {
     if (this.featuredHeightObserver) {
       this.featuredHeightObserver.disconnect()
       this.featuredHeightObserver = null
+    }
+    if (this._projectsGridObserver) {
+      this._projectsGridObserver.disconnect()
+      this._projectsGridObserver = null
     }
     if (this._socialScrollHandler) {
       window.removeEventListener('scroll', this._socialScrollHandler)
@@ -551,6 +575,43 @@ const appOptions = {
             this.featuredHeightObserver.observe(slot)
           })
         }
+      })
+    },
+
+    // Render the project grid (and fire its pop-in) only once the grid area is
+    // actually scrolled into view, rather than when the section lazy-mounts.
+    setupProjectsGridReveal() {
+      if (this.projectsGridReady) return
+
+      const reduceMotion =
+        typeof window !== 'undefined' &&
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+      if (reduceMotion || typeof IntersectionObserver === 'undefined') {
+        this.projectsGridReady = true
+        return
+      }
+
+      this.$nextTick(() => {
+        const sentinel = this.resolveDomElement(this.$refs.projectsGridSentinel)
+        if (!sentinel) {
+          this.projectsGridReady = true
+          return
+        }
+
+        this._projectsGridObserver = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                this.projectsGridReady = true
+                obs.disconnect()
+              }
+            })
+          },
+          { threshold: 0, rootMargin: '0px 0px -5% 0px' }
+        )
+        this._projectsGridObserver.observe(sentinel)
       })
     },
 
@@ -816,8 +877,11 @@ const appOptions = {
       }
     },
 
-    // transition-group hooks removed — CSS handles enter/leave animations
     selectCategory(catId/*, evt */) {
+      if (catId === this.activeCat) return
+      // slide direction from the relative position of the clicked tab
+      const order = this.interestCategories.map((cat) => cat.id)
+      this.tabSlideForward = order.indexOf(catId) >= order.indexOf(this.activeCat)
       this.activeCat = catId
     },
 

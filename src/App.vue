@@ -225,20 +225,24 @@
                 button-class="ctab projects-filter-pill"
               />
             </div>
+            <div ref="projectsGridSentinel" class="projects-grid-sentinel" aria-hidden="true"></div>
+            <template v-if="projectsGridReady">
             <div v-for="group in groupedProjects" :key="group.key" class="projects-group">
               <div class="projects-group-header">
                 <div class="projects-group-title">{{ group.label }}</div>
                 <div class="projects-group-count">{{ group.items.length }} project{{ group.items.length === 1 ? '' : 's' }}</div>
               </div>
-              <transition-group name="projects" tag="div" class="projects-grid" appear>
+              <div class="projects-grid">
                 <ProjectCard
                   v-for="proj in group.items"
                   :key="proj.id"
                   :project="proj"
+                  v-reveal.pop
                   @open-project="activeProject = $event; showProjectModal = true; currentImageIndex = 0; videoVisible = false"
                 />
-              </transition-group>
+              </div>
             </div>
+            </template>
           </div>
         </template>
         <div v-else class="section-loader" aria-busy="true" aria-live="polite">
@@ -265,7 +269,7 @@
     <section id="featured" class="section">
       <div class="container">
         <SectionHeader prefix="05." :title="appText.sectionTitles.featured" />
-        <p class="featured-intro">{{ featuredIntro }}</p>
+        <RevealText class="featured-intro" :text="featuredIntro" />
         <div class="featured-strip">
           <div
             class="featured-track"
@@ -329,12 +333,8 @@
       <div class="container">
         <SectionHeader prefix="06." :title="appText.sectionTitles.interests" />
         <template v-if="isSectionReady('interests')">
-          <p class="interests-text">
-            {{ interestsIntro.para1 }}
-          </p>
-          <p class="interests-text">
-            {{ interestsIntro.para2 }}
-          </p>
+          <RevealText class="interests-text" :text="interestsIntro.para1" />
+          <RevealText class="interests-text" :text="interestsIntro.para2" :stagger="25" :start-delay="interestsPara2Delay" />
           <div class="creative-tabs">
             <FilterPills
               :items="interestCategories"
@@ -344,7 +344,9 @@
               button-class="ctab"
             />
           </div>
-          <div v-for="cat in interestCategories" :key="cat.id" v-show="activeCat === cat.id">
+          <div class="creative-panels">
+          <transition v-for="cat in interestCategories" :key="cat.id" :name="tabSlideName">
+          <div v-show="activeCat === cat.id" class="creative-panel">
             <div class="cat-backstory">
               <div class="cat-backstory-icon">{{ cat.icon }}</div>
               <div class="cat-backstory-text">
@@ -580,6 +582,8 @@
           >
             <template #sub="{ item }">{{ item.medium }}</template>
           </GalleryGrid>
+          </div>
+          </transition>
           </div>
         </template>
         <div v-else class="section-loader interests-loader" aria-busy="true" aria-live="polite">
