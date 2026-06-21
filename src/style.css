@@ -1369,6 +1369,14 @@ section {
   padding: 6px 12px;
   border-radius: 3px;
   border: 1px solid;
+  cursor: default;
+  transition: transform 0.18s ease, background-color 0.18s ease,
+    border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* lift each tech/tag on hover; the colour-specific rules add a matching glow */
+.chip:hover {
+  transform: translateY(-2px);
 }
 
 .chip-blue {
@@ -1377,16 +1385,46 @@ section {
   border-color: rgba(91, 170, 220, 0.3);
 }
 
+.chip-blue:hover {
+  background: rgba(91, 170, 220, 0.22);
+  border-color: rgba(91, 170, 220, 0.6);
+  box-shadow: 0 4px 14px rgba(91, 170, 220, 0.22);
+}
+
 .chip-green {
   background: rgba(139, 184, 122, 0.1);
   color: var(--accent3);
   border-color: rgba(139, 184, 122, 0.3);
 }
 
+.chip-green:hover {
+  background: rgba(139, 184, 122, 0.22);
+  border-color: rgba(139, 184, 122, 0.6);
+  box-shadow: 0 4px 14px rgba(139, 184, 122, 0.22);
+}
+
+.chip-purple {
+  background: rgba(184, 125, 184, 0.1);
+  color: var(--code4);
+  border-color: rgba(184, 125, 184, 0.3);
+}
+
+.chip-purple:hover {
+  background: rgba(184, 125, 184, 0.22);
+  border-color: rgba(184, 125, 184, 0.6);
+  box-shadow: 0 4px 14px rgba(184, 125, 184, 0.22);
+}
+
 .chip-gray {
   background: rgba(112, 112, 112, 0.1);
   color: var(--text-dim);
   border-color: rgba(112, 112, 112, 0.3);
+}
+
+.chip-gray:hover {
+  background: rgba(140, 140, 140, 0.2);
+  border-color: rgba(140, 140, 140, 0.55);
+  box-shadow: 0 4px 14px rgba(120, 120, 120, 0.18);
 }
 
 /* Work Experience */
@@ -1446,6 +1484,16 @@ section {
   display: flex;
   gap: 16px;
   margin-bottom: 4px;
+  /* room for the editor-style line highlight; negative inline margin lets it
+     extend toward the block's padding edges (job/edu bodies both pad 20px) */
+  padding: 1px 10px;
+  margin-inline: -10px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.code-line:hover {
+  background-color: rgba(127, 127, 127, 0.1);
 }
 
 .ln {
