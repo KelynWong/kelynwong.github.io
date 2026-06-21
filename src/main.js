@@ -51,6 +51,19 @@ const photographyImageFiles = import.meta.glob('./assets/images/photography/**/*
   import: 'default',
 })
 
+const aboutPhotoFiles = import.meta.glob('./assets/images/about/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
+  eager: true,
+  import: 'default',
+})
+
+const aboutPhotos = Object.entries(aboutPhotoFiles)
+  .sort((left, right) => {
+    const leftIndex = Number((left[0].match(/(\d+)/) || [])[1] || 0)
+    const rightIndex = Number((right[0].match(/(\d+)/) || [])[1] || 0)
+    return leftIndex - rightIndex
+  })
+  .map(([, src], index) => ({ src, alt: `Kelyn — photo ${index + 1}` }))
+
 function buildPhotoGroup(id, label, year, extOverrides = {}) {
   const imageEntries = Object.entries(photographyImageFiles)
     .filter(([filePath]) => filePath.includes(`/photography/${id}/`))
@@ -95,6 +108,7 @@ const appOptions = {
     return {
       // Section data
       skillGroups,
+      aboutPhotos,
       jobs,
       education,
       interestCategories,
@@ -208,6 +222,13 @@ const appOptions = {
   computed: {
     tabSlideName() {
       return this.tabSlideForward ? 'tab-fwd' : 'tab-back'
+    },
+
+    // keep the photo-wall scroll speed roughly constant regardless of how many
+    // photos there are (~4s of travel per photo)
+    aboutMarqueeStyle() {
+      const seconds = Math.max(20, this.aboutPhotos.length * 4)
+      return { animationDuration: `${seconds}s` }
     },
 
     // delay para 2's word reveal until para 1 has finished (para 1 stagger 35ms

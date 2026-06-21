@@ -1194,7 +1194,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .about-text p {
@@ -1211,8 +1211,117 @@ section {
 
 .about-text strong {
   color: var(--accent1);
-  font-family: inherit; 
+  font-family: inherit;
   font-weight: 700;
+}
+
+.about-grid-solo {
+  grid-template-columns: 1fr;
+}
+
+/* Auto-scrolling vertical photo wall beside the intro. On desktop the viewport is
+   absolutely positioned so it fills (and matches the height of) the intro text;
+   on stacked layouts it falls back to its own clamp height (see media query). */
+.about-photos {
+  position: relative;
+}
+
+.about-photos-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  /* fade the top & bottom edges */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+.about-photos-track {
+  display: flex;
+  flex-direction: column;
+  animation: about-marquee 40s linear infinite;
+}
+
+.about-photos-viewport:hover .about-photos-track {
+  animation-play-state: paused;
+}
+
+.about-photos-set {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  /* bottom gap matches the inner gap so the two stacked sets loop seamlessly */
+  margin-bottom: 12px;
+}
+
+.about-photo {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  box-shadow: 0 6px 18px rgba(var(--shadow-rgb), 0.12);
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.about-photo:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes about-marquee {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+/* When the About grid stacks, there's no text beside the wall to match, so give
+   the viewport its own height again. */
+@media (max-width: 1024px) {
+  .about-photos-viewport {
+    position: static;
+    height: clamp(360px, 72vw, 520px);
+  }
+}
+
+/* Tech stack: full width below the intro/photos, groups flow into columns */
+.skills-block.about-skills {
+  margin-top: clamp(40px, 6vw, 64px);
+}
+
+.skill-groups {
+  display: grid;
+  /* at most 3 columns (falls back to 2 then 1 as it narrows) */
+  grid-template-columns: repeat(auto-fit, minmax(max(230px, (100% - 64px) / 3), 1fr));
+  gap: 24px 32px;
+  margin-top: 16px;
+  /* keep each group at its natural height (top-aligned) instead of stretching to
+     the tallest group in the row, which left blank space under the chips */
+  align-items: start;
+}
+
+.about-skills .skill-group + .skill-group {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-photos-track {
+    animation: none;
+  }
+  /* let people scroll the wall manually when motion is reduced, and drop the
+     duplicate set (it only exists to make the auto-scroll loop seamless) */
+  .about-photos-viewport {
+    overflow-y: auto;
+  }
+  .about-photos-set[aria-hidden='true'] {
+    display: none;
+  }
 }
 
 .skills-block {

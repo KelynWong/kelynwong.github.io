@@ -97,13 +97,32 @@
     <section id="about" class="section">
       <div class="container">
         <SectionHeader prefix="01." :title="appText.sectionTitles.about" />
-        <div class="about-grid">
-            <div class="about-text" v-reveal>
-              <p v-for="(p, idx) in appText.aboutParagraphs" :key="idx" v-html="p"></p>
+        <div class="about-grid" :class="{ 'about-grid-solo': !aboutPhotos.length }">
+          <div class="about-text" v-reveal>
+            <p v-for="(p, idx) in appText.aboutParagraphs" :key="idx" v-html="p"></p>
+          </div>
+          <div v-if="aboutPhotos.length" class="about-photos" v-reveal="{ delay: 120 }">
+            <div class="about-photos-viewport">
+              <div class="about-photos-track" :style="aboutMarqueeStyle">
+                <div class="about-photos-set">
+                  <figure v-for="(photo, i) in aboutPhotos" :key="`a-${i}`" class="about-photo">
+                    <img :src="photo.src" :alt="photo.alt" loading="lazy" />
+                  </figure>
+                </div>
+                <div class="about-photos-set" aria-hidden="true">
+                  <figure v-for="(photo, i) in aboutPhotos" :key="`b-${i}`" class="about-photo">
+                    <img :src="photo.src" :alt="photo.alt" loading="lazy" />
+                  </figure>
+                </div>
+              </div>
             </div>
-          <div class="skills-block">
-            <div class="skills-label" v-reveal>{{ appText.skillsLabel }}</div>
-            <div v-for="(group, idx) in skillGroups" :key="group.name" class="skill-group" v-reveal="{ delay: idx * 90 }">
+          </div>
+        </div>
+
+        <div class="skills-block about-skills">
+          <div class="skills-label" v-reveal>{{ appText.skillsLabel }}</div>
+          <div class="skill-groups">
+            <div v-for="(group, idx) in skillGroups" :key="group.name" class="skill-group" v-reveal="{ delay: idx * 60 }">
               <div class="skill-group-name">{{ group.name }}</div>
               <div class="skill-chips">
                 <span v-for="skill in group.skills" :key="skill.name" :class="['chip', skill.color]">
