@@ -20,7 +20,7 @@ export const reveal = {
     if (binding.modifiers.left) el.classList.add('reveal-left')
     if (binding.modifiers.right) el.classList.add('reveal-right')
     const delay = binding.value && binding.value.delay
-    if (delay) el.style.transitionDelay = `${delay}ms`
+    if (delay) el.style.animationDelay = `${delay}ms`
 
     const observer = new IntersectionObserver(
       (entries, obs) => {

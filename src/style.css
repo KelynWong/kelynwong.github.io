@@ -89,46 +89,69 @@ body {
 
 ::selection { background: var(--accent2); color: #fff; }
 
-/* Scroll-reveal: blocks fade + slide up as they enter the viewport (via v-reveal) */
+/* Scroll-reveal: blocks fade + slide into view as they cross the viewport (via
+   v-reveal). Driven by a keyframe ANIMATION (not a transition) so it can't be
+   clobbered by an element's own `transition` (e.g. .edu-card) and always plays
+   its full keyframes regardless of prior paint state (no "snap" on fast scroll). */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
   will-change: opacity, transform;
 }
 
-/* directional variants (defined before .is-visible so it can reset them) */
-.reveal.reveal-left {
-  transform: translateX(-32px);
-}
-
-.reveal.reveal-right {
-  transform: translateX(32px);
-}
-
 .reveal.is-visible {
-  opacity: 1;
-  transform: none;
+  animation: reveal-fade-up 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.reveal.reveal-left.is-visible {
+  animation-name: reveal-fade-left;
+}
+
+.reveal.reveal-right.is-visible {
+  animation-name: reveal-fade-right;
+}
+
+@keyframes reveal-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes reveal-fade-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes reveal-fade-right {
+  from { opacity: 0; transform: translateX(32px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* When a section header reveals, sweep its divider line in */
 .sec-header.reveal .sec-line {
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s;
 }
 
 .sec-header.reveal.is-visible .sec-line {
-  transform: scaleX(1);
+  animation: reveal-line 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s both;
+}
+
+@keyframes reveal-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
+  .reveal {
+    opacity: 1;
+  }
+
+  .reveal.is-visible,
+  .sec-header.reveal.is-visible .sec-line {
+    animation: none;
+  }
+
   .sec-header.reveal .sec-line {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    transform: none;
   }
 }
 
