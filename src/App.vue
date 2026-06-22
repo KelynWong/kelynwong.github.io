@@ -353,7 +353,14 @@
         <SectionHeader prefix="06." :title="appText.sectionTitles.interests" />
         <template v-if="isSectionReady('interests')">
           <RevealText class="interests-text" :text="interestsIntro.para1" />
-          <RevealText class="interests-text" :text="interestsIntro.para2" :stagger="25" :start-delay="interestsPara2Delay" />
+          <RevealText
+            class="interests-text"
+            :text="interestsIntro.para2"
+            :stagger="25"
+            :start-delay="interestsPara2Delay"
+            :link="{ phrase: 'contact form', href: '#contact' }"
+            @navigate="handleNavLinkClick"
+          />
           <div class="creative-tabs">
             <FilterPills
               :items="interestCategories"
@@ -590,14 +597,14 @@
           </div>
 
           <GalleryGrid
-            v-if="cat.id === 'drawing'"
-            :items="drawingItems"
-            :aspects="galleryAspects.drawing"
+            v-if="cat.id === 'sketchpaint'"
+            :items="sketchPaintItems"
+            :aspects="galleryAspects.sketchpaint"
             placeholder-icon="✏️"
-            :placeholder-text="appText.placeholders.drawing"
-            :more-label="appText.moreComing.drawings"
-            @open="(i) => openGalleryLightbox('drawing', drawingItems, i)"
-            @record-aspect="(k, e) => recordGalleryAspect('drawing', k, e)"
+            :placeholder-text="appText.placeholders.sketchpaint"
+            :more-label="appText.moreComing.sketchpaint"
+            @open="(i) => openGalleryLightbox('sketchpaint', sketchPaintItems, i)"
+            @record-aspect="(k, e) => recordGalleryAspect('sketchpaint', k, e)"
           >
             <template #sub="{ item }">{{ item.medium }}</template>
           </GalleryGrid>
@@ -608,7 +615,7 @@
         <div v-else class="section-loader interests-loader" aria-busy="true" aria-live="polite">
           <div class="section-loader-copy">
             <div class="section-loader-kicker">Loading interests section</div>
-            <div class="section-loader-title">Baking clay models, framing photos, creating videos, recording music and drawing cute characters</div>
+            <div class="section-loader-title">Baking clay models, framing photos, creating videos, recording music and sketching &amp; painting cute characters</div>
             <div class="section-loader-text">Please be patient, I promise it is worth the wait!</div>
           </div>
           <div class="section-loader-grid interests-loader-grid">

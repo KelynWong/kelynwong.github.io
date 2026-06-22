@@ -25,14 +25,14 @@ export const interestCategories = [
     icon: '🎵',
     name: 'Music',
     label: 'Music',
-    story: `Music has been one of the biggest constants in my life. It started with my guitar and a phone balanced on my bed, using my AirPods microphone to record myself singing just for fun. Over time, I discovered BandLab and got a proper microphone, which made it easier to experiment with layering vocals and recording covers more intentionally. It has become one of my ways of expressing myself. The tracks here are raw, at-home vocal covers, unpolished but honest. Feel free to let the tracks play in the background while you explore the rest of my site or sing along karaoke-style with the lyrics on screen!`,
+    story: `Music has been one of the biggest constants in my life. It started humbly with just me and my guitar, a phone balanced on my bed and my AirPods microphone recording me singing just for fun. Over time, I discovered BandLab and got a proper microphone, which made it easier to experiment with layering vocals and recording covers more intentionally. Today, it’s one of my favorite ways to express myself emotionally. The tracks here are raw, at-home vocal covers, unpolished but honest. Feel free to let the tracks play in the background while you explore the rest of my site or sing along karaoke-style with the lyrics on screen!`,
   },
   {
-    id: 'drawing',
+    id: 'sketchpaint',
     icon: '✏️',
-    name: 'Drawings',
-    label: 'Drawings',
-    story: `Drawing is the oldest thing on this list (started a decade ago :0) and it's something that I don't focus on it much anymore, but it's still a part of me that I think is worth sharing. I work mainly in pencil with a spice of markers & colored pencil to sketch things that interest me: space, characters and small cute objects. I like how sketchbooks feel private in a way other creative work often isn't. I don't have any formal art training, so my drawings are rough and unpolished but to me that's what makes them stress-free and fun.`,
+    name: 'Sketch & Paint',
+    label: 'Sketch & Paint',
+    story: `This is the oldest thing on this list (started a decade ago :0). I don't focus on it as much anymore, but it's still a part of me that I think is worth sharing. It began with pencil sketches of things that interest me (space, characters and small cute objects), and has since spread onto whatever surface is around: coloring-book pages, whiteboards, chalk on a blackboard, even painting on pottery. I don't have any formal art training, so everything here is rough and unpolished but to me that's exactly what makes it stress-free and fun.`,
   },
 ];
 
@@ -63,25 +63,25 @@ export const clayItems = [
   { id: 24, title: 'Gym bro ducky', description: 'No pain no gain. Today is back feathers day!', img: './src/assets/images/clay/gymduck.png' },
   { id: 25, title: 'Coffee ducky', description: 'High on caffine', img: './src/assets/images/clay/coffeeduck.png' },
   { id: 26, title: 'T-rex dino', description: 'I will entertain you when you have no internet', img: './src/assets/images/clay/8-bitdino.png' },
-  { id: 27, title: 'Hit Me Hard & Soft', description: 'Pottery not done by me, only painting :)', img: './src/assets/images/clay/hmhas.png' },
 ];
 
-export const drawingItems = [
-  { id: 1, title: 'Our universe', medium: 'pencil on paper', img: './src/assets/images/drawings/planets.JPG' },
-  { id: 2, title: 'Phases of the moon', medium: 'pencil on paper', img: './src/assets/images/drawings/moon.JPG' },
-  { id: 3, title: 'Floating in space', medium: 'pencil on paper', img: './src/assets/images/drawings/astronaut.JPG' },
-  { id: 4, title: 'Blast off', medium: 'pencil on paper', img: './src/assets/images/drawings/spaceship.JPG' },
-  { id: 5, title: 'Jackfrosty', medium: 'pencil on paper', img: './src/assets/images/drawings/jackfrost.jpg' },
-  { id: 6, title: 'Shy tracer', medium: 'pencil on paper', img: './src/assets/images/drawings/tracer.jpg' },
-  { id: 7, title: 'Ahoy matey', medium: 'pencil on paper', img: './src/assets/images/drawings/ship.JPG' },
-  { id: 8, title: 'i love you.', medium: 'pencil on paper', img: './src/assets/images/drawings/doll.JPG' },
-  { id: 9, title: 'Heart bleeding', medium: 'pencil on paper', img: './src/assets/images/drawings/heartwings.JPG' },
-  { id: 10, title: 'Under the sea', medium: 'pencil on paper', img: './src/assets/images/drawings/underthesea.JPG' },
-  { id: 11, title: 'In the jungle', medium: 'pencil, marker and color on paper', img: './src/assets/images/drawings/inthejungle.JPG' },
-  { id: 12, title: 'Wolf howling', medium: 'pencil, marker and color on paper', img: './src/assets/images/drawings/wolf.JPG' },
-  { id: 13, title: 'Weather icons', medium: 'pencil on paper', img: './src/assets/images/drawings/weather.JPG' },
-  { id: 14, title: 'Loch Ness Monster', medium: 'pencil on paper', img: './src/assets/images/drawings/lochness.JPG' },
-  { id: 15, title: 'Get Jinxed', medium: 'markers on whiteboard', img: './src/assets/images/drawings/jinx.jpg' },
+export const sketchPaintItems = [
+  { id: 1, title: 'Our universe', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/planets.JPG' },
+  { id: 2, title: 'Phases of the moon', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/moon.JPG' },
+  { id: 3, title: 'Floating in space', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/astronaut.JPG' },
+  { id: 4, title: 'Blast off', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/spaceship.JPG' },
+  { id: 5, title: 'Jackfrosty', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/jackfrost.jpg' },
+  { id: 6, title: 'Shy tracer', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/tracer.jpg' },
+  { id: 7, title: 'Ahoy matey', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/ship.JPG' },
+  { id: 8, title: 'i love you.', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/doll.JPG' },
+  { id: 9, title: 'Heart bleeding', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/heartwings.JPG' },
+  { id: 10, title: 'Under the sea', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/underthesea.JPG' },
+  { id: 11, title: 'In the jungle', medium: 'pencil, marker and color on paper', img: './src/assets/images/sketchAndPaint/inthejungle.JPG' },
+  { id: 12, title: 'Wolf howling', medium: 'pencil, marker and color on paper', img: './src/assets/images/sketchAndPaint/wolf.JPG' },
+  { id: 13, title: 'Weather icons', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/weather.JPG' },
+  { id: 14, title: 'Loch Ness Monster', medium: 'pencil on paper', img: './src/assets/images/sketchAndPaint/lochness.JPG' },
+  { id: 15, title: 'Get Jinxed', medium: 'markers on whiteboard', img: './src/assets/images/sketchAndPaint/jinx.jpg' },
+  { id: 16, title: 'Hit Me Hard & Soft', medium: 'paint on pottery', img: './src/assets/images/sketchAndPaint/hmhas.png' },
 ];
 
 export const videoTravel = [
@@ -243,6 +243,7 @@ export const videoTiktoks = [
       { id: 'ZSONcxOec5E', label: 'SG Night Festival 2025', shorts: true },
       { id: 'i9S0xR9e-MI', label: 'SG Design Week 2025', shorts: true },
       { id: 'qd8BE3Tkk64', label: 'Christmas Wonderland 2025', shorts: true },
+      { id: 'K9yD9hakE8c', label: 'Ilight 2026', shorts: true },
     ],
   },
   {
@@ -286,18 +287,18 @@ export const videoTiktoks = [
 
 export const interestsIntro = {
   para1: `By day, I'm a software engineer building systems and solving problems with code. By night (and weekends), I'm usually making something with my hands like sculpting clay, framing photographs, making music covers, sketching characters. These creative outlets are more than just hobbies to me! They're a way to express parts of myself that don't fit into the logical, structured world of engineering. They allow me to explore ideas and emotions in a different way, and I find that they actually inform and inspire my work as an engineer.`,
-  para2: `The technical precision of engineering and creative expression aren't contradictory for me, rather I believe they complement each other. I approach both with the same mindset of iteration and improvement, whether it's refining a piece of code or getting the proportions right on a clay figure. It's all about the process of creating something that feels right to me. Feel free to indulge yourself in some of my creative works below if it tickles your fancy :)`,
+  para2: `The technical precision of engineering and creative expression aren't contradictory for me, rather I believe they complement each other. I approach both with the same mindset of iteration and improvement, whether it's refining a piece of code or getting the proportions right on a clay figure. It's all about the process of creating something that feels right to me. Most of these creative endeavors are completely self-taught, so they may not be the absolute best, but I am constantly learning, iterating, and always open to constructive feedback (pssst... you can do so via the contact form) Feel free to indulge yourself in some of my creative works below if it tickles your fancy :)`,
 };
 
 export const placeholders = {
   clay: 'clay model',
   photo: 'photograph',
-  drawing: 'drawing',
+  sketchpaint: 'artwork',
 }
 
 export const moreComing = {
   clay: 'more clay models coming soon...',
-  drawings: 'more drawings coming soon...',
+  sketchpaint: 'more sketches & paint coming soon...',
   music: 'more music covers coming soon...',
   photo: 'more photography coming soon...',
 }

@@ -16,7 +16,7 @@ import {
   education,
   interestCategories,
   clayItems,
-  drawingItems,
+  sketchPaintItems,
   videoCats,
   videoTravel,
   videoRecaps,
@@ -113,7 +113,7 @@ const appOptions = {
       education,
       interestCategories,
       clayItems,
-      drawingItems,
+      sketchPaintItems,
       videoCats,
       videoTravel,
       videoRecaps,
@@ -175,7 +175,7 @@ const appOptions = {
       },
       galleryAspects: {
         clay: {},
-        drawing: {},
+        sketchpaint: {},
         photo: {},
       },
       galleryLightboxOpen: false,
@@ -864,14 +864,14 @@ const appOptions = {
 
     getGalleryItems(section) {
       if (section === 'clay') return this.clayItemsForTheme
-      if (section === 'drawing') return this.drawingItems
+      if (section === 'sketchpaint') return this.sketchPaintItems
       if (section === 'photo') return this.activePhotoItems
       return []
     },
 
     gallerySectionLabel(section) {
       if (section === 'clay') return 'Clay Models'
-      if (section === 'drawing') return 'Drawings'
+      if (section === 'sketchpaint') return 'Sketch & Paint'
       if (section === 'photo') return 'Photography'
       return 'Gallery'
     },

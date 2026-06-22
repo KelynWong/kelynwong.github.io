@@ -5,7 +5,7 @@ export { default as education } from './education.js'
 export { 
   interestCategories,
   clayItems,
-  drawingItems,
+  sketchPaintItems,
   videoCats,
   videoTravel,
   videoRecaps,
