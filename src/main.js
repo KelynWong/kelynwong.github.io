@@ -562,6 +562,10 @@ const appOptions = {
     }
     this.stopFeaturedProjectRotation()
     this.stopFeaturedScroll()
+    if (this.audioCtx) {
+      this.audioCtx.close().catch(() => {})
+      this.audioCtx = null
+    }
   },
 
   methods: {
@@ -1271,6 +1275,44 @@ const appOptions = {
       return null
     },
 
+    // iOS locks <audio>.volume to the hardware buttons (setting it in JS is ignored),
+    // so route playback through a Web Audio GainNode whose gain IS adjustable — this
+    // makes the volume slider work on mobile too.
+    ensureAudioGraph() {
+      if (this.gainNode || typeof window === 'undefined') return
+      const audio = this.getAudio()
+      if (!audio) return
+      const AudioCtx = window.AudioContext || window.webkitAudioContext
+      if (!AudioCtx) return
+      try {
+        this.audioCtx = new AudioCtx()
+        this.mediaSource = this.audioCtx.createMediaElementSource(audio)
+        this.gainNode = this.audioCtx.createGain()
+        this.mediaSource.connect(this.gainNode)
+        this.gainNode.connect(this.audioCtx.destination)
+        this.applyVolume()
+      } catch (e) {
+        // createMediaElementSource throws if the element is already tapped — ignore
+      }
+    },
+
+    resumeAudioCtx() {
+      if (this.audioCtx && this.audioCtx.state === 'suspended') {
+        this.audioCtx.resume().catch(() => {})
+      }
+    },
+
+    applyVolume() {
+      const audio = this.getAudio()
+      if (this.gainNode) {
+        this.gainNode.gain.value = this.volume
+        // the element volume must stay at 1, else it double-attenuates the gain
+        if (audio) audio.volume = 1
+      } else if (audio) {
+        audio.volume = this.volume
+      }
+    },
+
     selectTrack(i) {
       const audio = this.getAudio()
       if (!audio) return
@@ -1280,8 +1322,10 @@ const appOptions = {
       }
       this.currentTrackIdx = i
       audio.src = this.tracks[i].src
-      audio.volume = this.volume
       audio.load()
+      this.ensureAudioGraph()
+      this.resumeAudioCtx()
+      this.applyVolume()
       audio.play().then(() => { this.isPlaying = true }).catch(() => {})
       this.scheduleLyricsScroll()
     },
@@ -1291,7 +1335,11 @@ const appOptions = {
       if (!audio) return
       if (this.currentTrackIdx === null) { this.selectTrack(0); return }
       if (this.isPlaying) { audio.pause(); this.isPlaying = false }
-      else { audio.play().then(() => { this.isPlaying = true }).catch(() => {}) }
+      else {
+        this.ensureAudioGraph()
+        this.resumeAudioCtx()
+        audio.play().then(() => { this.isPlaying = true }).catch(() => {})
+      }
     },
 
     nextTrack() {
@@ -1332,8 +1380,7 @@ const appOptions = {
     },
 
     setVolume() {
-      const audio = this.getAudio()
-      if (audio) audio.volume = this.volume
+      this.applyVolume()
     },
 
     formatTime(s) {
