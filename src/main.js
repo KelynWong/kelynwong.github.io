@@ -668,13 +668,24 @@ const appOptions = {
       this.stopFeaturedScroll()
       if (typeof window === 'undefined' || !window.requestAnimationFrame) return
 
+      let pos = 0
+      let initialized = false
+
       const step = () => {
         const track = this.resolveDomElement(this.$refs.featuredScroll)
-        if (track && !this.featuredScrollPaused) {
+        if (track) {
           const max = track.scrollWidth - track.clientWidth
-          if (max > 0) {
-            // gentle continuous drift; wrap back to the start at the end
-            track.scrollLeft = track.scrollLeft >= max - 0.5 ? 0 : track.scrollLeft + 0.5
+          if (this.featuredScrollPaused) {
+            pos = track.scrollLeft
+            initialized = true
+          } else if (max > 0) {
+            if (!initialized) {
+              pos = track.scrollLeft
+              initialized = true
+            }
+            pos += 0.5
+            if (pos >= max) pos = 0
+            track.scrollLeft = pos
           }
         }
         this.featuredScrollRaf = window.requestAnimationFrame(step)

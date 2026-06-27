@@ -114,7 +114,8 @@
                   rel="noopener noreferrer"
                   class="modal-link-btn"
                 >
-                  {{ g.label || '→ GitHub Repository' }}
+                  <span>{{ linkLabel(g.label) }}</span>
+                  <ExternalLinkIcon />
                 </a>
 
                 <a
@@ -125,7 +126,8 @@
                   rel="noopener noreferrer"
                   class="modal-link-btn"
                 >
-                  {{ l.label || '→ Live Demo' }}
+                  <span>{{ linkLabel(l.label) }}</span>
+                  <ExternalLinkIcon />
                 </a>
 
                 <a
@@ -136,7 +138,8 @@
                   rel="noopener noreferrer"
                   class="modal-link-btn"
                 >
-                  {{ f.label || '→ Figma Design' }}
+                  <span>{{ linkLabel(f.label) }}</span>
+                  <ExternalLinkIcon />
                 </a>
               </div>
             </div>
@@ -149,9 +152,11 @@
 
 <script>
 import { toDarkAsset } from '../utils/themeAssets.js'
+import ExternalLinkIcon from './ExternalLinkIcon.vue'
 
 export default {
   name: 'ProjectModal',
+  components: { ExternalLinkIcon },
   props: {
     isOpen: {
       type: Boolean,
@@ -226,9 +231,9 @@ export default {
         return []
       }
 
-      out.github = normalize(links.github, '→ GitHub Repository')
-      out.live = normalize(links.live, '→ Live Demo')
-      out.figma = normalize(links.figma, '→ Figma Design')
+      out.github = normalize(links.github, 'GitHub Repository')
+      out.live = normalize(links.live, 'Live Demo')
+      out.figma = normalize(links.figma, 'Figma Design')
 
       return out
     },
@@ -275,6 +280,9 @@ export default {
   methods: {
     closeModal() {
       this.$emit('close');
+    },
+    linkLabel(label) {
+      return String(label || '').replace(/^→\s*/, '').trim();
     },
     displayImageAlt(index) {
       // If the cover image is used as the first image, prefer its alt text
@@ -636,6 +644,10 @@ export default {
 
 .modal-link-btn {
   flex: 1 1 220px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   padding: 12px 16px;
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -647,6 +659,10 @@ export default {
   transition: all 0.2s;
   cursor: pointer;
   text-align: center;
+}
+
+.modal-link-btn .external-icon {
+  flex-shrink: 0;
 }
 
 .modal-link-btn:hover {
@@ -700,6 +716,12 @@ export default {
 
   .modal-links {
     flex-direction: column;
+  }
+
+  /* in a column, `flex-basis: 220px` was being used as the button HEIGHT —
+     reset so each link is its natural height */
+  .modal-link-btn {
+    flex: 0 0 auto;
   }
 }
 </style>
