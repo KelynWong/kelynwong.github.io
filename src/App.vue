@@ -467,8 +467,8 @@
                     </div>
                   </a>
                 </div>
-                <div class="creative-note">// opens on YouTube — 39 clips and counting 🎮</div>
-              </div>
+                
+              </div><div class="creative-note">// a mix of official and custom community-made (modded) maps so all songs and beatmaps belong to their respective artists and creators</div>
             </div>
 
             <div v-if="cat.id === 'music'" class="music-player-tab">
