@@ -26,6 +26,9 @@
                     @error="handleGalleryImageError"
                   />
                 </div>
+                <div class="gallery-progress-bar">
+                  <div class="progress-fill" :style="{ width: imageAutoPlayProgress + '%' }"></div>
+                </div>
                 <div v-if="displayImages.length > 1" class="gallery-controls">
                   <button
                     @click="prevImage"
@@ -45,9 +48,6 @@
                     →
                   </button>
                 </div>
-                <div class="gallery-progress-bar">
-                  <div class="progress-fill" :style="{ width: imageAutoPlayProgress + '%' }"></div>
-                </div>
               </div>
 
               <!-- Video Embed -->
@@ -55,11 +55,13 @@
                 <div class="video-player">
                   <iframe
                     v-if="currentDemo() && currentDemo().type === 'youtube'"
-                    :src="`https://www.youtube.com/embed/${currentDemo().id}?rel=0&modestbranding=1&autoplay=0`"
+                    ref="ytIframe"
+                    :src="`https://www.youtube.com/embed/${currentDemo().id}?enablejsapi=1&rel=0&modestbranding=1&autoplay=0`"
                     title="Project Demo"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
                     class="video-iframe"
+                    @load="onYtIframeLoad"
                   ></iframe>
                   <iframe
                     v-else-if="currentDemo() && currentDemo().type === 'vimeo'"
@@ -69,6 +71,9 @@
                     allowfullscreen
                     class="video-iframe"
                   ></iframe>
+                </div>
+                <div v-if="demoCount > 1" class="gallery-progress-bar">
+                  <div class="progress-fill" :style="{ width: demoAutoPlayProgress + '%' }"></div>
                 </div>
                 <div v-if="demoCount > 1" class="gallery-controls">
                   <button @click="prevDemo" class="gallery-btn" :aria-label="'Previous demo'">←</button>
@@ -177,6 +182,8 @@ export default {
       currentDemoIndex: 0,
       imageAutoPlayInterval: null,
       demoAutoPlayInterval: null,
+      demoAutoPlayProgressInterval: null,
+      demoAutoPlayProgress: 0,
       imageAutoPlayProgressInterval: null,
       imageAutoPlayProgress: 0,
     };
@@ -252,10 +259,12 @@ export default {
         this.$nextTick(() => {
           this.maybeStartAutoPlay();
         });
+        window.addEventListener('message', this.handleYtMessage);
       } else {
         document.body.style.overflow = '';
         this.stopImageAutoPlay();
         this.stopDemoAutoPlay();
+        window.removeEventListener('message', this.handleYtMessage);
       }
     },
     displayImages(newImages) {
@@ -334,8 +343,14 @@ export default {
     startDemoAutoPlay() {
       if (this.demoCount <= 1) return;
       this.stopDemoAutoPlay();
+      this.demoAutoPlayProgress = 0;
+      // fill the bar over the same 5s the advance timer uses
+      this.demoAutoPlayProgressInterval = setInterval(() => {
+        this.demoAutoPlayProgress = Math.min(this.demoAutoPlayProgress + 1, 100);
+      }, 50);
       this.demoAutoPlayInterval = setInterval(() => {
         this.currentDemoIndex = (this.currentDemoIndex + 1) % this.demoCount;
+        this.demoAutoPlayProgress = 0;
       }, 5000);
     },
     stopDemoAutoPlay() {
@@ -343,9 +358,50 @@ export default {
         clearInterval(this.demoAutoPlayInterval);
         this.demoAutoPlayInterval = null;
       }
+      if (this.demoAutoPlayProgressInterval) {
+        clearInterval(this.demoAutoPlayProgressInterval);
+        this.demoAutoPlayProgressInterval = null;
+      }
+      this.demoAutoPlayProgress = 0;
     },
     restartDemoAutoPlay() {
       if (this.demoCount > 1) {
+        this.startDemoAutoPlay();
+      }
+    },
+    // Ask the YouTube embed (enablejsapi=1) to start posting player-state events.
+    onYtIframeLoad() {
+      const iframe = this.$refs.ytIframe;
+      if (!iframe || !iframe.contentWindow) return;
+      try {
+        iframe.contentWindow.postMessage(
+          JSON.stringify({ event: 'listening', id: 'projectDemo', channel: 'widget' }),
+          '*'
+        );
+      } catch (e) {
+        /* noop */
+      }
+    },
+    // Pause the demo auto-advance while a video is actually playing (state 1),
+    // resume when it's paused (2) or ended (0). Only matters with multiple demos.
+    handleYtMessage(event) {
+      if (typeof event.data !== 'string' || !event.origin || event.origin.indexOf('youtube.com') === -1) return;
+      let data;
+      try {
+        data = JSON.parse(event.data);
+      } catch (e) {
+        return;
+      }
+      const state =
+        data && data.event === 'onStateChange'
+          ? data.info
+          : data && data.event === 'infoDelivery' && data.info
+            ? data.info.playerState
+            : undefined;
+      if (state === undefined) return;
+      if (state === 1) {
+        this.stopDemoAutoPlay();
+      } else if ((state === 2 || state === 0) && this.demoCount > 1) {
         this.startDemoAutoPlay();
       }
     },
@@ -386,7 +442,10 @@ export default {
     },
   },
   mounted() {
+    // the modal is mounted already-open (v-if in the parent), so the isOpen
+    // watcher won't fire — wire the message listener up here too.
     if (this.isOpen) {
+      window.addEventListener('message', this.handleYtMessage);
       this.$nextTick(() => {
         this.maybeStartAutoPlay();
       });
@@ -396,6 +455,7 @@ export default {
     document.body.style.overflow = '';
     this.stopImageAutoPlay();
     this.stopDemoAutoPlay();
+    window.removeEventListener('message', this.handleYtMessage);
   },
 };
 </script>
