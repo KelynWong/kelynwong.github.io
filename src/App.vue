@@ -464,6 +464,7 @@
                     <div class="vid-bs-info">
                       <div class="vid-bs-title">{{ v.title }}</div>
                       <div class="vid-bs-artist">{{ v.artist }}</div>
+                      <div v-if="v.mapper" class="vid-bs-mapper">[{{ v.mapper }}]</div>
                     </div>
                   </a>
                 </div>
