@@ -6,6 +6,7 @@ export const navLinks = [
   { href: '#featured', label: '_Featured' },
   { href: '#interests', label: '_Interests' },
   { href: '#contact', label: '_Contact' },
+  { href: '/learn/', label: '_Learn', external: true },
 ]
 
 export const sectionTitles = {

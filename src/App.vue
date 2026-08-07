@@ -3,7 +3,13 @@
     <nav class="nav" :class="{ 'nav-open': isNavOpen }">
       <div class="nav-logo"><img :src="logoSrc" alt="logo" style="max-height: 32px;" @error="handleThemeImageError($event, logoDarkSrc)"></div>
       <div class="nav-links" :class="{ 'nav-links-open': isNavOpen }">
-        <a v-for="link in appText.navLinks" :key="link.href" :href="link.href" @click.prevent="handleNavLinkClick(link.href)">{{ link.label }}</a>
+        <a
+          v-for="link in appText.navLinks"
+          :key="link.href"
+          :href="link.href"
+          :class="{ 'nav-link-external': link.external }"
+          @click="link.external ? closeNavMenu() : ($event.preventDefault(), handleNavLinkClick(link.href))"
+        >{{ link.label }}</a>
       </div>
       <button class="nav-theme-toggle" type="button" @click="toggleTheme" :aria-label="themeMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
         <svg class="theme-toggle-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">

@@ -1,3 +1,5 @@
+@import './theme.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,69 +11,7 @@
   font-style: normal;
 }
 
-:root {
-  --bg: #0d0d0d;
-  --bg2: #141414;
-  --bg3: #1a1a1a;
-  --bg4: #222222;
-  --text: #d4d4d4;
-  --text-dim: #7a7a7a;
-  --text-faint: #3a3a3a;
-  --accent1: #2f6faa;
-  --accent2: #4a72b0;
-  --accent3: #8bb87a;
-  --code1: #8a94a6;
-  --code2: #5e8a5e;
-  --code3: #c4836a;
-  --code4: #b87db8;
-  --code5: #c8c87a;
-  --border: #2a2a2a;
-  --border2: #333333;
-  --nav-bg: rgba(13, 13, 13, 0.92);
-  --nav-bg-2: rgba(13, 13, 13, 0.98);
-  --overlay-bg: rgba(0, 0, 0, 0.82);
-  --shadow-rgb: 0, 0, 0;
-  --radius: 4px;
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'DM Sans', sans-serif;
-  --fs-4xs: 10px;
-  --fs-3xs: 11px;
-  --fs-2xs: 12px;
-  --fs-xs: 13px;
-  --fs-sm: 15px;
-  --fs-md: 16px;
-  --fs-md-plus: 18px;
-  --fs-lg: 18px;
-  --fs-xl: 20px;
-  --fs-2xl: 32px;
-  --fs-3xl: 34px;
-  --fs-4xl: 46px;
-  --fs-5xl: 60px;
-}
-
-:root[data-theme='light'] {
-  --bg: #f6f3ee;
-  --bg2: #ffffff;
-  --bg3: #fbf8f4;
-  --bg4: #ece4d9;
-  --text: #1f2933;
-  --text-dim: #5b6673;
-  --text-faint: #8e98a4;
-  --accent1: #5baadc;
-  --accent2: #4c7fb8;
-  --accent3: #5b8d67;
-  --code1: #64748b;
-  --code2: #4f7f63;
-  --code3: #b86f5e;
-  --code4: #9a64a0;
-  --code5: #9c8d4f;
-  --border: #d8d1c7;
-  --border2: #c9c1b5;
-  --nav-bg: rgba(246, 243, 238, 0.9);
-  --nav-bg-2: rgba(246, 243, 238, 0.98);
-  --overlay-bg: rgba(255, 255, 255, 0.72);
-  --shadow-rgb: 15, 23, 42;
-}
+/* Theme tokens are shared with the /learn app and live in src/theme.css */
 
 html {
   overflow-x: hidden;
@@ -400,6 +340,7 @@ nav {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 28px;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -415,6 +356,19 @@ nav {
 }
 
 .nav-links a:hover { color: var(--accent1); }
+
+/* links that leave the portfolio for a separate app (e.g. /learn) */
+.nav-links a.nav-link-external {
+  color: var(--accent3);
+  border: 1px solid var(--accent3);
+  border-radius: var(--radius);
+  padding: 4px 12px;
+  transition: all 0.2s;
+}
+.nav-links a.nav-link-external:hover {
+  background: var(--accent3);
+  color: var(--bg);
+}
 
 .nav-theme-toggle {
   display: inline-flex;

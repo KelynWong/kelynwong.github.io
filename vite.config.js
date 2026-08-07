@@ -22,4 +22,12 @@ function copySourceAssets() {
 export default defineConfig({
   assetsInclude: ['**/*.jpg', '**/*.JPG', '**/*.jpeg', '**/*.JPEG', '**/*.png', '**/*.PNG', '**/*.webp', '**/*.WEBP'],
   plugins: [vue(), copySourceAssets()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve('index.html'),
+        learn: path.resolve('learn/index.html'),
+      },
+    },
+  },
 })
