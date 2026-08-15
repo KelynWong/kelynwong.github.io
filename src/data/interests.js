@@ -64,6 +64,7 @@ export const clayItems = [
   { id: 25, title: 'Coffee ducky', description: 'High on caffine', img: './src/assets/images/clay/coffeeduck.png' },
   { id: 26, title: 'T-rex dino', description: 'I will entertain you when you have no internet', img: './src/assets/images/clay/8-bitdino.png' },
   { id: 27, title: 'Mortarboard', description: 'I graduated and all I got was this bear :/', img: './src/assets/images/clay/mortarboard.png' },
+  { id: 28, title: 'Flower vase', description: 'A vase to hold my graduation flowers', img: './src/assets/images/clay/vase.png' },
 ];
 
 export const sketchPaintItems = [
@@ -264,13 +265,13 @@ export const videoBeatSaber = [
   { id: 'IbHdqddWneI', title: 'Fallen Kingdom (2022 Remap)', artist: 'CaptainSparklez ft. TryHardNinja', mapper: 'Joetastic'},
   { id: 'Sx0U18qkNAc', title: 'It\'s been so long (Five Nights at Freddy\'s)', artist: 'The Living Tombstone', mapper: 'monteblanco'},
   { id: 'n2Qn3v_yhIk', title: 'House of Memories', artist: 'Panic! At The Disco', mapper: 'Lekrkoekj, seonsaekmi'},
-  { id: '', title: 'Graveyard', artist: 'Halsey', mapper: 'August, moonlightmews'},
-  { id: '', title: 'Youngblood', artist: '5 Seconds of Summer', mapper: 'BennyDaBeast'},
-  { id: '', title: 'Moves Like Jagger', artist: 'Maroon 5 ft. Christian Aguilera', mapper: 'ETAN'},
-  { id: '', title: 'Resonance', artist: 'HOME', mapper: 'Spinvertigoo'},
-  { id: '', title: 'Dance Monkey', artist: 'Tones and I', mapper: 'PinusSp'},
-  { id: '', title: 'SLOW DANCING IN THE DARK', artist: 'Joji', mapper: 'SkylerWallace'},
-  { id: '', title: 'I Like You (A Happier Song)', artist: 'Post Malone ft. Doja Cat', mapper: 'eurnkung'},
+  { id: 'DGT6vbqxQNQ', title: 'Graveyard', artist: 'Halsey', mapper: 'August, moonlightmews'},
+  { id: 'ullFPx7xQy8', title: 'Youngblood', artist: '5 Seconds of Summer', mapper: 'BennyDaBeast'},
+  { id: 'seuXytoJsAE', title: 'Moves Like Jagger', artist: 'Maroon 5 ft. Christian Aguilera', mapper: 'ETAN'},
+  { id: 'RpHqtXNdG7k', title: 'Resonance', artist: 'HOME', mapper: 'Spinvertigoo'},
+  { id: 'FRs1SJV_JhM', title: 'Dance Monkey', artist: 'Tones and I', mapper: 'PinusSp'},
+  { id: 'ThszKFx-Ej8', title: 'SLOW DANCING IN THE DARK', artist: 'Joji', mapper: 'SkylerWallace'},
+  { id: '_CCVU9SLp-I', title: 'I Like You (A Happier Song)', artist: 'Post Malone ft. Doja Cat', mapper: 'eurnkung'},
   { id: '', title: 'Heavy Is the Crown', artist: 'Linkin Park', mapper: 'Emiru'},
   { id: '', title: 'Boom Clap', artist: 'Charli XCX', mapper: 'NovaShaft'},
   { id: '', title: 'Close To You', artist: 'Gracie Abrams', mapper: 'majorpickle'},
@@ -283,6 +284,12 @@ export const videoBeatSaber = [
   { id: '', title: 'More', artist: 'K/DA', mapper: 'Satarks'},
   { id: '', title: 'The greatest show reimagined', artist: 'Panic! At The Disco', mapper: 'Stumi'},
   { id: '', title: 'The Nights', artist: 'Avicii', mapper: 'Nolanimations'},
+  { id: '', title: 'Toxic', artist: 'Britney Spears', mapper: 'Emir'},
+  { id: '', title: 'Feel Good Inc.', artist: 'Gorillaz', mapper: 'Joetastic & Z-ANESaber'},
+  { id: '', title: 'Blue (Short ver.)', artist: 'Billie Eilish', mapper: 'Hezzzzz'},
+  { id: '', title: 'The Other Side', artist: 'The Greatest Showman', mapper: 'bigslick'},
+  { id: '', title: 'Bangarang', artist: 'Skrillex', mapper: 'nitronik.exe'},
+  { id: '', title: 'Rather Be', artist: 'Clean Bandit ft. Jess Glynne', mapper: 'RFColaf'},
 ];
 
 export const videoTiktoks = [
