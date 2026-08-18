@@ -65,6 +65,7 @@ export const clayItems = [
   { id: 26, title: 'T-rex dino', description: 'I will entertain you when you have no internet', img: './src/assets/images/clay/8-bitdino.png' },
   { id: 27, title: 'Mortarboard', description: 'I graduated and all I got was this bear :/', img: './src/assets/images/clay/mortarboard.png' },
   { id: 28, title: 'Flower vase', description: 'A vase to hold my graduation flowers', img: './src/assets/images/clay/vase.png' },
+  { id: 29, title: 'Flail', description: 'You can use it to swing at things but you probably shouldn\'t', img: './src/assets/images/clay/flail.png' },
 ];
 
 export const sketchPaintItems = [
