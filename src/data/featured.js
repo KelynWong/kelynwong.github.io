@@ -98,6 +98,18 @@ export const featuredPosts = [
     comments: 9,
   },
   {
+    id: 'featured-9',
+    url: 'https://www.linkedin.com/posts/mokkie_it-was-a-great-honour-privilege-to-witness-share-7498922833235021825-ps5V/',
+    author: 'Heng Ngee MOK',
+    avatar: 'HM',
+    avatarColor: '#0f7b6c',
+    subtitle: 'Responsible for the Software Engineering degree @ SMU',
+    date: 'Aug 2026',
+    text: 'It was a great honour & privilege to witness the graduation of the pioneer batch of B.Sc.(Software Engineering) students during Commencement at SMU last month. 5 years ago, I was tasked with the setting up of this (then) new degree program. It was SMU\'s first Work-study degree, & we were treading on new territory. The process involved bringing resources together, getting feedback from the SE Practice, drawing up the curriculum, coordinating with colleagues from the Provost\'s Office & the MOE for approval, signing MOUs with our anchor partners (NCS, GovTech & UBS Bank), and finally marketing the degree. Extending SMU\'s mandatory 10-week internship by 5 times into a year-long apprenticeship for the SE students was a bold step that I believed would benefit practice-oriented students (& contributed to the good SE jobs that many of our graduates got post-graduation). There were challenges: changing the perceptions about what a WSDeg really entails, explaining the distinction between SE and Computer Science, infusing a sense of identity in SE students & sorting out kinks here and there, but it was really satisfying when positive reports from both their apprenticeship mentors and the students themselves came in. I had a lot of help of course: Winnie Loh (our Practicum Manager who is as dedicated to ensuring the SE apprenticeship program works), Siew Cheun (our Administrator who does a lot of invisible work), Wendy T. & Eng Kit Lum, Yuehan Zhuo (who was a huge pleasure to work with when he was at the Provost\'s Office), HweeHwa Pang (my big boss who arrowed me & gave me this adventure!) & Swapna Gottipati (my boss who always lit up my blind spots: "You must think of this Mok...."). I proudly present the SE class of 2026: Syahmim Chukhan, Kelyn Wong, Tai Ngee Tian, Yingqi Gu, CHAN RAE ANN _, Zhi Lin Ooi, Jonathan I\'anson-Holton, Arshiya Jahan, Bingyan Guan (关冰燕), Zhi Hui Kek, Kok Xin Yi, Khai Ryo Lim, Nur Athirah Bte Mohd Noor, Rufaidah Ahmad Dahlan, Yue Zheng Ting, Sathwik Chiluveru, Clarissa Koh, Sanjana Maruthasalamoorthy, Lim Jun Kai, Gabriel Loh, Lynette Jean Tay, Tan Kai Xuan, Kai Jie Wang, Rachel YJ, Owen Goh, Yiji Yap, Angelita Kng, Kuek Hui Yi, Jing Jie Lim, Nashwyn Singh, Shawn Thiah, Chase Lim Shi You, Ray Jiet Goh, Huei Ming Lim, Neil Sharma, Marco. Congratulations people! (This is only the beginning...)',
+    reactions: 219,
+    comments: 6,
+  },
+  {
     id: 'featured-ig-1',
     platform: 'instagram',
     url: 'https://www.instagram.com/p/CxZkRRqsXpF/',
