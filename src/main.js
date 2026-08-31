@@ -134,7 +134,7 @@ const appOptions = {
       tabSlideForward: true,
       // gate the project grid so its cards pop in when scrolled into view
       projectsGridReady: false,
-      activePhotoPlace: 'ilight2026',
+      activePhotoPlace: 'sgNightFest2026',
       activeVideoCat: 'travel',
       isNavOpen: false,
       themeMode: 'dark',
@@ -474,6 +474,8 @@ const appOptions = {
   },
 
   mounted() {
+    this.initBlobField()
+    this.initCustomCursor()
     this.initTheme()
     this.fitHeroVerbs()
     this.initSectionLoaders()
@@ -527,6 +529,8 @@ const appOptions = {
   },
 
   beforeUnmount() {
+    this.stopBlobField()
+    this.stopCustomCursor()
     if (this._heroResizeHandler) {
       window.removeEventListener('resize', this._heroResizeHandler)
     }
@@ -569,6 +573,588 @@ const appOptions = {
   },
 
   methods: {
+    initBlobField() {
+      if (typeof window === 'undefined' || typeof document === 'undefined') return
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+      const canvas = this.resolveDomElement(this.$refs.blobFieldCanvas)
+      if (!canvas) return
+
+      const ctx = canvas.getContext('2d', { alpha: true })
+      if (!ctx) return
+
+      const parseRgb = (value) => {
+        const cleaned = String(value || '').trim()
+        const parts = cleaned.split(',').map((part) => Number.parseFloat(part.trim()))
+        if (parts.length !== 3 || parts.some((n) => Number.isNaN(n))) {
+          return [47, 111, 170]
+        }
+        return parts
+      }
+
+      const createBlob = (index, width, height) => {
+        const baseR = Math.min(width, height) * (0.14 + Math.random() * 0.08)
+        const x = width * (0.18 + Math.random() * 0.64)
+        const y = height * (0.16 + Math.random() * 0.68)
+        const heading = Math.random() * Math.PI * 2
+        return {
+          index,
+          x,
+          y,
+          vx: Math.cos(heading) * (1.1 + Math.random() * 1.2),
+          vy: Math.sin(heading) * (1.1 + Math.random() * 1.2),
+          baseR,
+          pulseAmp: baseR * (0.06 + Math.random() * 0.08),
+          pulseFreq: 0.09 + Math.random() * 0.16,
+          pulsePhase: Math.random() * Math.PI * 2,
+          shapeSeedA: Math.random() * Math.PI * 2,
+          shapeSeedB: Math.random() * Math.PI * 2,
+          shapeSeedC: Math.random() * Math.PI * 2,
+          shapeFreqA: 1.7 + Math.random() * 1.3,
+          shapeFreqB: 2.3 + Math.random() * 1.6,
+          shapeFreqC: 3.1 + Math.random() * 1.8,
+          morphSpeedA: 0.08 + Math.random() * 0.16,
+          morphSpeedB: 0.07 + Math.random() * 0.13,
+          morphSpeedC: 0.05 + Math.random() * 0.12,
+          hueMix: 0.2 + Math.random() * 0.6,
+          heading,
+          turnFreq: 0.07 + Math.random() * 0.18,
+          turnRate: 0.5 + Math.random() * 0.7,
+          drive: 0.025 + Math.random() * 0.035,
+          targetSpeed: 0.95 + Math.random() * 1.25,
+          spin: Math.random() > 0.5 ? 1 : -1,
+        }
+      }
+
+      const state = {
+        canvas,
+        ctx,
+        parseRgb,
+        blobs: [],
+        rafId: null,
+        resizeHandler: null,
+        width: 0,
+        height: 0,
+        dpr: 1,
+        lastTs: 0,
+        neonRgb: [47, 111, 170],
+        accentRgb: [139, 184, 122],
+      }
+
+      this._blobFieldState = state
+
+      const resize = () => {
+        const nextDpr = Math.min(2, window.devicePixelRatio || 1)
+        const nextWidth = window.innerWidth
+        const nextHeight = window.innerHeight
+        state.width = nextWidth
+        state.height = nextHeight
+        state.dpr = nextDpr
+        canvas.width = Math.floor(nextWidth * nextDpr)
+        canvas.height = Math.floor(nextHeight * nextDpr)
+        canvas.style.width = `${nextWidth}px`
+        canvas.style.height = `${nextHeight}px`
+        ctx.setTransform(nextDpr, 0, 0, nextDpr, 0, 0)
+
+        const blobCount = nextWidth < 800 ? 3 : 4
+        if (!state.blobs.length) {
+          state.blobs = Array.from({ length: blobCount }, (_, i) => createBlob(i, nextWidth, nextHeight))
+          return
+        }
+
+        if (state.blobs.length < blobCount) {
+          const missing = blobCount - state.blobs.length
+          const offset = state.blobs.length
+          state.blobs.push(...Array.from({ length: missing }, (_, i) => createBlob(offset + i, nextWidth, nextHeight)))
+        }
+        if (state.blobs.length > blobCount) {
+          state.blobs.length = blobCount
+        }
+
+        state.blobs.forEach((blob) => {
+          blob.x = Math.min(nextWidth, Math.max(0, blob.x))
+          blob.y = Math.min(nextHeight, Math.max(0, blob.y))
+          blob.baseR = Math.min(blob.baseR, Math.min(nextWidth, nextHeight) * 0.24)
+        })
+      }
+
+      const syncPalette = () => {
+        const rootStyles = window.getComputedStyle(document.documentElement)
+        state.neonRgb = parseRgb(rootStyles.getPropertyValue('--neon-rgb'))
+        state.accentRgb = parseRgb('139, 184, 122')
+      }
+
+      const drawBlob = (blob, tSeconds) => {
+        const cx = blob.x
+        const cy = blob.y
+        const pulse = Math.sin(tSeconds * blob.pulseFreq * Math.PI * 2 + blob.pulsePhase) * blob.pulseAmp
+        const radius = blob.baseR + pulse
+
+        const gradient = ctx.createRadialGradient(cx, cy, radius * 0.2, cx, cy, radius * 1.15)
+        const neon = state.neonRgb
+        const accent = state.accentRgb
+        const innerR = Math.round(neon[0] * (1 - blob.hueMix) + accent[0] * blob.hueMix)
+        const innerG = Math.round(neon[1] * (1 - blob.hueMix) + accent[1] * blob.hueMix)
+        const innerB = Math.round(neon[2] * (1 - blob.hueMix) + accent[2] * blob.hueMix)
+        gradient.addColorStop(0, `rgba(${innerR}, ${innerG}, ${innerB}, 0.2)`)
+        gradient.addColorStop(0.5, `rgba(${innerR}, ${innerG}, ${innerB}, 0.12)`)
+        gradient.addColorStop(1, `rgba(${innerR}, ${innerG}, ${innerB}, 0)`)
+
+        ctx.beginPath()
+        const points = 46
+        for (let i = 0; i <= points; i += 1) {
+          const a = (i / points) * Math.PI * 2
+          const warpA = Math.sin(a * blob.shapeFreqA + tSeconds * blob.morphSpeedA + blob.shapeSeedA)
+          const warpB = Math.sin(a * blob.shapeFreqB - tSeconds * blob.morphSpeedB + blob.shapeSeedB)
+          const warpC = Math.cos(a * blob.shapeFreqC + tSeconds * blob.morphSpeedC + blob.shapeSeedC)
+          const radial = radius * (1 + warpA * 0.07 + warpB * 0.05 + warpC * 0.035)
+          const px = cx + Math.cos(a) * radial
+          const py = cy + Math.sin(a) * radial
+          if (i === 0) ctx.moveTo(px, py)
+          else ctx.lineTo(px, py)
+        }
+        ctx.closePath()
+        ctx.fillStyle = gradient
+        ctx.fill()
+      }
+
+      const step = (ts) => {
+        const dt = Math.min(0.033, Math.max(0.008, (ts - (state.lastTs || ts)) / 1000))
+        state.lastTs = ts
+        const tSeconds = ts / 1000
+
+        const w = state.width
+        const h = state.height
+
+        for (let i = 0; i < state.blobs.length; i += 1) {
+          const a = state.blobs[i]
+
+          // Self-propelled heading drift keeps motion alive without any center gravity.
+          const headingNoise =
+            Math.sin(tSeconds * (a.turnFreq * Math.PI * 2) + a.shapeSeedA) * 0.9 +
+            Math.cos(tSeconds * (a.turnFreq * 0.73 * Math.PI * 2) + a.shapeSeedB) * 0.55
+          a.heading += headingNoise * a.turnRate * dt * 0.35
+          a.vx += Math.cos(a.heading) * a.drive
+          a.vy += Math.sin(a.heading) * a.drive
+
+          for (let j = i + 1; j < state.blobs.length; j += 1) {
+            const b = state.blobs[j]
+            const dx = b.x - a.x
+            const dy = b.y - a.y
+            const dist = Math.hypot(dx, dy) || 0.0001
+            const directionX = dx / dist
+            const directionY = dy / dist
+
+            // Pair interaction is only local repel + tangential swirl (no long-range attraction).
+            const interactionRadius = (a.baseR + b.baseR) * 0.9
+            if (dist < interactionRadius) {
+              const overlap = (interactionRadius - dist) / interactionRadius
+              const repel = Math.min(0.09, overlap * 0.085)
+              a.vx -= directionX * repel
+              a.vy -= directionY * repel
+              b.vx += directionX * repel
+              b.vy += directionY * repel
+
+              const tangentX = -directionY
+              const tangentY = directionX
+              const swirl = repel * 0.35
+              a.vx += tangentX * swirl * a.spin
+              a.vy += tangentY * swirl * a.spin
+              b.vx -= tangentX * swirl * b.spin
+              b.vy -= tangentY * swirl * b.spin
+            }
+          }
+        }
+
+        state.blobs.forEach((blob) => {
+          const margin = blob.baseR * 0.35
+          if (blob.x < margin) {
+            blob.x = margin
+            blob.vx = Math.abs(blob.vx) * 0.94
+            blob.heading = Math.PI - blob.heading
+          } else if (blob.x > w - margin) {
+            blob.x = w - margin
+            blob.vx = -Math.abs(blob.vx) * 0.94
+            blob.heading = Math.PI - blob.heading
+          }
+
+          if (blob.y < margin) {
+            blob.y = margin
+            blob.vy = Math.abs(blob.vy) * 0.94
+            blob.heading = -blob.heading
+          } else if (blob.y > h - margin) {
+            blob.y = h - margin
+            blob.vy = -Math.abs(blob.vy) * 0.94
+            blob.heading = -blob.heading
+          }
+
+          blob.vx *= 0.997
+          blob.vy *= 0.997
+
+          const speed = Math.hypot(blob.vx, blob.vy)
+          if (speed < blob.targetSpeed * 0.7) {
+            const boost = (blob.targetSpeed * 0.7 - speed) * 0.065
+            blob.vx += Math.cos(blob.heading) * boost
+            blob.vy += Math.sin(blob.heading) * boost
+          } else if (speed > blob.targetSpeed * 2.6) {
+            const clamp = (blob.targetSpeed * 2.6) / speed
+            blob.vx *= clamp
+            blob.vy *= clamp
+          }
+
+          blob.x += blob.vx * dt * 60
+          blob.y += blob.vy * dt * 60
+        })
+
+        ctx.clearRect(0, 0, w, h)
+        ctx.globalCompositeOperation = 'screen'
+        state.blobs.forEach((blob) => drawBlob(blob, tSeconds))
+        ctx.globalCompositeOperation = 'source-over'
+
+        state.rafId = window.requestAnimationFrame(step)
+      }
+
+      state.syncPalette = syncPalette
+      state.resize = resize
+      syncPalette()
+      resize()
+      state.resizeHandler = () => resize()
+      window.addEventListener('resize', state.resizeHandler, { passive: true })
+      state.rafId = window.requestAnimationFrame(step)
+    },
+
+    stopBlobField() {
+      const state = this._blobFieldState
+      if (!state) return
+      if (state.rafId) {
+        cancelAnimationFrame(state.rafId)
+      }
+      if (state.resizeHandler) {
+        window.removeEventListener('resize', state.resizeHandler)
+      }
+      this._blobFieldState = null
+    },
+
+    initCustomCursor() {
+      if (typeof window === 'undefined' || typeof document === 'undefined') return
+      if (!window.matchMedia || window.matchMedia('(pointer: coarse)').matches) return
+
+      const cursor = this.resolveDomElement(this.$refs.siteCursor)
+      if (!cursor) return
+
+      const interactiveSelector = [
+        'a',
+        'button',
+        '[role="button"]',
+        'input',
+        'textarea',
+        'select',
+        'summary',
+        '.btn',
+        '.ctab',
+        '.nav-link',
+        '.nav-toggle',
+        '.nav-theme-toggle',
+        '.social-icon',
+        '.contact-link',
+        '.track',
+        '.li-link',
+        '.gallery-img-button',
+        '.gallery-lightbox-nav',
+        '.gallery-lightbox-close',
+        '.photo-place-pill',
+        '.vid-cat-pill',
+        '.pctrl',
+      ].join(', ')
+
+      const projectCardActionSelector = [
+        '.project-card .view-details-btn',
+        '.project-card .proj-link',
+        '.project-card .proj-view-btn',
+      ].join(', ')
+
+      // The cursor is not pinned to one z-index: it rides just above whichever
+      // fixed overlay the pointer is currently inside, and drops to BASE_LAYER
+      // over ordinary page content. That way an outline on a card that is half
+      // scrolled under the nav gets clipped by the nav, instead of floating on
+      // top of it -- while an outline on a nav button itself still shows.
+      // Ordered most-specific first; values track the z-index of each overlay
+      // in style.css / ProjectModal.vue.
+      const BASE_CURSOR_LAYER = 99
+      const cursorLayers = [
+        ['.gallery-lightbox-overlay', 1003],
+        ['.toast', 1002],
+        ['.modal-overlay', 1001],
+        ['.social-float', 201],
+        ['nav', 101],
+      ]
+
+      const resolveCursorLayer = (element) => {
+        if (!(element instanceof Element)) return BASE_CURSOR_LAYER
+        for (const [selector, layer] of cursorLayers) {
+          if (element.closest(selector)) return layer
+        }
+        return BASE_CURSOR_LAYER
+      }
+
+      this._cursorState = {
+        el: cursor,
+        currentX: window.innerWidth / 2 - 14,
+        currentY: window.innerHeight / 2 - 14,
+        targetX: window.innerWidth / 2 - 14,
+        targetY: window.innerHeight / 2 - 14,
+        currentWidth: 28,
+        currentHeight: 28,
+        targetWidth: 28,
+        targetHeight: 28,
+        currentRadius: 999,
+        targetRadius: 999,
+        currentScale: 1,
+        targetScale: 1,
+        visible: false,
+        borderMode: false,
+        isDown: false,
+        activeTarget: null,
+        suppressNativeBorder: false,
+        layer: BASE_CURSOR_LAYER,
+        appliedLayer: null,
+        lastX: null,
+        lastY: null,
+        revalidateTick: 0,
+        rafId: null,
+      }
+
+      const canSuppressNativeBorder = (element) => {
+        return element.matches(
+          '.nav-links a, .nav-toggle, .nav-theme-toggle, .ctab, .photo-place-pill, .vid-cat-pill, .contact-link, .kofi-button, .btn, .pctrl, .gallery-lightbox-nav, .gallery-lightbox-close, .li-link, .social-icon, .view-details-btn, .proj-link, .proj-view-btn'
+        )
+      }
+
+      const isAllowedProjectCardTarget = (target) => {
+        if (!(target instanceof Element)) return false
+        return target.matches(projectCardActionSelector)
+      }
+
+      const resolveInteractiveTarget = (element) => {
+        if (!(element instanceof Element)) return null
+        const target = element.closest(interactiveSelector)
+        if (!target) return null
+
+        // Keep card containers free-move, but still allow card action controls.
+        if (target.closest('.project-card') && !isAllowedProjectCardTarget(target)) {
+          return null
+        }
+
+        return target
+      }
+
+      const resetToDotMode = (state) => {
+        clearNativeBorderSuppression(state)
+        state.activeTarget = null
+        state.borderMode = false
+        state.targetWidth = 28
+        state.targetHeight = 28
+        state.targetRadius = 999
+        state.targetScale = state.isDown ? 0.88 : 1
+      }
+
+      const setActiveTarget = (state, target) => {
+        if (!state) return
+        if (!target) {
+          resetToDotMode(state)
+          return
+        }
+
+        if (state.activeTarget && state.activeTarget !== target) {
+          clearNativeBorderSuppression(state)
+        }
+
+        state.activeTarget = target
+        state.visible = true
+        state.borderMode = true
+        syncCursorToTarget(state, target)
+        state.targetScale = 1
+
+        state.suppressNativeBorder = canSuppressNativeBorder(target)
+        if (state.suppressNativeBorder) {
+          target.classList.add('cursor-outline-active')
+        }
+      }
+
+      const syncCursorToTarget = (state, target) => {
+        const rect = target.getBoundingClientRect()
+        const targetStyle = window.getComputedStyle(target)
+        const minSide = Math.max(1, Math.min(rect.width, rect.height))
+        const borderRadius = Number.parseFloat(targetStyle.borderRadius) || 0
+        const isTabLike = target.matches('.ctab, .photo-place-pill, .vid-cat-pill, .nav-links a, .contact-link')
+        const isControlLike = target.matches('button, .btn, .nav-toggle, .nav-theme-toggle, .gallery-lightbox-nav, .gallery-lightbox-close, .pctrl')
+        const padding = isTabLike ? 2 : isControlLike ? 3 : 2
+        const clampedRadius = Math.max(2, Math.min(borderRadius, minSide * 0.5))
+        state.targetX = rect.left - padding
+        state.targetY = rect.top - padding
+        state.targetWidth = rect.width + padding * 2
+        state.targetHeight = rect.height + padding * 2
+        state.targetRadius = clampedRadius + Math.min(2, padding)
+      }
+
+      const clearNativeBorderSuppression = (state) => {
+        if (state?.activeTarget && state.suppressNativeBorder) {
+          state.activeTarget.classList.remove('cursor-outline-active')
+        }
+        if (state) {
+          state.suppressNativeBorder = false
+        }
+      }
+
+      const step = () => {
+        const state = this._cursorState
+        if (!state) return
+
+        // Cheap poll (~15x/sec) so an outline left behind by something opening
+        // or scrolling under a stationary pointer clears itself, rather than
+        // hanging around until the next mouse move.
+        state.revalidateTick = (state.revalidateTick + 1) % 4
+        if (state.revalidateTick === 0 && state.visible && state.lastX !== null) {
+          updateCursorFromPoint(state, state.lastX, state.lastY)
+        }
+
+        if (state.borderMode && state.activeTarget instanceof Element && state.activeTarget.isConnected) {
+          syncCursorToTarget(state, state.activeTarget)
+        }
+
+        if (state.layer !== state.appliedLayer) {
+          state.el.style.zIndex = String(state.layer)
+          state.appliedLayer = state.layer
+        }
+
+        state.currentX += (state.targetX - state.currentX) * 0.18
+        state.currentY += (state.targetY - state.currentY) * 0.18
+        state.currentWidth += (state.targetWidth - state.currentWidth) * 0.2
+        state.currentHeight += (state.targetHeight - state.currentHeight) * 0.2
+        state.currentRadius += (state.targetRadius - state.currentRadius) * 0.2
+        state.currentScale += (state.targetScale - state.currentScale) * 0.15
+
+        state.el.style.transform = `translate3d(${state.currentX}px, ${state.currentY}px, 0) scale(${state.currentScale})`
+        state.el.style.width = `${state.currentWidth}px`
+        state.el.style.height = `${state.currentHeight}px`
+        state.el.style.borderRadius = `${state.currentRadius}px`
+        state.el.classList.toggle('is-visible', state.visible)
+        state.el.classList.toggle('is-border-mode', state.borderMode)
+        state.el.classList.toggle('is-down', state.isDown)
+        state.rafId = window.requestAnimationFrame(step)
+      }
+
+      // Re-resolve everything from a viewport point. Called on pointermove and,
+      // less often, from the rAF loop -- the page can change under a stationary
+      // pointer (lightbox opens, modal opens, scroll) and the outline must not
+      // stay latched to a target that is no longer under the cursor.
+      const updateCursorFromPoint = (state, x, y) => {
+        const hoveredElement = document.elementFromPoint(x, y)
+        state.layer = resolveCursorLayer(hoveredElement)
+
+        const target = resolveInteractiveTarget(hoveredElement)
+
+        if (target) {
+          if (state.activeTarget !== target || !state.borderMode) {
+            setActiveTarget(state, target)
+          }
+          return
+        }
+
+        if (!state.borderMode || state.activeTarget) {
+          resetToDotMode(state)
+        }
+
+        if (!state.borderMode) {
+          state.targetX = x - 14
+          state.targetY = y - 14
+          state.targetWidth = 28
+          state.targetHeight = 28
+          state.targetRadius = 999
+        }
+      }
+
+      this._cursorMoveHandler = (event) => {
+        const state = this._cursorState
+        if (!state) return
+        state.visible = true
+        state.lastX = event.clientX
+        state.lastY = event.clientY
+        updateCursorFromPoint(state, event.clientX, event.clientY)
+      }
+
+      this._cursorDownHandler = () => {
+        const state = this._cursorState
+        if (!state) return
+        state.isDown = true
+        state.targetScale = state.borderMode ? 0.96 : 0.88
+      }
+
+      this._cursorUpHandler = () => {
+        const state = this._cursorState
+        if (!state) return
+        state.isDown = false
+        state.targetScale = 1
+      }
+
+      this._cursorLeaveHandler = () => {
+        const state = this._cursorState
+        if (!state) return
+        clearNativeBorderSuppression(state)
+        state.visible = false
+        state.borderMode = false
+        state.activeTarget = null
+        state.isDown = false
+        state.targetScale = 1
+        state.targetWidth = 28
+        state.targetHeight = 28
+        state.targetRadius = 999
+      }
+
+      document.body.classList.add('cursor-enabled')
+      window.addEventListener('pointermove', this._cursorMoveHandler, { passive: true })
+      window.addEventListener('pointerdown', this._cursorDownHandler)
+      window.addEventListener('pointerup', this._cursorUpHandler)
+      window.addEventListener('blur', this._cursorLeaveHandler)
+      document.addEventListener('mouseleave', this._cursorLeaveHandler)
+
+      this._cursorState.rafId = window.requestAnimationFrame(step)
+    },
+
+    stopCustomCursor() {
+      if (typeof document !== 'undefined') {
+        document.body.classList.remove('cursor-enabled')
+      }
+
+      if (this._cursorState?.activeTarget && this._cursorState.suppressNativeBorder) {
+        this._cursorState.activeTarget.classList.remove('cursor-outline-active')
+      }
+
+      if (this._cursorState?.rafId) {
+        cancelAnimationFrame(this._cursorState.rafId)
+      }
+
+      if (this._cursorMoveHandler) {
+        window.removeEventListener('pointermove', this._cursorMoveHandler)
+        this._cursorMoveHandler = null
+      }
+      if (this._cursorDownHandler) {
+        window.removeEventListener('pointerdown', this._cursorDownHandler)
+        this._cursorDownHandler = null
+      }
+      if (this._cursorUpHandler) {
+        window.removeEventListener('pointerup', this._cursorUpHandler)
+        this._cursorUpHandler = null
+      }
+      if (this._cursorLeaveHandler) {
+        window.removeEventListener('blur', this._cursorLeaveHandler)
+        document.removeEventListener('mouseleave', this._cursorLeaveHandler)
+        this._cursorLeaveHandler = null
+      }
+
+      this._cursorState = null
+    },
+
     // Keep the (absolutely-positioned) featured carousel as tall as its tallest
     // card so the gap to the filter tabs is consistent and nothing overlaps,
     // without a viewport-based min-height that mismatches the actual content.
@@ -792,6 +1378,9 @@ const appOptions = {
       this.themeMode = nextMode
       document.documentElement.setAttribute('data-theme', nextMode)
       document.documentElement.style.colorScheme = nextMode
+      if (this._blobFieldState?.syncPalette) {
+        this._blobFieldState.syncPalette()
+      }
       try {
         localStorage.setItem('themeMode', nextMode)
       } catch (e) {}

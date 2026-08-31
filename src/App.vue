@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <canvas ref="blobFieldCanvas" class="blob-field" aria-hidden="true"></canvas>
+
     <nav class="nav" :class="{ 'nav-open': isNavOpen }">
       <div class="nav-logo"><img :src="logoSrc" alt="logo" style="max-height: 32px;" @error="handleThemeImageError($event, logoDarkSrc)"></div>
       <div class="nav-links" :class="{ 'nav-links-open': isNavOpen }">
@@ -761,6 +763,11 @@
     </section>
 
     <Footer />
+
+    <div ref="siteCursor" class="site-cursor" aria-hidden="true">
+      <span class="site-cursor-core"></span>
+      <span class="site-cursor-glow"></span>
+    </div>
   </div>
 </template>
 

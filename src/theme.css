@@ -9,6 +9,13 @@
   --accent1: #2f6faa;
   --accent2: #4a72b0;
   --accent3: #8bb87a;
+  --neon-rgb: 47, 111, 170;
+  /* Custom-cursor ink. Kept separate from --neon-rgb (which also feeds the
+     background blob canvas) so the cursor can be tuned per theme. `screen`
+     blend only works on a dark ground -- it lightens, so on the light theme it
+     pushes the ring toward white and it disappears. */
+  --cursor-rgb: 47, 111, 170;
+  --cursor-blend: screen;
   --code1: #8a94a6;
   --code2: #5e8a5e;
   --code3: #c4836a;
@@ -49,6 +56,9 @@
   --accent1: #5baadc;
   --accent2: #4c7fb8;
   --accent3: #5b8d67;
+  --neon-rgb: 91, 170, 220;
+  --cursor-rgb: 22, 88, 148;
+  --cursor-blend: normal;
   --code1: #64748b;
   --code2: #4f7f63;
   --code3: #b86f5e;

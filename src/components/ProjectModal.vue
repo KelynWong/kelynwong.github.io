@@ -1,5 +1,10 @@
 <template>
-  <teleport to="body">
+  <!-- Deliberately NOT teleported to body. #app sets `isolation: isolate`, so
+       anything teleported out of it paints above the whole #app stacking
+       context -- including the custom cursor, which then vanished behind this
+       overlay. ProjectModal is already rendered as a direct child of #app in
+       App.vue and .modal-overlay is position: fixed with no transformed
+       ancestor, so it covers the viewport either way. -->
     <transition name="modal-fade">
       <div v-if="isOpen" class="modal-overlay" @click.self="closeModal">
         <div class="modal-container" @click.stop role="dialog" :aria-labelledby="`modal-title-${project?.id}`">
@@ -152,7 +157,6 @@
         </div>
       </div>
     </transition>
-  </teleport>
 </template>
 
 <script>

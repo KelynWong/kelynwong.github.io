@@ -15,6 +15,8 @@
 
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
@@ -25,6 +27,202 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body.cursor-enabled {
+  cursor: none;
+}
+
+body.cursor-enabled a,
+body.cursor-enabled button,
+body.cursor-enabled [role='button'],
+body.cursor-enabled .btn,
+body.cursor-enabled .ctab,
+body.cursor-enabled .nav-toggle,
+body.cursor-enabled .nav-theme-toggle,
+body.cursor-enabled .social-icon,
+body.cursor-enabled .project-card,
+body.cursor-enabled .contact-link,
+body.cursor-enabled .track,
+body.cursor-enabled .li-link,
+body.cursor-enabled .gallery-img-button,
+body.cursor-enabled .gallery-lightbox-nav,
+body.cursor-enabled .gallery-lightbox-close,
+body.cursor-enabled .photo-place-pill,
+body.cursor-enabled .vid-cat-pill,
+body.cursor-enabled .pctrl {
+  cursor: none;
+}
+
+body.cursor-enabled input,
+body.cursor-enabled textarea,
+body.cursor-enabled select,
+body.cursor-enabled [contenteditable='true'] {
+  cursor: text;
+}
+
+#app {
+  position: relative;
+  isolation: isolate;
+}
+
+.blob-field {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  mix-blend-mode: screen;
+  filter: blur(30px) saturate(125%);
+  opacity: 0.6;
+  will-change: transform, opacity;
+}
+
+.site-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  /* Base layer only -- sits below nav (100) so an outline on content scrolling
+     under the bar is clipped by it. main.js raises this per-overlay while the
+     pointer is inside one (see cursorLayers). */
+  z-index: 99;
+  opacity: 0;
+  mix-blend-mode: var(--cursor-blend, screen);
+  will-change: transform, opacity, filter;
+  box-sizing: border-box;
+  transform-origin: top left;
+}
+
+.site-cursor.is-visible {
+  opacity: 1;
+}
+
+.site-cursor-core,
+.site-cursor-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.site-cursor-core {
+  border: 1px solid rgba(var(--cursor-rgb), 0.95);
+  background: linear-gradient(135deg, rgba(var(--cursor-rgb), 0.18), rgba(var(--cursor-rgb), 0.03));
+  box-shadow:
+    0 0 0 1px rgba(var(--cursor-rgb), 0.18) inset,
+    0 0 16px rgba(var(--cursor-rgb), 0.34),
+    0 0 42px rgba(var(--cursor-rgb), 0.14);
+}
+
+.site-cursor-glow {
+  inset: -14px;
+  background: radial-gradient(circle, rgba(var(--cursor-rgb), 0.2) 0%, rgba(var(--cursor-rgb), 0) 68%);
+  filter: blur(8px);
+  opacity: 0.8;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.site-cursor.is-border-mode .site-cursor-core {
+  box-shadow: 0 0 18px rgba(var(--cursor-rgb), 0.5), 0 0 56px rgba(var(--cursor-rgb), 0.22);
+}
+
+/* Light theme composites normally (no `screen` lift), so the ring reads on its
+   own -- tighten it up rather than relying on bloom to carry it. */
+:root[data-theme='light'] .site-cursor-core {
+  border-width: 1.5px;
+  background: linear-gradient(135deg, rgba(var(--cursor-rgb), 0.1), rgba(var(--cursor-rgb), 0.02));
+  box-shadow:
+    0 0 0 1px rgba(var(--cursor-rgb), 0.12) inset,
+    0 0 10px rgba(var(--cursor-rgb), 0.2);
+}
+
+:root[data-theme='light'] .site-cursor.is-border-mode .site-cursor-core {
+  box-shadow: 0 0 12px rgba(var(--cursor-rgb), 0.26);
+}
+
+:root[data-theme='light'] .site-cursor-glow {
+  opacity: 0.45;
+}
+
+.site-cursor.is-down .site-cursor-core {
+  transform: scale(0.9);
+}
+
+.site-cursor.is-down .site-cursor-glow {
+  opacity: 0.55;
+}
+
+body.cursor-enabled .btn,
+body.cursor-enabled .nav-links a,
+body.cursor-enabled .nav-theme-toggle,
+body.cursor-enabled .social-icon,
+body.cursor-enabled .project-card,
+body.cursor-enabled .contact-link,
+body.cursor-enabled .li-link,
+body.cursor-enabled .track,
+body.cursor-enabled .vid-cat-pill,
+body.cursor-enabled .photo-place-pill,
+body.cursor-enabled .ctab,
+body.cursor-enabled .gallery-lightbox-nav,
+body.cursor-enabled .gallery-lightbox-close,
+body.cursor-enabled .pctrl {
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease,
+    color 0.24s ease,
+    background-color 0.24s ease,
+    text-shadow 0.24s ease;
+}
+
+body.cursor-enabled .btn:hover:not(:disabled):not(.cursor-outline-active),
+body.cursor-enabled .nav-links a:hover:not(.cursor-outline-active),
+body.cursor-enabled .nav-theme-toggle:hover:not(.cursor-outline-active),
+body.cursor-enabled .social-icon:hover:not(.cursor-outline-active),
+body.cursor-enabled .project-card:hover:not(.cursor-outline-active),
+body.cursor-enabled .contact-link:hover:not(.cursor-outline-active),
+body.cursor-enabled .li-link:hover:not(.cursor-outline-active),
+body.cursor-enabled .track:hover:not(.cursor-outline-active),
+body.cursor-enabled .vid-cat-pill:hover:not(.cursor-outline-active),
+body.cursor-enabled .photo-place-pill:hover:not(.cursor-outline-active),
+body.cursor-enabled .ctab:hover:not(.cursor-outline-active),
+body.cursor-enabled .gallery-lightbox-nav:hover:not(:disabled):not(.cursor-outline-active),
+body.cursor-enabled .gallery-lightbox-close:hover:not(.cursor-outline-active),
+body.cursor-enabled .pctrl:hover:not(.cursor-outline-active) {
+  box-shadow:
+    0 0 0 1px rgba(var(--neon-rgb), 0.62),
+    0 0 20px rgba(var(--neon-rgb), 0.24);
+  text-shadow: 0 0 10px rgba(var(--neon-rgb), 0.36);
+}
+
+body.cursor-enabled .nav-links a:hover:not(.cursor-outline-active),
+body.cursor-enabled .li-link:hover:not(.cursor-outline-active),
+body.cursor-enabled .contact-link:hover:not(.cursor-outline-active) {
+  transform: translateY(-1px);
+}
+
+body.cursor-enabled .cursor-outline-active,
+body.cursor-enabled .cursor-outline-active:hover,
+body.cursor-enabled .cursor-outline-active:focus,
+body.cursor-enabled .cursor-outline-active:focus-visible,
+body.cursor-enabled .cursor-outline-active.active {
+  /* Only neutralise a border the element ALREADY has. Declaring `border: 1px
+     solid` here used to flip border-style none -> solid on borderless targets
+     (.nav-links a, .social-icon), so their border-color animated from
+     currentColor (near-white) down to transparent over the shared 0.24s
+     transition -- the white flash right before the cursor outline lands. It
+     also grew those elements by 2px, since there is no global border-box. */
+  border-color: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  outline: none !important;
+  outline-color: transparent !important;
+  /* Suppression must be instant, not tweened, or the native ring is still
+     fading out while the cursor is drawing its own. */
+  transition-property: color, background-color !important;
 }
 
 ::selection { background: var(--accent2); color: #fff; }
@@ -341,7 +539,7 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 4px;
   flex-wrap: wrap;
   justify-content: flex-end;
   margin-left: auto;
@@ -352,6 +550,9 @@ nav {
   text-decoration: none;
   font-size: var(--fs-2xs);
   letter-spacing: 0.06em;
+  /* breathing room so the cursor outline never hugs the text */
+  padding: 8px 14px;
+  border-radius: var(--radius);
   transition: color 0.2s;
 }
 
@@ -362,7 +563,7 @@ nav {
   color: var(--accent3);
   border: 1px solid var(--accent3);
   border-radius: var(--radius);
-  padding: 4px 12px;
+  padding: 7px 13px; /* 1px less than siblings so the border keeps the same box height */
   transition: all 0.2s;
 }
 .nav-links a.nav-link-external:hover {
