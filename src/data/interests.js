@@ -342,6 +342,7 @@ export const videoTiktoks = [
       { id: 'q9ZVBQNwTxw', label: 'HMHAS Visualised - Part 2', shorts: true },
       { id: 'QfsLqKL-UVg', label: 'HMHAS Visualised - Part 3', shorts: true },
       { id: 'LdKmWU92DSI', label: 'Billie Eilish Is…', shorts: true },
+      { id: 'sHS6Ntk4KpQ', label: 'Billie Eilish everybody', shorts: true },
     ],
   },
   {
@@ -368,6 +369,8 @@ export const videoTiktoks = [
       { id: 'Tt9xqrDCtqE', label: 'Why\'d you take your camera everywhere you go?', shorts: true },
       { id: 'tVk1dgNM56s', label: 'Might as well get the whole set', shorts: true },
       { id: 'WspJ30aYNj4', label: 'Sorry I cannot hear you, I\'m kinda busy', shorts: true },
+      { id: 'CQmzrX2NNHE', label: 'This is what clay and a couple of paint colors can do', shorts: true },
+      { id: '5f10hk95Tbc', label: 'This is me being a cat slave', shorts: true },
     ],
   },
 ];
